@@ -14,6 +14,7 @@
 	<meta name=""dcterms.title"" content=""#language.title# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.masterKeywords# #language.title#"" />
 	<meta name=""description"" content=""#language.title#"" />
+	<meta name=""dcterms.description"" content=""#language.title#"" />
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.title />

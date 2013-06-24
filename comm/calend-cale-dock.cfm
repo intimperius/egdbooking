@@ -20,6 +20,7 @@
 	<meta name=""dcterms.title"" content=""#language.drydockCalendar# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#Language.masterKeywords#, #language.keywords#"" />
 	<meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#Language.masterSubjects#"" />
 	<title>#language.drydockCalendar# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.drydockCalendar />

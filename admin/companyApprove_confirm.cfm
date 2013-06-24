@@ -34,6 +34,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Approve Company</title>">
+	<cfset request.title ="Approve Company">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <CFSET This_Page = "../admin/companyApprove_confirm.cfm">
@@ -54,22 +55,9 @@ function EditSubmit ( selectedform )
 	}
 /* ]]> */
 </script>
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="userApprove.cfm?lang=#lang#">Company Approvals</a> &gt;
-			Approve Company
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -87,7 +75,7 @@ function EditSubmit ( selectedform )
 						<input type="hidden" name="CID" value="#Form.CID#" />
 						<input type="hidden" name="abbrev" value="#Form.abbrev#" />
 						<!---a href="javascript:EditSubmit('rejectUser');" class="textbutton">Submit</a--->
-						<input type="submit" class="textbutton" value="Approve" />
+						<input type="submit" class="button-accent button" value="Approve" />
 						<input type="button" value="Cancel" onclick="javascript:location.href='companyApprove.cfm?lang=#lang#'" class="textbutton" />
 					</form>
 				</div>

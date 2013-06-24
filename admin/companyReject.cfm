@@ -7,6 +7,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Reject Company</title>">
+<cfset request.title ="Reject Company">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <CFSET This_Page = "../admin/userReject.cfm">
@@ -23,22 +24,9 @@
 	AND		CID = '#Form.CID#'
 </cfquery>--->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt; 
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="companyApprove.cfm?lang=#lang#">Company Approvals</a> &gt;
-			Reject Company
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -61,7 +49,7 @@
 					<cfoutput>
 					<form action="companyReject_action.cfm?lang=#lang#" method="post">
 						<input type="hidden" name="CID" value="#Form.CID#" />
-						<input type="submit" value="Reject" class="textbutton" />
+						<input type="submit" value="Reject" class="button-accent button" />
 						<input type="button" value="Cancel" class="textbutton" onclick="javascript:location.href='companyApprove.cfm?lang=#lang#'" />
 					</form>
 					</cfoutput>

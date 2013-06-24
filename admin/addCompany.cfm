@@ -5,6 +5,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New Company</title>">
+	<cfset request.title ="Create New Company">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 <cfinclude template="#RootDir#includes/checkFilledIn_js.cfm">
 
@@ -53,21 +54,9 @@
 	<cfset variables.fax="#form.fax#">
 </cfif> --->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				<a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			Create New Company
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -130,7 +119,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center" style="padding-top:20px;">
-								<input type="submit" name="submitForm" class="textbutton" value="submit" />
+								<input type="submit" name="submitForm" class="button-accent button" value="Submit" />
 								<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 							</td>
 						</tr>

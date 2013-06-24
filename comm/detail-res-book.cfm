@@ -50,6 +50,7 @@
 <cfhtmlhead text="
 	<meta name=""dcterms.title"" content=""#language.PWGSC# - #language.EsqGravingDock# - #language.bookingDetail#"" />
 	<meta name=""keywords"" content=""#Language.masterKeywords#, #language.bookingDetail#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#Language.masterSubjects#"" />
 	<title>#language.PWGSC# - #language.EsqGravingDock# - #language.bookingDetail#</title>

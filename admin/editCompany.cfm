@@ -10,6 +10,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Company</title>">
+	<cfset request.title ="Edit Company">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfquery name="getCompanyList" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
@@ -59,21 +60,8 @@ function EditSubmit ( selectedform )
 <!-- End JavaScript Block -->
 <CFINCLUDE template="#RootDir#includes/checkFilledIn_js.cfm">
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			Edit Company
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -93,7 +81,7 @@ function EditSubmit ( selectedform )
 				<cfform action="editCompany.cfm?lang=#lang#" method="post" id="chooseCompanyForm">
 					<cfselect name="CID" query="getCompanyList" value="CID" display="Name" selected="#form.CID#" />
 					<!---a href="javascript:EditSubmit('chooseCompanyForm');" class="textbutton">View</a--->
-					<input type="submit" value="View" class="textbutton" />
+					<input type="submit" value="View" class="button-accent button" />
 					<cfoutput><a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 				</cfform>
 
@@ -173,7 +161,7 @@ function EditSubmit ( selectedform )
 						<tr>
 							<td id="" colspan="2" align="center" style="padding-top:20px;">
 								<input type="hidden" name="CID" value="#form.CID#" />
-								<input type="submit" class="textbutton" value="submit" />
+								<input type="submit" class="button-accent button" value="Submit" />
 								<a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 							</td>
 						</tr>

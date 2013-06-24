@@ -4,6 +4,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Add Administrator</title>">
+	<cfset request.title = "Add Administrator">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfquery name="getUserList" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
@@ -28,21 +29,9 @@ function EditSubmit ( selectedform )
 	}
 /* ]]> */
 </script>
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			Add Administrator
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -70,7 +59,7 @@ function EditSubmit ( selectedform )
 				Select User: <cfselect name="UID" query="getUserList" value="UID" display="UserName" />
 				&nbsp;&nbsp;&nbsp;
 				<!--a href="javascript:EditSubmit('addAdministratorForm');" class="textbutton">Submit</a-->
-				<input type="submit" name="submitForm" value="submit" class="textbutton" />
+				<input type="submit" name="submitForm" value="Submit" class="button button-accent" />
 				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 			</cfform>
 

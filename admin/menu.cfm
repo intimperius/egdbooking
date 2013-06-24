@@ -9,6 +9,7 @@
 <title>PWGSC - ESQUIMALT GRAVING DOCK - Administrative Functions</title>
 </cfsavecontent>
 <cfhtmlhead text="#head#" />
+<cfset request.title = "Administrative Functions">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 

@@ -32,6 +32,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm Delete Vessel</title>">
+	<cfset request.title ="Confirm Delete Vessel">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfif isDefined("form.VNID")><cfinclude template="#RootDir#includes/build_form_struct.cfm"></cfif>
@@ -59,21 +60,8 @@
 	WHERE	EndDate >= <cfqueryparam value="#CreateODBCDate(PacificNow)#" cfsqltype="cf_sql_date" /> AND Vessels.VNID = <cfqueryparam value="#form.VNID#" cfsqltype="cf_sql_integer" /> AND Bookings.Deleted = 0
 </cfquery>
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			Confirm Delete Vessel
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -137,7 +125,7 @@
 					</table>
 					<br />
 					<div style="text-align:center;">
-						<input type="submit" class="textbutton" value="submit" />
+						<input type="submit" class="button-accent button" value="Submit" />
 						<a href="delVessel.cfm?lang=#lang#" class="textbutton">Back</a>
 						<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 					</div>

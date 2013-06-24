@@ -1,3 +1,4 @@
+<cfset request.title = "Jetty Booking Management">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 <!---clear form structure--->
 <cfif IsDefined("Session.Form_Structure")>
@@ -154,21 +155,8 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<cfelse>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</cfif>
-			Jetty Booking Management
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -182,7 +170,7 @@ function EditSubmit ( selectedform )
 				<p>Please enter a range of dates for which you would like to see the bookings:</p>
 				<form action="jettyBookingManage.cfm?lang=<cfoutput>#lang#</cfoutput>" method="get" name="dateSelect">
 					<input type="hidden" name="lang" value="<cfoutput>#lang#</cfoutput>" />
-					<table style="width: 100%;">
+					<table style="width:80%">
 						<tr>
 							<td id="Startdate">
 								<label for="start">Start Date:</label>							</td>
@@ -218,7 +206,7 @@ function EditSubmit ( selectedform )
 							<td id="Confirmed" align="left"><label for="showConf" class="confirmed">Confirmed</label></td>
 						</tr>
 						<tr>
-							<td colspan="3" align="right"><input type="submit" value="submit" class="textbutton" />
+							<td colspan="3" align="right"><input type="submit" value="Submit" class="button button-accent" />
 						</tr>
 					</table>
 
@@ -541,7 +529,7 @@ function EditSubmit ( selectedform )
 					ORDER BY Bookings.startDate, Bookings.endDate
 				</cfquery>
 
-				<table class="basic" style="width:100%;">
+				<table class="basic" style="width:80%;">
 						<tr align="center">
 							<th id="Start" style="width: 20%;">Start Date</th>
 							<th id="End" style="width: 20%;">End Date</th>

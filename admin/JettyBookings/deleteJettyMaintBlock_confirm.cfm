@@ -27,6 +27,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm #variables.actionCap# Maintenance Block</title>">
+	<cfset request.title = "Confirm #variables.actionCap# Maintenance Block">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfset Variables.BRID = Form.BRID>
@@ -35,22 +36,9 @@
 <cfset Variables.NorthJetty = getBooking.NorthJetty>
 <cfset Variables.SouthJetty = getBooking.SouthJetty>
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="jettyBookingManage.cfm?lang=#lang#">Jetty Management</a> &gt;
-			Confirm #variables.actionCap# Maintenance Block
-			
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -98,7 +86,7 @@
 				<table style="width:100%;" cellspacing="0" cellpadding="1" border="0">
 					<tr>
 						<td colspan="2" align="center">
-							<input type="submit" value="#variables.actionCap# Maintenance" class="textbutton" />
+							<input type="submit" value="#variables.actionCap# Maintenance" class="button button-accent" />
 							<input type="button" value="Back" class="textbutton" onclick="self.location.href='jettyBookingManage.cfm?#urltoken#';" />
 						</td>
 					</tr>

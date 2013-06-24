@@ -4,6 +4,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm Remove Company</title>">
+	<cfset request.title ="Confirm Remove Company">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfif isDefined("form.UID")><cfinclude template="#RootDir#includes/build_form_struct.cfm"></cfif>
@@ -30,22 +31,8 @@ function EditSubmit ( selectedform )
 	}
 /* ]]> */
 </script>
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="#RootDir#admin/Users/editUser.cfm?lang=#lang#&UID=#form.UID#">Edit User Profile</a> &gt;
-			Confirm Remove Company</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
 					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
@@ -68,7 +55,7 @@ function EditSubmit ( selectedform )
 					<p><div style="text-align:center;">
 						<!--a href="javascript:EditSubmit('remCompanyConfirmForm');" class="textbutton">Submit</a>
 						<a href="editUser.cfm?UID=#form.UID#" class="textbutton">Cancel</a-->
-						<input type="submit" name="submitForm" value="Remove" class="textbutton" />
+						<input type="submit" name="submitForm" value="Remove" class="button-accent button" />
 						<a href="editUser.cfm?lang=#lang#&UID=#form.UID#" class="textbutton">Cancel</a>
 					</div></p>
 

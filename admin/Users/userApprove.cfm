@@ -8,6 +8,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - User Approval</title>">
+<cfset request.title ="User Approval">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <CFSET This_Page = "../admin/Users/userApprove.cfm">
@@ -68,19 +69,9 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-		<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-			<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt; 
-		<CFELSE>
-			<a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-		</CFIF>
-			User Approvals
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -111,7 +102,7 @@ function EditSubmit ( selectedform )
 							</table>
 							<br />
 							</CFIF>
-							<table id="listManage" border="0" cellspacing="0" cellpadding="2" style="width:100%;">
+							<table id="listManage" border="0" cellspacing="0" cellpadding="2" style="width:90%;">
 								<tr bgcolor="##FFFFFF">
 									<td colspan="3" style="width:50%;"><i><a href="javascript:void(0);" onclick="popUp('admin/viewCompany.cfm?lang=#lang#&amp;CID=#CID#');">#CompanyName#</a></i></td>
 									<td colspan="3" align="right" style="width:50%;"><CFIF CompApproved eq 0><i><a href="../CompanyApprove.cfm?lang=#lang#">awaiting company approval</a></i><CFELSE>&nbsp;</CFIF></td>

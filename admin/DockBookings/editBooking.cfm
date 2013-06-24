@@ -20,6 +20,7 @@
 	</cfoutput>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
+<cfset request.title ="Edit Booking Information">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <CFPARAM name="url.referrer" default="Booking Management">
@@ -35,23 +36,9 @@
 	<cfset variables.dateValue = "">
 </cfif>
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm"> &gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="bookingManage.cfm?lang=#lang#">Drydock Management</a> &gt;
-			Edit Booking Information
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
-
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -274,7 +261,7 @@
 					<tr>
 						<td colspan="2" align="center">
 							<!--a href="javascript:document.editBookingForm.submitForm.click();" class="textbutton">Submit</a-->
-							<input type="submit" class="textbutton" value="submit" />
+							<input type="submit" class="button button-accent" value="Submit" />
 							<a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue#" class="textbutton">Cancel</a>
 							<!--- <a href="bookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Cancel</a> --->
 						</td>

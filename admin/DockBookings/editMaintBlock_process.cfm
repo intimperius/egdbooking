@@ -8,6 +8,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Maintenance Block</title>">
+	<cfset request.title ="Edit Maintenance Block">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <!-- Start JavaScript Block -->
@@ -21,22 +22,9 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="bookingManage.cfm?lang=#lang#">Drydock Management</a> &gt;
-			Edit Maintenance Block
-			
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -264,7 +252,7 @@ function EditSubmit ( selectedform )
 						<a href="javascript:history.go(-1);" class="textbutton">Back</a>
 						<a href="bookingManage.cfm?#urltoken#" class="textbutton">Cancel</a>
 						<br--->
-						<input type="submit" value="submit" class="textbutton" />
+						<input type="submit" value="Submit" class="button button-accent" />
 						<a href="editMaintBlock.cfm?#urltoken#" class="textbutton">Back</a>
 						<input type="button" value="Cancel" class="textbutton" onclick="self.location.href='bookingManage.cfm?#urltoken#';" />
 						<!---<a href="javascript:formReset('bookingreq');">test reset</a>--->

@@ -1,4 +1,4 @@
-<!---<cfcomponent>
+<cfcomponent>
 	<cfset this.name = "EGD Booking" />
 	<cfset this.sessionmanagement = true />
 	<cfset this.sessiontimeout = CreateTimeSpan(2,0,0,0) />
@@ -53,9 +53,9 @@
       <cfset structClear(session['errors']) />
     </cfif>
   </cffunction>
-</cfcomponent> --->
+</cfcomponent>
 
-<cfcomponent>
+<!---<cfcomponent>
 <cfset this.name = "EGD Booking" />
 <cfset this.sessionmanagement = true />
 <cfset this.sessiontimeout = CreateTimeSpan(2,0,0,0) />
@@ -90,4 +90,4 @@ Session.EMail = Trim(GetUser.EMail);
 <cflocation url="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">
 
   </cffunction>
-</cfcomponent>
+</cfcomponent> --->

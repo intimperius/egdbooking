@@ -1,4 +1,5 @@
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfset request.title ="Change Booking Status">
+
 <cfif isDefined("form.BRID") AND (NOT isDefined("url.referrer") OR url.referrer NEQ "Edit Booking")><cfinclude template="#RootDir#includes/build_form_struct.cfm"></cfif>
 <cfinclude template="#RootDir#includes/restore_params.cfm">
 
@@ -42,22 +43,8 @@
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Deny Request</title>">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="bookingManage.cfm?lang=#lang#">Drydock Management</a> &gt;
-			Change Booking Status
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
-		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+<div class="colLayout">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -129,11 +116,12 @@
 	</cfoutput>
 
 	<div style="text-align:center;"><p>
-	<input type="submit" value="submit" class="textbutton" />
+	<input type="submit" value="Submit" class="button button-accent" />
 	<cfoutput><input type="button" onclick="self.location.href='#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#'" value="Cancel" class="textbutton" /></cfoutput>
 	</p></div>
 </cfform>
 
+</div>
 </div>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

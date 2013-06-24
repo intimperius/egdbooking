@@ -12,26 +12,13 @@
 <meta name=""dc.date.reviewed"" content=""2005-07-25"" />
 <meta name=""dc.date.modified"" content=""2005-07-25"" />
 <meta name=""dc.date.created"" content=""2005-07-25"" />
-<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New Company</title>">
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New Company</title>">.
+<cfset request.title ="Create New Company">
+
 
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 <CFINCLUDE template="#RootDir#includes/checkFilledIn_js.cfm">
 
-<div class="breadcrumbs">
-	<a href="<cfoutput>http://www.pwgsc.gc.ca/home-#lang#.html</cfoutput>">PWGSC</a> &gt;
-	Pacific Region &gt;
-	<a href="http://www.pwgsc.gc.ca/pacific/egd/index-e.html">Esquimalt Graving Dock</a> &gt;
-  <cfoutput>
-		<a href="#RootDir#reserve-book-#lang#.cfm">Booking</a> &gt;<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-			<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-		<CFELSE>
-			 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-		</CFIF>
-	<a href="#RootDir#admin/Users/addNewUserCompany.cfm?lang=#lang#&info=#url.info#&companies=#url.companies#">Create New User</a> &gt;
-	</cfoutput>
-	Create New Company
-</div>
 
 <div class="main">
 <h1 id="wb-cont">Create New Company</h1>
@@ -96,7 +83,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center" style="padding-top:20px;">
-				<input type="submit" name="submitForm" value="submit" class="textbutton" />
+				<input type="submit" name="submitForm" value="Submit" class="button-accent button" />
 				<a href="addNewUserCompany.cfm?lang=#lang#&info=#url.info#&companies=#url.companies#" class="textbutton">Cancel</a>
 			</td>
 		</tr>

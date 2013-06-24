@@ -23,25 +23,12 @@
 	</cfoutput>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
+<cfset request.title ="Edit Maintenance Block">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="bookingManage.cfm?lang=#lang#">Drydock Management</a> &gt;
-			Edit Maintenance Block
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -118,7 +105,7 @@
       <cfoutput>
 			<form id="EditMaintBlock" action="editMaintBlock_process.cfm?#urltoken#" method="post">
 			<input type="hidden" name="BRID" value="#Variables.BRID#" />
-			<table style="width:100%;">
+			<table style="width:90%;">
 			<tr>
 				<td id="Start"><label for="startDate">Start Date:<br /><small>#language.dateform#</small></label></td>
 				<td headers="Start">
@@ -147,7 +134,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<!--a href="javascript:EditSubmit('EditMaintBlock');" class="textbutton">Submit</a-->
-					<input type="submit" name="submitForm" class="textbutton" value="submit" />
+					<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 					<a href="bookingManage.cfm?#urltoken#" class="textbutton">Cancel</a>
 				</td>
 			</tr>

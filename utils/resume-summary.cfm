@@ -30,6 +30,7 @@
 	<meta name=""dcterms.title"" content=""#language.bookingsSummary# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.masterKeywords#"" />
 	<meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.bookingsSummary# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.bookingsSummary />

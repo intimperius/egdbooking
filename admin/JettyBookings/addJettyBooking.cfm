@@ -9,6 +9,7 @@
 	</cfoutput>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
+<cfset request.title = "Create New Jetty Booking">
 
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
@@ -31,22 +32,7 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="jettyBookingManage.cfm?lang=#lang#">Jetty Management</a> &gt;
-			Create Booking
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -104,7 +90,7 @@ function EditSubmit ( selectedform )
 					<p><label for="selectCompany">Select Company:</label> <cfselect query="getCompanies" id="selectCompany" name="compID" value="CID" display="Name" selected="#Variables.compID#" />
 					&nbsp;&nbsp;&nbsp;
 					<!--a href="javascript:EditSubmit('chooseUserForm');" class="textbutton">Submit</a-->
-					<input type="submit" name="submitForm" class="textbutton" value="submit" />
+					<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 					<cfoutput><a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 				</cfform>
 
@@ -235,9 +221,9 @@ function EditSubmit ( selectedform )
 								<cfif getVessels.recordCount GE 1 AND getAgents.recordCount GE 1>
 								<!--a href="javascript:document.addBookingForm.submitForm.click();" class="textbutton">Submit</a-->
 									<input type="hidden" name="compID" value="#Variables.compID#" />
-									<input type="submit" name="submitForm" class="textbutton" value="submit" />
+									<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 									<cfif override EQ "1">
-									<input type="submit" name="submitForm" class="textbutton" value="override" />
+									<input type="submit" name="submitForm" class="button button-accent" value="Override" />
 									</cfif>
 								</cfif>
 								<cfoutput><a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>

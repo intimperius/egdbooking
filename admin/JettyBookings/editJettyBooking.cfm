@@ -1,6 +1,6 @@
 <cfsavecontent variable="js">
 	<cfoutput>
-	<meta name=""dcterms.title" content="PWGSC - ESQUIMALT GRAVING DOCK - Edit Jetty Booking">
+	<meta name="dcterms.title" content="PWGSC - ESQUIMALT GRAVING DOCK - Edit Jetty Booking">
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta name="dcterms.description" content="" />
@@ -19,6 +19,7 @@
 	</cfoutput>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
+<cfset request.title = "Edit Jetty Booking Information">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <CFPARAM name="url.referrer" default="Booking Management">
@@ -35,22 +36,9 @@
 <cfelse>
 	<cfset variables.dateValue = "">
 </cfif>
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="jettyBookingManage.cfm?lang=#lang#">Jetty Management</a> &gt;
-			Edit Booking
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -291,9 +279,9 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="center">
-							<input type="submit" name="submitForm" class="textbutton" value="submit" />
+							<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 							<cfif isdefined('overwrite')>
-							<input type="submit" name="submitForm" class="textbutton" value="overwrite" />
+							<input type="submit" name="submitForm" class="button button-accent" value="Overwrite" />
 							</cfif>
 							<a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue####variables.BRID#" class="textbutton">Cancel</a>
 							<br />

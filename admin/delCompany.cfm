@@ -4,6 +4,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Delete Company</title>">
+	<cfset request.title ="Delete Company">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cflock scope="session" throwontimeout="no" type="readonly" timeout="60">
@@ -37,22 +38,8 @@
 <cfelse>
 	<cfset variables.CID = 0>
 </cfif>
-
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			Delete Company
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -72,7 +59,7 @@
 				<div style="text-align:center;">
 					<cfform action="delCompany_confirm.cfm?lang=#lang#" method="post" id="delCompanyForm">
 						<cfselect name="CID" query="getcompanyList" value="CID" display="name" selected="#variables.CID#"/>
-						<input type="submit" name="submitForm" class="textbutton" value="Delete" />
+						<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
 						<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 					</cfform>
 				</div>

@@ -8,6 +8,7 @@
 <cfhtmlhead text="
 	<meta name=""dcterms.title"" content=""#language.PWGSC# - #language.EsqGravingDock# - #Variables.Success.Breadcrumb#"" />
 	<meta name=""keywords"" content=""#Language.masterKeywords#"" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content=""#Language.masterSubjects#"" />
 	<title>#Variables.Success.Breadcrumb# - #language.esqGravingDock# - #language.PWGSC#</title>">

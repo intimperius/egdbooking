@@ -15,6 +15,7 @@
 	</cfoutput>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
+<cfset request.title ="Create New Dock Booking">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfquery name="getCompanies" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
@@ -36,22 +37,9 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<cfelse>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</cfif>
-			<a href="bookingManage.cfm?lang=#lang#">Drydock Management</a> &gt;
-			Create Booking
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -96,7 +84,7 @@ function EditSubmit ( selectedform )
 					<p><label for="selectCompany">Select Company:</label> <cfselect query="getCompanies" id="selectCompany" name="compID" value="CID" display="Name" selected="#Variables.compID#" />
 					&nbsp;&nbsp;&nbsp;
 					<!--a href="javascript:EditSubmit('chooseUserForm');" class="textbutton">Submit</a-->
-					<input type="submit" name="submitForm" class="textbutton" value="submit" />
+					<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 					<cfoutput><a href="bookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 				</cfform>
 
@@ -203,7 +191,7 @@ function EditSubmit ( selectedform )
 							<td colspan="2" align="center">
 								<cfif getVessels.recordCount GE 1 AND getAgents.recordCount GE 1>
 									<input type="hidden" name="compID" value="#Variables.compID#" />
-									<input type="submit" name="submitForm" class="textbutton" value="submit" />
+									<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 								</cfif>
 								<cfoutput><a href="bookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 

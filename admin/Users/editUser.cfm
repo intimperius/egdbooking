@@ -7,6 +7,7 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit User</title>">
+	<cfset request.title ="Edit User Profile">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <cfquery name="getUserList" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
@@ -71,20 +72,9 @@ function EditSubmit ( selectedform )
 	}
 /* ]]> */
 </script>
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			Edit User Profile</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
+		
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -105,7 +95,7 @@ function EditSubmit ( selectedform )
 					<cfform action="editUser.cfm?lang=#lang#" id="chooseUserForm" method="post">
 						<cfselect name="UID" query="getUserList" value="UID" display="UserName" selected="#form.UID#" />
 						<!--a href="javascript:EditSubmit('chooseUserForm');" class="textbutton">Edit</a-->
-						<input type="submit" name="submitForm" value="View" class="textbutton" />
+						<input type="submit" name="submitForm" value="View" class="button-accent button" />
 					</cfform>
 				</div>
 
@@ -145,7 +135,7 @@ function EditSubmit ( selectedform )
 							<td colspan="2" align="center">
 								<!--a href="javascript:document.editUserForm.submitForm.click();" class="textbutton">Submit</a-->
 								<cfif isDefined("form.UID")><cfoutput><input type="hidden" name="UID" value="#form.UID#" /></cfoutput></cfif>
-								<input type="submit" value="Save Profile Changes" class="textbutton" />
+								<input type="submit" value="Save Profile Changes" class="button-accent button" />
 							</td>
 						</tr>
 						</table>
@@ -214,19 +204,20 @@ function EditSubmit ( selectedform )
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<input type="submit" value="Change Password" class="textbutton" />
+								<input type="submit" value="Change Password" class="button-accent button" />
 								<cfoutput><input type="hidden" name="UID" value="#form.UID#" /></cfoutput>
 								<input type="button" value="Cancel" class="button" onclick="javascript:location.href='#RootDir#reserve-book-e.cfm'" />
 							</td>
 						</tr>
 					</table>
 					<br />
-					<div style="text-align:right;"><cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
+					<div><cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 				</cfform>
 
 				<p><em>*Email notification of profile updates is automatically sent to the user after their password is changed or a company is added to their profile.</em></p>
 
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->
+		</div>
 		</div>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

@@ -7,24 +7,11 @@
 	<meta name=""description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New Dock Booking</title>">
+	<cfset request.title ="Create New Dock Booking">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
-		<!-- BREAD CRUMB BEGINS | DEBUT DE LA PISTE DE NAVIGATION -->
-		<p class="breadcrumb">
-			<cfinclude template="#CLF_Path#/clf20/ssi/bread-pain-#lang#.html"><cfinclude template="#RootDir#includes/bread-pain-#lang#.cfm">&gt;
-			<cfoutput>
-			<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-				<a href="#RootDir#admin/menu.cfm?lang=#lang#">Admin</a> &gt;
-			<CFELSE>
-				 <a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">Welcome Page</a> &gt;
-			</CFIF>
-			<a href="bookingManage.cfm?lang=#lang#">Drydock Management</a> &gt;
-			Create Booking
-			</cfoutput>
-		</p>
-		<!-- BREAD CRUMB ENDS | FIN DE LA PISTE DE NAVIGATION -->
 		<div class="colLayout">
-		<cfinclude template="#RootDir#includes/left-menu-gauche-#lang#.cfm">
+		
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
 				<h1 id="wb-cont">
@@ -153,7 +140,7 @@
 			<cfform action="addBooking_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
 			<br />
 			<div style="font-weight:bold;">New Booking:</div>
-			<table style="width:100%; padding-left:20px;" align="center">
+			<table style="width:90%; padding-left:20px;" align="center">
 				<tr>
 					<td id="Vessel" align="left" style="width:15%;">Vessel:</td>
 					<td headers="Vessel" style="width:75%;"><input type="hidden" name="VNID" value="<cfoutput>#Variables.VNID#</cfoutput>" /><cfoutput>#getVessel.VesselName#</cfoutput></td>
@@ -215,7 +202,7 @@
 			<br />
 			<cfif NOT Variables.reOrder>
 				<cfif Form.Status EQ "C">
-					<table style="width:100%;" cellspacing="0" cellpadding="1" border="0">
+					<table style="width:90%;" cellspacing="0" cellpadding="1" border="0">
 					<tr><td colspan="2">This booking conflicts with other bookings. Please choose the sections of
 						the dock that you wish to book:</td></tr>
 					<tr>
@@ -234,17 +221,12 @@
 				<cfinclude template="#RootDir#includes/showConflicts.cfm">
 			</cfif>
 			<br />
-			<table>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="hidden" value="<cfoutput>#Form.Status#</cfoutput>" name="Status" />
-					<input type="submit" value="submit" class="textbutton" />
-					<cfoutput><a href="addBooking.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
-					<cfoutput><input type="button" value="Cancel" class="textbutton" onclick="self.location.href='bookingManage.cfm?#urltoken#';" /></cfoutput>
-				</td>
-			</tr>
-			</table>
-
+			<input type="hidden" value="<cfoutput>#Form.Status#</cfoutput>" name="Status" />
+			<input type="submit" value="Submit" class="button button-accent" />
+			<cfoutput><input type="button" value="Cancel" class="textbutton" onclick="self.location.href='bookingManage.cfm?#urltoken#';" /></cfoutput>
+			<cfoutput><a href="addBooking.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
+			
+			
 			</cfform>
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

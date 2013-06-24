@@ -15,6 +15,7 @@
 	</cfoutput>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
+<cfset request.title = "Drydock Booking Management">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <!---clear form structure--->
@@ -128,7 +129,7 @@ function EditSubmit ( selectedform )
 				<p>Please enter a range of dates for which you would like to see the bookings:</p>
 				<form action="bookingManage.cfm?lang=#lang#" method="get">
 					<input type="hidden" name="lang" value="<cfoutput>#lang#</cfoutput>" />
-					<table>
+					<table style="width:80%">
 						<tr>
 							<td id="Startdate">
 								<label for="start">Start Date:</label>
@@ -165,7 +166,7 @@ function EditSubmit ( selectedform )
 							<td id="Confirmed" align="left"><label for="showConf" class="confirmed">Confirmed</label></td>
 						</tr>
 						<tr>
-							<td colspan="3" align="right"><input type="submit" class="textbutton" value="submit" />
+							<td colspan="3" align="right"><input type="submit" class="button button-accent" value="Submit" />
 						</tr>
 					</table>
 				</form>
@@ -478,7 +479,7 @@ function EditSubmit ( selectedform )
 						ORDER BY Bookings.startDate, Bookings.endDate
 					</cfquery>
 
-					<table class="basic">
+					<table style="width:80%">
 						<tr>
 							<th id="Start">Start Date</th>
 							<th id="End">End Date</th>
