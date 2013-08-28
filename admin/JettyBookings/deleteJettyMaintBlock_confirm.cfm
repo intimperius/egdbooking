@@ -25,6 +25,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Confirm #variables.actionCap# Maintenance Block"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm #variables.actionCap# Maintenance Block</title>">
 	<cfset request.title = "Confirm #variables.actionCap# Maintenance Block">
@@ -36,66 +37,43 @@
 <cfset Variables.NorthJetty = getBooking.NorthJetty>
 <cfset Variables.SouthJetty = getBooking.SouthJetty>
 
-		
-		<div class="colLayout">
 
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Confirm #variables.actionCap# Maintenance Block
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Confirm #variables.actionCap# Maintenance Block
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
-				<cfinclude template="#RootDir#includes/admin_menu.cfm">
+<cfinclude template="#RootDir#includes/admin_menu.cfm">
 
+Please confirm the following maintenance block information.<br/><br/>
+<cfform action="deleteJettyMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+<input type="hidden" name="BRID" value="#Variables.BRID#" />
 
-				<p>Please confirm the following maintenance block information.</p>
-				<cfform action="deleteJettyMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
-				<input type="hidden" name="BRID" value="#Variables.BRID#" />
+<div class="module-info widemod">
+	<h2>Booking Details</h2>
+	<ul>
+		<b>Start Date:</b> <input type="hidden" name="StartDate" value="#Variables.Start#" />#DateFormat(Variables.Start, 'mmm d, yyyy')#<br/>
+		<b>End Date:</b> <input type="hidden" name="EndDate" value="#Variables.End#" />#DateFormat(Variables.End, 'mmm d, yyyy')#<br/>
+		<b>Sections:</b> <input type="hidden" name="NorthJetty" value="#Variables.NorthJetty#" />
+			<input type="hidden" name="SouthJetty" value="#Variables.SouthJetty#" />
+			<cfif Variables.NorthJetty EQ 1>
+				North Landing Wharf
+			</cfif>
+			<cfif Variables.SouthJetty EQ 1>
+				<cfif Variables.NorthJetty EQ 1>
+					&amp;
+				</cfif>
+				South Jetty
+			</cfif>
+	</ul>
+</div>
 
-				<table style="width:80%;" align="center">
-					<tr><td align="left"><div style="font-weight:bold;">Booking:</div></td></tr>
-					<tr>
-						<td id="Start" align="left" style="width:25%;">Start Date:</td>
-						<td headers="Start"><input type="hidden" name="StartDate" value="#Variables.Start#" />#DateFormat(Variables.Start, 'mmm d, yyyy')#</td>
-					</tr>
-					<tr>
-						<td id="End" align="left">End Date:</td>
-						<td headers="End"><input type="hidden" name="EndDate" value="#Variables.End#" />#DateFormat(Variables.End, 'mmm d, yyyy')#</td>
-					</tr>
-					<tr>
-						<td id="Sections" align="left">Sections:</td>
-						<td headers="Sections">
-							<input type="hidden" name="NorthJetty" value="#Variables.NorthJetty#" />
-							<input type="hidden" name="SouthJetty" value="#Variables.SouthJetty#" />
-							<cfif Variables.NorthJetty EQ 1>
-								North Landing Wharf
-							</cfif>
-							<cfif Variables.SouthJetty EQ 1>
-								<cfif Variables.NorthJetty EQ 1>
-									&amp;
-								</cfif>
-								South Jetty
-							</cfif>
-						</td>
-					</tr>
-				</table>
+<br />
+	<input type="submit" value="#variables.actionCap# Maintenance" class="button button-accent" />
+	<a href="jettyBookingManage.cfm?#urltoken#">Back</a>
+	
+</cfform>
 
-				<br />
-				<table style="width:100%;" cellspacing="0" cellpadding="1" border="0">
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" value="#variables.actionCap# Maintenance" class="button button-accent" />
-							<input type="button" value="Back" class="textbutton" onclick="self.location.href='jettyBookingManage.cfm?#urltoken#';" />
-						</td>
-					</tr>
-				</table>
-
-				</cfform>
-
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
 </cfoutput>

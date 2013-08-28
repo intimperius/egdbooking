@@ -31,8 +31,10 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
   <script src="#RootDir#scripts/common.js" type="text/javascript"></script>
 </cfif>
 <script type="text/javascript" src="#RootDir#scripts/jquery-ui-1.8.17.custom.min.js"></script>
-<script type="text/javascript" src="#RootDir#scripts/jquery.ui.datepicker-en.js"></script>
+<script type="text/javascript" src="#RootDir#scripts/jquery.ui.datepicker-fr.js"></script>
 <script type="text/javascript" src="#RootDir#scripts/application.js"></script>
+
+
 <!-- CustomScriptsCSSEnd -->
 </head>
 
@@ -47,7 +49,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div id="wb-head"><div id="wb-head-in"><header>
 <!-- HeaderStart -->
 <cfinclude template="#RootDir#includes/app_banner_gc-gc_banner_app-fra.cfm" />
-<cfinclude template="/site/wet3.0/html5/includes/app_banner_site-site_banner_app-fra.html" />
+<cfinclude template="/site/wet3.0/html5/includes/banner_site-site_banner-fra.html" />
 <nav role="navigation">
 
 <cfinclude template="/site/wet3.0/html5/includes/app_nav_site-site_nav_app-fra.html" />

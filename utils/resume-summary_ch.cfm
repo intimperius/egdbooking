@@ -22,7 +22,7 @@
 	<cfset language.clear = "clear">
 <cfelse>
 	<cfset language.bookingsSummaryDateSelection = "R&eacute;sum&eacute; des r&eacute;servations Publique S&eacute;lection de Date">
-	<cfset language.ScreenMessage = "Pour d&eacute;buter au premier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de d&eacute;but&nbsp;&raquo;. Pour terminer apr&egrave;s le dernier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de fin&nbsp;&raquo;. Pour voir tous les dossiers, vider les deux champs.">
+	<cfset language.ScreenMessage = "<p>Pour d&eacute;buter au premier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de d&eacute;but&nbsp;&raquo;. Pour terminer apr&egrave;s le dernier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de fin&nbsp;&raquo;. Pour voir tous les dossiers, vider les deux champs.</p>">
 	<cfset language.description = "Permet &agrave; l'utilisateur de voir un r&eacute;sum&eacute; de toutes les r&eacute;servations, depuis le moment pr&eacute;sent.">
 	<cfset language.subjects = language.masterSubjects & "">
 	<cfset language.vesselCaps = "NAVIRE">
@@ -46,7 +46,6 @@
 	<meta name="dcterms.title" content="#language.bookingsSummaryDateSelection# - #language.esqGravingDock# - #language.PWGSC#" />
 	<meta name="keywords" content="#language.masterKeywords#" />
 	<meta name="description" content="#language.description#" />
-	<meta name="dcterms.description" content="#language.description#" />
 	<meta name="dcterms.description" content="#language.description#" />
 	<meta name="dcterms.subject" title="gccore" content="#language.subjects#" />
 	<title>#language.bookingsSummaryDateSelection# - #language.esqGravingDock# - #language.PWGSC#</title>
@@ -98,7 +97,7 @@
             </div>
 
             <div>
-              <input type="submit" value="#language.submit#" />
+              <input type="submit" class="button button-accent" value="#language.submit#" />
             </div>
 					</fieldset>
 				</form>

@@ -30,6 +30,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Confirm Delete Vessel"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm Delete Vessel</title>">
 	<cfset request.title ="Confirm Delete Vessel">
@@ -60,144 +61,106 @@
 	WHERE	EndDate >= <cfqueryparam value="#CreateODBCDate(PacificNow)#" cfsqltype="cf_sql_date" /> AND Vessels.VNID = <cfqueryparam value="#form.VNID#" cfsqltype="cf_sql_integer" /> AND Bookings.Deleted = 0
 </cfquery>
 
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Confirm Delete Vessel
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
 
-			<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Confirm Delete Vessel
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
-			<cfif IsDefined("Session.Return_Structure")>
-				<!--- Populate the Variables Structure with the Return Structure.
-						Also display any errors returned --->
-				<cfinclude template="#RootDir#includes/getStructure.cfm">
-			</cfif>
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
-			<cfif getVesselDockBookings.recordCount EQ 0 AND getVesselJettyBookings.recordCount EQ 0>
-				<cfform action="delVessel_action.cfm?lang=#lang#" method="post" id="delVesselConfirmForm">
-					Are you sure you want to delete <cfoutput><strong>#getVessel.Name#</strong></cfoutput>?
+<cfif IsDefined("Session.Return_Structure")>
+	<!--- Populate the Variables Structure with the Return Structure.
+			Also display any errors returned --->
+	<cfinclude template="#RootDir#includes/getStructure.cfm">
+</cfif>
 
-					<input type="hidden" name="VNID" value="<cfoutput>#form.VNID#</cfoutput>" />
-			<br /><br />
-					<cfoutput query="getVessel">
-					<table style="padding-top:10px;">
-						<tr>
-							<td id="Name">Name:</td>
-							<td headers="Name">#Name#</td>
-						</tr>
-						<!---<tr>
-							<td>Owner:</td>
-							<td>#userName#</td>
-						</tr>--->
-						<tr>
-							<td id="Company">Company:</td>
-							<td headers="Company">#companyName#</td>
-						</tr>
-						<tr>
-							<td id="Length">Length:</td>
-							<td headers="Length">#length# m</td>
-						</tr>
-						<tr>
-							<td id="Width">Width:</td>
-							<td headers="Width">#width# m</td>
-						</tr>
-						<tr>
-							<td id="Setup">Block Setup Time:</td>
-							<td headers="Setup">#blockSetupTime#</td>
-						</tr>
-						<tr>
-							<td id="Teardown">Block Teardown Time:</td>
-							<td headers="Teardown">#blockteardowntime#</td>
-						</tr>
-						<tr>
-							<td id="lloydsID">International Maritime Organization (I.M.O.) number:</td>
-							<td headers="lloydsID">#lloydsID#</td>
-						</tr>
-						<tr>
-							<td id="Tonnage">Tonnage:</td>
-							<td headers="Tonnage">#tonnage#</td>
-						</tr>
-					</table>
-					<br />
-					<div style="text-align:center;">
-						<input type="submit" class="button-accent button" value="Submit" />
-						<a href="delVessel.cfm?lang=#lang#" class="textbutton">Back</a>
-						<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-					</div>
-					</cfoutput>
-				</cfform>
-
-			<cfelse>
-
-					<cfoutput><strong>#getVessel.name#</strong></cfoutput> cannot be deleted as it is booked for the following dates:<br />
-
-					<cfif getVesselDockBookings.recordCount GT 0>
-						<br /><br />
-						&nbsp;&nbsp;&nbsp;<strong>Drydock</strong>
-						<table style="padding-left:20px; width:100%;" >
-							<tr>
-								<th id="start" style="width:25%;"><strong>Start Date</strong></th>
-								<th id="end" style="width:60%;"><strong>End Date</strong></th>
-								<th id="status" style="width:15%;"><strong>Status</strong></th>
-							</tr>
-							<cfoutput query="getVesselDockBookings">
-								<tr>
-									<td headers="start" valign="top">#dateformat(startDate, "mmm d, yyyy")#</td>
-									<td headers="end" valign="top">#dateformat(endDate, "mmm d, yyyy")#</td>
-									<td headers="status" valign="top">
-										<cfif status EQ 'p'><i>pending</i>
-										<cfelseif status EQ 't'><i>tentative</i>
-										<cfelse><i>confirmed</i></cfif>
-									</td>
-								</tr>
-							</cfoutput>
-						</table>
-					</cfif>
-
-					<cfif getVesselJettyBookings.recordCount GT 0>
-						<br />
-						&nbsp;&nbsp;&nbsp;<strong>Jetty</strong>
-						<table style="padding-left:20px; width:100%;">
-							<tr>
-								<th id="start" style="width:25%;"><strong>Start Date</strong></th>
-								<th id="end" style="width:25%;"><strong>End Date</strong></th>
-								<th id="jetty" style="width:35%;"><strong>Jetty</strong></th>
-								<th id="status" style="width:15%;"><strong>Status</strong></th>
-							</tr>
-							<cfoutput query="getVesselJettyBookings">
-								<tr>
-									<td headers="start" valign="top">#dateformat(startDate, "mmm d, yyyy")#</td>
-									<td headers="end" valign="top">#dateformat(endDate, "mmm d, yyyy")#</td>
-									<td headers="jetty" valign="top">
-										<cfif getVesselJettyBookings.NorthJetty EQ 1>
-											North Landing Wharf
-										<cfelseif getVesselJettyBookings.SouthJetty EQ 1>
-											South Jetty
-										</cfif>
-									</td>
-									<td headers="status" valign="top">
-										<cfif status EQ 'p'><i>pending</i>
-										<cfelse><i>confirmed</i></cfif>
-									</td>
-								</tr>
-							</cfoutput>
-						</table>
-					</cfif>
-
-					<p><div style="text-align:center;">
-						<a href="delVessel.cfm?lang=<cfoutput>#lang#</cfoutput>" class="textbutton">Back</a>
-						<a href="menu.cfm?lang=<cfoutput>#lang#</cfoutput>" class="textbutton">Return to Administrative Functions</a>
-					</div></p>
-				</div>
-			</cfif>
-
+<cfif getVesselDockBookings.recordCount EQ 0 AND getVesselJettyBookings.recordCount EQ 0>
+	<cfform action="delVessel_action.cfm?lang=#lang#" method="post" id="delVesselConfirmForm">
+		Are you sure you want to delete <cfoutput><strong>#getVessel.Name#</strong></cfoutput>?
+		<input type="hidden" name="VNID" value="<cfoutput>#form.VNID#</cfoutput>" />
+		<br /><br />
+		<cfoutput query="getVessel">
+			<div class="module-info widemod">
+				<h2>Vessel Profile</h2>
+				<ul>
+				<b>Name:</b> #Name#<br/>
+				<b>Company:</b> #companyName#<br/>
+				<b>Length:</b> #length# m<br/>
+				<b>Width:</b> #width# m<br/>
+				<b>Block Setup Time:</b> #blockSetupTime#<br/>
+				<b>Block Teardown Time:</b> #blockteardowntime#<br/>
+				<b>International Maritime Organization (I.M.O.) number:</b> #lloydsID#<br/>
+				<b>Tonnage:</b> #tonnage#
+				</ul>
+			</div><br/><br/>
+			<div>
+				<input type="submit" class="button-accent button" value="Submit" />
+				<a href="delVessel.cfm?lang=#lang#" class="textbutton">Back</a>
+				<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
+		</cfoutput>
+	</cfform>
+<cfelse>
+
+		<cfoutput><strong>#getVessel.name#</strong></cfoutput> cannot be deleted as it is booked for the following dates:<br />
+
+		<cfif getVesselDockBookings.recordCount GT 0>
+			<h2 class="color-dark">Drydock</h2>
+			<table class="table-condensed">
+			<tr>
+				<th id="start" style="width:25%;"><strong>Start Date</strong></th>
+				<th id="end" style="width:60%;"><strong>End Date</strong></th>
+				<th id="status" style="width:15%;"><strong>Status</strong></th>
+			</tr>
+				<cfoutput query="getVesselDockBookings">
+					<tr>
+						<td headers="start" valign="top">#dateformat(startDate, "mmm d, yyyy")#</td>
+						<td headers="end" valign="top">#dateformat(endDate, "mmm d, yyyy")#</td>
+						<td headers="status" valign="top">
+							<cfif status EQ 'p'><i>pending</i>
+							<cfelseif status EQ 't'><i>tentative</i>
+							<cfelse><i>confirmed</i></cfif>
+						</td>
+					</tr>
+				</cfoutput>	
+			</table>
+		</cfif>
+
+		<cfif getVesselJettyBookings.recordCount GT 0>
+			<h2 class="color-dark">Jetties</h2>
+			<table class="table-condensed">
+				<tr>
+					<th id="start" style="width:25%;"><strong>Start Date</strong></th>
+					<th id="end" style="width:25%;"><strong>End Date</strong></th>
+					<th id="jetty" style="width:35%;"><strong>Jetty</strong></th>
+					<th id="status" style="width:15%;"><strong>Status</strong></th>
+				</tr>
+				<cfoutput query="getVesselJettyBookings">
+					<tr>
+						<td headers="start" valign="top">#dateformat(startDate, "mmm d, yyyy")#</td>
+						<td headers="end" valign="top">#dateformat(endDate, "mmm d, yyyy")#</td>
+						<td headers="jetty" valign="top">
+							<cfif getVesselJettyBookings.NorthJetty EQ 1>
+								North Landing Wharf
+							<cfelseif getVesselJettyBookings.SouthJetty EQ 1>
+								South Jetty
+							</cfif>
+						</td>
+						<td headers="status" valign="top">
+							<cfif status EQ 'p'><i>pending</i>
+							<cfelse><i>confirmed</i></cfif>
+						</td>
+					</tr>
+				</cfoutput>
+			</table>
+		</cfif>
+
+		<div>
+			<a href="delVessel.cfm?lang=<cfoutput>#lang#</cfoutput>" class="textbutton">Back</a>
+			<a href="menu.cfm?lang=<cfoutput>#lang#</cfoutput>" class="textbutton">Return to Administrative Functions</a>
 		</div>
+</cfif>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

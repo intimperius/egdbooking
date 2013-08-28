@@ -17,7 +17,7 @@
   <cfset language.blockTeardown = "Block Teardown Time">
   <cfset language.boatTooBig = "Note: The ship measurements exceed the maximum dimensions of the dock">
   <cfset language.booking = "Booking">
-  <cfset language.bookingApplicationLogin = "Booking Application Login">
+  <cfset language.bookingApplicationLogin = "Booking Application Sign In">
   <cfset language.bookingAvailable = "The requested time is available.  Please confirm the following information.">
   <cfset language.bookingConflicts = "The submitted booking request conflicts with other bookings.  The booking will be placed on a wait list if you choose to continue. Please confirm the following information.">
   <cfset language.bookingForms = "Booking Forms">
@@ -83,8 +83,8 @@
   <cfset language.lengthErrorMax = "Exceeds the maximum length.">
   <cfset language.lloydsError = "Please enter the International Maritime Organization (I.M.O.) number."> 
   <cfset language.lloydsID = "<abbr title='International Maritime Organization'>IMO</abbr> Number">
-  <cfset language.login = "Login">
-  <cfset language.logoutButton = "Logout">
+  <cfset language.login = "Sign In">
+  <cfset language.logoutButton = "Sign Out">
   <cfset language.mandatoryForms = "Mandatory Forms" />
   <cfset language.masterKeywords = "Esquimalt Graving Dock, EGD, Booking Request">
   <cfset language.masterSubjects = "Wharfs; Water Transport; Ships; Ferries; Pleasure Craft; Vessels; Maintenance; Management">
@@ -210,7 +210,7 @@
   <cfset language.days = "(jours)">
   <cfset language.dblBookingError = "fait d&eacute;j&agrave; l'objet d'une r&eacute;servation du">
   <cfset language.detailTableSummary = "Renseignements sur le r&##233;servation" />
-  <cfset language.detailsFor = "D&egrave;tails pour" />
+  <cfset language.detailsFor = "D&eacute;tails pour" />
   <cfset language.drydock = "Cale s&egrave;che">
   <cfset language.drydockCalendar = "Calendrier de la cale s&egrave;che">
   <cfset language.drydockTableSummary = "Liste des r&##233;servations en cale s&##232;che indiquant la date de d&##233;but et de fin de la r&##233;servation suivi par le statut de la r&##233;servation" />
@@ -267,7 +267,7 @@
   <cfset language.phone = "T&eacute;l&eacute;phone">
   <cfset language.prev = "pr&eacute;c&eacute;dent">
   <cfset language.pwgsc = "TPSGC">
-  <cfset language.remember = "Rappelez-vous moi">
+  <cfset language.remember = "Garder ma session active">
   <cfset language.requestBooking = "Pr&eacute;senter une r&eacute;servation">
   <cfset language.requestedStatus = "&Eacute;tat demand&eacute;">
   <cfset language.required = "Champ obligatoire" />

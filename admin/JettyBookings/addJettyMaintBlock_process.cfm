@@ -5,6 +5,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Add Maintenance Block"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Add Maintenance Block</title>">
 	<cfset request.title = "Add Maintenance Block">
@@ -183,19 +184,12 @@ function EditSubmit ( selectedform )
 				</CFIF>
 
 				<cfform action="addJettyMaintBlock_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
-				<div style="font-weight:bold;padding-left:85px">Booking:</div>
-				<table style="width:90%; padding-left:100px;" align="center" >
-					<tr>
-						<td align="left" style="width:20%;">Start Date:</td>
-						<td><input type="hidden" name="StartDate" value="<cfoutput>#Variables.StartDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.StartDate, 'mmm d, yyyy')#</cfoutput></td>
-					</tr>
-					<tr>
-						<td align="left">End Date:</td>
-						<td><input type="hidden" name="EndDate" value="<cfoutput>#Variables.EndDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.EndDate, 'mmm d, yyyy')#</cfoutput></td>
-					</tr>
-					<tr>
-						<td align="left">Sections:</td>
-						<td>
+				<div class="module-info widemod">
+          <h2>Booking:</h2>
+          <ul>
+            <b>Start Date:</b> <input type="hidden" name="StartDate" value="<cfoutput>#Variables.StartDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.StartDate, 'mmm d, yyyy')#</cfoutput><br/>
+            <b>End Date:</b> <input type="hidden" name="EndDate" value="<cfoutput>#Variables.EndDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.EndDate, 'mmm d, yyyy')#</cfoutput><br/>
+						<b>Sections:</b>
 							<input type="hidden" name="NorthJetty" value="<cfoutput>#Variables.NorthJetty#</cfoutput>" />
 							<input type="hidden" name="SouthJetty" value="<cfoutput>#Variables.SouthJetty#</cfoutput>" />
 							<cfif Variables.NorthJetty EQ 1>
@@ -207,21 +201,18 @@ function EditSubmit ( selectedform )
 								</cfif>
 								South Jetty
 							</cfif>
-						</td>
-					</tr>
-					<tr><td>&nbsp;</td></tr>
-					<tr>
-						<td colspan="2" align="center">
+              <br />
 							<!---a href="javascript:EditSubmit('bookingreq');" class="textbutton">Confirm</a>
 							<a href="javascript:history.go(-1);" class="textbutton">Back</a>
 							<cfoutput><a href="bookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Cancel</a></cfoutput>
 							<br--->
+              
+          </ul>
+				</div>
+        <br />
 							<input type="submit" value="Submit" class="button button-accent" />
-							
-							<cfoutput><input type="button" value="Cancel" class="textbutton" onclick="self.location.href='jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#';" /></cfoutput><cfoutput><a href="addJettyMaintBlock.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Back</a></cfoutput>
-						</td>
-					</tr>
-				</table>
+							<cfoutput><a href="addJettyMaintBlock.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Back</a></cfoutput>
+							<cfoutput><a href="jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#;">Cancel</a></cfoutput>
 
 				</cfform>
 			</div>

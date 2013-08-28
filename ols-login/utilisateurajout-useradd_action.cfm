@@ -103,9 +103,9 @@
 	
 <cfoutput>
 <cfif ServerType EQ "Development">
-<cfset Variables.AdminEmail = DevEmail />
+<cfset variables.adminemail = DevEmail />
 </cfif>
-	<cfmail to="#Variables.AdminEmail#" from="#form.Email#" subject="New User" type="html" username="#mailuser#" password="#mailpassword#">
+	<cfmail to="#variables.adminemail#" from="#form.Email#" subject="New User" type="html" username="#mailuser#" password="#mailpassword#">
 <p>A new user, #form.firstname# #form.lastname#, has requested to create an account.</p>
 	</cfmail>
 </cfoutput>
@@ -135,6 +135,7 @@
 	<meta name=""dcterms.title"" content=""#language.title# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.keywords#"" />
 	<meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
@@ -148,12 +149,12 @@
 					</h1>
 				<cfoutput>
 					<p>#language.message#</p>
-					<div>
+					<p>
 						<br />#language.Username#: #form.email#<br />#language.Password#: #form.password1#
-					</div>
+					</p>
 					
 					<br /><br />	
-					<div><a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.login#</a></div>
+					<div><a href="ols-login.cfm?lang=#lang#" class="button button-accent">#language.login#</a></div>
 				</cfoutput>
 			</div>
 			<!-- CONTENT ENDS | FIN DU CONTENU -->

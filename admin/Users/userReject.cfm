@@ -5,6 +5,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Reject User"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Reject User</title>">
 	<cfset request.title ="Reject User">

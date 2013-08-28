@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Delete Administrator"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Delete Administrator</title>">
 	<cfset request.title ="Confirm Remove Administrator">
@@ -28,10 +29,7 @@ function EditSubmit ( selectedform )
 /* ]]> */
 </script>
 		
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
+
 				<h1 id="wb-cont">
 					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
 					Confirm Remove Administrator
@@ -47,7 +45,7 @@ function EditSubmit ( selectedform )
 				</cfif>
 
 				<cfform action="delAdministrator_action.cfm?lang=#lang#" method="post" id="delAdministratorConfirmForm">
-					<div style="text-align:center;">
+					<div >
 						Are you sure you want to remove <cfoutput><strong>#getAdmin.UserName#</strong></cfoutput> from administration?
 						<br /><br />
 						<!---a href="javascript:EditSubmit('delAdministratorConfirmForm');" class="textbutton">Remove</a>
@@ -62,7 +60,5 @@ function EditSubmit ( selectedform )
 					<input type="hidden" name="UID" value="<cfoutput>#form.UID#</cfoutput>" />
 				</cfform>
 
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
+
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

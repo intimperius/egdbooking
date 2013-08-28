@@ -49,9 +49,9 @@
 
 
 <cfif ServerType EQ "Development">
-<cfset Variables.AdminEmail = DevEmail />
+<cfset variables.adminemail = DevEmail />
 </cfif>
-	<cfmail to="#Variables.AdminEmail#" from="#getUser.email#" subject="Booking Tentative to Confirm Request" type="html" username="#mailuser#" password="#mailpassword#">
+	<cfmail to="#variables.adminemail#" from="#getUser.email#" subject="Booking Tentative to Confirm Request" type="html" username="#mailuser#" password="#mailpassword#">
 <p>#getUser.UserName# has requested to confirm the booking for #getBooking.VesselName# from #myDateFormat(getBooking.StartDate, request.datemask)# to #myDateFormat(getBooking.EndDate, request.datemask)#. This is for <CFIF #URL.jetty#>#northorsouth# Jetty<cfelse>the Drydock</CFIF>.</p>
 	</cfmail>
 	

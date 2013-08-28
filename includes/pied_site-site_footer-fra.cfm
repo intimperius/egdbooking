@@ -13,8 +13,8 @@
 
 <div id="wb-foot"><div id="wb-foot-in"><footer><h2>Pied de page</h2>
 <!-- FooterStart -->
-<cfinclude template="/site/wet3.0/html5/includes/app_pied_site-site_footer_app-fra.html" />
-<cfinclude template="/boew-wet/wet3.0/html5/includes/app_pied_gc-gc_footer_app-fra.html" />
+<cfinclude template="/site/wet3.0/html5/includes/pied_site-site_footer-fra.html" />
+<cfinclude template="/boew-wet/wet3.0/html5/includes/pied_gc-gc_footer-fra.html" />
 <!-- FooterEnd -->
 </footer>
 </div></div></div>

@@ -47,7 +47,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <div id="wb-head"><div id="wb-head-in"><header>
 <!-- HeaderStart -->
 <cfinclude template="#RootDir#includes/app_banner_gc-gc_banner_app-eng.cfm" />
-<cfinclude template="/site/wet3.0/html5/includes/app_banner_site-site_banner_app-eng.html" />
+<cfinclude template="/site/wet3.0/html5/includes/banner_site-site_banner-eng.html" />
 <nav role="navigation">
 
 <cfinclude template="/site/wet3.0/html5/includes/app_nav_site-site_nav_app-eng.html" />

@@ -42,88 +42,57 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Confirm <cfoutput>#variables.actionCap#</cfoutput> Booking"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm #variables.actionCap# Booking</title>">
 
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">		
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	<cfoutput>Confirm #variables.actionCap# Booking</cfoutput>
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					<cfoutput>Confirm #variables.actionCap# Booking</cfoutput>
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
-
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
 
-				<cfif isDefined("url.date")>
-					<cfset variables.dateValue = "&date=#url.date#">
+<cfif isDefined("url.date")>
+	<cfset variables.dateValue = "&date=#url.date#">
+<cfelse>
+	<cfset variables.dateValue = "">
+</cfif>
+
+<cfform action="deleteJettyBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="delBookingConfirm">
+	Are you sure you want to <cfoutput>#variables.action#</cfoutput> the following booking?<br/><br/>
+	<input type="hidden" name="BRID" value="<cfoutput>#variables.BRID#</cfoutput>" />
+	<cfoutput query="getBooking">
+	
+	<div class="module-info widemod">
+		<h2>Booking Details</h2>
+		<ul>
+			<b>Vessel:</b> #vesselName#<br/>
+			<b>Company:</b> #companyName#<br/>
+			<b>Agent:</b> #UserName#<br/>
+			<b>Start Date:</b> #dateformat(startDate, "mmm d, yyyy")#<br/>
+			<b>End Date:</b> #dateformat(endDate, "mmm d, yyyy")#<br/>
+			<b>## of Days:</b> #datediff('d', startDate, endDate) + 1#<br/>
+			<b>Jetty:</b> <CFIF NorthJetty>North Landing Wharf
+				<CFELSE>South Jetty
+				</CFIF><br/>
+			<b>Status:</b> <cfif status EQ 'c'>
+					Confirmed
 				<cfelse>
-					<cfset variables.dateValue = "">
+					Pending
 				</cfif>
+		</ul>
+	</div>
+	</cfoutput>
+	<br />
+	<div>
+		<input type="submit" name="submitForm" class="button button-accent" value="<cfoutput>#variables.action#</cfoutput> Booking" />
+		<cfoutput><a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue####variables.BRID#">Back</a></cfoutput>
+	</div>
 
-				<cfform action="deleteJettyBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="delBookingConfirm">
-					<p><div style="text-align:center;">Are you sure you want to <cfoutput>#variables.action#</cfoutput> the following booking?</div></p>
-					<input type="hidden" name="BRID" value="<cfoutput>#variables.BRID#</cfoutput>" />
-					<cfoutput query="getBooking">
-					<table style="padding-top:10px;" style="width:70%;">
-						<tr>
-							<td id="Vessel" valign="top" style="width:25%;" align="left">Vessel:</td>
-							<td header="Vessel">#vesselName#</td>
-						</tr>
-						<tr>
-							<td id="Company" valign="top" style="width:25%;" align="left">Company:</td>
-							<td header="Company" style="width:85%;">#companyName#</td>
-						</tr>
-						<tr>
-							<td id="Agent" valign="top" style="width:25%;" align="left">Agent:</td>
-							<td header="Agent">#UserName#</td>
-						</tr>
-						<tr>
-							<td id="Start" valign="top" style="width:25%;" align="left">Start Date:</td>
-							<td header="Start">#dateformat(startDate, "mmm d, yyyy")#</td>
-						</tr>
-						<tr>
-							<td id="End" valign="top" style="width:25%;" align="left">End Date:</td>
-							<td header="End">#dateformat(endDate, "mmm d, yyyy")#</td>
-						</tr>
-						<tr>
-							<td id="Days" valign="top" style="width:25%;" align="left">## of Days:</td>
-							<td header="Days">#datediff('d', startDate, endDate) + 1#</td>
-						</tr>
-						<tr>
-							<td id="Jetty" valign="top" style="width:25%;" align="left">Jetty:</td>
-							<td header="Jetty">
-								<CFIF NorthJetty>North Landing Wharf
-								<CFELSE>South Jetty
-								</CFIF>
-							</td>
-						</tr>
-						<tr>
-							<td id="Status" valign="top" style="width:25%;" align="left">Status:</td>
-							<td header="Status">
-								<cfif status EQ 'c'>
-									Confirmed
-								<cfelse>
-									Pending
-								</cfif>
-							</td>
-						</tr>
-					</table>
-					</cfoutput>
-					<br />
-					<div style="text-align:center;">
-						<input type="submit" name="submitForm" class="button button-accent" value="<cfoutput>#variables.action#</cfoutput> Booking" />
-						<cfoutput><input type="button" onclick="javascript:self.location.href='#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue####variables.BRID#'" value="Back" class="textbutton" /></cfoutput>
-					</div>
+</cfform>
 
-				</cfform>
-
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

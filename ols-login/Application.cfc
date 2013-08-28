@@ -35,7 +35,7 @@
       SELECT	Email
       FROM	Configuration
     </cfquery>
-    <cfset variables.adminEmail = "">
+    <cfset variables.adminemail = "">
     <cfscript>
       adminEmail = ValueList(getEmail.Email);
     </cfscript>

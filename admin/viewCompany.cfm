@@ -117,33 +117,26 @@ var params = {
 					<cfoutput>#getCompany.Name# <CFIF IsDefined('getCompany.Approved') AND getCompany.Approved neq '' AND getCompany.Approved>(#getCompany.Abbreviation#)</CFIF></cfoutput>
 					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
 					</h1>
-<table style="width:80%;" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<cfoutput><td id="addy1" style="width:30%;" valign="top">#language.address#:</td>
-		<td headers="addy1">
-			#getCompany.Address1#<CFIF getCompany.Address2 neq ""><br />
-			#getCompany.Address2#</CFIF><br />
-			#getCompany.City#<br />
-			#getCompany.Country#<br />
+<div class="module-info module-simplify widemod">
+  <div class="indent">
+		<cfoutput><b>#language.address#: </b>
+			#getCompany.Address1#<CFIF getCompany.Address2 neq "">; 
+			#getCompany.Address2#</CFIF>, 
+			#getCompany.City#, 
+			#getCompany.Country#, 
 			#getCompany.zip#
-		</td></cfoutput>
-	</tr>
-	</tr>
-	<tr>
-		<cfoutput><td id="phone" valign="top">#language.phone#:</td>
-		<td headers="phone">#getCompany.phone#</td></cfoutput>
-	</tr>
-	<tr>
-		<cfoutput><td id="status" valign="top">#language.status#:</td>
-		<td headers="status"><CFIF IsDefined('getCompany.Approved') AND getCompany.Approved neq '' AND getCompany.approved>Approved<CFELSE>Awaiting Approval</CFIF></td></cfoutput>
-	</tr>
+		<br /></cfoutput>
+		<cfoutput><b>#language.phone#: </b>#getCompany.phone#</cfoutput>
+	<br />
+		<cfoutput><b>#language.status#: </b>
+		<CFIF IsDefined('getCompany.Approved') AND getCompany.Approved neq '' AND getCompany.approved>Approved<CFELSE>Awaiting Approval</CFIF></cfoutput>
+	<br />
 	<CFIF IsDefined('getCompany.Approved') AND getCompany.Approved neq '' AND getCompany.approved>
-	<tr>
-		<td id="Agents" valign="top">Other Approved Agents:</td>
-		<td headers="Agents"><cfoutput query="getAgents">#FirstName# #LastName#<br /></cfoutput><CFIF getAgents.recordCount eq 0>None</CFIF></td>
-	</tr>
+		<b>Other Approved Agents: </b><cfoutput query="getAgents">#FirstName# #LastName#<br />
+    </cfoutput><CFIF getAgents.recordCount eq 0>None</CFIF><br />
 	</CFIF>
-</table>
+  </div>
+</div>
 <br />
 <div style="text-align:center;"><a href="javascript: self.close();" class="textbutton">close</a></div>
 

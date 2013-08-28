@@ -164,6 +164,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Add Jetty Booking"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Add Jetty Booking</title>">
 	<cfset request.title = "Add Jetty Booking">
@@ -179,97 +180,56 @@ function EditSubmit ( selectedform )
 /* ]]> */
 </script>
 <!-- End JavaScript Block -->
-<div class="colLayout">
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Add Jetty Booking
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
+
+	<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+	<!--- ---------------------------------------------------------------------------------------------------------------- --->
+
+
+	<!-- Gets all Bookings that would be affected by the requested booking --->
+	<cfset Variables.StartDate = #CreateODBCDate(Variables.StartDate)#>
+	<cfset Variables.EndDate = #CreateODBCDate(Variables.EndDate)#>
+
+	<p>Please confirm the following maintenance block information.</p>
+	<cfform action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
+<cfoutput>
+
+<div class="module-info widemod">
+	<h2>Booking Details</h2>
+	<ul>
+		<b>Company:</b> <input type="hidden" name="company" value="#form.CID#" /> #getCompany.Name#<br/>
+		<b>Vessel:</b> <input type="hidden" name="vessel" value="#form.VNID#" /> #getVessel.Name#<br/>
+		<b>Agent:</b> <input type="hidden" name="agent" value="#form.UID#" /> #getAgent.Name#<br/>
+		<b>Start Date:</b> <input type="hidden" name="StartDate" value="#Variables.StartDate#" />#DateFormat(Variables.StartDate, 'mmm d, yyyy')#<br/>
+		<b>End Date:</b> <input type="hidden" name="EndDate" value="<cfoutput>#Variables.EndDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.EndDate, 'mmm d, yyyy')#</cfoutput><br/>
+		<b>Booking Time:</b> <input type="hidden" name="bookingDate" value="#Variables.TheBookingDate#" />
+      <input type="hidden" name="bookingTime" value="#Variables.TheBookingTime#" />
+      #DateFormat(Variables.TheBookingDate, 'mmm d, yyyy')# #TimeFormat(Variables.TheBookingTime, 'HH:mm:ss')#<br/>
+		<b>Status:</b> <input type="hidden" name="Status" value="<cfoutput>#Variables.Status#</cfoutput>" /><cfif Variables.Status EQ "PT">Pending<cfelseif Variables.Status EQ "T">Tentative</cfif><br/>
+		<b>Section:</b> <input type="hidden" name="NorthJetty" value="<cfoutput>#Variables.NorthJetty#</cfoutput>" />
+		    <input type="hidden" name="SouthJetty" value="<cfoutput>#Variables.SouthJetty#</cfoutput>" />
+		    <cfif Variables.NorthJetty EQ 1>
+		      North Landing Wharf
+		    <cfelseif Variables.SouthJetty EQ 1>
+		      South Jetty
+		    </cfif><br/>
+	</ul>
+</div>
+</cfoutput>
+
+	<br />
+
+		<input type="submit" value="Submit" class="button button-accent" />
 		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Add Jetty Booking
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
-
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
-				<!--- ---------------------------------------------------------------------------------------------------------------- --->
+		<cfoutput><a href="jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" />Cancel</a></cfoutput>
+		<cfoutput><a href="addJettyBooking.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Back</a></cfoutput>
+			
+	</cfform>
 
 
-				<!-- Gets all Bookings that would be affected by the requested booking --->
-				<cfset Variables.StartDate = #CreateODBCDate(Variables.StartDate)#>
-				<cfset Variables.EndDate = #CreateODBCDate(Variables.EndDate)#>
-
-				<p>Please confirm the following maintenance block information.</p>
-				<cfform action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
-				<div style="font-weight:bold;">Booking:</div>
-        <cfoutput>
-          <table style="width:100%;" align="center">
-            <tr>
-              <td align="left" style="width:20%;">Company:</td>
-              <td><input type="hidden" name="company" value="#form.CID#" /> #getCompany.Name#</td>
-            </tr>
-            <tr>
-              <td align="left">Vessel:</td>
-              <td><input type="hidden" name="vessel" value="#form.VNID#" /> #getVessel.Name#</td>
-            </tr>
-            <tr>
-              <td align="left">Agent:</td>
-              <td><input type="hidden" name="agent" value="#form.UID#" /> #getAgent.Name#</td>
-            </tr>
-            <tr>
-              <td align="left">Start Date:</td>
-              <td><input type="hidden" name="StartDate" value="#Variables.StartDate#" />#DateFormat(Variables.StartDate, 'mmm d, yyyy')#</td>
-            </tr>
-            <tr>
-              <td align="left">End Date:</td>
-              <td><input type="hidden" name="EndDate" value="<cfoutput>#Variables.EndDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.EndDate, 'mmm d, yyyy')#</cfoutput></td>
-            </tr>
-            <tr>
-              <td id="bookingDate" align="left">Booking Time:</td>
-              <td headers="bookingDate">
-                <cfoutput>
-                  <input type="hidden" name="bookingDate" value="#Variables.TheBookingDate#" />
-                  <input type="hidden" name="bookingTime" value="#Variables.TheBookingTime#" />
-                  #DateFormat(Variables.TheBookingDate, 'mmm d, yyyy')# #TimeFormat(Variables.TheBookingTime, 'HH:mm:ss')#
-                </cfoutput>
-              </td>
-            </tr>
-            <tr>
-              <td align="left">Status:</td>
-              <td><input type="hidden" name="Status" value="<cfoutput>#Variables.Status#</cfoutput>" /><cfif Variables.Status EQ "PT">Pending<cfelseif Variables.Status EQ "T">Tentative</cfif></td>
-            </tr>
-            <tr>
-              <td align="left">Section:</td>
-              <td>
-                <input type="hidden" name="NorthJetty" value="<cfoutput>#Variables.NorthJetty#</cfoutput>" />
-                <input type="hidden" name="SouthJetty" value="<cfoutput>#Variables.SouthJetty#</cfoutput>" />
-                <cfif Variables.NorthJetty EQ 1>
-                  North Landing Wharf
-                <cfelseif Variables.SouthJetty EQ 1>
-                  South Jetty
-                </cfif>
-              </td>
-            </tr>
-          </table>
-        </cfoutput>
-
-				<br />
-				<table style="width:100%;" cellspacing="0" cellpadding="1" border="0">
-					<tr>
-						<td colspan="2" align="center">
-							<!---a href="javascript:EditSubmit('bookingreq');" class="textbutton">Confirm</a>
-							<a href="javascript:history.go(-1);" class="textbutton">Back</a>
-							<cfoutput><a href="bookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Cancel</a></cfoutput>
-							<br--->
-							<input type="submit" value="Submit" class="button button-accent" />
-							<cfoutput><a href="addJettyBooking.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Back</a></cfoutput>
-							<cfoutput><input type="button" value="Cancel" class="textbutton" onclick="self.location.href='jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#';" /></cfoutput>
-						</td>
-					</tr>
-				</table>
-
-				</cfform>
-				</div>
-
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
-
+		
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

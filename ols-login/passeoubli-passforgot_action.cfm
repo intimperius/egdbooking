@@ -25,6 +25,12 @@
 	<cfset session['errors']['email'] = language.email2 />
 	<cfset Proceed_OK = "No">
 </cfif>
+
+<cfif NOT REFindNoCase("^([a-zA-Z_\.\-\']*[a-zA-Z0-9_\.\-\'])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9])+$",#trim(Form.Email)#)>
+	<cfset session['errors']['email'] = language.email2 />
+	<cfset Proceed_OK = "No">
+</cfif>
+
 <cfif Proceed_OK EQ "No">
 	<cfinclude template="#RootDir#includes/build_return_struct.cfm">
 	<cfset Session.Return_Structure.Errors = Variables.Errors>
@@ -70,7 +76,7 @@
 <cfif ServerType EQ "Development">
 <cfset form.email = DevEmail />
 </cfif>
-<cfmail to="#form.email#" from="#variables.adminEmail#" subject="#language.subject#" type="html" username="#mailuser#" password="#mailpassword#">
+<cfmail to="#form.email#" from="#variables.administratoremail#" subject="#language.subject#" type="html" username="#mailuser#" password="#mailpassword#">
 <p>#language.email# #randout#.</p>
 <p>#language.esqGravingDock#</p>
 </cfmail>

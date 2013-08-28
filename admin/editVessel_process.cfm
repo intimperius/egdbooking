@@ -28,105 +28,72 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Edit Vessel"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content=""Allows user to edit the details of a vessel."" />
+	<meta name=""dcterms.description"" content=""Allows user to edit the details of a vessel."" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Vessel</title>">
 	<cfset request.title ="Edit Vessel">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Edit Vessel
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
 
-				<cfquery name="getVesselDetail" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
-					SELECT Vessels.*, Companies.CID, Companies.Name AS CompanyName
-					FROM  Vessels INNER JOIN Companies ON Vessels.CID = Companies.CID
-					WHERE VNID = <cfqueryparam value="#form.VNID#" cfsqltype="cf_sql_integer" />
-					AND Vessels.Deleted = 0
-				</cfquery>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Edit Vessel
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
-				<cfif getVesselDetail.recordCount EQ 0>
-					<cflocation addtoken="no" url="booking.cfm?lang=#lang#&CID=#url.CID#">
-				</cfif>
+<cfquery name="getVesselDetail" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+	SELECT Vessels.*, Companies.CID, Companies.Name AS CompanyName
+	FROM  Vessels INNER JOIN Companies ON Vessels.CID = Companies.CID
+	WHERE VNID = <cfqueryparam value="#form.VNID#" cfsqltype="cf_sql_integer" />
+	AND Vessels.Deleted = 0
+</cfquery>
 
-				<cfset Variables.Name = Form.Name>
-				<cfset Variables.Length = Form.Length>
-				<cfset Variables.Width = Form.Width>
-				<cfset Variables.BlockSetupTime = Form.BlockSetupTime>
-				<cfset Variables.BlockTearDownTime = Form.BlockTearDownTime>
-				<cfset Variables.LloydsID = Form.LloydsID>
-				<cfset Variables.Tonnage = Form.Tonnage>
+<cfif getVesselDetail.recordCount EQ 0>
+	<cflocation addtoken="no" url="booking.cfm?lang=#lang#&CID=#url.CID#">
+</cfif>
 
-				<cfparam name="Variables.Anonymous" default="0">
-				<cfif IsDefined("Form.Anonymous")>
-					<cfset Variables.Anonymous = 1>
-				</cfif>
+<cfset Variables.Name = Form.Name>
+<cfset Variables.Length = Form.Length>
+<cfset Variables.Width = Form.Width>
+<cfset Variables.BlockSetupTime = Form.BlockSetupTime>
+<cfset Variables.BlockTearDownTime = Form.BlockTearDownTime>
+<cfset Variables.LloydsID = Form.LloydsID>
+<cfset Variables.Tonnage = Form.Tonnage>
 
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<cfparam name="Variables.Anonymous" default="0">
+<cfif IsDefined("Form.Anonymous")>
+	<cfset Variables.Anonymous = 1>
+</cfif>
 
-				<p>Please confirm the following information: </p>
-				<cfif Variables.Width GT Variables.MaxWidth OR Variables.Length GT Variables.MaxLength>
-					<div id="actionErrors">Note: The ship measurements exceed the maximum dimensions of the dock (<cfoutput>#Variables.MaxLength#m x #Variables.MaxWidth#m</cfoutput>).</div>
-				</cfif>
-				<cfoutput>
-				<cfform id="editVessel" action="EditVessel_action.cfm?lang=#lang#" method="post">
-					<table>
-						<tr>
-							<td id="Company">Company Name:</td>
-							<td headers="Company">#getVesselDetail.CompanyName#</td>
-						</tr>
-						<tr>
-							<td id="Name">Name:</td>
-							<td headers="Name"><input type="hidden" name="name" value="#Variables.Name#" />#Variables.Name#</td>
-						</tr>
-						<tr>
-							<td id="Lloyds">International Maritime Organization (I.M.O.) number:</td>
-							<td headers="Lloyds"><input type="hidden" name="LloydsID" value="#Variables.LloydsID#" />#Variables.LloydsID#</td>
-						</tr>
-						<tr>
-							<td id="Length">Length:</td>
-							<td headers="Length"><input type="hidden" name="length" value="#Variables.Length#" />#Variables.Length#</td>
-						</tr>
-						<tr>
-							<td id="Width">Width:</td>
-							<td headers="Width"><input type="hidden" name="width" value="#Variables.Width#" />#Variables.Width#</td>
-						</tr>
-						<tr>
-							<td id="Setup">Block Setup Time:</td>
-							<td headers="Setup"><input type="hidden" name="blocksetuptime" value="#Variables.Blocksetuptime#" />#Variables.Blocksetuptime#</td>
-						</tr>
-						<tr>
-							<td id="Teardown">Block Teardown Time:</td>
-							<td headers="Teardown"><input type="hidden" name="blockteardowntime" value="#Variables.Blockteardowntime#" />#Variables.Blockteardowntime#</td>
-						</tr>
-						<tr>
-							<td id="Tonnage">Tonnage:</td>
-							<td headers="Tonnage"><input type="hidden" name="tonnage" value="#Variables.Tonnage#" />#Variables.Tonnage#</td>
-						</tr>
-						<tr>
-							<td id="anonymous">Anonymous:</td>
-							<td headers="anonymous"><input type="hidden" name="Anonymous" value="#Variables.Anonymous#" /><cfif Variables.Anonymous EQ 1>Yes<cfelse>No</cfif></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center" style="padding-top:20px;">
-								<input type="hidden" name="VNID" value="<cfoutput>#Form.VNID#</cfoutput>" />
-								<input type="hidden" name="CID" value="<cfoutput>#Form.CID#</cfoutput>" />
-								<input type="submit" value="Confirm" class="button-accent button" />
-								<a href="editVessel.cfm?lang=#lang#" class="textbutton">Back</a>
-								<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-							</td>
-						</tr>
-					</table>
-				</cfform>
-				</cfoutput>
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
+<p>Please confirm the following information: </p>
+<cfif Variables.Width GT Variables.MaxWidth OR Variables.Length GT Variables.MaxLength>
+	<div id="actionErrors">Note: The ship measurements exceed the maximum dimensions of the dock (<cfoutput>#Variables.MaxLength#m x #Variables.MaxWidth#m</cfoutput>).</div>
+</cfif>
+<cfoutput>
+<cfform id="editVessel" action="EditVessel_action.cfm?lang=#lang#" method="post">
+	<div class="module-info widemod">
+		<h2>Vessel Details</h2>
+		<ul>
+			<b>Company Name:</b> #getVesselDetail.CompanyName#<br/>
+			<b>Name:</b> <input type="hidden" name="name" value="#Variables.Name#" />#Variables.Name#<br/>
+			<b>International Maritime Organization (I.M.O.) number:</b> <input type="hidden" name="LloydsID" value="#Variables.LloydsID#" />#Variables.LloydsID#<br/>
+			<b>Length:</b> <input type="hidden" name="length" value="#Variables.Length#" />#Variables.Length#<br/>
+			<b>Width:</b> <input type="hidden" name="width" value="#Variables.Width#" />#Variables.Width#<br/>
+			<b>Block Setup Time:</b> <input type="hidden" name="blocksetuptime" value="#Variables.Blocksetuptime#" />#Variables.Blocksetuptime#<br/>
+			<b>Block Teardown Time:</b> <input type="hidden" name="blockteardowntime" value="#Variables.Blockteardowntime#" />#Variables.Blockteardowntime#<br/>
+			<b>Tonnage:</b> <input type="hidden" name="tonnage" value="#Variables.Tonnage#" />#Variables.Tonnage#<br/>
+			<b>Anonymous:</b> <input type="hidden" name="Anonymous" value="#Variables.Anonymous#" /><cfif Variables.Anonymous EQ 1>Yes<cfelse>No</cfif><br/>
+		</ul>
+	</div>
+<br/>
+	<input type="hidden" name="VNID" value="<cfoutput>#Form.VNID#</cfoutput>" />
+	<input type="hidden" name="CID" value="<cfoutput>#Form.CID#</cfoutput>" />
+	<input type="submit" value="Confirm" class="button-accent button" />
+	<a href="editVessel.cfm?lang=#lang#" class="textbutton">Back</a>
+	<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
+</cfform>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

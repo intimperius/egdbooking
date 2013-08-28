@@ -1,6 +1,6 @@
 <cfif lang EQ "eng">
-	<cfset language.title = "Booking Application Login">
-	<cfset language.description ="Login page for the booking application.">
+	<cfset language.title = "Booking Application Sign In">
+	<cfset language.description ="Sign In page for the booking application.">
 <cfelse>
 	<cfset language.title = "Entrer dans l'application de r&eacute;servation">
 	<cfset language.description ="Page d'ouverture de session pour la demande de r&eacute;servation.">
@@ -42,10 +42,10 @@
 <cfparam name="err_loginpass" default="">
 
 <cfif not error("email") EQ "">
-  <cfset err_loginemail = "form-attention" />
+  <cfset err_loginemail = "form-alert" />
 </cfif>
 <cfif not error("password") EQ "">
-  <cfset err_loginpass = "form-attention" />
+  <cfset err_loginpass = "form-alert" />
 </cfif>
 
 <cfoutput>
@@ -57,18 +57,18 @@
       
       <div class="#err_loginemail#">
         <label for="email">
-          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:
+          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:<span class="form-text">#error('email')#</span>
         </label>
         <input type="text" name="email" id="email" size="40" maxlength="100" value="#email#" />
-        <span class="form-text-inline">#error('email')#</span>
+        
       </div>
 
       <div class="#err_loginpass#">
         <label for="password">
-          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Password#:
+          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Password#:<span class="form-text">#error('password')#</span>
         </label>
         <input type="password" name="Password" id="password" size="25" maxlength="40" />
-        <span class="form-text-inline">#error('password')#</span>
+        
       </div>
 
       <div>
@@ -82,5 +82,5 @@
   <p><a href="utilisateurajout-useradd.cfm?lang=#lang#">#language.addUser#</a></p>
   <p><a href="passeoubli-passforgot.cfm?lang=#lang#">#language.Forgot#</a></p>
 </cfoutput>
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
 

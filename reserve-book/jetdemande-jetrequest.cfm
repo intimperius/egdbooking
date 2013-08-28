@@ -85,13 +85,13 @@
 				</cfif>
 
 		<cfif not #error("StartDate")# EQ "">
-            <cfset err_jstart = "form-attention" />
+            <cfset err_jstart = "form-alert" />
         </cfif>
         <cfif not #error("EndDate")# EQ "">
-              <cfset err_jend = "form-attention" />
+              <cfset err_jend = "form-alert" />
         </cfif>
         <cfif not #error("VNID")# EQ "">
-              <cfset err_jvess = "form-attention" />
+              <cfset err_jvess = "form-alert" />
         </cfif>
 
         <cfif not isDate(Variables.startDate)>
@@ -112,7 +112,7 @@
 
             <div class="#err_jvess#">
               <label for="VNID">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:<span class="form-text">#error('VNID')#</span>
               </label>
               <select id="VNID" name="VNID">
                 <option value="">(#language.chooseVessel#)</option>
@@ -124,27 +124,27 @@
                   <option value="#companyVessels.VNID#" #selected#>#companyVessels.VesselName#</option>
                 </cfloop>
               </select>
-              <span class="form-text-inline">#error('VNID')#</span>
+              
             </div>
 
             <div class="#err_jstart#">
               <label for="StartDate">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
                 #language.StartDate#:
-                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small> <span class="form-text">#error('StartDate')#</span>
               </label>
               <input id="StartDate" name="startDate" type="text" class="datepicker startDate" value="#DateFormat(variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10"  /> 
-              <span class="form-text-inline">#error('StartDate')#</span>
+             
             </div>
 
 						<div class="#err_jend#">
               <label for="EndDate">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
                 #language.EndDate#:
-                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('EndDate')#</span>
               </label>
               <input id="EndDate" name="endDate" type="text" class="datepicker endDate" value="#DateFormat(variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10"  /> 
-              <span class="form-text-inline">#error('EndDate')#</span>
+              
 						</div>
 
 						<div>

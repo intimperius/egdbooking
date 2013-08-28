@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Edit Booking"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Booking</title>">
 	<cfset request.title = "Change Company">
@@ -14,55 +15,39 @@ SELECT Companies.CID, Companies.Name
 	ORDER BY Companies.Name
 </cfquery>
 
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Change Company
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Change Company
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
-				
-				<cfif getCompanyList.recordCount LTE "0">
-				<br />
-				
-				<cfoutput>  #CompanyURL# cannot be changed because #vesselNameURL# isn't available in another company.
-				</cfoutput>
-				<cfelse>  
-				
-				<cfform action="changeCompany2.cfm" method="post">
-				<table>
-				  <tr>
-					<td><br /><cfinput type="text" style="border:0; font-weight:bold" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes"><cfinput type="text" style="border:0; color:##FFFFFF" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
-					
-					</td>
-				  </tr>
-				  <tr>
-					<td>
-				Original Company: <cfinput type="text" style="border:0;" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" /></td>
-				  </tr>
-				  <tr>
-					<td>Original Agent: <cfinput type="text" style="border:0;" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" /></td>
-				  </tr>
-						<tr>
-					<td><br />Change to Company:</td>
-				  </tr>
-				  <tr>
-					<td><cfselect name="newCID" size="1" required="yes">
-					  <cfoutput query="getCompanyList">
-						<option value="#CID#">#Name#</option>
-					  </cfoutput> </cfselect></td>
-				  </tr>
-				  <tr>
-					<td><input id="submit" type="submit" value="submit" />
-				  </tr>
-				</table>
-				</cfform>
-				</cfif>
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+
+<cfif getCompanyList.recordCount LTE "0">
+
+<cfoutput>  #CompanyURL# cannot be changed because #vesselNameURL# isn't available in another company.
+</cfoutput>
+<cfelse>
+	<cfoutput><cfform action="changeCompany2.cfm" method="post">
+		<cfinput type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
+		<cfinput type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
+		<cfinput type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
+		<cfinput type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
+	<div class="module-info modwide">
+		<h2>#vesselNameURL#</h2>
+		<ul>
+			<b>Original Company:</b> #CompanyURL#<br/>
+			<b>Original Agent:</b> #UserNameURL#<br/>
+		</ul>
+	</div>
+	<br/>
+		Change to Company: <cfselect name="newCID" size="1" required="yes">
+		  <cfloop query="getCompanyList">
+			<option value="#CID#">#Name#</option>
+		  </cfloop> </cfselect></td>
+	  <br/>
+	  <input id="submit" type="submit" value="Submit" class="button button-accent" />	
+	</cfform> </cfoutput> 
+</cfif>
+
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

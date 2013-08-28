@@ -5,6 +5,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Edit Jetty Booking"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Jetty Booking</title>">
 	<cfset request.title = "Edit Jetty Booking Information">
@@ -161,57 +162,29 @@
 				<p>Please confirm the following information.</p>
 				<cfform action="editJettyBooking_action.cfm?#urltoken#&BRID=#form.BRID#&editStart=#form.startDate#&editEnd=#form.endDate#&jetty=#form.jetty#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="bookingreq" preservedata="Yes">
 				<cfoutput><input type="hidden" name="BRID" value="#Variables.BRID#" /></cfoutput>
-				<div style="font-weight:bold;">Booking:</div>
-				<table style="width:100%; padding-left:15px;" align="center" >
-					<tr>
-						<td id="Vessel" align="left" style="width:20%;">Vessel:</td>
-						<td headers="Vessel" style="width:80%;"><cfoutput>#getData.VesselName#</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="Company" align="left">Company:</td>
-						<td headers="Company"><cfoutput>#getData.CompanyName#</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="Agent" align="left">Agent:</td>
-						<td headers="Agent"><input type="hidden" name="UID" value="<cfoutput>#Variables.UID#</cfoutput>" /><cfoutput>#getAgent.UserName#</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="Start" align="left">Start Date:</td>
-						<td headers="Start"><input type="hidden" name="StartDate" value="<cfoutput>#Variables.StartDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.StartDate, 'mmm d, yyyy')#</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="End" align="left">End Date:</td>
-						<td headers="End"><input type="hidden" name="EndDate" value="<cfoutput>#Variables.EndDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.EndDate, 'mmm d, yyyy')#</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="bookingDate" align="left">Booking Time:</td>
-						<td headers="bookingDate">
-							<cfoutput>
-								<input type="hidden" name="bookingDate" value="#Variables.TheBookingDate#" />
-								<input type="hidden" name="bookingTime" value="#Variables.TheBookingTime#" />
-								#DateFormat(Variables.TheBookingDate, 'mmm d, yyyy')# #TimeFormat(Variables.TheBookingTime, 'HH:mm:ss')#
-							</cfoutput>
-						</td>
-					</tr>
-					<tr>
-						<td id="Length" align="left">Length:</td>
-						<td headers="Length"><cfoutput>#getData.Length# m</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="Width" align="left">Width:</td>
-						<td headers="Width"><cfoutput>#getData.Width# m</cfoutput></td>
-					</tr>
-					<tr>
-						<td id="Sections" align="left">Sections:</td>
-						<td headers="Sections">
+				<div class="module-info widemod">
+          <h2>Booking Details</h2>
+					<ul>
+            <b>Vessel:</b> <cfoutput>#getData.VesselName#</cfoutput><br/>
+            <b>Company:</b> <cfoutput>#getData.CompanyName#</cfoutput><br/>
+            <b>Agent:</b> <input type="hidden" name="UID" value="<cfoutput>#Variables.UID#</cfoutput>" /><cfoutput>#getAgent.UserName#</cfoutput><br/>
+            <b>Start Date:</b> <input type="hidden" name="StartDate" value="<cfoutput>#Variables.StartDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.StartDate, 'mmm d, yyyy')#</cfoutput><br/>
+            <b>End Date:</b> <input type="hidden" name="EndDate" value="<cfoutput>#Variables.EndDate#</cfoutput>" /><cfoutput>#DateFormat(Variables.EndDate, 'mmm d, yyyy')#</cfoutput><br/>
+            <b>Booking Time:</b> <cfoutput>
+                <input type="hidden" name="bookingDate" value="#Variables.TheBookingDate#" />
+                <input type="hidden" name="bookingTime" value="#Variables.TheBookingTime#" />
+                #DateFormat(Variables.TheBookingDate, 'mmm d, yyyy')# #TimeFormat(Variables.TheBookingTime, 'HH:mm:ss')#
+              </cfoutput><br/>
+            <b>Length:</b> <cfoutput>#getData.Length# m</cfoutput><br/>
+            <b>Width:</b> <cfoutput>#getData.Width# m</cfoutput><br/>
+            <b>Sections:</b>
 							<cfif Variables.Jetty EQ "north">
 								North Landing Wharf
 							<cfelseif Variables.Jetty EQ "south">
 								South Jetty
 							</cfif>
-						</td>
-					</tr>
-				</table>
+						</ul>
+				</div>
 
 				<br />
 				<div style="text-align:center;">

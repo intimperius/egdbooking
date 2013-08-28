@@ -35,4 +35,4 @@
 					<div><a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.returnlogin#</a></div>
 				</cfoutput>					
 			<!-- CONTENT ENDS | FIN DU CONTENU -->
-		<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+		<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">

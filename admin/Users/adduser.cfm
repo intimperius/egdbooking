@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Create New User"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New User</title>">
 	<cfset request.title = "Create New User">
@@ -28,15 +29,11 @@
 </cfif>
 
 
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Create New User
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Create New User
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
 				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
@@ -48,48 +45,22 @@
 
 				<cfif isDefined("url.companies")>
 					<cfset Variables.action = "addNewUserCompany.cfm?lang=#lang#&companies=#url.companies#">
-				<cfelse>
-					<cfset Variables.action = "addNewUserCompany.cfm?lang=#lang#">
-				</cfif>
+<cfelse>
+	<cfset Variables.action = "addNewUserCompany.cfm?lang=#lang#">
+</cfif>
 
-				<cfform action="#Variables.action#" id="addUserForm" method="post">
-					<table>
-						<tr>
-							<td id="First"><label for="firstname">First Name:</label></td>
-							<td headers="First"><cfinput name="firstname" id="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40" required="yes" message="Please enter a first name." /></td>
-						</tr>
-						<tr>
-							<td id="Last"><label for="lastname">Last Name:</label></td>
-							<td headers="Last"><cfinput name="lastname" id="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40" required="yes" message="Please enter a last name." /></td>
-						</tr>
-						<!---<tr>
-							<td>Login Name:</td>
-							<td><cfinput type="text" name="loginID" required="yes" size="25" maxlength="40" value="#variables.loginID#" /></td>
-						</tr>--->
-						<tr>
-							<td id="Passworda"><label for="password1">Password:</label></td>
-							<td headers="Passworda"><cfinput id="password1" type="password" name="password1" required="yes" size="25" message="Please enter a password."><span class="smallFont" />(*min. 8 characters)</span></td>
-						</tr>
-						<tr>
-							<td id="Passwordb"><label for="password2">Repeat Password:</label></td>
-							<td headers="Passwordb"><cfinput id="password2" type="password" name="password2" required="yes" size="25" message="Please repeat the password for verification." /></td>
-						</tr>
-						<tr>
-							<td id="mail"><label for="email">Email:</label></td>
-							<td headers="mail"><cfinput name="email" id="email" type="text" value="#variables.email#" size="40" maxlength="100" required="yes" message="Please enter an email address." /></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center" style="padding-top:20px;">
-								<!--a href="javascript:document.addUserForm.submitForm.click();" class="textbutton">Submit</a-->
-								<input type="submit" name="submitForm" value="Continue" class="button button-accent" />
-								<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-							</td>
-						</tr>
-					</table>
-				</cfform>
+<cfform action="#Variables.action#" id="addUserForm" method="post">
 
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
+		<label for="firstname">First Name:</label><cfinput name="firstname" id="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40" required="yes" message="Please enter a first name." />
+		<label for="lastname">Last Name:</label><cfinput name="lastname" id="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40" required="yes" message="Please enter a last name." />
+		<label for="password1">Password:</label><cfinput id="password1" type="password" name="password1" required="yes" size="25" message="Please enter a password."><span class="smallFont" />(*min. 8 characters)</span>
+		<label for="password2">Repeat Password:</label><cfinput id="password2" type="password" name="password2" required="yes" size="25" message="Please repeat the password for verification." />
+		<label for="email">Email:</label><cfinput name="email" id="email" type="text" value="#variables.email#" size="40" maxlength="100" required="yes" message="Please enter an email address." />
+		<br/>
+				<!--a href="javascript:document.addUserForm.submitForm.click();" class="textbutton">Submit</a-->
+				<input type="submit" name="submitForm" value="Continue" class="button button-accent" />
+				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
+			
+</cfform>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

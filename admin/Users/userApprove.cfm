@@ -6,6 +6,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - User Approval"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - User Approval</title>">
 <cfset request.title ="User Approval">
@@ -104,7 +105,7 @@ function EditSubmit ( selectedform )
 							</CFIF>
 							<table id="listManage" border="0" cellspacing="0" cellpadding="2" style="width:90%;">
 								<tr bgcolor="##FFFFFF">
-									<td colspan="3" style="width:50%;"><i><a href="javascript:void(0);" onclick="popUp('admin/viewCompany.cfm?lang=#lang#&amp;CID=#CID#');">#CompanyName#</a></i></td>
+									<td colspan="2" style="width:50%;"><i><a href="javascript:void(0);" onclick="popUp('admin/viewCompany.cfm?lang=#lang#&amp;CID=#CID#');">#CompanyName#</a></i></td>
 									<td colspan="3" align="right" style="width:50%;"><CFIF CompApproved eq 0><i><a href="../CompanyApprove.cfm?lang=#lang#">awaiting company approval</a></i><CFELSE>&nbsp;</CFIF></td>
 								</tr>
 				
@@ -116,7 +117,6 @@ function EditSubmit ( selectedform )
 									<CFSET rowClass = "">
 								</CFIF>
 								<tr class="#rowClass#">
-									<td style="width:2%;" bgcolor="##FFFFFF">&nbsp;</td>
 									<td valign="top" style="width:25%;">#LastName#, #FirstName#</td>
 									<td valign="top" style="width:55%;" colspan="2">#Email#</td>
 									<td valign="top" style="width:10%;" align="center">

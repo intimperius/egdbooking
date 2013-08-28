@@ -1,6 +1,3 @@
-<cfinclude template="#RootDir#includes/restore_params.cfm">
-<cfinclude template="#RootDir#includes/build_form_struct.cfm">
-
 <cfif lang EQ "eng">
 	<cfset language.confirmRem = "Confirm Remove Company">
 	<cfset language.keywords = "#language.masterKeywords#" & " Remove Company User Represent">
@@ -24,7 +21,11 @@
 	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.confirmRem# - #language.esqGravingDock# - #language.PWGSC#</title>">
+	<cfset request.title = language.confirmRem />
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/restore_params.cfm">
+<cfinclude template="#RootDir#includes/build_form_struct.cfm">
+
 
 <cfif NOT IsDefined('form.CID')>
 	<cflocation addtoken="no" url="entrpdemande-comprequest.cfm?lang=#lang#&info=#url.info#">
@@ -48,30 +49,30 @@ function EditSubmit ( selectedform )
 <!-- End JavaScript Block -->
 
 
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					<cfoutput>#language.confirmRem#</cfoutput>
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+	<h1 id="wb-cont">
+		<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+		<cfoutput>#language.confirmRem#</cfoutput>
+		<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+	</h1>
 
-			<cfoutput>
-				<cfif IsDefined("Session.Return_Structure")>
-					<!--- Populate the Variables Structure with the Return Structure.
-							Also display any errors returned --->
-					<cfinclude template="#RootDir#includes/getStructure.cfm">
-				</cfif>
+	<cfoutput>
+		<cfif IsDefined("Session.Return_Structure")>
+			<!--- Populate the Variables Structure with the Return Structure.
+					Also display any errors returned --->
+			<cfinclude template="#RootDir#includes/getStructure.cfm">
+		</cfif>
+		<cfform action="entrpsup-comprem_action.cfm?lang=#lang#&companies=#companies#&info=#url.info#" method="post" id="remCompanyConfirmForm">
+			<div>#language.areYouSure# <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?</div>
+			<br/>
+			<input type="submit" value="#language.Remove#" class="button button-accent" />
+			
 
-				<cfform action="entrpsup-comprem_action.cfm?lang=#lang#&companies=#companies#&info=#url.info#" method="post" id="remCompanyConfirmForm">
-					<div>#language.areYouSure# <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?</div>
-						<input type="submit" value="#language.Remove#" class="textbutton" />
-					</p>
+			<input type="hidden" name="CID" value="#form.CID#" />
+		</cfform>
+	</cfoutput>
 
-					<input type="hidden" name="CID" value="#form.CID#" />
-				</cfform>
-				</cfoutput>
+<!-- CONTENT ENDS | FIN DU CONTENU -->
 
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
 
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
 

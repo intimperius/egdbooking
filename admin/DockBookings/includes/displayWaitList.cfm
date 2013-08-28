@@ -1,6 +1,6 @@
 <div class="critical">
 	<p><cfoutput>#Variables.waitListText#</cfoutput></p>
-	<table class="basic smallFont">
+	<table class="table-condensed">
 		<tr>
 			<th align="left" id="Booked">Booked</th>
 			<th id="Agent" align="left">Agent</th>

@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Delete Company"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Delete Company</title>">
 	<cfset request.title ="Delete Company">
@@ -38,35 +39,27 @@
 <cfelse>
 	<cfset variables.CID = 0>
 </cfif>
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Delete Company
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
 
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Delete Company
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+	</h1>
 
-				<cfif IsDefined("Session.Return_Structure")>
-					<!--- Populate the Variables Structure with the Return Structure.
-							Also display any errors returned --->
-					<cfinclude template="#RootDir#includes/getStructure.cfm">
-				</cfif>
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
-				<div style="text-align:center;">
-					<cfform action="delCompany_confirm.cfm?lang=#lang#" method="post" id="delCompanyForm">
-						<cfselect name="CID" query="getcompanyList" value="CID" display="name" selected="#variables.CID#"/>
-						<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
-						<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-					</cfform>
-				</div>
+<cfif IsDefined("Session.Return_Structure")>
+	<!--- Populate the Variables Structure with the Return Structure.
+			Also display any errors returned --->
+	<cfinclude template="#RootDir#includes/getStructure.cfm">
+</cfif>
 
-
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
+<div>
+	<cfform action="delCompany_confirm.cfm?lang=#lang#" method="post" id="delCompanyForm">
+		<cfselect name="CID" query="getcompanyList" value="CID" display="name" selected="#variables.CID#"/>
+		<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
+		<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
+	</cfform>
+</div>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

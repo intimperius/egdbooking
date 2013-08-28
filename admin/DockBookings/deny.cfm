@@ -39,19 +39,16 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Deny Request"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Deny Request</title>">
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
-<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Change Booking Status
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Change Booking Status
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
@@ -70,58 +67,25 @@
 <br />
 	<cfoutput>
 	<input type="hidden" name="BRID" value="#Form.BRID#" />
-	<table style="padding-top:5px;">
-		<tr>
-			<td><strong>Booking Details:</strong></td>
-		</tr>
-		<tr>
-			<td id="Vessel">Vessel:</td>
-			<td headers="Vessel">#getBooking.VesselName#</td>
-		</tr>
-		<tr>
-			<td id="Company">Company:</td>
-			<td headers="Company">#getBooking.CompanyName#</td>
-		</tr>
-		<cfif getBooking.Status EQ "C">
-		<!---<tr>
-			<td id="Section1">Section 1:</td>
-			<td headers="Section1"><cfif getBooking.section1 EQ 1>Yes<cfelse>No</cfif></td>
-		</tr>
-		<tr>
-			<td id="Section2">Section 2:</td>
-			<td headers="Section2"><cfif getBooking.section2 EQ 1>Yes<cfelse>No</cfif></td>
-		</tr>
-		<tr>
-			<td id="Section3">Section 3:</td>
-			<td headers="Section3"><cfif getBooking.section3 EQ 1>Yes<cfelse>No</cfif></td>
-		</tr>--->
-		<tr>
-			<td id="Sections" align="left">Section(s):</td>
-			<td headers="Sections">
-				<CFIF getBooking.Section1>Section 1</CFIF>
+<div class="module-info widemod">
+	<h2>Booking Details:</h2>
+	<ul>
+		<b>Vessel:</b> #getBooking.VesselName#<br/>
+		<b>Company:</b> #getBooking.CompanyName#<br/>
+		<b>Section(s):</b> <cfif getBooking.Status EQ "C"><CFIF getBooking.Section1>Section 1</CFIF>
 				<CFIF getBooking.Section2><CFIF getBooking.Section1> &amp; </CFIF>Section 2</CFIF>
-				<CFIF getBooking.Section3><CFIF getBooking.Section1 OR getBooking.Section2> &amp; </CFIF>Section 3</CFIF>
-			</td>
-		</tr>
-		</cfif>
-		<tr>
-			<td id="Start">Start Date:</td>
-			<td headers="Start">#DateFormat(Variables.Start, "mmm d, yyyy")#</td>
-		</tr>
-		<tr>
-			<td id="End">End Date:</td>
-			<td headers="End">#DateFormat(Variables.End, "mmm d, yyyy")#</td>
-		</tr>
-	</table>
-	</cfoutput>
+				<CFIF getBooking.Section3><CFIF getBooking.Section1 OR getBooking.Section2> &amp; </CFIF>Section 3</CFIF></cfif><br/>
+		<b>Start Date</b> #DateFormat(Variables.Start, "mmm d, yyyy")#<br/>
+		<b>End Date:</b> #DateFormat(Variables.End, "mmm d, yyyy")#<br/>
+	</ul>
+</div>
+<br/>
+</cfoutput>
 
-	<div style="text-align:center;"><p>
+	<div>
 	<input type="submit" value="Submit" class="button button-accent" />
-	<cfoutput><input type="button" onclick="self.location.href='#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#'" value="Cancel" class="textbutton" /></cfoutput>
-	</p></div>
+	<cfoutput><a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#">Cancel</a></cfoutput>
+	</div>
 </cfform>
-
-</div>
-</div>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

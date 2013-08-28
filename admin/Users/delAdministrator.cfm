@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Delete Administrator"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Delete Administrator</title>">
 	<cfset request.title ="Remove Administrator">
@@ -18,10 +19,7 @@
 </cflock>
 
 		
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
+
 				<h1 id="wb-cont">
 					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
 					Remove Administrator
@@ -44,13 +42,12 @@
 	</cfif>
 </cfif>
 
-<div style="text-align:center;">
+<div >
 	<cfform action="delAdministrator_confirm.cfm?lang=#lang#" method="post" id="delAdministratorForm">
 		<cfselect name="UID" query="getAdminList" value="UID" display="UserName" selected="#variables.UID#" />
 		<input type="submit" value="Remove" class="button-accent button" />
 		<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 	</cfform>
 </div>
-</div>
-</div>
+
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

@@ -25,10 +25,6 @@
 <meta name=""description"" content=""#language.description#"" />
 <meta name=""dcterms.description"" content=""#language.description#"" />
 <meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
-<meta name=""dc.date.published"" content=""2005-07-25"" />
-<meta name=""dc.date.reviewed"" content=""2005-07-25"" />
-<meta name=""dc.date.modified"" content=""2005-07-25"" />
-<meta name=""dc.date.created"" content=""2005-07-25"" />
 <title>#language.forgot# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.forgot />
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
@@ -39,7 +35,7 @@
 				<h1 id="wb-cont"><cfoutput>#language.forgot#</cfoutput></h1>
 
 				<cfif not error("email") EQ "">
-  						<cfset err_email = "form-attention" />
+  						<cfset err_email = "form-alert" />
 				</cfif>
 
 				<cfoutput>
@@ -51,12 +47,16 @@
             <fieldset>
               <legend>#language.getPassword#</legend>
               <p>#language.requiredFields#</p>
-              
+
               <div class="#err_email#">
-                <label for="email"><abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:</label>
-                <input type="text" name="email" id="email" size="30" />
-                <span class="form-text-inline">#error('email')#</span>
+                <label for="email">
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:<span class="form-text">#error('email')#</span>
+                </label>
+                <input name="email" type="text" size="40" maxlength="100" id="email" />
+                
               </div>
+              
+              
 
               <input type="submit" value="#language.Submit#" class="button button-accent" />
             </fieldset>
@@ -65,5 +65,5 @@
 					<div><a href="ols-login.cfm?lang=#lang#">#language.returnlogin#</a></div>
 				</cfoutput>
 			<!-- CONTENT ENDS | FIN DU CONTENU -->
-		<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+		<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
 

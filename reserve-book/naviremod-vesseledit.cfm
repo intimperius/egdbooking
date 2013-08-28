@@ -24,11 +24,20 @@
 <cfhtmlhead text="
 	<meta name=""dcterms.title"" content=""#language.editVessel# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.keywords#"" />
-	<meta name=""description"" content=""#language.description#"" />
+  <meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.subjects#"" />
 	<title>#language.editVessel# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.editVessel />
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+
+<cfparam name="err_name" default="">
+<cfparam name="err_lgt" default="">
+<cfparam name="err_wdt" default="">
+<cfparam name="err_bst" default="">
+<cfparam name="err_btt" default="">
+<cfparam name="err_ton" default="">
+
 
 				<h1 id="wb-cont">#language.editVessel#</h1>
 
@@ -88,6 +97,25 @@
 					<cfset variables.anonymous = getVesselDetail.anonymous>
 				</cfif>
 
+				<cfif not #error("name")# EQ "">
+              <cfset err_name = "form-alert" />
+        </cfif>
+        <cfif not #error("length")# EQ "">
+              <cfset err_lgt = "form-alert" />
+        </cfif>
+        <cfif not #error("width")# EQ "">
+              <cfset err_wdt = "form-alert" />
+        </cfif>
+        <cfif not #error("blocksetuptime")# EQ "">
+              <cfset err_bst = "form-alert" />
+        </cfif>
+        <cfif not #error("blockteardowntime")# EQ "">
+              <cfset err_btt = "form-alert" />
+        </cfif>
+        <cfif not #error("tonnage")# EQ "">
+              <cfset err_ton = "form-alert" />
+        </cfif>
+
 				<cfinclude template="#RootDir#includes/user_menu.cfm">
 
         <cfinclude template="#RootDir#includes/getStructure.cfm">
@@ -104,78 +132,99 @@
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
                 #language.CompanyName#:
               </label>
-              <input type="text" disabled="disabled" readonly="readonly" id="CID" name="CID" value="#getVesselDetail.CompanyName#" />
+              <input type="text" disabled="disabled" readonly="readonly" id="CID" name="CID" value="#getVesselDetail.CompanyName#" style="width: 260px;" />
             </div>
 
-						<div>
+			<div>
               <label for="name">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.vessel#:
-                #error('name')#
+                #language.vesselName#:<span class="form-text">#error("name")#</span>
               </label>
-              <input id="name" name="name" type="text" value="#variables.Name#" size="37" maxlength="100" />
-						</div>
+            </div>
+            <div class="#err_name#">
+              <input name="name" id="name" type="text" value="#variables.name#" size="35" maxlength="100" />
+              
+            </div>
 
-						<div>
+			<div>
               <label for="LloydsID">#language.LloydsID#:</label>
               <input id="LloydsID" name="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20" />
-						</div>
+			</div>
 
-						<cfif getVesselDockBookings.recordCount GT 0 OR getVesselJettyBookings.recordCount GT 0>
-							<div>
+		<cfif getVesselDockBookings.recordCount GT 0 OR getVesselJettyBookings.recordCount GT 0>
+			<div>
                 <label for="length">#language.Length#:</label>
                 <p>#variables.length# m</p>
                 <input type="hidden" id="length" name="length" value="#variables.length#" />
-							</div>
+			</div>
 
-							<div>
+			<div>
                 <label for="width">#language.Width#:</label>
                 <p>#variables.width# m</p>
                 <input type="hidden" id="width" name="width" value="#variables.width#" />
-							</div>
-						<cfelse>
-							<div>
-                <label for="length">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.Length#:
-                  #error('length')#
-                </label>
-                <input id="length" name="length" type="text" value="#variables.length#" size="8" maxlength="8" />
-                #language.Max#: #Variables.MaxLength# m
-							</div>
-
-							<div>
-                <label for="width">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.Width#:
-                  #error('width')#
-                </label>
-                <input id="width" name="width" type="text" value="#variables.width#" size="8" maxlength="8" />
-                #language.Max#: #Variables.MaxWidth# m
-							</div>
-						</cfif>
-
-						<div>
-              <label for="blocksetuptime">
+			</div>
+		<cfelse>
+			<div>
+            <div>
+              <label for="length">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.BlockSetup# #language.days#:
-                #error('blocksetuptime')#
+                #language.Length#:<span class="form-text">#error("length")#</span>
               </label>
-              <input id="blocksetuptime" name="blocksetuptime" type="text" value="#variables.blocksetuptime#" size="2" maxlength="2" />
-						</div>
+            </div>
+            <div class="#err_lgt#">
+              <input name="length" id="length" type="text" value="#variables.length#" size="8" maxlength="8"/>
+              <span class="color-medium">(#language.Max#: #Variables.MaxLength#)</span>
+              
+			</div>
+            
+			<div>
+              <label for="width">
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;
+                #language.Width#:<span class="form-text">#error("width")#</span>
+              </label>
+            </div>
+            <div class="#err_wdt#">
+              <input name="width" id="width" type="text" value="#variables.width#" size="8" maxlength="8" />
+              <span class="color-medium">(#language.Max#: #Variables.MaxWidth#)</span>
+              
+			</div>
+		</cfif>
 
-						<div>
-              <label for="blockteardowntime"><abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.BlockTeardown# #language.days#:</label>
-              <input id="blockteardowntime" name="blockteardowntime" type="text" value="#variables.blockteardowntime#" size="2" maxlength="2" />
-						</div>
+			<div>
+              <label for="blocksetuptime" id="block_setup_time">
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;
+                #language.BlockSetup# #language.days#:<span class="form-text">#error("blocksetuptime")#</span>
+              </label>
+            </div>
+            <div class="#err_bst#">
+              <input name="blocksetuptime" id="blocksetuptime" type="text" value="#variables.blocksetuptime#" size="2" maxlength="2" />
+              
+			</div>
 
-						<div>
-              <label for="tonnage"><abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Tonnage#:</label>
-              <input id="tonnage" name="tonnage" type="text" value="#variables.tonnage#" size="8" maxlength="8" />
-						</div>
+			<div>
+              <label for="blockteardowntime" id="block_teardown_time">
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;
+                #language.BlockTeardown# #language.days#:<span class="form-text">#error("blockteardowntime")#</span>
+              </label>
+            </div>
+            <div class="#err_btt#">
+              <input name="blockteardowntime" id="blockteardowntime" type="text" value="#variables.blockteardowntime#" size="2" maxlength="2" />
+              
+			</div>
+
+			<div>
+              <label for="tonnage">
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;
+                #language.Tonnage#:<span class="form-text">#error("tonnage")#</span>
+              </label>
+            </div>
+            <div class="#err_ton#">
+              <input name="tonnage" id="tonnage" type="text" value="#variables.tonnage#" size="8" maxlength="8" />
+              
+			</div>
 
             <div>
-              <label for="Anonymous">#language.anonymous#<sup><a href="##fn" title="#language.footnote#"><span class="navaid">#language.footnote#</span>&dagger;</a></sup>:</label>
+              <label for="Anonymous">#language.anonymous#:<sup id="fnb1-ref"><a class="footnote-link" href="##fnb1"><span class="wb-invisible">#language.footnote#</span>1</a></sup></label>
               <input id="anonymous" type="checkbox" name="Anonymous" <cfif variables.Anonymous EQ 1>checked="true" </cfif>value="Yes" />
             </div>
 
@@ -186,7 +235,18 @@
 					</fieldset>
 				</form>
 
-        <p>&dagger;&nbsp;#language.anonymousWarning#</p>
+       <div class="wet-boew-footnotes" role="note">
+          <section>
+            <h2 id="fnb" class="wb-invisible">Footnotes</h2>
+            <dl>
+              <dt>Footnote 1</dt>
+                <dd id="fnb1">
+                  <p>#language.anonymousWarning#</p>
+                  <p class="footnote-return"><a href="##fnb1-ref"><span class="wb-invisible">Return to footnote </span>1<span class="wb-invisible"> referrer</span></a></p>
+                </dd>
+            </dl>
+          </section>
+        </div>
 				
 		<!-- CONTENT ENDS | FIN DU CONTENU -->
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

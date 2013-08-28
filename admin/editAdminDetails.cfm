@@ -4,6 +4,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Edit Email List"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Email List</title>">
 	<cfset request.title ="Edit Email List">
@@ -30,44 +31,38 @@ function EditSubmit ( selectedform )
 	}
 /* ]]> */
 </script>
-		
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Edit Email List
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
 
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
-				<cfinclude template="#RootDir#includes/getStructure.cfm">
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Edit Email List
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+	</h1>
 
-				<cfoutput>
-				<cfform id="emailForm" action="editAdminDetails_action.cfm?lang=#lang#">
-				<p>Select any of the following administrators to receive email notification about user activities:</p>
-				<table style="width:85%;">
-					<cfloop query="getAdministrators">
-					<cfif ListContains(getEmails.email, "#email#") NEQ 0>
-						<cfset variables.checked = "yes">
-					<cfelse>
-						<cfset variables.checked = "no">
-					</cfif>
-						<tr>
-							<td>#AdminName#</td><td>#email#</td><td><cfinput type="checkbox" name="Email#UID#" value="#UID#" checked="#variables.checked#" /></td>
-						</tr>
-					</cfloop>
-				</table>
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<cfinclude template="#RootDir#includes/getStructure.cfm">
 
-				<br />
-				<div style="text-align:right;"><input type="submit" value="Submit" class="button-accent button" />
-				<input type="button" onclick="javascript:self.location.href='menu.cfm?lang=#lang#'" value="Cancel" class="textbutton" />
-				</cfform>
+<cfoutput>
+<cfform id="emailForm" action="editAdminDetails_action.cfm?lang=#lang#">
+Select any of the following administrators to receive email notification about user activities:
+<table style="width:90%;">
+	<tr><th>Name</th><th>Email</th><th></th></tr>
+	<cfloop query="getAdministrators">
+	<cfif ListContains(getEmails.email, "#email#") NEQ 0>
+		<cfset variables.checked = "yes">
+	<cfelse>
+		<cfset variables.checked = "no">
+	</cfif>
+		<tr>
+			<td>#AdminName#</td><td>#email#</td><td><cfinput type="checkbox" name="Email#UID#" value="#UID#" checked="#variables.checked#" /></td>
+		</tr>
+	</cfloop>
+</table>
 
-				</cfoutput>
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
-		</div>
+<br />
+<div style="text-align:right;"><input type="submit" value="Submit" class="button-accent button" />
+<a href="menu.cfm?lang=#lang#">Cancel</a>
+</div>
+</cfform>
+
+</cfoutput>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

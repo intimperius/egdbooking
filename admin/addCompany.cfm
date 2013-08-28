@@ -3,6 +3,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Create New Company"" />
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New Company</title>">
 	<cfset request.title ="Create New Company">
@@ -74,56 +75,43 @@
 				</cfif>
 
 				<cfoutput>
-				<cfform action="addCompany_action.cfm?lang=#lang#" id="addCompanyForm" method="post" onsubmit="if(!checkFilledIn('addCompanyForm')) { return false;
-	}">
-					<table>
-						<tr>
-							<td id="name_Header"><label for="name">Company Name:</label></td>
-							<td headers="name_Header"><cfinput name="name" id="name" type="text" size="40" maxlength="75" value="#variables.name#" required="yes" message="Please enter the company name." /></td>
-						</tr>
-						<tr>
-							<td id="abbr_Header"><label for="abbrev">Abbreviation:</label></td>
-							<td headers="abbr_Header"><cfinput name="abbrev" id="abbrev" type="text" size="5" maxlength="3" value="#variables.abbrev#" required="yes" message="Please enter the company abbreviation." /></td>
-						</tr>
-						<tr>
-							<td id="address1_Header"><label for="address1">Address 1:</label></td>
-							<td headers="address1_Header"><cfinput name="address1" id="address1" type="text" size="40" maxlength="75" value="#variables.address1#" required="yes" message="Please enter the address." /></td>
-						</tr>
-						<tr>
-							<td id="address2_Header"><label for="address2">Address 2 (optional):</label></td>
-							<td headers="address2_Header"><cfinput name="address2" id="address2" type="text" size="40" maxlength="75" value="#variables.address2#" /></td>
-						</tr>
-						<tr>
-							<td id="city_Header"><label for="city">City:</label></td>
-							<td headers="city_Header"><cfinput name="city" id="city" type="text" size="25" maxlength="40" value="#variables.city#" required="yes" message="Please enter the city." /></td>
-						</tr>
-						<tr>
-							<td id="province_Header"><label for="province">Province / State:</label></td>
-							<td headers="province_Header"><cfinput name="province" id="province" type="text" size="25" maxlength="40" value="#variables.province#" required="no" message="Please enter the province or state." /></td>
-						</tr>
-						<tr>
-							<td id="country_Header"><label for="country">Country:</label></td>
-							<td headers="country_Header"><cfinput name="country" id="country" type="text" size="25" maxlength="40" value="#variables.country#" required="yes" message="Please enter the country." /></td>
-						</tr>
-						<tr>
-							<td id="zip_Header"><label for="zip">Postal / Zip Code:</label></td>
-							<td headers="zip_Header"><cfinput name="zip" id="zip" type="text" size="12" maxlength="10" value="#variables.zip#" required="no" message="Please enter the postal code or zip code." /></td>
-						</tr>
-						<tr>
-							<td id="phone_Header"><label for="phone">Phone:</label></td>
-							<td headers="phone_Header"><cfinput name="phone" id="phone" type="text" size="25" maxlength="32" value="#variables.phone#" required="yes" message="Please check that the phone number is valid." /></td>
-						</tr>
-						<tr>
-							<td id="fax_Header"><label for="fax">Fax (optional):</label></td>
-							<td headers="fax_Header"><cfinput name="fax" id="fax" type="text" size="25" maxlength="32" value="#variables.fax#" /></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center" style="padding-top:20px;">
-								<input type="submit" name="submitForm" class="button-accent button" value="Submit" />
-								<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-							</td>
-						</tr>
-					</table>
+				<cfform action="addCompany_action.cfm?lang=#lang#" id="addCompanyForm" method="post" onsubmit="if(!checkFilledIn('addCompanyForm')) { return false;}">
+					<div>
+						<label for="name">Company Name:</label>
+						<cfinput name="name" id="name" type="text" size="40" maxlength="75" value="#variables.name#" required="yes" message="Please enter the company name." />
+
+						<label for="abbrev">Abbreviation:</label>
+						<cfinput name="abbrev" id="abbrev" type="text" size="5" maxlength="3" value="#variables.abbrev#" required="yes" message="Please enter the company abbreviation." />
+
+						<label for="address1">Address 1:</label>
+						<cfinput name="address1" id="address1" type="text" size="40" maxlength="75" value="#variables.address1#" required="yes" message="Please enter the address." />
+							
+						<label for="address2">Address 2 (optional):</label>
+						<cfinput name="address2" id="address2" type="text" size="40" maxlength="75" value="#variables.address2#" />
+
+						<label for="city">City:</label>
+						<cfinput name="city" id="city" type="text" size="25" maxlength="40" value="#variables.city#" required="yes" message="Please enter the city." />
+
+						<label for="province">Province / State:</label>
+						<cfinput name="province" id="province" type="text" size="25" maxlength="40" value="#variables.province#" required="no" message="Please enter the province or state." />
+
+						<label for="country">Country:</label>
+						<cfinput name="country" id="country" type="text" size="25" maxlength="40" value="#variables.country#" required="yes" message="Please enter the country." />
+
+						<label for="zip">Postal / Zip Code:</label>
+						<cfinput name="zip" id="zip" type="text" size="12" maxlength="10" value="#variables.zip#" required="no" message="Please enter the postal code or zip code." />
+
+						<label for="phone">Phone:</label>
+						<cfinput name="phone" id="phone" type="text" size="25" maxlength="32" value="#variables.phone#" required="yes" message="Please check that the phone number is valid." />
+
+						<label for="fax">Fax (optional):</label>
+						<cfinput name="fax" id="fax" type="text" size="25" maxlength="32" value="#variables.fax#" />
+					</div>
+					<div>&nbsp;</div>
+					<div>
+						<input type="submit" name="submitForm" class="button-accent button" value="Submit" />
+						<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
+					</div>	
 				</cfform>
 				</cfoutput>
 

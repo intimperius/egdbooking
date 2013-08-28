@@ -107,25 +107,25 @@
 				</cfif>
 
         <cfif not #error("startDateA")# EQ "">
-              <cfset err_ddstart = "form-attention" />
+              <cfset err_ddstart = "form-alert" />
         </cfif>
         <cfif not #error("endDateA")# EQ "">
-              <cfset err_ddend = "form-attention" />
+              <cfset err_ddend = "form-alert" />
         </cfif>
         <cfif not #error("StartDateB")# EQ "">
-              <cfset err_ddstart2 = "form-attention" />
+              <cfset err_ddstart2 = "form-alert" />
         </cfif>
         <cfif not #error("EndDateB")# EQ "">
-              <cfset err_ddend2 = "form-attention" />
+              <cfset err_ddend2 = "form-alert" />
         </cfif>
         <cfif not #error("numDays")# EQ "">
-              <cfset err_numdays = "form-attention" />
+              <cfset err_numdays = "form-alert" />
         </cfif>
         <cfif not #error("booking_VNIDA")# EQ "">
-              <cfset err_ddvess = "form-attention" />
+              <cfset err_ddvess = "form-alert" />
         </cfif>
         <cfif not #error("bookingByRange_VNIDB")# EQ "">
-              <cfset err_ddvess2 = "form-attention" />
+              <cfset err_ddvess2 = "form-alert" />
         </cfif>
 
 
@@ -137,7 +137,7 @@
 
             <div class="#err_ddvess#">
               <label for="booking_VNID">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:<span class="form-text">#error('booking_VNIDA')#</span>
               </label>
               <select id="booking_VNID" name="booking_VNID">
                 <option value="">(#language.chooseVessel#)</option>
@@ -149,25 +149,25 @@
                   <option value="#companyVessels.VNID#" #selected#>#companyVessels.VesselName#</option>
                 </cfloop>
               </select>
-              <span class="form-text-inline">#error('booking_VNIDA')#</span>
+              
             </div>
 
 						<div class="#err_ddstart#">
               <label for="startDateA">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.StartDate#:<br />
-                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('StartDateA')#</span>
               </label>
               <input id="startDateA" name="startDate" class="datepicker startDate" type="text" size="15" maxlength="10"  />
-              <span class="form-text-inline">#error('StartDateA')#</span>
+              
 						</div>
 
 						<div class="#err_ddend#">
              <label for="endDateA">
                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EndDate#:<br />
-               <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+               <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('EndDateA')#</span>
              </label>
               <input id="endDateA" name="endDate" class="datepicker endDate" type="text" size="15" maxlength="10" value="#DateFormat(endDate, 'mm/dd/yyyy')#"  />
-              <span class="form-text-inline">#error('EndDateA')#</span>
+              
 						</div>
 
 						<div>
@@ -197,7 +197,7 @@
             <div class="#err_ddvess2#">
               <label for="bookingByRange_VNID">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:
-                
+                <span class="form-text">#error('bookingByRange_VNIDB')#</span>
               </label>
               <select id="bookingByRange_VNID" name="bookingByRange_VNID">
                 <option value="">(#language.chooseVessel#)</option>
@@ -209,35 +209,35 @@
                   <option value="#companyVessels.VNID#" #selected#>#companyVessels.VesselName#</option>
                 </cfloop>
               </select>
-              <span class="form-text-inline">#error('bookingByRange_VNIDB')#</span>
+              
             </div>
 
             <div class="#err_ddstart2#">
 							<label for="StartDateB">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.StartDate#:
-                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('StartDateB')#</span>
               </label>
 							<input id="StartDateB" name="startDate" type="text" class="datepicker startDate" value="#DateFormat(startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
-              <span class="form-text-inline">#error('StartDateB')#</span>
+              
             </div>
 
             <div class="#err_ddend2#">
               <label for="EndDateB">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EndDate#:
                 <br />
-                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('EndDateB')#</span>
               </label>
               <input id="EndDateB" name="endDate" type="text" class="datepicker endDate" value="#DateFormat(endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
-              <span class="form-text-inline">#error('EndDateB')#</span>
+              
             </div>
 
             <div class="#err_numdays#">
               <label for="NumDays">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.NumDays#:
-                
+                <span class="form-text">#error('NumDays')#</span>
               </label>
               <input id="NumDays" type="text" name="numDays" value="#Variables.numDays#"  />
-              <span class="form-text-inline">#error('NumDays')#</span>
+              
             </div>
 
 						<div>

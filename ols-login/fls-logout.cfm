@@ -1,7 +1,7 @@
 <cfif lang EQ "eng" OR isDefined("session.AdminLoggedIn")>
-	<cfset language.title = "Logout">
-	<cfset language.thankYou = "Thank you for for using the Esquimalt Graving Dock Online Booking System.  You have now been logged out of your session.">
-	<cfset language.returnlogin = "Return to login">
+	<cfset language.title = "Sign Out">
+	<cfset language.thankYou = "Thank you for for using the Esquimalt Graving Dock Online Booking System.  You have now been signed out of your session.">
+	<cfset language.returnlogin = "Return to Sign In">
 <cfelse>
 	<cfset language.title = "Fermer la session">
 	<cfset language.thankYou = "Merci d'avoir utilis&eacute; le syst&egrave;me de r&eacute;servation en ligne de la Cale s&egrave;che d'Esquimalt. Votre session est maintenant termin&eacute;e.">
@@ -26,6 +26,6 @@
 <p><a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.returnlogin#</a></p>
 </cfoutput>
 
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
 
 

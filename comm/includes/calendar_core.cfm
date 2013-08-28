@@ -75,7 +75,7 @@
 	<tr>
 		<cfloop index="doh" from="1" to="#ArrayLen(DaysofWeek)#" step="1">
 			<cfset dummydate = CreateDate(2005, 5, doh)>
-			<th scope="row">#myDateFormat(dummydate, 'dddd')#</th>
+			<th scope="col">#myDateFormat(dummydate, 'dddd')#</th>
 		</cfloop>
 	</tr>
 

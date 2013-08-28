@@ -3,19 +3,17 @@
 <!---cfinclude template="#RootDir#includes/restore_params.cfm">
 <cfinclude template="#RootDir#includes/build_form_struct.cfm"--->
 
-<cfsavecontent variable="js">
 	
-<meta name="dcterms.title" content="PWGSC - ESQUIMALT GRAVING DOCK - Add Maintenance Block">
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta name="dcterms.description" content="" />
-<meta name="dc.date.published" content="2005-07-25" />
-<meta name="dc.date.published" content="2005-07-25" />
-<meta name="dc.date.reviewed" content="2005-07-25" />
-<meta name="dc.date.modified" content="2005-07-25" />
-<meta name="dc.date.created" content="2005-07-25" />
-<title>PWGSC - ESQUIMALT GRAVING DOCK - Add Maintenance Block</title>
-	<script type="text/javascript">
+<cfhtmlhead text="
+	<meta name=""dcterms.title"" content=""Add Maintenance Block - #language.esqGravingDock# - #language.PWGSC#"" />
+	<meta name=""keywords"" content=""#language.masterKeywords#"" />
+	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
+	<meta name=""dcterms.subject"" content="""" />
+	<title>Add Maintenance Block - #language.esqGravingDock# - #language.PWGSC#</title>">
+
+<cfsavecontent variable="js">
+<script type="text/javascript">
 		/* <![CDATA[ */
 		var bookingLength = 0;
 		/* ]]> */
@@ -104,38 +102,20 @@ function EditSubmit ( selectedform )
 				<!--- -------------------------------------------------------------------------------------------- --->
 				<cfform id="AddJettyMaintBlock" action="addJettyMaintBlock_process.cfm?#urltoken#" method="post">
 				<input type="hidden" name="BRID" value="#Variables.BRID#" />
-				<table style="width:100%;">
-        <tr>
-          <td id="Start"><label for="startDate">Start Date:<br /><small>#language.dateform#</small></label></td>
-          <td headers="Start">
-            <input type="text" id="startDate" name="startDate" class="datepicker startDate" value="#DateFormat(Variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
-          </td>
-        </tr>
-        <tr>
-          <td id="End"><label for="endDate">End Date:<br /><small>#language.dateform#</small></label></td>
-          <td headers="End">
-            <input type="text" id="endDate" name="endDate" class="datepicker endDate" value="#DateFormat(Variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
-          </td>
-        </tr>
-				<tr>
-					<td colspan="2">Please select the jetty/jetties that you wish to book for maintenance:</td>
-				</tr>
-				<tr>
-					<td id="nj">&nbsp;&nbsp;&nbsp;<label for="northJetty">North Landing Wharf</label></td>
-					<td headers="nj"><cfinput type="checkbox" name="NorthJetty" id="northJetty" checked="#Variables.NorthJetty#" /></td>
-				</tr>
-				<tr>
-					<td id="sj">&nbsp;&nbsp;&nbsp;<label for="southJetty">South Jetty</label></td>
-					<td headers="sj"><cfinput type="checkbox" name="SouthJetty" id="southJetty" checked="#Variables.SouthJetty#" /></td>
-				</tr>
-				<tr><td>&nbsp;</td></tr>
-				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="Submit" class="button button-accent" />
-						<input type="button" value="Cancel" class="textbutton" onclick="self.location.href='jettyBookingManage.cfm?#urltoken#';" />
-					</td>
-				</tr>
-				</table>
+				<div>
+          <label for="startDate">Start Date:<br /><small>#language.dateform#</small></label>
+              <input type="text" id="startDate" name="startDate" class="datepicker startDate" value="#DateFormat(Variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
+          <label for="endDate">End Date:<br /><small>#language.dateform#</small></label>
+              <input type="text" id="endDate" name="endDate" class="datepicker endDate" value="#DateFormat(Variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
+          <br/>
+          Please select the jetty/jetties that you wish to book for maintenance:
+          <label for="northJetty">North Landing Wharf</label>
+					<cfinput type="checkbox" name="NorthJetty" id="northJetty" checked="#Variables.NorthJetty#" /><br />
+          <label for="southJetty">South Jetty</label>
+          <cfinput type="checkbox" name="SouthJetty" id="southJetty" checked="#Variables.SouthJetty#" />
+          <input type="submit" value="Submit" class="button button-accent" />
+          <a href="jettyBookingManage.cfm?#urltoken#;">Cancel</a>
+				</div>
 				</cfform>
 
 			</div>

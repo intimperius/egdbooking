@@ -30,7 +30,7 @@
 
 <!-- Start of app_nav_gauche-nav_left_app-eng.html / Début de app_nav_gauche-nav_left_app-eng.html -->
 <cfoutput>
-<nav role="navigation"><h2 id="wb-nav">Secondary menu</h2>
+<nav role="navigation"><h2 id="wb-nav">Menu secondaire</h2>
 <div class="wb-sec-def">
 <!-- SecNavStart -->
 <section><h3><a href="#EGD_URL#/index-#lang#.html"><abbr title="#language.esqGravingDock#">#language.egd#</abbr></a></h3>

@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Delete User"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Delete User</title>">
 	<cfset request.title ="Delete User">
@@ -36,10 +37,7 @@ function EditSubmit ( selectedform )
 /* ]]> */
 </script>
 		
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
+
 				<h1 id="wb-cont">
 					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
 					Delete User
@@ -69,11 +67,9 @@ function EditSubmit ( selectedform )
 				</cfif>
 
 				<cfform action="delUser_confirm.cfm?lang=#lang#" method="post" id="delUserForm">
-				<table style="width:100%;">
-					<tr>
-						<td>Company:</td>
-						<td>
-							<CF_TwoSelectsRelated
+				<div>
+					Company: <br />
+					<CF_TwoSelectsRelated
 								QUERY="companyUsers"
 								id1="CID"
 								id2="UID"
@@ -83,26 +79,18 @@ function EditSubmit ( selectedform )
 								VALUE2="UID"
 								SIZE1="1"
 								SIZE2="1"
-								htmlBETWEEN="</td></tr><tr><td valign='baseline'>User:</td><td>"
+								htmlBETWEEN="<br />User:<br />"
 								AUTOSELECTFIRST="Yes"
 								EMPTYTEXT1="(choose a company)"
 								EMPTYTEXT2="(choose a user)"
 								DEFAULT1 ="#variables.CID#"
 								DEFAULT2 ="#variables.UID#"
 								FORMNAME="delUserForm">
-						</td>
-					</tr>
 					<!--a href="javascript:EditSubmit('delUserForm');" class="textbutton">Submit</a-->
-					<tr><td>&nbsp;</td></tr>
-					<tr><td colspan="2" align="center">
-						<input type="submit" name="submitForm" value="Delete" class="button-accent button" />
-						<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-					</td></tr>
-				</table>
+          <input type="submit" name="submitForm" value="Delete" class="button-accent button" />
+          <cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
+				</div>
 				</cfform>
 
 
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

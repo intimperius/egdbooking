@@ -26,6 +26,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Confirm #variables.actionCap# Maintenance Block"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm #variables.actionCap# Maintenance Block</title>">
 	<cfset request.title ="Confirm #variables.actionCap# Maintenance Block">
@@ -49,84 +50,63 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		<div class="colLayout">
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Confirm #variables.actionCap# Maintenance Block
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Confirm #variables.actionCap# Maintenance Block
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+	</h1>
 
-				<cfinclude template="#RootDir#includes/admin_menu.cfm">
+<cfinclude template="#RootDir#includes/admin_menu.cfm">
 
-				<cfif DateCompare(PacificNow, getBooking.endDate, 'd') NEQ 1>
-					<cfinclude template="includes/getConflicts.cfm">
-					<cfset conflictArray = getConflicts_remConf(Variables.BRID)>
-					<cfif ArrayLen(conflictArray) GT 0>
-						<cfset Variables.waitListText = "The booking slot that this maintenance block held is now available for the following tentative bookings. The companies/agents should be given 24 hours notice to claim this slot.">
-						<cfinclude template="includes/displayWaitList.cfm">
-					</cfif>
+<cfif DateCompare(PacificNow, getBooking.endDate, 'd') NEQ 1>
+	<cfinclude template="includes/getConflicts.cfm">
+	<cfset conflictArray = getConflicts_remConf(Variables.BRID)>
+	<cfif ArrayLen(conflictArray) GT 0>
+		<cfset Variables.waitListText = "The booking slot that this maintenance block held is now available for the following tentative bookings. The companies/agents should be given 24 hours notice to claim this slot.">
+		<cfinclude template="includes/displayWaitList.cfm">
+	</cfif>
+</cfif>
+
+
+Please confirm the following maintenance block information.<br/><br/>
+<cfform action="deleteMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+<input type="hidden" name="BRID" value="#Variables.BRID#" />
+
+<div class="module-info widemod">
+	<h2>Block Details</h2>
+	<ul>
+		<b>Start Date:</b> #DateFormat(Variables.Start, 'mmm d, yyyy')#<br/>
+		<b>End Date:</b> #DateFormat(Variables.End, 'mmm d, yyyy')#<br/>
+		<b>Sections:</b>
+			<input type="hidden" name="Section1" value="#Variables.Section1#" />
+			<input type="hidden" name="Section2" value="#Variables.Section2#" />
+			<input type="hidden" name="Section3" value="#Variables.Section3#" />
+			<cfif Variables.Section1 EQ 1>
+				Section 1
+			</cfif>
+			<cfif Variables.Section2 EQ 1>
+				<cfif Variables.Section1 EQ 1>
+					&amp;
 				</cfif>
+				Section 2
+			</cfif>
+			<cfif Variables.Section3 EQ 1>
+				<cfif Variables.Section1  EQ 1 OR Variables.Section2 EQ 1>
+					&amp;
+				</cfif>
+				Section 3
+			</cfif><br/>
+	</ul>
+</div>
 
 
-				<p>Please confirm the following maintenance block information.</p>
-				<cfform action="deleteMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
-				<input type="hidden" name="BRID" value="#Variables.BRID#" />
+<br />
+<div>
+	<input type="submit" value="Delete" class="button button-accent" />
+	<a href="bookingManage.cfm?#urltoken#">Cancel</a>
+</div>
 
-				<table style="width:80%;" align="center">
-					<tr><td align="left"><div style="font-weight:bold;">Booking:</div></td></tr>
-					<tr>
-						<td id="Start" align="left" style="width:25%;">Start Date:</td>
-						<td headers="Start"><input type="hidden" name="StartDate" value="#Variables.Start#" />#DateFormat(Variables.Start, 'mmm d, yyyy')#</td>
-					</tr>
-					<tr>
-						<td id="End" align="left">End Date:</td>
-						<td headers="End"><input type="hidden" name="EndDate" value="#Variables.End#" />#DateFormat(Variables.End, 'mmm d, yyyy')#</td>
-					</tr>
-					<tr>
-						<td id="Sections" align="left">Sections:</td>
-						<td headers="Sections">
-							<input type="hidden" name="Section1" value="#Variables.Section1#" />
-							<input type="hidden" name="Section2" value="#Variables.Section2#" />
-							<input type="hidden" name="Section3" value="#Variables.Section3#" />
-							<cfif Variables.Section1 EQ 1>
-								Section 1
-							</cfif>
-							<cfif Variables.Section2 EQ 1>
-								<cfif Variables.Section1 EQ 1>
-									&amp;
-								</cfif>
-								Section 2
-							</cfif>
-							<cfif Variables.Section3 EQ 1>
-								<cfif Variables.Section1  EQ 1 OR Variables.Section2 EQ 1>
-									&amp;
-								</cfif>
-								Section 3
-							</cfif>
-						</td>
-					</tr>
-				</table>
+</cfform>
 
-				<br />
-				<table style="width:100%;" cellspacing="0" cellpadding="1" border="0">
-					<tr>
-						<td colspan="2" align="center">
-							<!---a href="javascript:EditSubmit('bookingreq');" class="textbutton">Confirm</a>
-							<a href="javascript:history.go(-1);" class="textbutton">Back</a>
-							<a href="bookingManage.cfm?#urltoken#" class="textbutton">Cancel</a>
-							<br--->
-							<input type="submit" value="#variables.actionCap#" class="button button-accent" />
-							<input type="button" value="Back" class="textbutton" onclick="self.location.href='bookingManage.cfm?#urltoken#';" />
-						</td>
-					</tr>
-				</table>
-
-				</cfform>
-
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
 </cfoutput>

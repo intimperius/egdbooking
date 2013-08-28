@@ -142,46 +142,35 @@
 				</cfquery>
 
 				<h2>#language.DrydockBookings#</h2>
-
+        
 				<cfloop query="getDockMaintenanceDetail">
-				<table class="details">
-					<tr>
-						<th scope="row" colspan="2">#language.MaintenanceBlock#</th>
-					</tr>
-					<tr>
-						<th scope="row" colspan="2">#language.closedForMaint#</th>
-					</tr>
-					<tr>
-						<th scope="row" id="SectionsBooked">#language.SectionsBooked#:</th>
-						<td><cfif Section1>#language.Drydock1#</cfif><cfif Section2><cfif Section1> &amp; </cfif>#language.Drydock2#</cfif><cfif Section3><cfif Section1 or Section2> &amp; </cfif>#language.Drydock3#</cfif></td>
-					</tr>
-					<tr>
-						<th scope="row" id="Dates">#language.Dates#:</th>
-						<td>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#</td>
-					</tr>
-				</table>
+				<div class="module-info module-simplify widemod">
+					<h2>#language.MaintenanceBlock#</h2>
+					<div class="indent">
+						<b>#language.closedForMaint#</b>
+            <br />
+            <b>#language.SectionsBooked#: </b>
+						<cfif Section1>#language.Drydock1#</cfif><cfif Section2><cfif Section1> &amp; </cfif>#language.Drydock2#</cfif><cfif Section3><cfif Section1 or Section2> &amp; </cfif>#language.Drydock3#</cfif>
+            <br />
+						<b>#language.Dates#: </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#
+          </div>
+				</div>
 				</cfloop>
-
+        
 				<cfloop query="getDockDetail">
-				<table class="details">
-					<tr id="res-book-#BRID#">
-						<th scope="col" colspan="2">
+				<div class="module-info module-simplify widemod">
+						<h2>
 							<cfif Anonymous AND not viewable(vessels, VNID) AND not IsDefined('session.AdminLoggedIn') AND Status neq 'c' >
 								#language.Deepsea#
 							<cfelse>
               <a href="detail-res-book.cfm?lang=#lang#&amp;BRID=#BRID#&amp;date=#url.date#&amp;referrer=detail" title="#language.booking# ###BRID#: #VesselName#">#language.booking# ###BRID#: #VesselName#</a>
 							</cfif>
-						</th>
-					</tr>
+						</h2>
+          <div class="indent">
 					<cfif not Anonymous or viewable(vessels, VNID) or IsDefined('session.AdminLoggedIn')>
-					<tr>
-						<th scope="row">#language.Agent#:</th>
-						<td>#LastName#, #FirstName#</td>
-					</tr>
+						<b>#language.Agent#: </b>#LastName#, #FirstName#<br />
 					</cfif>
-					<tr>
-						<th scope="row">#language.Status#:</th>
-						<td>
+						<b>#language.Status#: </b>
 							<cfif Status eq 'c'>
                 #language.Confirmed#
 							<cfelseIF Status eq 't'>
@@ -189,44 +178,35 @@
 							<cfelse>
                 #language.Pending#
 							</cfif>
-						</td>
-					</tr>
+					<br />
 					<cfif Status eq 'c'>
-						<tr>
-							<th scope="row">#language.SectionsBooked#:</th>
-              <td>
-                <cfif Section1>#language.Drydock1#</cfif>
-                <cfif Section2>#language.Drydock2#</cfif>
-                <cfif Section3>#language.Drydock3#</cfif>
-              </td>
-						</tr>
+            <b>#language.SectionsBooked#: </b>
+              <cfif Section1>#language.Drydock1#</cfif>
+              <cfif Section2>#language.Drydock2#</cfif>
+              <cfif Section3>#language.Drydock3#</cfif>
+						<br />
 					</cfif>
-					<tr>
-						<th scope="row">#language.DockingDates#:</th>
-						<td>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#</td>
-					</tr>
-				</table>
+					<b>#language.DockingDates#: </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#<br />
+          </div>
+				</div>
+        <br />
 				</cfloop>
+
         <cfif getDockDetail.RecordCount eq 0 AND getDockMaintenanceDetail.RecordCount eq 0><p>#language.noBookings#</p></cfif>
         <p><a href="#RootDir#comm/calend-cale-dock.cfm?lang=#lang#">#language.drydockCalendar#</a></p>
 
 				<h2>#language.JettyBookings#</h2>
 				<cfloop query="getJettyMaintenanceDetail">
-          <table class="details">
-            <tr>
-              <th scope="col" colspan="2">#language.MaintenanceBlock#</th>
-            </tr>
-            <tr>
-              <th scope="col" colspan="2">#language.closedForMaint#</th>
-            </tr>
-            <tr>
-              <th scope="row">#language.SectionsBooked#:</th>
-              <td><cfif NorthJetty>#language.NorthLandingWharf#</cfif><cfif SouthJetty><cfif NorthJetty> &amp; </cfif>#language.SouthJetty#</cfif></td>
-            </tr>
-            <tr>
-              <th scope="row">#language.Dates#:</th>
-            </tr>
-          </table>
+        <div class="module-info module-simplify widemod">
+            <h2>#language.MaintenanceBlock#</h2>
+            <b>#language.closedForMaint#</b>
+            <br />
+              <b>#language.SectionsBooked#: </b>
+              <cfif NorthJetty>#language.NorthLandingWharf#</cfif><cfif SouthJetty><cfif NorthJetty> &amp; </cfif>#language.SouthJetty#</cfif>
+            <br />
+              <b scope="row">#language.Dates#:</b>
+          </div>
+        <br />
 				</cfloop>
 
 				<cfloop query="getJettyDetail">
@@ -243,25 +223,20 @@
 				<cfset Variables.count = "jUserVessel" & #BRID# & ".recordCount">
 				<cfset "#Variables.count#" = evaluate(count)>
 
-				<table class="details">
-					<tr id="res-book-#BRID#">
-						<th scope="col" colspan="2">
+				<div class="module-info module-simplify widemod">
+					<h2>
 							<cfif Anonymous AND not viewable(vessels, VNID) AND not IsDefined('session.AdminLoggedIn') AND Status neq 'c'>
 								#language.Deepsea#
 							<cfelse>
               <a href="detail-res-book.cfm?lang=#lang#&amp;BRID=#BRID#&amp;date=#url.date#&amp;referrer=detail" title="#language.booking# ###BRID#: #VesselName#">#language.booking# ###BRID#: #VesselName#</a>
 							</cfif>
-						</th>
-					</tr>
+					</h2>
+          <div class="indent">
 					<cfif not Anonymous or viewable(vessels, VNID) or IsDefined('session.AdminLoggedIn')>
-					<tr>
-						<th scope="row">#language.Agent#:</th>
-						<td>#LastName#, #FirstName#</td>
-					</tr>
+						<b>#language.Agent#: </b>#LastName#, #FirstName#
+					<br />
 					</cfif>
-					<tr>
-						<th scope="row">#language.Status#:</th>
-						<td>
+						<b>#language.Status#: </b>
 							<cfif Status eq 'c'>
 								#language.Confirmed#
 							<cfelseIF Status eq 't'>
@@ -269,25 +244,19 @@
 							<cfelse>
                 #language.Pending#
 							</cfif>
-						</td>
-					</tr>
+            <br />
 					<cfif Status eq 'c'>
-						<tr>
-							<th scope="row">#language.SectionsBooked#:</th>
-							<td>
-                <cfif NorthJetty>#language.NorthLandingWharf#</cfif>
-                <cfif SouthJetty>#language.SouthJetty#</cfif>
-              </td>
-						</tr>
+            <b>#language.SectionsBooked#:</b>
+              <cfif NorthJetty>#language.NorthLandingWharf#</cfif>
+              <cfif SouthJetty>#language.SouthJetty#</cfif>
+						<br />
 					</cfif>
-					<tr>
-						<th scope="row">#language.DockingDates#:</th>
-						<td>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#</td>
-					</tr>
-				</table>
-
-
+						<b>#language.DockingDates#: </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#
+          </div>
+				</div>
+        <br />
 				</cfloop>
+        
         <cfif getJettyDetail.RecordCount eq 0 AND getJettyMaintenanceDetail.RecordCount eq 0><p>#language.noBookings#</p></cfif>
         <p><a href="#RootDir#comm/calend-jet.cfm?lang=#lang#">#language.JettyCalendar#</a></p>
 

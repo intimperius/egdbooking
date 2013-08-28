@@ -10,6 +10,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Edit Maintenance Block"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Maintenance Block</title>">
 	<cfset request.title = "Edit Maintenance Block">
@@ -104,36 +105,21 @@ function EditSubmit ( selectedform )
 				</cfif>
 				<!--- -------------------------------------------------------------------------------------------- --->
 				<form id="EditJettyMaintBlock" action="editJettyMaintBlock_process.cfm?#urltoken#" method="post">
-				<input type="hidden" name="BRID" value="#Variables.BRID#" />
-				<table style="width:90%;">
-          <tr>
-            <td id="Start"><label for="startDate">Start Date:<br /><small>#language.dateform#</small></label></td>
-            <td headers="Start">
-              <input type="text" id="startDate" name="startDate" class="datepicker startDate" value="#DateFormat(startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
-            </td>
-          </tr>
-          <tr>
-            <td id="End"><label for="endDate">End Date:<br /><small>#language.dateform#</small></label></td>
-            <td headers="End">
-              <input type="text" id="endDate" name="endDate" class="datepicker endDate" value="#DateFormat(endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
-            </td>
-          </tr>
-          <tr><td colspan="2">Please select the jetty/jetties that you wish to book for maintenance:</td></tr>
-          <tr>
-            <td id="nj"><label for="NorthJetty">North Landing Wharf</label></td>
-            <td headers="nj"><input type="checkbox" id="NorthJetty" name="NorthJetty" checked="#Variables.NorthJetty#" /></td></tr>
-          <tr>
-            <td id="sj"><label for="SouthJetty">South Jetty</label></td>
-            <td headers="sj"><input type="checkbox" id="SouthJetty" name="SouthJetty" checked="#Variables.SouthJetty#" /></td>
-          </tr>
-          <tr><td>&nbsp;</td></tr>
-          <tr>
-            <td colspan="2" align="center">
-              <input type="submit" class="button button-accent" value="Submit" />
-              <a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Cancel</a>
-            </td>
-          </tr>
-				</table>
+        <input type="hidden" name="BRID" value="#Variables.BRID#" />
+        <label for="startDate">Start Date:<br /><small>#language.dateform#</small></label>
+          <input type="text" id="startDate" name="startDate" class="datepicker startDate" value="#DateFormat(startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
+        <label for="endDate">End Date:<br /><small>#language.dateform#</small></label>
+          <input type="text" id="endDate" name="endDate" class="datepicker endDate" value="#DateFormat(endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
+
+          Please select the jetty/jetties that you wish to book for maintenance:<br />
+          <label for="NorthJetty">North Landing Wharf</label>
+          <input type="checkbox" id="NorthJetty" name="NorthJetty" checked="#Variables.NorthJetty#" /><br />
+          <label for="SouthJetty">South Jetty</label>
+          <input type="checkbox" id="SouthJetty" name="SouthJetty" checked="#Variables.SouthJetty#" />
+          <br /><br />
+          <input type="submit" class="button button-accent" value="Submit" />
+          <a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Cancel</a>
+
 				</form>
 
 

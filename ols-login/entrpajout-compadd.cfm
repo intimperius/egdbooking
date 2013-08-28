@@ -63,25 +63,25 @@
 					</cfif>
 
 					<cfif not error("name") EQ "">
-  						<cfset err_compname = "form-attention" />
+  						<cfset err_compname = "form-alert" />
 					</cfif>
 					<cfif not error("phone") EQ "">
-  						<cfset err_phone = "form-attention" />
+  						<cfset err_phone = "form-alert" />
 					</cfif>
 					<cfif not error("address1") EQ "">
-  						<cfset err_address1 = "form-attention" />
+  						<cfset err_address1 = "form-alert" />
 					</cfif>
 					<cfif not error("city") EQ "">
-  						<cfset err_city = "form-attention" />
+  						<cfset err_city = "form-alert" />
 					</cfif>
 					<cfif not error("province") EQ "">
-  						<cfset err_province = "form-attention" />
+  						<cfset err_province = "form-alert" />
 					</cfif>
 					<cfif not error("country") EQ "">
-  						<cfset err_country = "form-attention" />
+  						<cfset err_country = "form-alert" />
 					</cfif>
 					<cfif not error("zip") EQ "">
-  						<cfset err_zip = "form-attention" />
+  						<cfset err_zip = "form-alert" />
 					</cfif>
 
 					<cfif IsDefined("Session.Return_Structure")>
@@ -93,15 +93,15 @@
 					<form name="addCompanyForm" action="entrpajout-compadd_action.cfm?lang=#lang#&amp;info=#url.info#&amp;companies=#url.companies#" id="addCompanyForm" method="post">
             <fieldset>	
               <div class="#err_compname#">
-                <label for="name"><abbr title="#language.required#" class="required">*</abbr>#language.companyName#:</label>
+                <label for="name"><abbr title="#language.required#" class="required">*</abbr>#language.companyName#:<span class="form-text">#error('name')#</span></label>
                 <input name="name" id="name" type="text" size="40" maxlength="75" value="#Variables.name#" />
-                <span class="form-text-inline">#error('name')#</span>
+                
               </div>
             
               <div class="#err_address1#">
-                <label for="address1"><abbr title="#language.required#" class="required">*</abbr>#language.Address# 1:</label>
+                <label for="address1"><abbr title="#language.required#" class="required">*</abbr>#language.Address# 1:<span class="form-text">#error('address1')#</span></label>
                 <input name="address1" id="address1" type="text" size="40" maxlength="75" value="#Variables.address1#" />
-                <span class="form-text-inline">#error('address1')#</span>
+                
               </div>
             
               <div>
@@ -110,33 +110,33 @@
               </div>
             
               <div class="#err_city#">
-                <label for="city"><abbr title="#language.required#" class="required">*</abbr>#language.City#:</label>
+                <label for="city"><abbr title="#language.required#" class="required">*</abbr>#language.City#:<span class="form-text">#error('city')#</span></label>
                 <input name="city" id="city" type="text" size="25" maxlength="40" value="#Variables.city#" />
-                <span class="form-text-inline">#error('city')#</span>
+                
               </div>
             
               <div class="#err_province#">
-                <label for="province"><abbr title="#language.required#" class="required">*</abbr>#language.Province#:</label>
+                <label for="province"><abbr title="#language.required#" class="required">*</abbr>#language.Province#:<span class="form-text">#error('province')#</span></label>
                 <input name="province" id="province" type="text" size="25" maxlength="40" value="#Variables.province#" />
-                <span class="form-text-inline">#error('province')#</span>
+                
               </div>
             
               <div class="#err_country#">
-                <label for="country"><abbr title="#language.required#" class="required">*</abbr>#language.Country#:</label>
+                <label for="country"><abbr title="#language.required#" class="required">*</abbr>#language.Country#:<span class="form-text">#error('country')#</span></label>
                 <input name="country" id="country" type="text" size="25" maxlength="40" value="#Variables.country#" />
-                <span class="form-text-inline">#error('country')#</span>
+                
               </div>
             
               <div class="#err_zip#">
-                <label for="zip"><abbr title="#language.required#" class="required">*</abbr>#language.zip#:</label>
+                <label for="zip"><abbr title="#language.required#" class="required">*</abbr>#language.zip#:<span class="form-text">#error('zip')#</span></label>
                 <input name="zip" id="zip" type="text" size="12" maxlength="10" value="#Variables.zip#" />
-                <span class="form-text-inline">#error('zip')#</span>
+                
               </div>
 
               <div class="#err_phone#">
-                <label for="phone"><abbr title="#language.required#" class="required">*</abbr>#language.Phone#:</label>
+                <label for="phone"><abbr title="#language.required#" class="required">*</abbr>#language.Phone#:<span class="form-text">#error('phone')#</span></label>
                 <input name="phone" id="phone" type="text" size="25" maxlength="32" value="#Variables.phone#" />
-                <span class="form-text-inline">#error('phone')#</span>
+                
               </div>
             
               <div>
@@ -151,7 +151,7 @@
 			</div>
       <!-- CONTENT ENDS | FIN DU CONTENU -->
 		
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
 
 
 

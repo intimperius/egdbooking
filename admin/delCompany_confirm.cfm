@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Confirm Delete Company"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Confirm Delete Company</title>">
 	<cfset request.title ="Confirm Delete Company">
@@ -73,161 +74,126 @@ function EditSubmit ( selectedform )
 </script>
 <!-- End JavaScript Block -->
 
-		
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Confirm Delete Company
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Confirm Delete Company
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+	</h1>
 
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
-				<cfif IsDefined("Session.Return_Structure")>
-					<!--- Populate the Variables Structure with the Return Structure.
-							Also display any errors returned --->
-					<cfinclude template="#RootDir#includes/getStructure.cfm">
-				</cfif>
+<cfif IsDefined("Session.Return_Structure")>
+	<!--- Populate the Variables Structure with the Return Structure.
+			Also display any errors returned --->
+	<cfinclude template="#RootDir#includes/getStructure.cfm">
+</cfif>
 
-				<cfif getDockBookings.recordCount GT 0 OR getJettyBookings.recordCount GT 0 OR getVessels.recordCount GT 0 OR getCompanyUsers.recordCount GT 0>
-					<cfif getDockBookings.recordCount GT 0 OR getJettyBookings.recordCount GT 0>
-					<cfoutput>
-						<strong>#getCompany.Name#</strong> cannot be deleted as it has the following confirmed bookings:
-						<br /><br />
-						<cfif getDockBookings.recordCount GT 0>
-							<table style="padding-left:20px; width:100%;">
-							<tr><th id="drydock" align="left"><strong>Drydock</strong></th></tr>
-								<cfloop query="getDockBookings">
-									<cfif getDockBookings.Status EQ "C">
-										<tr>
-											<td headers="drydock">&nbsp;&nbsp;#name#</td><td align="left">#DateFormat(StartDate, 'mmm d, yyyy')# - #DateFormat(EndDate, 'mmm d, yyyy')#</td>
-										</tr>
-									</cfif>
-								</cfloop>
-							</table>
-						<br />
-						</cfif>
-						<cfif getJettyBookings.recordCount GT 0>
-							<table style="padding-left:20px;width:100%;" >
-							<tr><th id="jetties" align="left"><strong>Jetties</strong></th></tr>
-								<cfloop query="getJettyBookings">
-									<cfif getJettyBookings.Status EQ "C">
-										<tr>
-											<td headers="jetties">&nbsp;&nbsp;#name#</td><td align="left">#DateFormat(StartDate, 'mmm d, yyyy')# - #DateFormat(EndDate, 'mmm d, yyyy')#</td>
-										</tr>
-									</cfif>
-								</cfloop>
-							</table>
-						<br />
-						</cfif>
-						All confirmed bookings must be cancelled before #getCompany.Name# can be deleted.<br /><br />
-					</cfoutput>
+<cfif getDockBookings.recordCount GT 0 OR getJettyBookings.recordCount GT 0 OR getVessels.recordCount GT 0 OR getCompanyUsers.recordCount GT 0>
+	<cfif getDockBookings.recordCount GT 0 OR getJettyBookings.recordCount GT 0>
+	<cfoutput>
+		<strong>#getCompany.Name#</strong> cannot be deleted as it has the following confirmed bookings:
+		<cfif getDockBookings.recordCount GT 0>
+			<h2 class="color-dark">Drydock</h2>
+			<table class="table-condensed">
+			<tr><th id="drydock" align="left">Vessel</th><th>Date</th></tr>
+				<cfloop query="getDockBookings">
+					<cfif getDockBookings.Status EQ "C">
+						<tr>
+							<td headers="drydock">&nbsp;&nbsp;#name#</td><td align="left">#DateFormat(StartDate, 'mmm d, yyyy')# - #DateFormat(EndDate, 'mmm d, yyyy')#</td>
+						</tr>
 					</cfif>
-
-					<cfif getVessels.recordCount GT 0>
-						<cfoutput>
-						<strong>#getCompany.Name#</strong> cannot be deleted as it is currently responsible for the following vessel(s):
-						<br /><br />
-						<table style="padding-left:20px; width:100%;" >
-							<cfloop query="getVessels">
-								<tr>
-									<td>&nbsp;&nbsp;#name#</td>
-								</tr>
-							</cfloop>
-						</table>
-						<br />All vessels must be deleted before #getCompany.Name# can be deleted.<br /><br />
-					</cfoutput>
+				</cfloop>
+			</table>
+		</cfif>
+		<cfif getJettyBookings.recordCount GT 0>
+			<h2 class="color-dark">Jetties</h2>
+			<table class="table-condensed">
+			<tr><th id="jetties" align="left">Jetties</th><th>Date</th></tr>
+				<cfloop query="getJettyBookings">
+					<cfif getJettyBookings.Status EQ "C">
+						<tr>
+							<td headers="jetties">&nbsp;&nbsp;#name#</td><td align="left">#DateFormat(StartDate, 'mmm d, yyyy')# - #DateFormat(EndDate, 'mmm d, yyyy')#</td>
+						</tr>
 					</cfif>
+				</cfloop>
+			</table>
+		<br />
+		</cfif>
+		All confirmed bookings must be cancelled before #getCompany.Name# can be deleted.<br /><br />
+	</cfoutput>
+	</cfif>
 
-					<cfif getCompanyUsers.recordCount GT 0>
-						<cfoutput>
-						<strong>#getCompany.Name#</strong> cannot be deleted as it is currently the only company responsible for the following user(s):
-						<br /><br />
-						<table style="padding-left:20px; width:100%;" >
-							<cfloop query="getCompanyUsers">
-								<tr>
-									<td>&nbsp;&nbsp;#userName#</td>
-								</tr>
-							</cfloop>
-						</table>
-						<br />All users that are associated with only #getCompany.name# must be deleted before #getCompany.Name# can be deleted.<br /><br />
-					</cfoutput>
-					</cfif>
-
-					<cfoutput>
-					<div style="text-align:center;">
-						<a href="delCompany.cfm?lang=#lang#" class="textbutton">Back</a>
-						<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-					</div>
-					</cfoutput>
-
-				<cfelse>
-				<cfform action="delCompany_action.cfm?lang=#lang#" method="post" id="delCompanyConfirmForm">
-					Are you sure you want to delete <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?
-
-					
-
-					<input type="hidden" name="CID" value="<cfoutput>#form.CID#</cfoutput>" />
-
-
-					<cfoutput>
-					<table style="padding-top:10px;">
-						<tr>
-							<td colspan="2"><strong>Company Profile:</strong></td>
-						</tr>
-						<tr>
-							<td id="Name">Name:</td>
-							<td headers="Name">#getCompany.Name#</td>
-						</tr>
-						<tr>
-							<td id="address1">Address 1:</td>
-							<td headers="address1">#getCompany.address1#</td>
-						</tr>
-						<tr>
-							<td id="address2">Address 2:</td>
-							<td headers="address2">#getCompany.address2#</td>
-						</tr>
-						<tr>
-							<td id="City">City:</td>
-							<td headers="City">#getCompany.city#</td>
-						</tr>
-						<tr>
-							<td id="Province">Province:</td>
-							<td headers="Province">#getCompany.province#</td>
-						</tr>
-						<tr>
-							<td id="Country">Country:</td>
-							<td headers="Country">#getCompany.country#</td>
-						</tr>
-						<tr>
-							<td id="Postal">Postal Code:</td>
-							<td headers="Postal">#getCompany.zip#</td>
-						</tr>
-						<tr>
-							<td id="Phone">Phone:</td>
-							<td headers="Phone">#getCompany.phone#</td>
-						</tr>
-					</table>
-
-					<cfoutput>
-					<p><div style="text-align:center;">
-					<!--a href="javascript:EditSubmit('delCompanyConfirmForm');" class="textbutton">Submit</a>
-					<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a-->
-					<input type="submit" name="submitForm" class="button-accent button" value="Submit" />
-					<a href="delCompany.cfm?lang=#lang#" class="textbutton">Back</a>
-					<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-					</div></p>
-					</cfoutput>
-					</cfoutput>
-
-				</cfform>
-				</cfif>
-
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
+	<cfif getVessels.recordCount GT 0>
+		<cfoutput>
+		<strong>#getCompany.Name#</strong> cannot be deleted as it is currently responsible for the following vessel(s):
+		<br /><br />
+		<div class="module-attention widemod module-simplify">
+			<h2 class="color-dark">Vessels</h2>
+			<ul class="column-3">
+			<cfloop query="getVessels">
+					#name#<br/>
+			</cfloop>
+			</ul>
 		</div>
+		<br />All vessels must be deleted before #getCompany.Name# can be deleted.<br /><br />
+	</cfoutput>
+	</cfif>
+
+	<cfif getCompanyUsers.recordCount GT 0>
+		<cfoutput>
+		<strong>#getCompany.Name#</strong> cannot be deleted as it is currently the only company responsible for the following user(s):
+		<br /><br />
+		<div class="module-attention widemod module-simplify">
+			<h2 class="color-dark">Users</h2>
+			<ul class="column-3">
+			<cfloop query="getCompanyUsers">
+				&nbsp;&nbsp;#userName#<br/>
+			</cfloop>
+			</ul>
+		</div>
+		<br />All users that are associated with only #getCompany.name# must be deleted before #getCompany.Name# can be deleted.<br /><br />
+	</cfoutput>
+	</cfif>
+
+	<cfoutput>
+	<div style="text-align:center;">
+		<a href="delCompany.cfm?lang=#lang#" class="textbutton">Back</a>
+		<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
+	</div>
+	</cfoutput>
+
+<cfelse>
+<cfform action="delCompany_action.cfm?lang=#lang#" method="post" id="delCompanyConfirmForm">
+	Are you sure you want to delete <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?
+	<input type="hidden" name="CID" value="<cfoutput>#form.CID#</cfoutput>" />
+	<br/><br/>
+	<cfoutput>
+	<div class="module-info widemod">
+		<h2>Company Profile:</h2>
+		<ul>
+			<b>Name:</b> #getCompany.Name#<br/>
+			<b>Address 1:</b> #getCompany.address1#<br/>
+			<b>Address 2:</b> #getCompany.address2#<br/>
+			<b>City:</b> #getCompany.city#<br/>
+			<b>Province:</b> #getCompany.province#<br/>
+			<b>Country:</b> #getCompany.country#<br/>
+			<b>Postal Code:</b> #getCompany.zip#<br/>
+			<b>Phone:</b> #getCompany.phone#
+		</ul>
+	</div>
+	<cfoutput>
+
+	<p><div>
+	<!--a href="javascript:EditSubmit('delCompanyConfirmForm');" class="textbutton">Submit</a>
+	<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a-->
+	<input type="submit" name="submitForm" class="button-accent button" value="Submit" />
+	<a href="delCompany.cfm?lang=#lang#" class="textbutton">Back</a>
+	<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
+	</div></p>
+	</cfoutput>
+	</cfoutput>
+
+</cfform>
+</cfif>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

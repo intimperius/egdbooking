@@ -35,7 +35,7 @@
           </cfloop>
         </select>
         <input type="hidden" name="lang" value="#lang#" />
-        <input type="submit" value="#language.select#" />
+        <input type="submit" class="button button-accent" value="#language.select#" />
       </fieldset>
     </form>
   </cfoutput>

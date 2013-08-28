@@ -57,36 +57,21 @@
 
 					<cfoutput>
 					<input type="hidden" name="BRID" value="#Form.BRID#" />
-					<table style="padding-top:5px;">
-						<tr>
-							<td><strong>Booking Details:</strong></td>
-						</tr>
-						<tr>
-							<td id="Vessel">Vessel:</td>
-							<td headers="Vessel">#getBooking.VesselName#</td>
-						</tr>
-						<tr>
-							<td id="Company">Company:</td>
-							<td headers="Company">#getBooking.CompanyName#</td>
-						</tr>
-						<tr>
-							<td id="Start">Start Date:</td>
-							<td headers="Start">#DateFormat(Variables.Start, "mmm d, yyyy")#</td>
-						</tr>
-						<tr>
-							<td id="End">End Date:</td>
-							<td headers="End">#DateFormat(Variables.End, "mmm d, yyyy")#</td>
-						</tr>
-						<tr>
-							<td id="Jetty" align="left">Jetty:</td>
-							<td headers="Jetty"><cfoutput>#Variables.Jetty#</cfoutput></td>
-						</tr>
-					</table>
+					<div class="module-info widemod">
+          <h2>Booking Details:</h2>
+          <ul>
+            <b>Vessel:</b> #getBooking.VesselName#<br/>
+            <b>Company:</b> #getBooking.CompanyName#<br/>
+            <b>Start Date</b> #DateFormat(Variables.Start, "mmm d, yyyy")#<br/>
+            <b>End Date:</b> #DateFormat(Variables.End, "mmm d, yyyy")#<br/>
+						<b>Jetty:</b> <cfoutput>#Variables.Jetty#</cfoutput>
+            
+          </ul>
+					</div><br /></cfoutput>
 
 					<div style="text-align:center;">
 					<input type="submit" value="Submit" class="button button-accent" />
-					<input type="button" onclick="self.location.href='#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#'" value="Cancel" class="textbutton" />
-					</cfoutput>
+					<cfoutput><a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#">Cancel</a></cfoutput>
 					</div>
 				</cfform>
 

@@ -39,7 +39,8 @@
 <cfhtmlhead text="
 	<meta name=""dcterms.title"" content=""#language.NewBooking# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.keywords#"" />
-	<meta name=""description"" content=""#language.description#"" />
+  <meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.subjects#"" />
 	<title>#language.NewBooking# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.submitJettyBooking />

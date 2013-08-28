@@ -84,6 +84,7 @@
             <div>
               <label for="start">&nbsp; #language.fromDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small></label>
               <input id="start" type="text" name="startDate" class="datepicker startDate" value="#DateFormat(variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
+              <input type="date" data-rule-dateiso="true" name="date1" id="date1" data-role="none" class="picker-field">
             </div>
             
             <div>

@@ -16,6 +16,7 @@
 	<meta name=""dcterms.title"" content=""#language.title# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.keywords#"" />
 	<meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.subjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.title />
@@ -62,8 +63,8 @@
         #language.phone#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-3879  #language.or#  250-363-8056<br />
 					#language.fax#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-8059<br />
 					#language.emailAddress#<cfif lang eq "fra">&nbsp;</cfif>: 
-         <a href="mailto:#Variables.AdminEmail#?subject=#emailSubject#">
-           #Variables.AdminEmail#
+         <a href="mailto:#variables.adminemail#?subject=#emailSubject#">
+           #variables.adminemail#
          </a>
         </p>
 				</cfoutput>

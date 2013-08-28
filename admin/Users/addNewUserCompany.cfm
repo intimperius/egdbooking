@@ -76,6 +76,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Create New User"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New User</title>">
 <cfset request.title ="Create New User">
@@ -98,15 +99,12 @@ function EditSubmit ( selectedform )
 /* ]]> */
 </script>
 		
-		<div class="colLayout">
-		
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Create New User
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Create New User
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
 
 				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
@@ -130,14 +128,12 @@ function EditSubmit ( selectedform )
 				<cfinclude template="#RootDir#includes/getStructure.cfm">
 
 				<cfoutput>
-				<table style="width:85%;">
-						<tr>
-							<td colspan="2">Requested companies: </td>
-						</tr>
+				<div class="span-6">
+					<div>
+						<b>Requested companies:</b>
+					</div>
 					<cfif NOT isDefined("url.companies")>
-						<tr>
-							<td style="width:8%;">&nbsp;</td><td>No Companies</td>
-						</tr>
+						<div class="span-1">&nbsp;</div><div><span style="color:red">No Companies</span></div>
 						<cfset companyList = ArrayToList(ArrayNew(1))>
 					<cfelse>
 						<cfif Len(url.companies) EQ 0>
@@ -152,38 +148,41 @@ function EditSubmit ( selectedform )
 						</cfif>
 
 						<cfif Len(companyList) EQ 0>
-							<tr>
-								<td style="width:8%;">&nbsp;</td><td>No Companies</td>
-							</tr>
+							<div class="span-1">&nbsp;</div><div><span style="color:red">No Companies</span></div>
 						</cfif>
 
-						<cfset counter = 1>
-						<cfloop index = "ID" list = "#companyList#">
-							<cfif Len(companyList) EQ 0>
-								<cfset companies = companyList>
-							<cfelse>
-								<cfset companies = URLEncodedFormat(ToBase64(cfusion_encrypt(companyList, "shanisnumber1")))>
-							</cfif>
+						<cfset left= "" />
+						<cfset right="" />
 
-							<form method="post" action="removeNewUserCompany_confirm.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" name="remCompany#ID#">
+						<cfset counter = 1>
+						
+
+						<cfloop index = "ID" list = "#companyList#">
+						<cfif Len(companyList) EQ 0>
+							<cfset companies = companyList>
+							<cfelse>
+							<cfset companies = URLEncodedFormat(ToBase64(cfusion_encrypt(companyList, "shanisnumber1")))>
+						</cfif>
+						<cfset detailsID = "companyDetails#ID#">
+						<cfquery name="detailsID" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+							SELECT	Name, Approved
+							FROM	Companies
+							WHERE	CID = <cfqueryparam value="#ID#" cfsqltype="cf_sql_integer" />
+						</cfquery>
+								<form style="display:none;" action="removeNewUserCompany_confirm.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" method="post" id="remCompany#ID#">
 								<input type="hidden" name="CID" value="#ID#" />
 							</form>
+							<cfset left = left &"#detailsID.Name#<br/>"/>
+							<cfset right = right & "<a href=""javascript:EditSubmit('remCompany#ID#');"" class=""textbutton"">Remove</a><br/>" />
+						<cfset counter = counter + 1>
+					</cfloop>
+					<br/>
 
-							<cfset detailsID = "companyDetails#ID#">
-							<cfquery name="detailsID" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
-								SELECT	Name, Approved
-								FROM	Companies
-								WHERE	CID = <cfqueryparam value="#ID#" cfsqltype="cf_sql_integer" />
-							</cfquery>
-							<tr>
-								<td style="width:8%;">&nbsp;</td><td>#detailsID.Name#</td>
-								<td align="left" valign="top" style="width:55%;"><a href="javascript:EditSubmit('remCompany#ID#');" class="textbutton">Remove</a>
-								<cfif detailsID.approved EQ 0>&nbsp;<i>awaiting approval</i></cfif></td>
-							</tr>
-							<cfset counter = counter + 1>
-						</cfloop>
-					</cfif>
-				</table><br />
+					<div class="span-2">#left#</div>
+					<div class="span-3">#right#</div>
+
+				</cfif>
+			</div>
 
 				<cfif Len(companyList) EQ 0>
 					<cfset companies = companyList>
@@ -191,25 +190,28 @@ function EditSubmit ( selectedform )
 					<cfset companies = URLEncodedFormat(ToBase64(cfusion_encrypt(companyList, "shanisnumber1")))>
 				</cfif>
 
-				
-				<cfform action="addNewUserCompany.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" id="addUserCompanyForm" method="post">
-				<table style="width:88%;">
-					<tr>
-						<td valign="top"><label for="companies">Add Company:</label></td>
-						<td>
-							<cfselect name="CID" id="companies" required="yes" message="Please select a company.">
-								<option value="">(Please select a company)
-								<cfloop query="getCompanies">
-									<cfif ListFind(companyList, "#CID#") EQ 0>
-										<option value="#CID#">#Name#
-									</cfif>
-								</cfloop>
-							</cfselect>
-							<input type="submit" name="submitCompany" value="Add" class="textbutton" />
-							<font size="-2">If the desired company is not listed, click <a href="addCompany.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#">here</a> to create one.</font>
-						</td>
-					</tr>
-				</table>
+			<cfform action="addNewUserCompany.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" id="addUserCompanyForm" method="post">
+				<div class="span-6">
+				<div class="span-1">
+					<label for="companies">Add Company:</label>
+				</div>
+				<div class="span-4">
+					<cfselect name="CID" id="companies" required="yes" message="Please select a company.">
+			            <option value="">(Please select a company)
+			            <cfloop query="getCompanies">
+			              <cfif ListFind(companyList, "#CID#") EQ 0>
+			                <option value="#CID#">#Name#
+			              </cfif>
+			            </cfloop>
+			        </cfselect>
+					<input type="submit" name="submitCompany" value="Add" class="button" />
+				</div>
+				<div class="span-1"></div>
+				<div class="span-4">
+
+				<span class="small">If the desired company is not listed, click <a href="addCompany.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#">here</a> to create one.</a></span>
+				</div>
+			</div>
 				</cfform>
 				</cfoutput>
 
@@ -220,18 +222,17 @@ function EditSubmit ( selectedform )
         <cfoutput>
           <cfform id="newUserForm" action="addUser_action.cfm?lang=#lang#&info=#Variables.info#">
             <input type="hidden" name="firstname" value="#Variables.firstname#" />
-            <input type="hidden" name="lastname" value="#Variables.lastname#" />
-            <input type="hidden" name="email" value="#Variables.email#" />
-            <input type="hidden" name="password1" value="#Variables.password1#" />
-            <input type="hidden" name="companies" value="#companies#" />
-            <br /><div style="text-align:right;"><input type="submit" onclick="javascript:EditSubmit('newUserForm');" value="Submit New User" class="button button-accent" />
-            <input type="button" onclick="javascript:self.location.href='addUser.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#'" value="Edit Profile" class="textbutton" />
-            <input type="button" onclick="javascript:self.location.href='../menu.cfm?lang=#lang#'" value="Cancel" class="textbutton" />
-          </cfform>
-        </cfoutput>
+			<input type="hidden" name="lastname" value="#Variables.lastname#" />
+			<input type="hidden" name="email" value="#Variables.email#" />
+			<input type="hidden" name="password1" value="#Variables.password1#" />
+			<input type="hidden" name="companies" value="#companies#" />
+			<br />
+			<input type="submit" onclick="javascript:EditSubmit('newUserForm');" value="Submit New User" class="button button-accent" />
+			<div>
+				<a href="addUser.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#">Edit Profile</a><br />
+            	<a href="../menu.cfm?lang=#lang#">Cancel</a>
 			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
-		</div>
-
+          </cfform>
+          </cfoutput>
+		
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

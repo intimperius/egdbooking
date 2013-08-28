@@ -81,7 +81,7 @@
 	</cftransaction>
 	
 <cfoutput>
-	<cfmail to="#form.Email#" from="#Variables.AdminEmail#" subject="Account Reactivated for EGD" type="html" username="#mailuser#" password="#mailpassword#">
+	<cfmail to="#form.Email#" from="#variables.adminemail#" subject="Account Reactivated for EGD" type="html" username="#mailuser#" password="#mailpassword#">
 <p>#form.firstname# #form.lastname#,</p>
 <p>Your account for the Esquimalt Graving Dock Online Booking System has been reactivated.</p>
 <p>Username: #form.email#<br />Password: #form.password1#</p>
@@ -173,6 +173,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Create New User"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Create New User</title>">
 	<cfset request.title ="Create New User">

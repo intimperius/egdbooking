@@ -63,6 +63,7 @@
 	<meta name=""dcterms.title"" content=""#language.EditProfile# - #language.esqGravingDock# - #language.PWGSC#"" />
 	<meta name=""keywords"" content=""#language.keywords#"" />
 	<meta name=""description"" content=""#language.description#"" />
+	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.subjects#"" />
 	<title>#language.EditProfile# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.EditProfile />
@@ -121,19 +122,19 @@ function EditSubmit ( selectedform )
 				<h1 id="wb-cont"><cfoutput>#language.EditProfile#</cfoutput></h1>
 
 		<cfif not error("firstname") EQ "">
-            <cfset err_fname = "form-attention" />
+            <cfset err_fname = "form-alert" />
         </cfif>
         <cfif not error("lastname") EQ "">
-            <cfset err_lname = "form-attention" />
+            <cfset err_lname = "form-alert" />
         </cfif>
         <cfif not error("email") EQ "">
-            <cfset err_email = "form-attention" />
+            <cfset err_email = "form-alert" />
         </cfif>
         <cfif not error("password") EQ "">
-            <cfset err_pass1 = "form-attention" />
+            <cfset err_pass1 = "form-alert" />
         </cfif>
         <cfif not error("password2") EQ "">
-            <cfset err_pass2 = "form-attention" />
+            <cfset err_pass2 = "form-alert" />
         </cfif>
 
 				<CFINCLUDE template="#RootDir#includes/user_menu.cfm">
@@ -153,29 +154,29 @@ function EditSubmit ( selectedform )
 							<div class="#err_fname#">
                 <label for="firstname">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.FirstName#:
+                  #language.FirstName#:<span class="form-text">#error('firstname')#</span>
                 </label>
                 <input name="firstname" id="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40"  />
-                <span class="form-text-inline">#error('firstname')#</span>
+                
 							</div>
 
 							<div class="#err_lname#">
                 <label for="lastname">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.LastName#:
+                  #language.LastName#:<span class="form-text">#error('lastname')#</span>
                 </label>
                 <input name="lastname" id="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40"  />
-                <span class="form-text-inline">#error('lastname')#</span>
+                
 							</div>
 
 
 							<div class="#err_email#">
                 <label for="email">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.Email#:
+                  #language.Email#:<span class="form-text">#error('email')#</span>
                 </label>
                 <input name="email" id="email" type="text" value="#variables.email#" size="25" maxlength="40"  />
-                <span class="form-text-inline">#error('email')#</span>
+               
 							</div>
 							
               <div>
@@ -195,19 +196,19 @@ function EditSubmit ( selectedform )
                 <label for="password">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
                   #language.Password# 
-                  <span class="smallFont">(min. 8 #language.characters#)</span>:
+                  <span class="smallFont">(min. 8 #language.characters#)</span>:<span class="form-text">#error('password')#</span>
                 </label>
                 <input type="password" id="password" name="password1" />
-                <span class="form-text-inline">#error('password')#</span>
+                
 							</div>
 
 							<div class="#err_pass2#">
                 <label for="password2">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.RepeatPassword#:
+                  #language.RepeatPassword#:<span class="form-text">#error('password2')#</span>
                 </label>
                 <input type="password" id="password2" name="password2" />
-                <span class="form-text-inline">#error('password2')#</span>
+                
 							</div>
 
               <div>

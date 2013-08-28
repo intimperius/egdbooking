@@ -2,6 +2,7 @@
 	<meta name=""dcterms.title"" content=""PWGSC - ESQUIMALT GRAVING DOCK - Edit Booking"">
 	<meta name=""keywords"" content="""" />
 	<meta name=""description"" content="""" />
+	<meta name=""dcterms.description"" content="""" />
 	<meta name=""dcterms.subject"" content="""" />
 	<title>PWGSC - ESQUIMALT GRAVING DOCK - Edit Booking</title>">
 	<cfset request.title = "Change Company">
@@ -18,44 +19,37 @@ SELECT Name as CompanyDetail
 	WHERE CID = <cfqueryparam value="#newCID#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
-		<div class="colLayout">
-			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
-			<div class="center">
-				<h1 id="wb-cont">
-					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
-					Change Company
-					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
-				<cfform action="changeCompany3.cfm" method="post">
-				<table>
-				  <tr>
-					<td><br /><cfinput type="text" style="border:0; font-weight:bold" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes"><cfinput type="text" style="border:0; color:##FFFFFF" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" /></td>
-				  </tr>
-				  <tr>
-					<td>
-				Original Company: <cfinput type="text" style="border:0;" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" /></td>
-				  </tr>
-				  <tr>
-					<td>Original Agent: <cfinput type="text" style="border:0;" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" /></td>
-				  </tr>
-						<tr>
-					<td><br />Change to Company: <cfoutput query="getCompanyDetail">#CompanyDetail#</cfoutput> <cfinput type="text" style="border:0; color:##FFFFFF" value="#newCID#" name="newCID" required="Yes" readonly="yes" /></td>
-				  </tr>
-				  <tr>
-					<td>Change to Agent: <cfselect name="newUserName" size="1" required="yes">
-					  <cfoutput query="getUserName">
-						<option value="#UID#">#LastName#, #FirstName#</option>
-					  </cfoutput> </cfselect></td>
-				  </tr>
-				  <tr>
-				  <tr>
-					<td><input id="submit" type="submit" value="submit" />
-				  </tr>
-				</table>
-				</cfform>
-			</div>
-		<!-- CONTENT ENDS | FIN DU CONTENU -->
-		</div>
+		
+<h1 id="wb-cont">
+	<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
+	Change Company
+	<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
+</h1>
+<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+<cfoutput>
+<cfform action="changeCompany3.cfm" method="post">
+	<cfinput type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
+	<cfinput type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
+	<cfinput type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
+	<cfinput type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
+	<cfinput type="hidden" value="#newCID#" name="newCID" required="Yes" readonly="yes" />
 
+
+	<div class="module-info modwide">
+		<h2>#vesselNameURL#</h2>
+		<ul>
+			<b>Original Company:</b> #CompanyURL#<br/>
+			<b>Original Agent:</b> #UserNameURL#<br/>
+			<b>Change to Company:</b> <cfloop query="getCompanyDetail">#CompanyDetail#</cfloop><br/>
+		</ul>
+	</div>
+	<br/>
+	Change to Agent: <cfselect name="newUserName" size="1" required="yes">
+		  <cfloop query="getUserName">
+			<option value="#UID#">#LastName#, #FirstName#</option>
+		  </cfloop> </cfselect>
+	<br/><input id="submit" type="submit" value="Submit" class="button button-accent" />
+	  
+</cfform>
+</cfoutput>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
