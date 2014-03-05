@@ -45,11 +45,11 @@
 <cfset Proceed_OK = "Yes">
 
 <cfif IsDefined('form.startDate')>
-	<cfset Variables.CalStartDate = form.startDate>
+	<cfset Variables.CalStartDate = dateFormat(form.startdate, "mm/dd/yyyy")>
 </cfif>
 
 <cfif IsDefined('form.endDate')>
-	<cfset Variables.CalEndDate = form.endDate>
+	<cfset Variables.CalEndDate = dateFormat(form.enddate, "mm/dd/yyyy")>
 </cfif>
 
 <cfif not isDate(Variables.CalStartDate) and Variables.CalStartDate neq "">

@@ -21,7 +21,7 @@
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.CreateUser# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.createComp />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
       <div class="center">

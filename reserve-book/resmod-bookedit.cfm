@@ -63,8 +63,8 @@
         #language.phone#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-3879  #language.or#  250-363-8056<br />
 					#language.fax#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-8059<br />
 					#language.emailAddress#<cfif lang eq "fra">&nbsp;</cfif>: 
-         <a href="mailto:#variables.adminemail#?subject=#emailSubject#">
-           #variables.adminemail#
+         <a href="mailto:#variables.AdministratorEmail#?subject=#emailSubject#">
+           #variables.AdministratorEmail#
          </a>
         </p>
 				</cfoutput>

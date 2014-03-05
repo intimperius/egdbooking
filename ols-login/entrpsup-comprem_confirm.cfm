@@ -22,7 +22,7 @@
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.confirmRem# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.confirmRem />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 <cfinclude template="#RootDir#includes/restore_params.cfm">
 <cfinclude template="#RootDir#includes/build_form_struct.cfm">
 

@@ -27,7 +27,7 @@
 <meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 <title>#language.forgot# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.forgot />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 <cfparam name="err_email" default="">
 
 <cfset Variables.onLoad = "javascript:document.forgotForm.email.focus();">

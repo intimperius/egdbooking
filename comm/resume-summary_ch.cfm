@@ -18,6 +18,7 @@
 	<cfset language.reset = "reset">
 	<cfset language.calendar = "calendar">
 	<cfset language.clear = "clear">
+  <cfset language.dateform = '(<abbr title="Four digits year">YYYY</abbr>-<abbr title="Two digits month">MM</abbr>-<abbr title="Two digits day">DD</abbr>)'>
 <cfelse>
 	<cfset language.bookingsSummary = "R&eacute;sum&eacute; des r&eacute;servations">
 	<cfset language.ScreenMessage = "<p>Pour d&eacute;buter au premier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de d&eacute;but&nbsp;&raquo;. Pour terminer apr&egrave;s le dernier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de fin&nbsp;&raquo;. Pour voir tous les dossiers, vider les deux champs.</p>">
@@ -37,7 +38,7 @@
 	<cfset language.reset = "R&eacute;initialiser">
 	<cfset language.calendar = "calendrier">
 	<cfset language.clear = "effacer">
-
+  <cfset language.dateform = '(<abbr title="Les quatres chiffres de l''ann&eacute;e">AAAA</abbr>-<abbr title="Les deux chiffres du mois">MM</abbr>-<abbr title="Les deux chiffres du jour">JJ</abbr>)'>
 </cfif>
 <cfsavecontent variable="js">
 	<meta name="dcterms.title" content="#language.BookingsSummary# - #language.esqGravingDock# - #language.PWGSC#" />
@@ -59,7 +60,7 @@
 				<h1 id="wb-cont">#language.bookingsSummary#</h1>
 
         <cfparam name="Variables.startDate" default="#PacificNow#">
-        <cfparam name="Variables.endDate" default="12/31/2031">
+        <cfparam name="Variables.endDate" default="#PacificNow#">
 
 				<cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
 					<cfinclude template="#RootDir#includes/admin_menu.cfm">
@@ -81,15 +82,13 @@
 
 				<form action="resume-summary.cfm?lang=#lang#" method="post" id="bookSum">
 					<fieldset><legend>#language.bookingsSummary#</legend>
-            <div>
-              <label for="start">&nbsp; #language.fromDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small></label>
-              <input id="start" type="text" name="startDate" class="datepicker startDate" value="#DateFormat(variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
-              <input type="date" data-rule-dateiso="true" name="date1" id="date1" data-role="none" class="picker-field">
+           <div>
+              <label for="startdate">#language.toDate#<span class="datepicker-format"> #language.dateform#</span>:</label>
+              <input type="date" id="startdate" name="startdate" value="#DateFormat(variables.startDate, 'yyyy-mm-dd')#"/>
             </div>
-            
             <div>
-              <label for="end">&nbsp; #language.toDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small></label>
-              <input type="text" name="endDate" class="datepicker endDate" id="end" value="#DateFormat(variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
+              <label for="enddate">#language.toDate#<span class="datepicker-format"> #language.dateform#</span>:</label>
+              <input type="date" id="enddate" name="enddate" value="#DateFormat(variables.endDate, 'yyyy-mm-dd')#"/>
             </div>
             <div>
               <input type="submit" class="button button-accent" value="#language.submit#" />

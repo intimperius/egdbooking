@@ -18,7 +18,7 @@
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
   <cfset request.title = language.login />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 <cfif IsDefined("Session.Return_Structure") AND isDefined("url.pass") AND url.pass EQ "true">
 	<cfset Variables.onLoad = "javascript:document.login_form.Password.focus();">

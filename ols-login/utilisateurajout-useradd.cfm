@@ -41,7 +41,7 @@
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.CreateUser# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.CreateUser />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 <cfset Variables.onLoad = "javascript:document.addUserForm.firstname.focus();">
 

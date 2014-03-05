@@ -18,7 +18,7 @@
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.title />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 <h1 id="wb-cont"><cfoutput>#language.title#</cfoutput></h1>
 
 <cfoutput>

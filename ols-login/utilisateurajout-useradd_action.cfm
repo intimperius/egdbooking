@@ -138,7 +138,7 @@
 	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 			<div class="center">
