@@ -1,3 +1,4 @@
+<cfoutput>
 <cfif lang EQ "eng">
 	<cfset language.createUser = "Account Registration">
 	<cfset language.keywords = "Add New User Account">
@@ -6,15 +7,15 @@
 	<cfset language.companies = "Companies">
 	<cfset language.remove = "Remove">
 	<cfset language.awaitingApproval = "awaiting approval">
-	<cfset language.addCompany = "Add Company">
+	<cfset language.addCompanyLabel = "Add Company:">
 	<cfset language.notListed = "If the desired company is not listed,">
 	<cfset language.toCreate = "create it.">
 	<cfset language.add = "Add">
 	<cfset language.editProfile = "Edit Profile">
 	<cfset language.noCompanies = "No Companies">
-	<cfset language.yourCompanies = "Your requested companies">
+	<cfset language.yourCompaniesLabel = "Your requested companies:">
 	<cfset language.submitUserRequest = "Submit New User Request">
-	<cfset language.selectCompany = "Please select a company.">
+	<cfset language.selectCompany = "Please select a company">
 <cfelse>
 	<cfset language.createUser = "Inscription pour les comptes">
 	<cfset language.keywords = "#language.masterKeywords#" & ", Ajout d'un nouveau compte d'utilisateur">
@@ -23,16 +24,17 @@
 	<cfset language.companies = "Entreprises">
 	<cfset language.remove = "Supprimer">
 	<cfset language.awaitingApproval = "en attente d'approbation">
-	<cfset language.addCompany = "Ajout d'une entreprise">
+	<cfset language.addCompanyLabel = "Ajout d'une entreprise&nbsp;:">
 	<cfset language.notListed = "Si l'entreprise recherch&eacute;e ne se trouve pas dans la liste,">
 	<cfset language.toCreate = "cr&eacute;er elle.">
 	<cfset language.add = "Ajouter">
 	<cfset language.editProfile = "Modification de r&eacute;servation">
 	<cfset language.noCompanies = "Aucune entreprise">
-	<cfset language.yourCompanies = "Les entreprises que vous avez demand&eacute;es">
+	<cfset language.yourCompaniesLabel = "Les entreprises que vous avez demand&eacute;es&nbsp;:">
 	<cfset language.submitUserRequest = "Pr&eacute;senter une nouvelle demande d'utilisateur">
 	<cfset language.selectCompany = "Veuillez s&eacute;lectionner une entreprise.">
 </cfif>
+
 
 <!---error checking for adding a company--->
 <cfset Variables.Errors = ArrayNew(1)>
@@ -132,10 +134,10 @@
 <cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 <cfquery name="getCompanies" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
-	SELECT 	Companies.CID, Name
+	SELECT 	Companies.CID, Name, Name_f, ISNULL(Name_f, Name) AS x
 	FROM 	Companies
 	WHERE 	Companies.Deleted = '0'
-	ORDER BY Companies.Name
+	ORDER BY x
 </cfquery>
 
 <!-- Start JavaScript Block -->
@@ -157,9 +159,9 @@ function EditSubmit ( selectedform )
 		<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
 	</h1>
 
-	<cfoutput>
+
 		<!---decrpyt user info--->
-		<cfif isDefined("url.info")><cfset Variables.userInfo = cfusion_decrypt(ToString(ToBinary(url.info)), "boingfoip")></cfif>
+		<cfif isDefined("url.info")><cfset Variables.userInfo = cfusion_decrypt(ToString(ToBinary((url.info))), "boingfoip")></cfif>
 
 		<!---store user info--->
 		<cfif isDefined("url.info")><cfset Variables.firstname = ListGetAt(userInfo, 1)><cfelseif isDefined("form.firstname")><cfset Variables.firstname = form.firstname></cfif>
@@ -175,13 +177,15 @@ function EditSubmit ( selectedform )
 		<cfset Variables.userInfo = ListAppend(Variables.userInfo, Variables.password1)>
 		<cfset Variables.info = ToBase64(cfusion_encrypt(Variables.userInfo, "boingfoip"))>
 
+		<cfset selectCompanyCheck = '0'>
 		<cfif isDefined("Session.Return_Structure")>
 			<cfinclude template="#RootDir#includes/getStructure.cfm">
+			<cfset selectCompanyCheck = '1'>
 		</cfif>
-
+		
 		<div class="span-6">
 			<div>
-				<b>#language.yourCompanies#:</b>
+				<b>#language.yourCompaniesLabel#</b>
 			</div>
 			<cfif NOT isDefined("url.companies")>
 				
@@ -222,7 +226,7 @@ function EditSubmit ( selectedform )
 						FROM	Companies
 						WHERE	CID = <cfqueryparam value="#ID#" cfsqltype="cf_sql_integer" />
 					</cfquery>
-						<form style="display:none;" action="entrpsup-comprem_confirm.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" method="post" id="remCompany#ID#">
+						<form style="display:none;" action="entrpsup-comprem_confirm.cfm?lang=#lang#&amp;companies=#companies#&amp;info=#Variables.info#" method="post" id="remCompany#ID#">
 							<input type="hidden" name="CID" value="#ID#" />
 						</form>
 						<cfset left = left &"#detailsID.Name#<br/>"/>
@@ -241,19 +245,30 @@ function EditSubmit ( selectedform )
 			<cfset companies = companyList>
 			<cfelse>
 			<cfset companies = URLEncodedFormat(ToBase64(cfusion_encrypt(companyList, "shanisnumber1")))>
-		</cfif>
-
-		<cfform action="entrpdemande-comprequest.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" id="addUserCompanyForm" method="post">
+		</cfif>	
+		
+		<cfform action="entrpdemande-comprequest.cfm?lang=#lang#&amp;companies=#companies#&amp;info=#Variables.info#" id="addUserCompanyForm" method="post">
 			<div class="span-6">
 				<div class="span-1">
-					<label for="companies">#language.AddCompany#:</label>
+					<br>
+					<label for="companies">#language.AddCompanyLabel#</label>
 				</div>
+				
+
 				<div class="span-4">
+					<!-- added error alert--> 
+					<cfif selectCompanyCheck eq '1'>
+						<label for="companies">
+						<span class="uglyred">#language.selectCompany#</span>
+						</label>
+					</cfif>
+					
+					
 					<cfselect name="CID" id="companies" required="yes" message="#language.selectCompany#">
 					<option value="">(#language.selectCompany#)</option>
 					<cfloop query="getCompanies">
 						<cfif ListFind(companyList, "#CID#") EQ 0>
-							<option value="#CID#">#Name#
+							<option value="#CID#"><cfif name_f eq ''>#Name#<cfelse>#Name_f#</cfif>
 						</cfif>
 					</cfloop>
 					</cfselect>
@@ -261,12 +276,61 @@ function EditSubmit ( selectedform )
 				</div>
 				<div class="span-1"></div>
 				<div class="span-4">
-				<span class="small">#language.notListed# <a href="entrpajout-compadd.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#">#language.toCreate#</a></span>
+				<span class="small">#language.notListed# <a href="entrpajout-compadd.cfm?lang=#lang#&amp;info=#Variables.info#&amp;companies=#companies#">#language.toCreate#</a></span>
 				</div>
 			</div>
 		</cfform>
+		
+		
+		<!--- added Moved insertNewUser query here, because if the password contain "&"we want
+		to store to db first and replace it with escape chara in the input value so that 
+		it passes the validation--->
+		<cfquery name="getUser" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+			SELECT 	Email
+			FROM	Users
+			WHERE 	EMail = <cfqueryparam value="#trim(Variables.Email)#" cfsqltype="cf_sql_varchar" />
+			AND		Deleted = '0'
+		</cfquery>
 
-		<form id="newUserForm" action="utilisateurajout-useradd_action.cfm?lang=#lang#&info=#Variables.info#" method="post">
+<cfif getUser.recordcount EQ 0>
+	<cfscript>
+		jbClass = ArrayNew(1);
+		jbClass[1] = "#FileDir#lib/jBCrypt-0.3";
+    javaloader = createObject('component','lib.javaloader.JavaLoader');
+		javaloader.init(jbClass);
+
+		bcrypt = javaloader.create("BCrypt");
+		hashed = bcrypt.hashpw(trim(Variables.password1), bcrypt.gensalt());
+	</cfscript>
+	
+	
+		<cfquery name="insertNewUser" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+			INSERT INTO Users
+			(
+				<!---LoginID,--->
+				FirstName,
+				LastName,
+				Password,
+				Email,
+				Deleted
+			)
+			
+			VALUES
+			(
+				<!---'#trim(form.loginID)#',--->
+				<cfqueryparam value="#trim(Variables.firstname)#" cfsqltype="cf_sql_varchar" />,
+				<cfqueryparam value="#trim(Variables.lastname)#" cfsqltype="cf_sql_varchar" />,
+				<cfqueryparam value="#hashed#" cfsqltype="cf_sql_varchar" />,
+				<cfqueryparam value="#trim(Variables.email)#" cfsqltype="cf_sql_varchar" />,
+				0
+			)
+		</cfquery>
+		
+</cfif>
+		
+		<cfset Variables.password1 = Replace("#Variables.password1#","&","&amp;","All")>
+		
+		<form id="newUserForm" action="utilisateurajout-useradd_action.cfm?lang=#lang#&amp;info=#Variables.info#" method="post">
 			<input type="hidden" name="firstname" value="#Variables.firstname#" />
 			<input type="hidden" name="lastname" value="#Variables.lastname#" />
 			<input type="hidden" name="email" value="#Variables.email#" />
@@ -276,7 +340,7 @@ function EditSubmit ( selectedform )
 			<input type="submit" value="#language.SubmitUserRequest#" class="button button-accent" />
 			
 			<div>
-				<a href="utilisateurajout-useradd.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#" class="textbutton">#language.editProfile#</a>
+				<a href="utilisateurajout-useradd.cfm?lang=#lang#&amp;info=#Variables.info#&amp;companies=#companies#" class="textbutton">#language.editProfile#</a>
 				<a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.cancel#</a>
 			</div>
 		</form>

@@ -13,6 +13,7 @@
 	<cfset language.lastNameError = "Veuillez entrer votre nom de famille.">
 	<cfset language.mismatchedPassError = "Votre mot de passe ne correspond pas &agrave; votre adresse de courriel.">
 	<cfset language.pass1ShortError = "Votre mot de passe doit &ecirc;tre compos&eacute; d'au moins huit caract&egrave;res.">
+	
 </cfif>
 
 <cfif Len(form.companies) EQ 0>
@@ -31,11 +32,11 @@
 
 
 
-<cfif Proceed_OK EQ "No">
+<!---<cfif Proceed_OK EQ "No">
 	<cfinclude template="#RootDir#includes/build_return_struct.cfm">
 	<cfset Session.Return_Structure.Errors = Variables.Errors>
 	<cflocation url="entrpdemande-comprequest.cfm?lang=#lang#&info=#url.info#" addtoken="no">
-</cfif>
+</cfif>--->
 
 <cfquery name="getUser" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 	SELECT 	Email
@@ -43,9 +44,11 @@
 	WHERE 	EMail = <cfqueryparam value="#trim(form.Email)#" cfsqltype="cf_sql_varchar" />
 	AND		Deleted = '0'
 </cfquery>
-	
-<cfif getUser.recordcount EQ 0>
-	<cfscript>
+
+
+
+<cfif getUser.recordcount EQ 1>
+	<!---<cfscript>
 		jbClass = ArrayNew(1);
 		jbClass[1] = "#FileDir#lib/jBCrypt-0.3";
     javaloader = createObject('component','lib.javaloader.JavaLoader');
@@ -53,10 +56,10 @@
 
 		bcrypt = javaloader.create("BCrypt");
 		hashed = bcrypt.hashpw(trim(form.password1), bcrypt.gensalt());
-	</cfscript>
-
-	<cftransaction>
-		<cfquery name="insertNewUser" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+	</cfscript>--->
+	
+	
+		<!---<cfquery name="insertNewUser" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 			INSERT INTO Users
 			(
 				<!---LoginID,--->
@@ -77,7 +80,7 @@
 				0
 			)
 		</cfquery>
-		
+		--->
 		<cfquery name="getID2" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 			SELECT UID
 			FROM Users
@@ -91,7 +94,7 @@
 				FROM	UserCompanies
 				WHERE	UID = <cfqueryparam value="#getID2.UID#" cfsqltype="cf_sql_integer" /> AND CID = <cfqueryparam value="#CID#" cfsqltype="cf_sql_integer" /> AND Deleted = 0
 			</cfquery>
-			
+		
 			<cfif getRelationship.recordCount EQ 0>
 				<cfquery name="companyRequests" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 					INSERT INTO	UserCompanies(UID, CID)
@@ -99,8 +102,8 @@
 				</cfquery>
 			</cfif>
 		</cfloop>
-	</cftransaction>
-	
+
+		
 <cfoutput>
 <cfif ServerType EQ "Development">
 <cfset variables.adminemail = DevEmail />
@@ -119,16 +122,16 @@
 	<cfset language.description = "Notifies user that their account has been created successfully.">
 	<cfset language.login = "Return to login">
 	<cfset language.message = "You have successfully created a new account.  You will receive email confirmation when your account request has been approved.">
-	<cfset language.username = "Username">
-	<cfset language.password = "Password">
+	<cfset language.userNameLabel = "Username:">
+	<cfset language.passwordLabel = "Password:">
 <cfelse>
 	<cfset language.title = "Cr&eacute;er un nouvel utilisateur">
 	<cfset language.keywords = "#language.masterKeywords#" & ", Ajout d'un nouveau compte d'utilisateur">
 	<cfset language.description = "Avise l'utilisateur que son compte a &eacute;t&eacute; cr&eacute;&eacute;.">
 	<cfset language.login = "Ouvrir la session">
 	<cfset language.message = "Vous avez cr&eacute;&eacute; un nouveau compte. Vous recevrez une confirmation par courrier &eacute;lectronique lorsque votre demande de compte aura &eacute;t&eacute; approuv&eacute;e.">
-	<cfset language.username = "Nom d'utilisateur">
-	<cfset language.password = "Mot de passe">
+	<cfset language.userNameLabel = "Nom d'utilisateur&nbsp;:">
+	<cfset language.passwordLabel = "Mot de passe&nbsp;:">
 </cfif>
 
 <cfhtmlhead text="
@@ -148,9 +151,15 @@
 					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
 					</h1>
 				<cfoutput>
-					<p>#language.message#</p>
+					<p>#language.message#</p> 
+					<!---test---><cfquery name="getID2" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+			SELECT UID
+			FROM Users
+			WHERE EMail = <cfqueryparam value="#trim(form.email)#" cfsqltype="cf_sql_varchar" />
+			AND Deleted = 0 <!--- Joao Edit --->
+		</cfquery>
 					<p>
-						<br />#language.Username#: #form.email#<br />#language.Password#: #form.password1#
+						<br />#language.UsernameLabel# #form.email#<br />#language.PasswordLabel# #form.password1#
 					</p>
 					
 					<br /><br />	

@@ -53,19 +53,27 @@
 </cfquery>
 
 				<h1 id="wb-cont"><cfoutput>#language.title#</cfoutput></h1>
-
+			
 				<cfinclude template="#RootDir#includes/user_menu.cfm">
 				<!------------------------------------------------------------------------------------------------------------>
 				<cfoutput>
-				<p>#language.explanation#</p>
-				<cfset emailSubject = "#getbooking.CompanyName# editing booking for #trim(getbooking.VesselName)# from #myDateFormat(getbooking.StartDate, request.datemask)# to #myDateFormat(getbooking.EndDate, request.datemask)#">
+				<p>#language.explanation#</p> 
+			
 				<p>
         #language.phone#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-3879  #language.or#  250-363-8056<br />
 					#language.fax#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-8059<br />
-					#language.emailAddress#<cfif lang eq "fra">&nbsp;</cfif>: 
-         <a href="mailto:#variables.AdministratorEmail#?subject=#emailSubject#">
+					#language.emailAddress#<cfif lang eq "fra">&nbsp;</cfif>: 	 
+		 
+		 <cfset emailSubject = "#getbooking.CompanyName# editing booking for #trim(getbooking.VesselName)# from #myDateFormat(getbooking.StartDate, request.datemask)# to #myDateFormat(getbooking.EndDate, request.datemask)#">
+		 
+		  <cfset emailSubject = #replace(emailSubject," ","%20","all")#>
+		 
+		  <a href="mailto:#variables.AdministratorEmail#?subject=#emailSubject#">
            #variables.AdministratorEmail#
          </a>
+		 
+		 
+		 
         </p>
 				</cfoutput>
 

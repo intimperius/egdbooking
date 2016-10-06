@@ -4,7 +4,7 @@
 	<cfset language.keywords = "#language.masterKeywords#" & " Retrieve Forget Lost Password">
 	<cfset language.enterEmail = "Please enter the e-mail address you use to log in.">
 	<cfset language.getPassword = "Your password will be emailed to you.">
-	<cfset language.email = "Email Address">
+	<cfset language.emailLabel = "Email Address:">
 	<cfset language.emailError ="Please enter a valid email address.">
 	<cfset language.returnlogin = "Return to login">
 <cfelse>
@@ -13,7 +13,7 @@
 	<cfset language.keywords = "#language.masterKeywords#" & " R&eacute;cup&eacute;ration d'un mot de passe perdu">
 	<cfset language.enterEmail = "Veuillez entrer l'adresse de courriel que vous utilisez pour ouvrir une session.">
 	<cfset language.getPassword = "Votre mot de passe vous a &eacute;t&eacute; transmis par courriel.">
-	<cfset language.email = "Adresse de courriel">
+	<cfset language.emailLabel = "Adresse de courriel&nbsp;:">
 	<cfset language.emailError ="Veuillez v&eacute;rifier la validit&eacute; de votre addresse de courriel.">
 	<cfset language.returnlogin = "Retourner &agrave; l'ouverture d'une session">
 </cfif>
@@ -50,7 +50,7 @@
 
               <div class="#err_email#">
                 <label for="email">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:<span class="form-text">#error('email')#</span>
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EmailLabel# <span class="form-text">#error('email')#</span>
                 </label>
                 <input name="email" type="text" size="40" maxlength="100" id="email" />
                 

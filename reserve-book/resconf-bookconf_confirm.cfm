@@ -42,7 +42,7 @@
 </CFIF>
 
 <cfif isDefined("url.date")>
-	<cfset variables.dateValue = "&date=#url.date#">
+	<cfset variables.dateValue = "&amp;date=#url.date#">
 <cfelse>
 	<cfset variables.dateValue = "">
 </cfif>

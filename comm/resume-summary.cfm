@@ -44,20 +44,24 @@
 <cfset Variables.Errors = ArrayNew(1)>
 <cfset Proceed_OK = "Yes">
 
-<cfif IsDefined('form.startDate')>
-	<cfset Variables.CalStartDate = dateFormat(form.startdate, "mm/dd/yyyy")>
+
+<cfparam name="CalStartDate1" default="">
+<cfparam name="CalEndDate1" default="">
+
+<cfif IsDefined('form.startDate1')>
+	<cfset Variables.CalStartDate1 = form.startDate1>
 </cfif>
 
-<cfif IsDefined('form.endDate')>
-	<cfset Variables.CalEndDate = dateFormat(form.enddate, "mm/dd/yyyy")>
+<cfif IsDefined('form.endDate1')>
+	<cfset Variables.CalEndDate1 = form.endDate1>
 </cfif>
 
-<cfif not isDate(Variables.CalStartDate) and Variables.CalStartDate neq "">
+<cfif not isDate(Variables.CalStartDate1) and Variables.CalStartDate1 neq "">
   <cfset ArrayAppend(Variables.Errors, language.invalidStartError) />
 	<cfset Proceed_OK = "No">
 </cfif>
 
-<cfif not isDate(Variables.CalEndDate) and Variables.CalEndDate neq "">
+<cfif not isDate(Variables.CalEndDate1) and Variables.CalEndDate1 neq "">
   <cfset ArrayAppend(Variables.Errors, language.invalidEndError) />
 	<cfset Proceed_OK = "No">
 </cfif>
@@ -68,8 +72,6 @@
 	<cflocation addtoken="no" url="resume-summary_ch.cfm?lang=#lang#" />
 </cfif>
 
-<cfparam name="CalStartDate" default="">
-<cfparam name="CalEndDate" default="">
 
 <cfquery name="getDockBookings" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 SELECT	Bookings.EndHighlight,
@@ -88,8 +90,8 @@ FROM	Bookings
 WHERE	
 	Bookings.Deleted = '0'
 	AND	Vessels.Deleted = '0'
-	<cfif IsDefined('CalStartDate') and CalStartDate neq ''>AND EndDate >= <cfqueryparam value="#CalStartDate#" cfsqltype="cf_sql_date" /></CFIF>
-	<cfif IsDefined('CalEndDate') and CalEndDate neq ''>AND StartDate <= <cfqueryparam value="#CalEndDate#" cfsqltype="cf_sql_date" /></CFIF>
+	<cfif IsDefined('CalStartDate1') and CalStartDate1 neq ''>AND EndDate >= <cfqueryparam value="#CalStartDate1#" cfsqltype="cf_sql_date" /></CFIF>
+	<cfif IsDefined('CalEndDate1') and CalEndDate1 neq ''>AND StartDate <= <cfqueryparam value="#CalEndDate1#" cfsqltype="cf_sql_date" /></CFIF>
 
 ORDER BY	StartDate, VesselName
 </cfquery>
@@ -111,8 +113,8 @@ FROM	Bookings
 
 WHERE	Bookings.Deleted = '0'
 	AND	Vessels.Deleted = '0'
-	<cfif IsDefined('CalStartDate') and CalStartDate neq ''>AND EndDate >= <cfqueryparam value="#CalStartDate#" cfsqltype="cf_sql_date" /></CFIF>
-	<cfif IsDefined('CalEndDate') and CalEndDate neq ''>AND StartDate <= <cfqueryparam value="#CalEndDate#" cfsqltype="cf_sql_date" /></CFIF>
+	<cfif IsDefined('CalStartDate1') and CalStartDate1 neq ''>AND EndDate >= <cfqueryparam value="#CalStartDate1#" cfsqltype="cf_sql_date" /></CFIF>
+	<cfif IsDefined('CalEndDate1') and CalEndDate1 neq ''>AND StartDate <= <cfqueryparam value="#CalEndDate1#" cfsqltype="cf_sql_date" /></CFIF>
 
 ORDER BY	StartDate, VesselName
 </cfquery>
@@ -192,7 +194,11 @@ WHERE	SouthJetty = 1
                 <cfelse> #language.Pending#
                 </cfif>
               </cfif></td>
-            <td headers="docking">#myDateFormat(StartDate, "mmm d")#<CFIF Year(StartDate) neq Year(EndDate)>#myDateFormat(StartDate, ", yyyy")#</CFIF> - #myDateFormat(EndDate, request.datemask)#</td>
+            <td headers="docking">
+			<!-- kick page back to previous page if language is changed -->										
+			<cfif Not IsDefined('startDate1') || Not IsDefined('endDate1')>
+			<cflocation addtoken="no" url="resume-summary_ch.cfm?lang=#lang#" ></cfif>
+			#myDateFormat(StartDate, request.datemask)# - #myDateFormat(EndDate, request.datemask)#</td>  
             <td headers="booking">#myDateFormat(BookingTime, request.datemask)#@#LSTimeFormat(BookingTime, 'HH:mm')#</td>
           </tr>
           </cfloop>
@@ -202,6 +208,9 @@ WHERE	SouthJetty = 1
           #language.noBookings#
         </p>
       </cfif>
+	  
+	  
+	  
 
       <h2>#language.NorthLandingWharf#</h2>
 
@@ -241,7 +250,10 @@ WHERE	SouthJetty = 1
                             <cfelseif Status eq 't'>#language.Tentative#
                             <cfelse>#language.Pending#
                             </cfif></td>
-              <td headers="docking2">#myDateFormat(StartDate, "mmm d")#<cfif Year(StartDate) neq Year(EndDate)>#myDateFormat(StartDate, ", yyyy")#</cfif> - #myDateFormat(EndDate, request.datemask)#</td>
+              <td headers="docking2">
+			  <cfif Not IsDefined('startdate1') || Not IsDefined('enddate1')>
+			<cflocation addtoken="no" url="resume-summary_ch.cfm?lang=#lang#" ></cfif>
+			#myDateFormat(StartDate, "mmm d")#<cfif Year(StartDate) neq Year(EndDate)>#myDateFormat(StartDate, ", yyyy")#</cfif> - #myDateFormat(EndDate, request.datemask)#</td>
               <td headers="booking2">#myDateFormat(BookingTime, request.datemask)#@#LSTimeFormat(BookingTime, 'HH:mm')#</td>
             </tr>
             </cfloop>
@@ -291,7 +303,11 @@ WHERE	SouthJetty = 1
                             <cfelseif Status eq 't'>#language.tentative#
                             <cfelse>#language.Pending#
                             </cfif></td>
-              <td headers="docking3">#myDateFormat(StartDate, "mmm d")#<cfif Year(StartDate) neq Year(EndDate)>#myDateFormat(StartDate, ", yyyy")#</cfif> - #myDateFormat(EndDate, request.datemask)#</td>
+              <td headers="docking3">
+			  <cfif Not IsDefined('startDate1') || Not IsDefined('endDate1')> 
+			  <cflocation addtoken="no" url="resume-summary_ch.cfm?lang=#lang#" >
+			  </cfif>
+			  #myDateFormat(StartDate, request.datemask)# - #myDateFormat(EndDate, request.datemask)#</td>
               <td headers="booking3">#myDateFormat(BookingTime, request.datemask)#@#LSTimeFormat(BookingTime, 'HH:mm')#</td>
             </tr>
             </cfloop>

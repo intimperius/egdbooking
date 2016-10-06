@@ -1,15 +1,30 @@
-<cfif isDefined("form.startDate")><cfinclude template="#RootDir#includes/build_form_struct.cfm"></cfif>
+<cfif isDefined("form.startDateA")><cfinclude template="#RootDir#includes/build_form_struct.cfm"></cfif>
 <cfinclude template="#RootDir#includes/restore_params.cfm" />
 <cfinclude template="#RootDir#includes/errorMessages.cfm" />
+
+<cfif not StructKeyExists(Form, 'StartDateA') || not StructKeyExists(Form, 'EndDateA')>
+  <cflocation url="#RootDir#reserve-book/Caledemande-dockrequest.cfm?lang=#lang#" addtoken="no" />
+</cfif>
+
 
 <cfif lang EQ "eng">
 	<cfset language.keywords = language.masterKeywords & ", Drydock Booking Information" />
 	<cfset language.description = "Allows user to submit a new booking request, drydock section." />
 	<cfset language.subjects = language.masterSubjects & "" />
+	
+	<cfset language.VesselLabel = "Vessel:">
+	<cfset language.startDateLabel = "Start Date:">
+	<cfset language.endDateLabel = "End Date:">
+	<cfset language.requestedStatusLabel = "Requested Status:">
 <cfelse>
 	<cfset language.keywords = language.masterKeywords & ", renseignements pour la r&eacute;servation de la cale s&egrave;che" />
 	<cfset language.description = "Permet &agrave; l'utilisateur de pr&eacute;senter une nouvelle demande de r&eacute;servation sur le site Web de la cale s&egrave;che d'Esquimalt - section de la cale s&egrave;che." />
 	<cfset language.subjects = language.masterSubjects & "" />
+	
+	<cfset language.VesselLabel = "Navire&nbsp:">
+	<cfset language.startDateLabel = "Date de d&eacute;but&nbsp;:">
+	<cfset language.endDateLabel = "Date de fin&nbsp:">
+	<cfset language.requestedStatusLabel = "&Eacute;tat demand&eacute;&nbsp:">
 </cfif>
 
 <cfoutput>
@@ -38,13 +53,13 @@
 				<cfset Proceed_OK = "Yes">
 
 				<!--- Validate the form data --->
-        <cfif not isDate(Form.StartDate)>
+        <cfif not isDate(Form.StartDateA)>
           <cfset session['errors']['StartDateA'] = language.invalidStartError />
 					<cfset Proceed_OK = "No" />
-        <cfelseif not isDate(Form.EndDate)>
+        <cfelseif not isDate(Form.EndDateA)>
           <cfset session['errors']['EndDateA'] = language.invalidEndError />
 					<cfset Proceed_OK = "No" />
-				<cfelseif DateCompare(Form.StartDate,Form.EndDate) EQ 1>
+				<cfelseif DateCompare(Form.StartDateA,Form.EndDateA) EQ 1>
           <cfset session['errors']['StartDateA'] = language.endBeforeStartError />
           <cfset session['errors']['EndDateA'] = language.endBeforeStartError />
 					<cfset Proceed_OK = "No" />
@@ -78,8 +93,8 @@
           <cflocation url="#RootDir#reserve-book/caledemande-dockrequest.cfm?lang=#lang#" addtoken="no">
         </cfif>
 
-        <cfset Variables.StartDate = CreateODBCDate(Form.StartDate)>
-        <cfset Variables.EndDate = CreateODBCDate(Form.EndDate)>
+        <cfset Variables.StartDate = CreateODBCDate(Form.StartDateA)>
+        <cfset Variables.EndDate = CreateODBCDate(Form.EndDateA)>
         <!---Check to see that vessel hasn't already been booked during this time--->
         <!--- 25 October 2005: This query now only looks at the drydock bookings --->
         <cfquery name="checkDblBooking" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
@@ -128,7 +143,7 @@
                 AND Bookings.Deleted = 0
         </cfquery>
 
-        <cfif DateCompare(PacificNow, Form.StartDate, 'd') NEQ -1>
+        <cfif DateCompare(PacificNow, Form.StartDateA, 'd') NEQ -1>
           <cfset session['errors']['StartDateA'] = language.futureStartError />
           <cfset Proceed_OK = "No">
         <cfelseif (isDefined("checkDblBooking.VNID") AND checkDblBooking.VNID NEQ "")>
@@ -142,7 +157,7 @@
           <cfset Proceed_OK = "No">
         </cfif>
 
-        <cfif DateDiff("d",Form.StartDate,Form.EndDate) LT 0>
+        <cfif DateDiff("d",Form.StartDateA,Form.EndDateA) LT 0>
           <cfset session['errors']['StartDateA'] = language.bookingTooShortError />
           <cfset Proceed_OK = "No">
         </cfif>
@@ -159,10 +174,12 @@
 
         <cfif Proceed_OK EQ "No">
           <!--- Save the form data in a session structure so it can be sent back to the form page --->
-          <cfset Session.Return_Structure.StartDate = Form.StartDate>
-          <cfset Session.Return_Structure.EndDate = Form.EndDate>
+          <cfset Session.Return_Structure.StartDate = Form.StartDateA>
+          <cfset Session.Return_Structure.EndDate = Form.EndDateA>
           <cfset Session.Return_Structure.VNID = Form.booking_VNID>
           <cfset Session.Return_Structure.Status = Form.Status>
+		  
+		  <cfset session['errors']['form1erroralert'] = "form1erroralert">
           <cfset Session.Return_Structure.Errors = Errors>
 
           <cflocation url="#RootDir#reserve-book/caledemande-dockrequest.cfm?lang=#lang#" addtoken="no">
@@ -180,25 +197,20 @@
           </cfif>
         </p>
         <cfform action="#RootDir#reserve-book/caledemande-dockrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
-        <h2>#language.new#:</h2>
+        <h2>#language.new#</h2>
           <fieldset>
             <legend>#language.booking#</legend>
 
-            <label for="VNID">#language.vessel#:</label>
-            <p class="color-accent">#getVessel.VesselName#</p>
-            <input type="hidden" id="VNID" name="VNID" value="#Variables.VNID#" />
-
-            <label for="StartDate">#language.StartDate#:</label>
+            <p class="color-accent">#language.vesselLabel# #getVessel.VesselName#</p>
+            <p class="color-accent">#language.StartDateLabel# #myDateFormat(Variables.StartDate, request.datemask)#</p>
+			<p class="color-accent">#language.EndDateLabel# #myDateFormat(Variables.EndDate, request.datemask)#</p>
+			<p class="color-accent">#language.requestedStatusLabel# <cfif form.status eq "tentative">#language.tentative#<cfelse>#language.confirmed#</cfif></p>
+			
+			<input type="hidden" id="VNID" name="VNID" value="#Variables.VNID#" />
             <input type="hidden" id="StartDate" name="StartDate" value="#Variables.StartDate#" />
-            <p class="color-accent">#myDateFormat(Variables.StartDate, request.datemask)#</p>
-
-            <label for="EndDate">#language.EndDate#:</label>
             <input type="hidden" id="EndDate" name="EndDate" value="#Variables.EndDate#" />
-            <p class="color-accent">#myDateFormat(Variables.EndDate, request.datemask)#</p>
-
-            <label for="Status">#language.requestedStatus#:</label>
             <input type="hidden" id="Status" name="Status" value="#Form.Status#" />
-            <p class="color-accent"><cfif form.status eq "tentative">#language.tentative#<cfelse>#language.confirmed#</cfif></p>
+            
           </fieldset>
 
           <div class="buttons">

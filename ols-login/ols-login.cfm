@@ -1,10 +1,16 @@
 <cfif lang EQ "eng">
 	<cfset language.title = "Booking Application Sign In">
 	<cfset language.description ="Sign In page for the booking application.">
+	<cfset language.EmailLabel = "Email:">
+	<cfset language.PasswordLabel = "Password:">
 <cfelse>
 	<cfset language.title = "Entrer dans l'application de r&eacute;servation">
 	<cfset language.description ="Page d'ouverture de session pour la demande de r&eacute;servation.">
+	<cfset language.EmailLabel = "Courriel&nbsp;:">
+	<cfset language.PasswordLabel = "Mot de passe&nbsp;:">
 </cfif>
+
+
 
 <cfif IsDefined("Session.Form_Structure")>
 	<cfset StructDelete(Session, "Form_Structure")>
@@ -57,7 +63,7 @@
       
       <div class="#err_loginemail#">
         <label for="email">
-          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:<span class="form-text">#error('email')#</span>
+          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EmailLabel#<span class="form-text">#error('email')#</span>
         </label>
         <input type="text" name="email" id="email" size="40" maxlength="100" value="#email#" />
         
@@ -65,16 +71,16 @@
 
       <div class="#err_loginpass#">
         <label for="password">
-          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Password#:<span class="form-text">#error('password')#</span>
+          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.PasswordLabel#<span class="form-text">#error('password')#</span>
         </label>
         <input type="password" name="Password" id="password" size="25" maxlength="40" />
         
       </div>
 
       <div>
-        <label for="remember">#language.Remember#</label>
         <input name="remember" type="checkbox" id="remember" value="remember" <CFIF IsDefined("Cookie.login")>checked="checked"</CFIF> />
-      </div>
+		<label for="remember">#language.Remember#</label>
+	  </div>
 
       <input type="submit" name="submitForm" value="#language.Login#" class="button button-accent" />
     </fieldset>

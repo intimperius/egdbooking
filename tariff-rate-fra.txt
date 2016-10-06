@@ -1,0 +1,167 @@
+<table>
+	<tr>
+		<th>Article</th>
+		<th>Installations et Services</th>
+		<th>du 1 avril 2016</th>
+	</tr>
+	<tr>
+		<td style="text-align: center;">1</td>
+		<td>Reservation</td>
+		<td style="text-align: right;">5,307.46 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">2</td>
+		<td>Vidage par section</td>
+		<td style="text-align: right;">5,307.46 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">3</td>
+		<td>Quayage, le metre, par jour</td>
+		<td style="text-align: right;">6.20 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">4</td>
+		<td><strong>Grue sur rails, I'heure:</strong></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(a) crochet de charge Ieger</td>
+		<td style="text-align: right;">487.30 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(b) crochet de charge principal d'une capacite de levage d'au plus 50 tonnes metrique</td>
+		<td style="text-align: right;">703.87 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(c) crochet de charge principal d'une capacite de levage de plus de 50 tonnes metriques</td>
+		<td style="text-align: right;">1,082.90 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">5</td>
+		<td><strong>Grue sur rails, I'heure:</strong></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(a) grue de 9 tonnes metriques</td>
+		<td style="text-align: right;">135.36 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(b) grue de 20 tonnes metriques</td>
+		<td style="text-align: right;">173.26 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(c) grue de 30 tonnes metriques</td>
+		<td style="text-align: right;">211.17 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(d) chariot elevateur a fourches</td>
+		<td style="text-align: right;">102.88 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(e) grue sur tour</td>
+		<td style="text-align: right;">173.26 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">6</td>
+		<td>Compresseur d'air (premier), l'heure de distribution</td>
+		<td style="text-align: right;">119.12 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">7</td>
+		<td>Compresseur d'air (deuxieme), l'heure de distribution</td>
+		<td style="text-align: right;">113.70 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">8</td>
+		<td>Compresseur d'air (sur roues), l'heure de distribution</td>
+		<td style="text-align: right;">59.56 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">9</td>
+		<td>Bateau a moteur, l'heure</td>
+		<td style="text-align: right;">196.88 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">10</td>
+		<td>Eau douce, le metre cube</td>
+		<td style="text-align: right;">1.36 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">11</td>
+		<td>Energie electrique, le kilowatt-heure</td>
+		<td style="text-align: right;">0.16 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">12</td>
+		<td>Amarrage ou relachement des amarres</td>
+		<td style="text-align: right;">861.39 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">13</td>
+		<td>Heures supplementaires des employes de Ia cale seche, par employe, l'heure</td>
+		<td style="text-align: right;">106.32 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">14</td>
+		<td>Service de securite, par navire, le jour</td>
+		<td style="text-align: right;">487.30 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">15</td>
+		<td>Sejour de navire en cale seche, I  section, le jour</td>
+		<td style="text-align: right;">3,184.47 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">16</td>
+		<td>Sejour de navire en cale seche, 2 sections, le jour</td>
+		<td style="text-align: right;">10,614.91 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">17</td>
+		<td>Sejour de navire en cale seche, 3 sections, le jour</td>
+		<td style="text-align: right;">14,860.87 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">18</td>
+		<td>Sejour de navire en cale seche par tonneau, le jour: mains de 5 000 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.00 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">19</td>
+		<td>Sejour de navire en cale si:che par tonneau, Je jour: de 5 000 a 34 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.12 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">20</td>
+		<td>Sejour de navire en cale si:che par tonneau, le jour: de 35 000 a 69 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.11 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">21</td>
+		<td>Sejour de navire en cale si:che par tonneau, le jour: de 70 000 a 89 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.10 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">22</td>
+		<td>Sejour de navire en cale seche par tonneau, le jour: plus de 89 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.09 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">23</td>
+		<td>Evacuation d'eaux usees, te litre</td>
+		<td style="text-align: right;">0.01 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">24</td>
+		<td>Citeme de pompage a vide</td>
+		<td style="text-align: right;">70.38 $</td>
+	</tr>
+</table>

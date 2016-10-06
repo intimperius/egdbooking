@@ -15,9 +15,14 @@
 <cfelseif IsDefined("URL.CID")>
   <cfset Variables.BookingRequestString = "&amp;CID=#URL.CID#">
 </cfif>
-<cfif IsDefined("URL.Date") AND DateCompare(#url.date#, #PacificNow#, 'd') EQ 1>
+
+
+
+<cfif IsDefined("URL.Date")>
+<cfset urlDateTemp = Right(#url.date#, 10)> <!--- not sure if logic right --->
+<cfif DateCompare(#urlDateTemp#, #PacificNow#, 'd') EQ 1>
   <cfset Variables.BookingRequestString = "#Variables.BookingRequestString#&amp;Date=#URL.Date#">
-</cfif>
+</cfif></cfif>
 
 <CFSET variables.datetoken = "">
 <CFIF structKeyExists(url, 'm-m')>
@@ -48,6 +53,7 @@
 <li><a href="#RootDir#reserve-book/archives.cfm?lang=#lang#">#language.archivedBookings#</a></li>
 <li><a href="#RootDir#reserve-book/profilmod-profileedit.cfm?lang=#lang#">#language.EditProfileButton#</a></li>
 <li><a href="#RootDir#comm/avis-notices.cfm?lang=#lang#">#language.notices#</a></li>
+<li><a href="#RootDir#comm/tarif-tariff.cfm?lang=#lang#">#language.tariff#</a></li>
 <li><a href="#RootDir#ols-login/fls-logout.cfm?lang=#lang#">#language.LogoutButton#</a></li>
 <cfelseif structKeyExists(session, 'AdminLoggedIn')>
 <li><a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#" title="#language.BookingHome#">#language.BookingHome#</a></li>
@@ -55,6 +61,7 @@
 <li><a href="#RootDir#comm/calend-cale-dock.cfm?lang=#lang##datetoken#">#language.drydockCalendar#</a></li>
 <li><a href="#RootDir#comm/calend-jet.cfm?lang=#lang##datetoken#">#language.JettyCalendar#</a></li>
 <li><a href="#RootDir#comm/avis-notices.cfm?lang=#lang#">#language.notices#</a></li>
+<li><a href="#RootDir#comm/tarif-tariff.cfm?lang=#lang#">#language.tariff#</a></li>
 <li><a href="#RootDir#ols-login/fls-logout.cfm?lang=#lang#">#language.LogoutButton#</a></li>
 <cfelse>
 <li><a href="#RootDir#ols-login/ols-login.cfm?lang=#lang#">#language.bookingApplicationLogin#</a></li>

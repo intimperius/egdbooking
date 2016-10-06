@@ -37,6 +37,18 @@
       FROM	Configuration
     </cfquery>
 
+	
+	<!---Pull session information from cookies--->
+	<cflock timeout="60" throwontimeout="No" type="EXCLUSIVE" scope="SESSION">
+		<cfif isDefined("Cookie.UID")><cfset Session.UID = "#Cookie.UID#"></cfif>
+		<cfif isDefined("Cookie.FirstName")><cfset Session.FirstName = "#Cookie.FirstName#"></cfif>
+		<cfif isDefined("Cookie.LastName")><cfset Session.LastName = "#Cookie.LastName#"></cfif>
+		<cfif isDefined("Cookie.EMail")><cfset Session.EMail = "#Cookie.EMail#"></cfif>
+		<cfif isDefined("Cookie.LoggedIn")><cfset Session.LoggedIn = "#Cookie.LoggedIn#"></cfif>
+		
+		<cfif isDefined("Cookie.AdminLoggedIn")><cfset Session.AdminLoggedIn = "#Cookie.AdminLoggedIn#"></cfif>
+		<cfif isDefined("Cookie.AdminEmail")><cfset Session.EMail = "#Cookie.AdminEmail#"></cfif>
+	</cflock>
     <cfif (NOT IsDefined("Session.LoggedIn") AND NOT IsDefined("Session.AdminLoggedIn")) AND GetFileFromPath(GetCurrentTemplatePath()) NEQ "public.cfm">
       <cflocation url="#RootDir#ols-login/ols-login.cfm" addtoken="no">
     </cfif>

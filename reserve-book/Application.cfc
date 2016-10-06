@@ -41,11 +41,23 @@
       SELECT	Email
       FROM	Configuration
     </cfquery>
-    <cfset variables.adminemail = "">
+    <cfset variables.adminEmail = "">
     <cfscript>
       adminEmail = ValueList(getEmail.Email);
     </cfscript>
 
+	<!---Pull session information from cookies--->
+	<cflock timeout="60" throwontimeout="No" type="EXCLUSIVE" scope="SESSION">
+		<cfif isDefined("Cookie.UID")><cfset Session.UID = "#Cookie.UID#"></cfif>
+		<cfif isDefined("Cookie.FirstName")><cfset Session.FirstName = "#Cookie.FirstName#"></cfif>
+		<cfif isDefined("Cookie.LastName")><cfset Session.LastName = "#Cookie.LastName#"></cfif>
+		<cfif isDefined("Cookie.EMail")><cfset Session.EMail = "#Cookie.EMail#"></cfif>
+		<cfif isDefined("Cookie.LoggedIn")><cfset Session.LoggedIn = "#Cookie.LoggedIn#"></cfif>
+		
+		<cfif isDefined("Cookie.AdminLoggedIn")><cfset Session.AdminLoggedIn = "#Cookie.AdminLoggedIn#"></cfif>
+		<cfif isDefined("Cookie.AdminEmail")><cfset Session.EMail = "#Cookie.AdminEmail#"></cfif>
+	</cflock>
+	
     <cflock scope="session" throwontimeout="no" timeout="60" type="readonly">
     <cfif IsDefined("Session.AdminLoggedIn")>
       <cflocation url="#RootDir#admin/menu.cfm?lang=#lang#" addtoken="no">

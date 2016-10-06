@@ -2,10 +2,10 @@
 	<cfset StructDelete(Session, "Form_Structure")>
 </cfif>
 <cfif structKeyExists(form, 'm-m')>
-	<cfset url['m-m'] = form['m-m'] />
+	<cfset url['m-m'] = form['m-m'] >
 </cfif>
 <cfif structKeyExists(form, 'a-y')>
-	<cfset url['a-y'] = form['a-y'] />
+	<cfset url['a-y'] = form['a-y'] >
 </cfif>
 <cfif lang EQ "eng">
 	<cfset language.description = "Allows user to view all bookings in the jetties in a given month.">
@@ -17,11 +17,11 @@
 </cfif>
 
 <cfhtmlhead text="
-	<meta name=""dcterms.title"" content=""#language.jettyCalendar# - #language.esqGravingDock# - #language.PWGSC#"" />
-	<meta name=""keywords"" content=""#Language.masterKeywords#, #language.keywords#"" />
-	<meta name=""description"" content=""#language.description#"" />
-	<meta name=""dcterms.description"" content=""#language.description#"" />
-	<meta name=""dcterms.subject"" content=""#Language.masterSubjects#"" />
+	<meta name=""dcterms.title"" content=""#language.jettyCalendar# - #language.esqGravingDock# - #language.PWGSC#"" >
+	<meta name=""keywords"" content=""#Language.masterKeywords#, #language.keywords#"" >
+	<meta name=""description"" content=""#language.description#"" >
+	<meta name=""dcterms.description"" content=""#language.description#"" >
+	<meta name=""dcterms.subject"" content=""#Language.masterSubjects#"" >
 	<title>#language.jettyCalendar# - #language.esqGravingDock# - #language.PWGSC#</title>">
 <cfset request.title = language.jettyCalendar>
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
@@ -46,8 +46,8 @@
 					FROM	Bookings
 						INNER JOIN	Jetties ON Bookings.BRID = Jetties.BRID
 						INNER JOIN	Vessels ON Bookings.VNID = Vessels.VNID
-					WHERE	StartDate <= <cfqueryparam value="#lastdayofbunch#" cfsqltype="cf_sql_date" />
-						AND EndDate >= <cfqueryparam value="#firstdayofbunch#" cfsqltype="cf_sql_date" />
+					WHERE	StartDate <= <cfqueryparam value="#lastdayofbunch#" cfsqltype="cf_sql_date" >
+						AND EndDate >= <cfqueryparam value="#firstdayofbunch#" cfsqltype="cf_sql_date" >
 						AND	Bookings.Deleted = '0'
 						AND	Vessels.Deleted = '0'
 			        ORDER BY 

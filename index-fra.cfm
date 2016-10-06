@@ -1,20 +1,20 @@
 <cfoutput>
 <cfsavecontent variable="head">
 <title>R&eacute;servation pour travaux le CSE - Cale s&egrave;che d'Esquimalt - TPSGC</title>
-<meta name="description" content="Reservation pour travaux le Cale seche d'Esquimalt" />
-<meta name="dcterms.description" content="Reservation pour travaux le Cale seche d'Esquimalt" />
-<meta name="dcterms.title" content="R&eacute;servation pour travaux le CSE - Cale s&egrave;che d'Esquimalt - TPSGC" />
+<meta name="description" content="Reservation pour travaux le Cale seche d'Esquimalt" >
+<meta name="dcterms.description" content="Reservation pour travaux le Cale seche d'Esquimalt" >
+<meta name="dcterms.title" content="R&eacute;servation pour travaux le CSE - Cale s&egrave;che d'Esquimalt - TPSGC" >
 <meta name="dcterms.subject" title="gccore" content="#language.masterSubjects#" />
-<meta name="keywords" content="cale seche d'Esquimalt, reservation pour travaux, reparation de navires, bateaux, entretien de navires, cale seche, bassin de radoub, chantier naval" />
+<meta name="keywords" content="cale seche d'Esquimalt, reservation pour travaux, reparation de navires, bateaux, entretien de navires, cale seche, bassin de radoub, chantier naval" >
 </cfsavecontent>
 <cfhtmlhead text="#head#">
 <cfset request.title = language.bookingSpace>
 
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 <h1 id="wb-cont">#language.bookingSpace#</h1>
 
 <div class="span-4">
-<img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" />
+<img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" >
 
 <p>Afin de r&eacute;server une place pour un navire &agrave; l'une des installations de la Cale s&egrave;che d'Esquimalt, veuillez lancer la page d'<a href="#RootDir#ols-login/ols-login.cfm?lang=fra">#language.bookingApplicationLogin#</a>.
 			    Si vous &eacute;prouvez des probl&egrave;mes avec l'application des r&eacute;servations, pri&egrave;re d'utiliser la page <a href="#EGD_URL#/cn-cu-#lang#.html">#language.contact# <abbr title="#language.esqGravingDock#">#language.egd#</abbr></a>.</p>
@@ -26,6 +26,6 @@
 </div>
 
 <cfinclude template="#RootDir#includes/right-menu-droite-fra.cfm">
-<cfinclude template="#RootDir#includes/foot-pied-fra.cfm" />
+<cfinclude template="#RootDir#includes/foot-pied-fra.cfm">
 </cfoutput>
 

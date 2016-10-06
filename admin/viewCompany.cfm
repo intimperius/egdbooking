@@ -26,7 +26,7 @@
 <meta name="dc.publisher" content="Government of Canada, Public Works and Government Services Canada" />
 <meta name="dc.rights" content="http://www.tpsgc-pwgsc.gc.ca/comm/ai-in-eng.html" />
 <meta name="dcterms.issued" scheme="W3CDTF" content="2007-09-20" />
-<meta name="dcterms.modified" scheme="W3CDTF" content="<cfoutput query="GetFile">#LSDateFormat(parseDateTime(GetFile.DateLastModified,"mm-dd-yyyy"), "yyyy-mm-dd")#</cfoutput>" />
+<meta name="dcterms.modified" scheme="W3CDTF" content="<cfoutput query="GetFile">#LSDateFormat(parseDateTime(GetFile.DateLastModified), "yyyy-mm-dd")#</cfoutput>" />
 <meta name="description" content="Allows user to view information on a company.">
 <meta name="dcterms.description" content="Allows user to view information on a company.">
 <meta name="keywords" content="" />
@@ -148,7 +148,7 @@ var params = {
 					<!-- DATE MODIFIED BEGINS | DEBUT DE LA DATE DE MODIFICATION -->
 					Date Modified: <span class="date">
 						<!--- the query is set up in tete-header --->
-						<cfoutput query="GetFile">	#LSDateFormat(parseDateTime(GetFile.DateLastModified,"mm-dd-yyyy"), "yyyy-mm-dd")#</cfoutput>
+						<cfoutput query="GetFile">	#LSDateFormat(parseDateTime(GetFile.DateLastModified), "yyyy-mm-dd")#</cfoutput>
 					</span>
 					<!-- DATE MODIFIED ENDS | FIN DE LA DATE DE MODIFICATION -->
 				</div>

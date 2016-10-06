@@ -1,4 +1,5 @@
 <cfoutput>
+
 <cfif lang EQ "eng">
 	<cfset language.bookingsSummary = "Bookings Summary">
   <cfset language.ScreenMessage = '<p>To start from the first booking record, clear the <em>From Date</em> field.  To end after the last booking record, clear the <em>To Date</em> field.  To see all records, clear both fields.</p>'>
@@ -18,7 +19,7 @@
 	<cfset language.reset = "reset">
 	<cfset language.calendar = "calendar">
 	<cfset language.clear = "clear">
-  <cfset language.dateform = '(<abbr title="Four digits year">YYYY</abbr>-<abbr title="Two digits month">MM</abbr>-<abbr title="Two digits day">DD</abbr>)'>
+
 <cfelse>
 	<cfset language.bookingsSummary = "R&eacute;sum&eacute; des r&eacute;servations">
 	<cfset language.ScreenMessage = "<p>Pour d&eacute;buter au premier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de d&eacute;but&nbsp;&raquo;. Pour terminer apr&egrave;s le dernier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de fin&nbsp;&raquo;. Pour voir tous les dossiers, vider les deux champs.</p>">
@@ -38,8 +39,9 @@
 	<cfset language.reset = "R&eacute;initialiser">
 	<cfset language.calendar = "calendrier">
 	<cfset language.clear = "effacer">
-  <cfset language.dateform = '(<abbr title="Les quatres chiffres de l''ann&eacute;e">AAAA</abbr>-<abbr title="Les deux chiffres du mois">MM</abbr>-<abbr title="Les deux chiffres du jour">JJ</abbr>)'>
+  
 </cfif>
+
 <cfsavecontent variable="js">
 	<meta name="dcterms.title" content="#language.BookingsSummary# - #language.esqGravingDock# - #language.PWGSC#" />
 	<meta name="keywords" content="#Language.masterKeywords#" />
@@ -59,8 +61,8 @@
 
 				<h1 id="wb-cont">#language.bookingsSummary#</h1>
 
-        <cfparam name="Variables.startDate" default="#PacificNow#">
-        <cfparam name="Variables.endDate" default="#PacificNow#">
+        <cfparam name="Variables.startDate1" default="#PacificNow#">
+        <cfparam name="Variables.endDate1" default="#PacificNow#">
 
 				<cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
 					<cfinclude template="#RootDir#includes/admin_menu.cfm">
@@ -71,24 +73,31 @@
         <cfif isDefined("Session.Return_Structure")>
           <cfinclude template="#RootDir#includes/getStructure.cfm">
         </cfif>
-
-        <cfif Variables.startDate neq "" and not isDate(Variables.startDate)>
-          <cfset Variables.startDate = "" />
-        </cfif>
-
-        <cfif Variables.endDate neq "" and not isDate(Variables.endDate)>
-          <cfset Variables.endDate = "" />
-        </cfif>
-
-				<form action="resume-summary.cfm?lang=#lang#" method="post" id="bookSum">
-					<fieldset><legend>#language.bookingsSummary#</legend>
+		
+        	<form action="resume-summary.cfm?lang=#lang#" method="post" id="bookSumm">
+					
+					<fieldset><legend>#language.bookingsSummary#</legend> 
            <div>
-              <label for="startdate">#language.toDate#<span class="datepicker-format"> #language.dateform#</span>:</label>
-              <input type="date" id="startdate" name="startdate" value="#DateFormat(variables.startDate, 'yyyy-mm-dd')#"/>
+              <label for="startDate1">#language.fromDate# <br>
+			  <small><abbr title="#language.dateformexplanation#">#language.dateform# </abbr></small>
+			  <br>
+			  <cfif Variables.startDate1 neq "" and not isDate(Variables.startDate1)>
+				<cfset Variables.startDate1 = #PacificNow# />
+				<cfoutput><span class="uglyred">#language.invalidStartError#</span></cfoutput>
+				</cfif>
+			  </label>
+              <input type="date" id="startDate1" name="startDate1" value="#DateFormat(variables.startDate1, 'yyyy-mm-dd')#">
             </div>
             <div>
-              <label for="enddate">#language.toDate#<span class="datepicker-format"> #language.dateform#</span>:</label>
-              <input type="date" id="enddate" name="enddate" value="#DateFormat(variables.endDate, 'yyyy-mm-dd')#"/>
+              <label for="endDate1">#language.toDate# <br /><span class="datepicker-format">
+			  <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small></span>
+			   <br>
+			  <cfif Variables.endDate1 neq "" and not isDate(Variables.endDate1)>
+				<cfset Variables.endDate1 = #PacificNow# />
+				<cfoutput><span class="uglyred">#language.invalidEndError#</span></cfoutput>
+				</cfif>
+				</label>
+              <input type="date" id="endDate1" name="endDate1" value="#DateFormat(variables.endDate1, 'yyyy-mm-dd')#">
             </div>
             <div>
               <input type="submit" class="button button-accent" value="#language.submit#" />

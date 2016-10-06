@@ -3,11 +3,11 @@
 	<cfset language.createUser = "Account Registration">
 	<cfset language.keywords = "#language.masterKeywords#" & ", Add New User Account">
 	<cfset language.description = "Allows user to create a new user account.">
-	<cfset language.password = "Password">
-	<cfset language.repeatPassword = "Repeat Password">
-	<cfset language.firstName = "First Name">
-	<cfset language.lastName = "Last Name">
-	<cfset language.email = "Email">
+	<cfset language.passwordLabel = "Password:">
+	<cfset language.repeatPasswordLabel = "Repeat Password:">
+	<cfset language.firstNameLabel = "First Name:">
+	<cfset language.lastNameLabel = "Last Name:">
+	<cfset language.emailLabel = "Email:">
 	<cfset language.firstNameError = "Please enter your first name.">
 	<cfset language.lastNameError = "Please enter your last name.">
 	<cfset language.password1Error = "Please enter your password.">
@@ -19,11 +19,11 @@
 	<cfset language.createUser = "Inscription pour les comptes">
 	<cfset language.keywords = "#language.masterKeywords#" & ", Ajout d'un nouveau compte d'utilisateur">
 	<cfset language.description = "Permet &agrave; l'utilisateur de cr&eacute;er un nouveau compte d'utilisateur.">
-	<cfset language.password = "Mot de passe">
-	<cfset language.repeatPassword = "Retaper le mot de passe">
-	<cfset language.firstName = "Pr&eacute;nom">
-	<cfset language.lastName = "Nom de famille">
-	<cfset language.email = "Courriel">
+	<cfset language.passwordLabel = "Mot de passe&nbsp;:">
+	<cfset language.repeatPasswordLabel = "Retaper le mot de passe&nbsp;:">
+	<cfset language.firstNameLabel = "Pr&eacute;nom&nbsp;:">
+	<cfset language.lastNameLabel = "Nom de famille&nbsp;:">
+	<cfset language.emailLabel = "Courriel&nbsp;:">
 	<cfset language.firstNameError = "Veuillez entrer votre pr&eacute;nom.">
 	<cfset language.lastNameError = "Veuillez entrer votre nom de famille.">
 	<cfset language.password1Error = "Veuillez entrer votre mot de passe.">
@@ -112,7 +112,7 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newfname#">
                 <label for="firstname">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.FirstName#:<span class="form-text">#error('firstname')#</span>
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.FirstNameLabel#<span class="form-text">#error('firstname')#</span>
                 </label>
                 <input name="firstname" type="text" value="#variables.firstName#" size="23" maxlength="40" id="firstname" />
 
@@ -120,14 +120,14 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newlname#">
                 <label for="lastname">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.LastName#:<span class="form-text">#error('lastname')#</span>
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.LastNameLabel#<span class="form-text">#error('lastname')#</span>
                 </label>
                 <input name="lastname" type="text" value="#variables.lastName#" size="23" maxlength="40" id="lastname" />
               </div>
 
               <div class="#err_newpass1#">
                 <label for="password1">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Password#:<br />
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.PasswordLabel#<br />
                   <small>(min. 8 #language.characters#)</small><span class="form-text">#error('password1')#</span>
                 </label>
                 <input type="password" name="password1" id="password1" size="23" />
@@ -136,7 +136,7 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newpass2#">
                 <label for="password2">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.RepeatPassword#:<span class="form-text">#error('password2')#</span>
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.RepeatPasswordLabel#<span class="form-text">#error('password2')#</span>
                 </label>
                 <input type="password" name="password2" id="password2"  size="23" />
                 
@@ -144,7 +144,7 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newemail#">
                 <label for="email">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:<span class="form-text">#error('email')#</span>
+                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EmailLabel#<span class="form-text">#error('email')#</span>
                 </label>
                 <input name="email" type="text" value="#variables.email#" size="40" maxlength="100" id="email" />
                 

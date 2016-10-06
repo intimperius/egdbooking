@@ -10,7 +10,7 @@
 <cfhtmlhead text="#head#">
 <cfset request.title = language.bookingSpace>
 
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 <h1 id="wb-cont">#language.bookingSpace#</h1>
 
 <div class="span-4">

@@ -39,7 +39,7 @@
   SELECT DISTINCT Vessels.VNID
   FROM Vessels 
     INNER JOIN UserCompanies ON UserCompanies.CID = Vessels.CID
-    INNER JOIN Users ON UserCompanies.UID = <cfqueryparam value="#Session.UID#" cfsqltype="cf_sql_integer" /> 
+    INNER JOIN Users ON UserCompanies.UID = <cfqueryparam value="#Session.UID#" cfsqltype="cf_sql_integer" > 
     WHERE UserCompanies.Approved = 1 
     AND Users.Deleted = 0 
     AND UserCompanies.Deleted = 0
@@ -48,17 +48,17 @@
 <cfoutput>
 
 <cfsavecontent variable="head">
-	<meta name="dcterms.title" content="#language.detailsFor# #myDateFormat(URL.date, request.longdatemask)# - #language.PWGSC# - #language.esqGravingDock# -  #language.bookingDetail#" />
-	<meta name="keywords" content="#Language.masterKeywords#, #language.bookingDetail#" />
-	<meta name="description" content="#language.description#" />
-	<meta name="dcterms.description" content="#language.description#" />
-	<meta name="description" content="#language.description#" />
-	<meta name="dcterms.subject" title="gccore" content="#Language.masterSubjects#" />
+	<meta name="dcterms.title" content="#language.detailsFor# #myDateFormat(URL.date, request.longdatemask)# - #language.PWGSC# - #language.esqGravingDock# -  #language.bookingDetail#" >
+	<meta name="keywords" content="#Language.masterKeywords#, #language.bookingDetail#" >
+	<meta name="description" content="#language.description#" >
+	<meta name="dcterms.description" content="#language.description#" >
+	<meta name="description" content="#language.description#" >
+	<meta name="dcterms.subject" title="gccore" content="#Language.masterSubjects#" >
 	<title>#language.detailsFor# #myDateFormat(URL.date, request.longdatemask)# - #language.PWGSC# - #language.esqGravingDock# -  #language.bookingDetail#</title>
 </cfsavecontent>
 <cfhtmlhead text="#head#">
 
-<cfset request.title = language.DetailsFor & " " & myDateFormat(URL.date, request.longdatemask) />
+<cfset request.title = language.DetailsFor & " " & myDateFormat(URL.date, request.longdatemask) >
 <cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 <CFPARAM name="url.referrer" default="#language.bookingHome#">
@@ -90,8 +90,8 @@
 						INNER JOIN	Vessels ON Bookings.VNID = Vessels.VNID
 						INNER JOIN	Docks ON Bookings.BRID = Docks.BRID
 						INNER JOIN	Users ON Bookings.UID = Users.UID
-					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
-						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
+					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
+						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date">
 						AND Bookings.Deleted = '0'
 						AND Vessels.Deleted = '0'
 					orDER BY	Status, startdate, enddate, vessels.name
@@ -108,8 +108,8 @@
 						INNER JOIN	Vessels ON Bookings.VNID = Vessels.VNID
 						INNER JOIN	Jetties ON Bookings.BRID = Jetties.BRID
 						INNER JOIN	Users ON Bookings.UID = Users.UID
-					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
-						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
+					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
+						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
 						AND Bookings.Deleted = '0'
 						AND Vessels.Deleted = '0'
 					orDER BY	Status, startdate, enddate, vessels.name
@@ -121,8 +121,8 @@
 						Section1, Section2, Section3
 					FROM	Bookings
 						INNER JOIN	Docks ON Bookings.BRID = Docks.BRID
-					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
-						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
+					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
+						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
 						AND	Bookings.Deleted = '0'
 						AND	Status = 'm'
 
@@ -134,8 +134,8 @@
 						NorthJetty, SouthJetty
 					FROM	Bookings
 						INNER JOIN	Jetties ON Bookings.BRID = Jetties.BRID
-					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
-						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" />
+					WHERE	Bookings.StartDate <= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
+						AND	Bookings.EndDate >= <cfqueryparam value="#URL.Date#" cfsqltype="cf_sql_date" >
 						AND	Bookings.Deleted = '0'
 						AND	Status = 'm'
 
@@ -168,9 +168,9 @@
 						</h2>
           <div class="indent">
 					<cfif not Anonymous or viewable(vessels, VNID) or IsDefined('session.AdminLoggedIn')>
-						<b>#language.Agent#: </b>#LastName#, #FirstName#<br />
+						<b>#language.Agent# : </b>#LastName#, #FirstName#<br>
 					</cfif>
-						<b>#language.Status#: </b>
+						<b>#language.Status# : </b>
 							<cfif Status eq 'c'>
                 #language.Confirmed#
 							<cfelseIF Status eq 't'>
@@ -180,13 +180,13 @@
 							</cfif>
 					<br />
 					<cfif Status eq 'c'>
-            <b>#language.SectionsBooked#: </b>
+            <b>#language.SectionsBooked# : </b>
               <cfif Section1>#language.Drydock1#</cfif>
               <cfif Section2>#language.Drydock2#</cfif>
               <cfif Section3>#language.Drydock3#</cfif>
 						<br />
 					</cfif>
-					<b>#language.DockingDates#: </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#<br />
+					<b>#language.DockingDates# : </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#<br>
           </div>
 				</div>
         <br />
@@ -206,7 +206,7 @@
             <br />
               <b scope="row">#language.Dates#:</b>
           </div>
-        <br />
+        <br>
 				</cfloop>
 
 				<cfloop query="getJettyDetail">
@@ -215,7 +215,7 @@
 						SELECT	Vessels.VNID
 						FROM	Users INNER JOIN UserCompanies ON Users.UID = UserCompanies.UID
 								INNER JOIN Vessels ON UserCompanies.CID = Vessels.CID
-						WHERE	Users.UID = <cfqueryparam value="#Session.UID#" cfsqltype="cf_sql_integer" /> AND Vessels.VNID = <cfqueryparam value="#VNID#" cfsqltype="cf_sql_integer" />
+						WHERE	Users.UID = <cfqueryparam value="#Session.UID#" cfsqltype="cf_sql_integer" > AND Vessels.VNID = <cfqueryparam value="#VNID#" cfsqltype="cf_sql_integer" >
 							AND UserCompanies.Approved = 1 AND UserCompanies.Deleted = 0
 					</cfquery>
 				</cflock>
@@ -233,10 +233,10 @@
 					</h2>
           <div class="indent">
 					<cfif not Anonymous or viewable(vessels, VNID) or IsDefined('session.AdminLoggedIn')>
-						<b>#language.Agent#: </b>#LastName#, #FirstName#
-					<br />
+						<b>#language.Agent# : </b>#LastName#, #FirstName#
+					<br >
 					</cfif>
-						<b>#language.Status#: </b>
+						<b>#language.Status# : </b>
 							<cfif Status eq 'c'>
 								#language.Confirmed#
 							<cfelseIF Status eq 't'>
@@ -244,17 +244,17 @@
 							<cfelse>
                 #language.Pending#
 							</cfif>
-            <br />
+            <br >
 					<cfif Status eq 'c'>
             <b>#language.SectionsBooked#:</b>
               <cfif NorthJetty>#language.NorthLandingWharf#</cfif>
               <cfif SouthJetty>#language.SouthJetty#</cfif>
-						<br />
+						<br >
 					</cfif>
-						<b>#language.DockingDates#: </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#
+						<b>#language.DockingDates# : </b>#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#
           </div>
 				</div>
-        <br />
+        <br >
 				</cfloop>
         
         <cfif getJettyDetail.RecordCount eq 0 AND getJettyMaintenanceDetail.RecordCount eq 0><p>#language.noBookings#</p></cfif>

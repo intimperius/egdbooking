@@ -61,7 +61,7 @@
 					</h1>
 
 				<cfparam name="Variables.startDate" default="#PacificNow#">
-        <cfparam name="Variables.endDate" default="12/31/2031">
+				<cfparam name="Variables.endDate" default="12/31/2031">
 
 				<cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
 					<cfinclude template="#RootDir#includes/admin_menu.cfm">
@@ -72,28 +72,33 @@
         <cfif isDefined("Session.Return_Structure")>
           <cfinclude template="#RootDir#includes/getStructure.cfm">
         </cfif>
-
-        <cfif Variables.startDate neq "" and not isDate(Variables.startDate)>
-          <cfset Variables.startDate = "" />
-        </cfif>
-
-        <cfif Variables.endDate neq "" and not isDate(Variables.endDate)>
-          <cfset Variables.endDate = "" />
-        </cfif>
-
-        #Language.ScreenMessage#
+		
+		#Language.ScreenMessage#
 
 				<form action="resume-summary.cfm?lang=#lang#" method="post" id="bookSum">
 					<fieldset>
             <legend>#language.bookingsSummary#</legend>
             <div>
-              <label for="start">&nbsp; #language.fromDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small></label>
-              <input id="start" type="text" name="startDate" class="datepicker startDate" value="#DateFormat(variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
+              <label for="start">#language.fromDate#<br />
+			  <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+				<br>
+				 <cfif Variables.startDate neq "" and not isDate(Variables.startDate)>
+				<cfset Variables.startDate = "" />
+				<cfoutput><span class="uglyred">#language.invalidStartError#</span></cfoutput>
+				</cfif>
+				</label>
+			  <input type="date" id="start" name="startDate" value="#DateFormat(variables.startDate, 'yyyy-mm-dd')#">
             </div>
             
             <div>
-              <label for="end">&nbsp; #language.toDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small></label>
-              <input type="text" name="endDate" class="datepicker endDate" id="end" value="#DateFormat(variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> 
+              <label for="end">#language.toDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+			  <br>
+					<cfif Variables.endDate neq "" and not isDate(Variables.endDate)>
+					<cfset Variables.endDate = "" />
+					<cfoutput><span class="uglyred">#language.invalidEndError#</span></cfoutput>
+					</cfif>  
+			  </label>
+			  <input type="date" id="end" name="endDate" value="#DateFormat(variables.endDate, 'yyyy-mm-dd')#">
             </div>
 
             <div>

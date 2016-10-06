@@ -50,9 +50,23 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <!-- HeaderStart -->
 <cfinclude template="#RootDir#includes/app_banner_gc-gc_banner_app-fra.cfm" />
 <cfinclude template="/site/wet3.0/html5/includes/banner_site-site_banner-fra.html" />
-<nav role="navigation">
 
-<cfinclude template="/site/wet3.0/html5/includes/app_nav_site-site_nav_app-fra.html" />
+
+<nav role="navigation">
+<!-- Start of nav_mega-mega_nav-fra.html / Début de nav_mega-mega_nav-fra.html -->
+
+<div id="gcwu-psnb"><h2>Menu<span> du site</span></h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
+<ul class="mb-menu" <!---data-ajax-replace="/site/wet3.0/html5/includes/nav_mega-mega_nav-fra.inc"--->>
+<li><div><a href="http://www.tpsgc-pwgsc.gc.ca/comm/services-fra.html">Services de TPSGC</a></div></li>
+<li><div><a href="http://www.tpsgc-pwgsc.gc.ca/comm/info/index-fra.html">Renseignements pour</a></div></li>
+<li><div><a href="http://www.tpsgc-pwgsc.gc.ca/comm/ress-res-fra.html">Ressources TPSGC</a></div></li>
+</ul>
+</div></div></div></div>
+<!-- End of nav_mega-mega_nav-fra.html / Fin De nav_mega-mega_nav-fra.html -->
+
+
+</nav>
+
 
 <div id="gcwu-bc"><h2>Fil d'Ariane</h2><div id="gcwu-bc-in">
 <ol>
@@ -60,7 +74,6 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <cfinclude template="#RootDir#includes/bread-pain-fra.cfm" />
 </ol>
 </div></div>
-</nav>
 <!-- HeaderEnd -->
 </header></div></div>
 

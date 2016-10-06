@@ -49,8 +49,19 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 <cfinclude template="#RootDir#includes/app_banner_gc-gc_banner_app-eng.cfm" />
 <cfinclude template="/site/wet3.0/html5/includes/banner_site-site_banner-eng.html" />
 <nav role="navigation">
+<!-- Start of nav_mega-mega_nav-eng.html / Début de nav_mega-mega_nav-eng.html -->
 
-<cfinclude template="/site/wet3.0/html5/includes/app_nav_site-site_nav_app-eng.html" />
+<div id="gcwu-psnb"><h2><span>Site </span>menu</h2><div id="gcwu-psnb-in"><div class="wet-boew-menubar mb-mega"><div>
+<ul class="mb-menu" <!---data-ajax-replace="/site/wet3.0/html5/includes/nav_mega-mega_nav-eng.inc"--->>
+<li><div><a href="http://www.tpsgc-pwgsc.gc.ca/comm/services-eng.html">PWGSC Services</a></div></li>
+<li><div><a href="http://www.tpsgc-pwgsc.gc.ca/comm/info/index-eng.html">Information for</a></div></li>
+<li><div><a href="http://www.tpsgc-pwgsc.gc.ca/comm/ress-res-eng.html">PWGSC Resources</a></div></li>
+</ul>
+</div></div></div></div>
+<!-- End of nav_mega-mega_nav-eng.html / Fin De nav_mega-mega_nav-eng.html -->
+
+
+
 
 <div id="gcwu-bc"><h2>Breadcrumb trail</h2><div id="gcwu-bc-in">
 <ol>

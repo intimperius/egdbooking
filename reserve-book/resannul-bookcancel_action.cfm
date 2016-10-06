@@ -91,12 +91,12 @@
 <!--- create structure for sending to mothership/success page. --->
 <cfset Session.Eng.Success.Breadcrumb = "Booking Cancellation Request">
 <cfset Session.Eng.Success.Title = "Booking Cancellation Request">
-<cfset Session.Eng.Success.Message = "<div align='left'>Your cancellation request for the booking for <strong>#getBooking.vesselName#</strong> from #myDateFormat(CreateODBCDate(getBooking.startDate), request.datemask)# to #myDateFormat(CreateODBCDate(getBooking.endDate), request.datemask)# is now pending.  EGD administration has been notified of your request.  You will receive a follow-up email responding to your request shortly.</div>">
+<cfset Session.Eng.Success.Message = "Your cancellation request for the booking for <strong>#getBooking.vesselName#</strong> from #myDateFormat(CreateODBCDate(getBooking.startDate), request.datemask)# to #myDateFormat(CreateODBCDate(getBooking.endDate), request.datemask)# is now pending.  EGD administration has been notified of your request.  You will receive a follow-up email responding to your request shortly.">
 <cfset Session.Eng.Success.Link = "#returnTo#?#urltoken#&CID=#url.CID##variables.dateValue#">
 
 <cfset Session.Fra.Success.Breadcrumb = "Demande d'annulation de r&eacute;servation">
 <cfset Session.Fra.Success.Title = "Demande d'annulation de r&eacute;servation">
-<cfset Session.Fra.Success.Message = "<div align='left'>Votre demande d'annulation de la r&eacute;servation pour le <strong>#getBooking.vesselName#</strong> du #myDateFormat(CreateODBCDate(getBooking.startDate), request.datemask)# au #myDateFormat(CreateODBCDate(getBooking.endDate), request.datemask)#  est en cours de traitement. L'administration de la CSE a &eacute;t&eacute; avis&eacute;e de votre demande. Vous recevrez sous peu un courriel de suivi en r&eacute;ponse &agrave; votre demande.</div>">
+<cfset Session.Fra.Success.Message = "Votre demande d'annulation de la r&eacute;servation pour le <strong>#getBooking.vesselName#</strong> du #myDateFormat(CreateODBCDate(getBooking.startDate), request.datemask)# au #myDateFormat(CreateODBCDate(getBooking.endDate), request.datemask)#  est en cours de traitement. L'administration de la CSE a &eacute;t&eacute; avis&eacute;e de votre demande. Vous recevrez sous peu un courriel de suivi en r&eacute;ponse &agrave; votre demande.">
 <cfset Session.Fra.Success.Link = "#returnTo#?#urltoken#&CID=#url.CID##variables.dateValue#">
 
 <cflocation addtoken="no" url="#RootDir#comm/succes.cfm?lang=#lang#">

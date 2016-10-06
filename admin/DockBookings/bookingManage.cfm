@@ -303,26 +303,26 @@ function EditSubmit ( selectedform )
 			<div class="module-info widemod">
 				<h2>Booking Details</h2>
 				<div class="indent">
-					<b>Start Date:</b> #dateformat(getData.startDate, "mmm d, yyyy")#<br/>
-					<b>End Date:</b> #dateformat(getData.endDate, "mmm d, yyyy")#<br/>
-					<b>## of Days:</b> #datediff('d', getData.startDate, getData.endDate) + 1#<br/>
-					<b>Vessel:</b> <cfif #EndHighlight# GTE PacificNow>* </cfif>#getData.vesselName#<br/>
-					<b><i>Length:</i></b> <i>#getData.length# m</i><br/>
-					<b><i>Width:</i></b> <i>#getData.width# m</i><br/>
-					<b><i>Tonnage:</i></b> <i>#getData.tonnage#</i><br/>
-					<b>Agent:</b> #getData.UserName#<br/>
-					<b>Company:</b> #getData.companyName# <a class="textbutton" href="changeCompany.cfm?BRIDURL=#BRID#&CompanyURL=#getData.companyName#&vesselNameURL=#getData.vesselName#&amp;UserNameURL=#getData.UserName#">Change</a><br/>
-					<b>Booking Time:</b> #DateFormat(getData.bookingTime,"mmm d, yyyy")# #TimeFormat(getData.bookingTime,"long")#<br/>
-					<b>Last Change:</b> #getData.bookingTimeChangeStatus# #DateFormat(getData.bookingTimeChange,"mmm d, yyyy")# #TimeFormat(getData.bookingTimeChange,"long")#<br/>
-					<b>Section(s):</b> <cfif getData.Section1>Section 1</cfif>
+					<p><b>Start Date:</b> #dateformat(getData.startDate, "mmm d, yyyy")#</p>
+					<p><b>End Date:</b> #dateformat(getData.endDate, "mmm d, yyyy")#</p>
+					<p><b>## of Days:</b> #datediff('d', getData.startDate, getData.endDate) + 1#</p>
+					<p><b>Vessel:</b> <cfif #EndHighlight# GTE PacificNow>* </cfif>#getData.vesselName#</p>
+					<p><b><i>Length:</i></b> <i>#getData.length# m</i></p>
+					<p><b><i>Width:</i></b> <i>#getData.width# m</i></p>
+					<p><b><i>Tonnage:</i></b> <i>#getData.tonnage#</i></p>
+					<p><b>Agent:</b> #getData.UserName#</p>
+					<p><b>Company:</b> #getData.companyName# <a class="textbutton" href="changeCompany.cfm?BRIDURL=#BRID#&CompanyURL=#getData.companyName#&vesselNameURL=#getData.vesselName#&amp;UserNameURL=#getData.UserName#">Change</a></p>
+					<p><b>Booking Time:</b> #DateFormat(getData.bookingTime,"mmm d, yyyy")# #TimeFormat(getData.bookingTime,"long")#</p>
+					<p><b>Last Change:</b> #getData.bookingTimeChangeStatus# #DateFormat(getData.bookingTimeChange,"mmm d, yyyy")# #TimeFormat(getData.bookingTimeChange,"long")#</p>
+					<p><b>Section(s):</b> <cfif getData.Section1>Section 1</cfif>
 						<cfif getData.Section2><cfif getData.Section1> &amp; </cfif>Section 2</cfif>
 						<cfif getData.Section3><cfif getData.Section1 OR getData.Section2> &amp; </cfif>Section 3</cfif>
-						<cfif NOT getData.Section1 AND NOT getData.Section2 AND NOT getData.Section3>Unassigned</cfif>
+						<cfif NOT getData.Section1 AND NOT getData.Section2 AND NOT getData.Section3>Unassigned</cfif></p>
 				</div>
 				<div style="text-align:right"><a href="javascript:EditSubmit('editBooking#ID#');">Edit Details</a></div>
 			</div>
 			<br/>
-			<div style="margin-left:-10px;"><form class="form-inline"><label for="EndHighlight">Highlight for:</label>
+			<div style="margin-left:-10px;"><label for="EndHighlight">Highlight for:</label>
 				<cfform action="highlight_action.cfm?BRID=#BRID#" method="post" id="updateHighlight">
 					<cfif EndHighlight NEQ "">
 					<cfset datediffhighlight = DateDiff("d", PacificNow, EndHighlight)>
@@ -332,7 +332,7 @@ function EditSubmit ( selectedform )
 					<cfset datediffhighlight = "0">
 					</cfif>
 					<cfinput id="EndHighlight" name="EndHighlight" type="text" value="#datediffhighlight#" size="3" maxlength="3" required="yes" message="Please enter an End Highlight Date." /> Days <input type="submit" name="submitForm" class="button" value="Update" />
-				</cfform></form>
+				</cfform>
 			</div>
 			
 			<b>Highlight Until:</b> <cfif datediffhighlight NEQ "0">#DateFormat(EndHighlight, "mmm dd, yyyy")#</cfif>
