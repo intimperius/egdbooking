@@ -360,7 +360,7 @@ function EditSubmit ( selectedform )
 				<input type="hidden" name="BRID" value="#id#" />
 			</form>
 
-			<tr><td colspan="5">
+			<tr><td colspan="5" class="booking-detail">
 
 			<div class="module-info widemod">
 				<h2>Booking Details</h2>
@@ -400,6 +400,7 @@ function EditSubmit ( selectedform )
 				<cfelse>
 					<cfset variables.actionCap = "Delete Booking">
 				</cfif><br />
+				<br />
 			<b>Status:</b>
 					<cfif getData.Status EQ "C">
 					<strong>Confirmed</strong>

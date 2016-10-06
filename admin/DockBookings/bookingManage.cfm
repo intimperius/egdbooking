@@ -298,9 +298,9 @@ function EditSubmit ( selectedform )
 				AND		Docks.BRID = Bookings.BRID
 			</cfquery>
 
-			<tr><td colspan="5">
+			<tr><td colspan="5" class="booking-detail">
 				
-			<div class="module-info widemod">
+			<div class="module-info-widemod">
 				<h2>Booking Details</h2>
 				<div class="indent">
 					<p><b>Start Date:</b> #dateformat(getData.startDate, "mmm d, yyyy")#</p>
@@ -341,6 +341,7 @@ function EditSubmit ( selectedform )
 				<cfelse>
 					<cfset variables.actionCap = "Delete Booking">
 				</cfif><br/>
+				<br />
 			<b>Status:</b> <cfif getData.Status EQ "C">
 						<strong>Confirmed</strong>
 						<a href="javascript:EditSubmit('chgStatus_2t#ID#');" class="textbutton">Make Tentative</a>

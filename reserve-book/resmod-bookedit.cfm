@@ -60,7 +60,7 @@
 				<p>#language.explanation#</p> 
 			
 				<p>
-        #language.phone#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-3879  #language.or#  250-363-8056<br />
+        #language.phone#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-8520  #language.or#  250-363-3743<br />
 					#language.fax#<cfif lang eq "fra">&nbsp;</cfif>: 250-363-8059<br />
 					#language.emailAddress#<cfif lang eq "fra">&nbsp;</cfif>: 	 
 		 

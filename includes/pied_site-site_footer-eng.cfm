@@ -14,7 +14,7 @@
 <a href="http://www.canada.ca/en/contact/feedback.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Feedback</a>
 </div>
 <div class="col-sm-3 col-xs-6 text-right">
-<div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
+<!-- <div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div> -->
 </div>
 <div class="clear visible-xs"></div>
 </div>

@@ -17,6 +17,25 @@
 
 /* GENERAL CONTROL DEFINITIONS ------------------------- */
 
+/* .module-info-widemod {
+	border-style: solid;
+	padding:0 10px 0 10px;
+}*/
+
+#wb-main table .booking-detail {
+	border-style: solid;
+	padding:0 30px 30px 30px;
+	margin-bottom: 200px;
+}
+
+.color-accent {
+	color: red;
+}
+
+.textbutton {
+	margin-right: 30px;
+}
+
 .uglyred {
   color: #B60000;
 }
@@ -419,7 +438,7 @@ ul, dl, ol {
 }
 
 #wb-main table:not(.keytable) {
-	width: 100%;
+	width: 70%;
 	max-width: 100%;
 	margin-bottom: 23px;
 	border-collapse: collapse;

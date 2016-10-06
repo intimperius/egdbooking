@@ -87,7 +87,9 @@ function EditSubmit ( selectedform )
 	<p><label for="selectCompany">Select Company:</label> <cfselect query="getCompanies" id="selectCompany" name="compID" value="CID" display="Name" selected="#Variables.compID#" />
 	&nbsp;&nbsp;&nbsp;
 	<!--a href="javascript:EditSubmit('chooseUserForm');" class="textbutton">Submit</a-->
+	<br />
 	<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
+	<br />
 	<cfoutput><a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 </cfform>
 
