@@ -102,6 +102,7 @@
 <br/>
 	<div>
 		<input type="submit" name="submitForm" class="button button-accent" value="Delete" />
+		<br />
 		<a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue###id#variables.BRID#">Cancel
 	</div>
 

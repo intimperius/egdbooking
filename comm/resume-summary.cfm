@@ -155,10 +155,10 @@ WHERE	SouthJetty = 1
         <table>
           <thead>
             <tr>
-              <th id="vessel" class="vessel">#language.VESSELCaps#</th>
-              <th id="section" class="section">#language.SECTIONCaps#</th>
-              <th id="docking" class="docking">#language.DOCKINGCaps#</th>
-              <th id="booking" class="booking">#language.BOOKINGDATECaps#</th>
+              <th id="vessel" class="vessel" style="text-align: center;">#language.VESSELCaps#</th>
+              <th id="section" class="section" style="text-align: center;">#language.SECTIONCaps#</th>
+              <th id="docking" class="docking" style="text-align: center;">#language.DOCKINGCaps#</th>
+              <th id="booking" class="booking" style="text-align: center;">#language.BOOKINGDATECaps#</th>
             </tr>
           </thead>
           <cfloop query="getDockBookings">
@@ -218,10 +218,10 @@ WHERE	SouthJetty = 1
         <table>
           <thead>
             <tr>
-              <th id="vessel2" class="vessel">#language.VESSELCaps#</th>
-              <th id="section2" class="section">#language.SECTIONCaps#</th>
-              <th id="docking2" class="docking">#language.DOCKINGCaps#</th>
-              <th id="booking2">#language.BOOKINGDATECaps#</th>
+              <th id="vessel2" class="vessel" style="text-align: center;">#language.VESSELCaps#</th>
+              <th id="section2" class="section" style="text-align: center;">#language.SECTIONCaps#</th>
+              <th id="docking2" class="docking" style="text-align: center;">#language.DOCKINGCaps#</th>
+              <th id="booking2" style="text-align: center;">#language.BOOKINGDATECaps#</th>
             </tr>
           </thead>
           <tbody>
@@ -270,10 +270,10 @@ WHERE	SouthJetty = 1
         <table>
           <thead>
             <tr>
-              <th id="vessel3" class="vessel">#language.VESSELCaps#</th>
-              <th id="section3" class="section">#language.SECTIONCaps#</th>
-              <th id="docking3" class="docking">#language.DOCKINGCaps#</th>
-              <th id="booking3" class="booking">#language.BOOKINGDATECaps#</th>
+              <th id="vessel3" class="vessel" style="text-align: center;">#language.VESSELCaps#</th>
+              <th id="section3" class="section" style="text-align: center;">#language.SECTIONCaps#</th>
+              <th id="docking3" class="docking" style="text-align: center;">#language.DOCKINGCaps#</th>
+              <th id="booking3" class="booking" style="text-align: center;">#language.BOOKINGDATECaps#</th>
             </tr>
           </thead>
           <tbody>

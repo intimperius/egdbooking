@@ -90,6 +90,7 @@
 	<br />
 	<div>
 		<input type="submit" name="submitForm" class="button button-accent" value="<cfoutput>#variables.action#</cfoutput> Booking" />
+		<br />
 		<cfoutput><a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue####variables.BRID#">Back</a></cfoutput>
 	</div>
 

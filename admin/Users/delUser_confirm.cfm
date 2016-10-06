@@ -125,6 +125,7 @@ function EditSubmit ( selectedform )
 						<cfif getCompanies.recordCount GTE 1>
 							<input type="submit" value="Delete user account" class="button-accent button" />
               <cfoutput>
+              <br />
               <a href="removeUserCompany_action.cfm?UID=#form.UID#&amp;CID=#form.CID#" class="textbutton">Remove User From #getCompany.companyName#</a>
               </cfoutput>
 						  
