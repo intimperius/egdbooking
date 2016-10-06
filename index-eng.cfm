@@ -25,6 +25,7 @@ Dock, please proceed to the <a href="#RootDir#ols-login/ols-login.cfm?lang=eng">
 <p><a href="http://gazette.gc.ca/rp-pr/p2/2009/2009-12-23/html/sor-dors324-eng.html">Archived - Regulations amending the Esquimalt Graving Dock regulations</a></p>
 </div>
 
+<!--- github access test --->
 <cfinclude template="#RootDir#includes/right-menu-droite-eng.cfm">
 <cfinclude template="#RootDir#includes/foot-pied-eng.cfm" />
 </cfoutput>
