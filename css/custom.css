@@ -45,12 +45,12 @@ div.center .right {
   clear: both;
 }
 
-abbr.required {
-  color: #a00; text-decoration: none; font-size: 150%;
+.required {
+  color: #f00; text-decoration: none;
 }
 
 div.error {
-	color: #a00; text-decoration: none;
+	color: #f00; text-decoration: none;
 }
 
 form legend {
@@ -70,7 +70,6 @@ div.core div.colLayout {
 
 div.calendar {
 	display: table;
-	width: 700px;
 	border-left:1px solid #666666;
 	border-right:1px solid #666666;
 	border-bottom:1px solid #666666;
@@ -201,8 +200,8 @@ th.section {
 .sec1, div#wb-main-in .sec1 a, .sec2, div#wb-main-in .sec2 a, .sec3, div#wb-main-in .sec3 a { color: #000; padding: 2px; }
 
 .confirmed, div.center .confirmed a { color: #000; }
-.tentative, div.center .tentative a, a:link.tentative { color: #234764; }
-.pending, div.center .pending a { color: #005100; }
+.tentative, div.center .tentative a, a:link.tentative { color: #2e5e84; }
+.pending, div.center .pending a { color: #008000; }
 .cancelled, div.center .cancelled a { color: #D00; }
 
 /* CONFLICTS ------------------------------------------- */
@@ -292,3 +291,195 @@ table{
 	line-height: 1;
 }
 
+/* additional rules for WET 4.0 */
+
+.form-inline > * {
+    margin-right: 0;
+}
+
+ul, dl, ol {
+	margin: 0;
+}
+
+#wb-main-in {
+	float: right;
+    display: inline;
+    width: 75%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#wb-sec {
+	float: left;
+	display: block;
+	width: 25%;
+	padding-left: 15px;
+    padding-right: 15px;
+}
+
+#wb-main {
+	margin-bottom: 20px;
+}
+
+#gcwu-date-mod {
+	margin-top: 20px;
+	float: right;
+}
+
+#wb-main label {
+	display: block;
+}
+
+#wb-main input[type="image"] + label, input[type="checkbox"] + label, input[type="radio"] + label {
+    display: -moz-inline-stack !important;
+    display: inline-block !important;
+    vertical-align: middle;
+}
+
+#wb-main input, textarea, select, .form-uneditable-input {
+    border-style: solid;
+    border-width: 1px;
+    min-height: 18px !important;
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#wb-main input[type="button"], input.button-accent, button.button-accent, a.button-accent, summary.button-accent {
+    background-color: #176ca7;
+    border-color: #0e4164 #0e4164 #0b324d;
+    color: white !important;
+    text-shadow: 0 1px 1px #222;
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE3NmNhNyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzExNGY3YSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+    background-size: 100%;
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#176ca7),color-stop(100%,#114f7a));
+    background-image: -webkit-linear-gradient(#176ca7,#114f7a);
+    background-image: -moz-linear-gradient(#176ca7,#114f7a);
+    background-image: -o-linear-gradient(#176ca7,#114f7a);
+    background-image: linear-gradient(#176ca7,#114f7a);
+    padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+
+#wb-main blockquote, form, img, pre {
+    margin-bottom: 10px;
+}
+
+#wb-main label {
+	font-weight: normal;
+/*	padding-top: 10px;
+	padding-bottom: 10px;*/
+}
+
+#wb-main .picker-field {
+	height: 37px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#wb-main .picker-toggle{
+	margin-bottom: 10px;
+}
+
+#wb-main #calendar8 a {
+	display: inline-block;
+	padding: 2px;
+}
+
+#wb-main table.keytable th {
+    background-color: #eee;
+    text-align: center;
+    padding: 2px;
+}
+
+#wb-main .keyfloat {
+    float: right;
+}
+
+#wb-main .span-1 {
+	width: 20%;
+}
+
+#wb-main .span-3 {
+	width: 50%;
+	float: left;
+}
+
+#wb-main .row-start {
+	display: inline-block;
+}
+
+#wb-main .row-end {
+	display: inline;
+}
+
+#wb-main table:not(.keytable) {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 23px;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 10px;
+}
+
+#wb-main table > tbody > tr > td, #wb-main table > tbody > tr > th, #wb-main table > tfoot > tr > td, #wb-main table > tfoot > tr > th, #wb-main table > thead > tr > td, table > thead > tr > th {
+    padding: 8px;
+    line-height: 1.4375;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+#wb-main .width-90 {
+	width: 90%;
+}
+
+#wb-main label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#wb-main table:not(.keytable) > tbody > tr > th {
+	border-top: 0;
+	vertical-align: bottom;
+	border-bottom: 2px solid #ddd;
+	font-size: 110%;
+}
+
+#wb-main table:not(.keytable) > thead > tr > th {
+	border-top: 0;
+	vertical-align: bottom;
+	border-bottom: 2px solid #ddd;
+	font-size: 110%;
+}
+
+#wb-main table:not(.width-90):not(.keytable) > tbody > tr:nth-child(2n+1) {
+    background-color: #f5f5f5;
+}
+
+#wb-main table.width-90 > tbody > tr:nth-child(4n+3) {
+    background-color: #f5f5f5;
+}
+
+#wb-main .form-radio, .form-checkbox {
+    text-align: left !important;
+}
+
+#wb-main .form-radio input[type="radio"], #wb-main .form-radio input[type="checkbox"], #wb-main .form-checkbox input[type="radio"], #wb-main .form-checkbox input[type="checkbox"] {
+    float: left;
+    margin-left: -20px;
+    margin-top: 2px;
+    border: none;
+}
+
+#wb-main .form-radio, .form-checkbox {
+    padding-left: 20px;
+    padding-top: 2px;
+    text-align: left !important;
+    zoom: 1;
+    overflow: hidden;
+}

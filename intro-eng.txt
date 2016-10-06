@@ -23,7 +23,7 @@ Please be advised that when dry or wet docking requests are submitted, every att
 
 	The Esquimalt Graving Dock Regulations that set the tariff were published in Canada Gazette Part II on December 23, 2009 (referenced as SOR/324). A consolidated version of the Regulations is available at the following link:
 
-	<a href="http://laws-lois.justice.gc.ca/PDF/Regulation/S/SOR-89-332.pdf">Esquimalt Graving Dock Regulations (SOR/89-332)</a><br />
+	<a href="http://laws-lois.justice.gc.ca/eng/regulations/sor-89-332/index.html">Esquimalt Graving Dock Regulations (SOR/89-332)</a><br />
 	<a href="../comm/tarif-tariff.cfm?lang=eng">SCHEDULE 1 TARIFF OF DOCK CHARGES</a>
 </p>
 

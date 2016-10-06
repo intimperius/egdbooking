@@ -5,7 +5,7 @@
       <ul>
         <li><a title="EGD: Capital Projects" href="#EGD_URL#/env/projects-projets-eng.html">Upcoming capital projects impacting operations for the Esquimalt Graving Dock</a></li>
 		<li><a href="http://www.tpsgc-pwgsc.gc.ca/biens-property/cse-egd/avis-notices-eng.html">Notices</a></li>
-		<li><a href="http://gazette.gc.ca/rp-pr/p2/2009/2009-12-23/html/sor-dors324-eng.html">Archived - Regulations amending the Esquimalt Graving Dock regulations</a></li>
+		<li><a href="http://publications.gc.ca/gazette/archives/p2/2009/2009-12-23/pdf/g2-14326.pdf">Archived - Regulations amending the Esquimalt Graving Dock regulations</a></li>
       </ul>
   </div>
 </div>

@@ -1,13 +1,27 @@
 <cfif lang EQ "eng">
 	<cfset language.title = "Booking Application Sign In">
 	<cfset language.description ="Sign In page for the booking application.">
-	<cfset language.EmailLabel = "Email:">
-	<cfset language.PasswordLabel = "Password:">
+	<cfset language.EmailLabel = "Email address">
+	<cfset language.PasswordLabel = "Password">
+
+  <cfset language.login = "Sign in to book space at the Esquimalt Graving Dock">
+  <cfset language.required = "(required)">
+  <cfset language.loginButton = "Sign in">
+  <cfset language.info = "Any company or individual can book space at the Esquimalt Graving Dock on a first-come, first-served basis.">
+  <cfset language.accountRequired = "To book space, you must first have an account.">
+  <cfset language.instructions = "If you have an account, sign in to view current listings and book space.">
 <cfelse>
 	<cfset language.title = "Entrer dans l'application de r&eacute;servation">
 	<cfset language.description ="Page d'ouverture de session pour la demande de r&eacute;servation.">
-	<cfset language.EmailLabel = "Courriel&nbsp;:">
-	<cfset language.PasswordLabel = "Mot de passe&nbsp;:">
+	<cfset language.EmailLabel = "Courriel">
+	<cfset language.PasswordLabel = "Mot de passe">
+
+  <cfset language.login = "Se connecter pour r&eacute;server d'espace space &agrave; la cale s&egrave;che d'Esquimalt">
+  <cfset language.required = "(requis)">
+  <cfset language.loginButton = "Entrer">
+  <cfset language.info = "Toute entreprise ou individu peut r&eacute;server un espace &agrave; la cale s&egrave;che d'Esquimalt sur un premier arriv&eacute;, premier servi.">
+  <cfset language.accountRequired = "Pour r&eacute;server un espace, vous devez d'abord avoir un compte.">
+  <cfset language.instructions = "Si vous avez un compte, connectez-vous pour voir les inscriptions actuelles et de l'espace du livre.">
 </cfif>
 
 
@@ -59,34 +73,41 @@
   <form action="ols-login_action.cfm?lang=#lang#" method="post" id="login_form">
     <fieldset>
       <legend>#language.login#</legend>
-      <p>#language.requiredFields#</p>
-      
+      <p>#language.info#</p>
+      <p>#language.accountRequired#</p>
+      <ul><li><a href="utilisateurajout-useradd.cfm?lang=#lang#">#language.addUser#</a></li></ul>
+      <br />
+      <p>#language.instructions#</p>
+      <br />
       <div class="#err_loginemail#">
-        <label for="email">
-          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EmailLabel#<span class="form-text">#error('email')#</span>
+        <label for="email" style="display:block">
+          #language.EmailLabel#&nbsp;<span title="" class="required">#language.required#</span>
+          <span class="form-text">#error('email')#</span>
         </label>
         <input type="text" name="email" id="email" size="40" maxlength="100" value="#email#" />
         
       </div>
 
       <div class="#err_loginpass#">
-        <label for="password">
-          <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.PasswordLabel#<span class="form-text">#error('password')#</span>
+        <label for="password" style="display:block">
+          #language.PasswordLabel#&nbsp;<span class="required">#language.required#</span>
+          <span class="form-text">#error('password')#</span>
         </label>
-        <input type="password" name="Password" id="password" size="25" maxlength="40" />
+        <input type="password" name="Password" id="password" size="40" maxlength="40" />
         
       </div>
 
       <div>
         <input name="remember" type="checkbox" id="remember" value="remember" <CFIF IsDefined("Cookie.login")>checked="checked"</CFIF> />
+
 		<label for="remember">#language.Remember#</label>
 	  </div>
 
-      <input type="submit" name="submitForm" value="#language.Login#" class="button button-accent" />
+      <input type="submit" name="submitForm" value="#language.loginButton#" class="button button-accent" />
     </fieldset>
   </form>
-  <p><a href="utilisateurajout-useradd.cfm?lang=#lang#">#language.addUser#</a></p>
-  <p><a href="passeoubli-passforgot.cfm?lang=#lang#">#language.Forgot#</a></p>
+  <ul><li><a href="passeoubli-passforgot.cfm?lang=#lang#">#language.Forgot#?</a></li></ul>
+  <br />
 </cfoutput>
 <cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
 

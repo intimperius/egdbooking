@@ -15,14 +15,9 @@
 <cfelseif IsDefined("URL.CID")>
   <cfset Variables.BookingRequestString = "&amp;CID=#URL.CID#">
 </cfif>
-
-
-
-<cfif IsDefined("URL.Date")>
-<cfset urlDateTemp = Right(#url.date#, 10)> <!--- not sure if logic right --->
-<cfif DateCompare(#urlDateTemp#, #PacificNow#, 'd') EQ 1>
+<cfif IsDefined("URL.Date") AND DateCompare(#url.date#, #PacificNow#, 'd') EQ 1>
   <cfset Variables.BookingRequestString = "#Variables.BookingRequestString#&amp;Date=#URL.Date#">
-</cfif></cfif>
+</cfif>
 
 <CFSET variables.datetoken = "">
 <CFIF structKeyExists(url, 'm-m')>
@@ -36,36 +31,36 @@
 <!-- Start of app_nav_gauche-nav_left_app-eng.html / Début de app_nav_gauche-nav_left_app-eng.html -->
 <cfoutput>
 <nav role="navigation"><h2 id="wb-nav">Menu secondaire</h2>
-<div class="wb-sec-def">
+<div class="wb-sec">
 <!-- SecNavStart -->
-<section><h3><a href="#EGD_URL#/index-#lang#.html"><abbr title="#language.esqGravingDock#">#language.egd#</abbr></a></h3>
-<ul>
+<section class="list-group menu list-unstyled"><h3><a href="#EGD_URL#/index-#lang#.html"><abbr title="#language.esqGravingDock#">#language.egd#</abbr></a></h3>
+<ul class="list-group menu list-unstyled">
 <cfif structKeyExists(session, 'loggedin')>
-<li><a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#" title="#language.BookingHome#">#language.BookingHome#</a></li>
-<li><a href="#RootDir#comm/resume-summary_ch.cfm?lang=#lang#">#language.bookingsSummary#</a></li>
-<li><a href="#RootDir#comm/calend-cale-dock.cfm?lang=#lang##datetoken#">#language.drydockCalendar#</a></li>
-<li><a href="#RootDir#comm/calend-jet.cfm?lang=#lang##datetoken#">#language.JettyCalendar#</a></li>
+<li><a class="list-group-item" href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#" title="#language.BookingHome#">#language.BookingHome#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/resume-summary_ch.cfm?lang=#lang#">#language.bookingsSummary#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/calend-cale-dock.cfm?lang=#lang##datetoken#">#language.drydockCalendar#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/calend-jet.cfm?lang=#lang##datetoken#">#language.JettyCalendar#</a></li>
 
 <cfif structKeyExists(session, 'readonly') and Session.ReadOnly NEQ 1>
-<li><a href="#RootDir#reserve-book/resdemande-bookrequest.cfm?lang=#lang##Variables.BookingRequestString#" title="#language.requestBooking#">#language.requestBooking#</a></li>
-<li><a href="#RootDir#reserve-book/navireajout-vesseladd.cfm?lang=#lang#">#Language.addVessel#</a></li>
+<li><a class="list-group-item" href="#RootDir#reserve-book/resdemande-bookrequest.cfm?lang=#lang##Variables.BookingRequestString#" title="#language.requestBooking#">#language.requestBooking#</a></li>
+<li><a class="list-group-item" href="#RootDir#reserve-book/navireajout-vesseladd.cfm?lang=#lang#">#Language.addVessel#</a></li>
 </cfif>
-<li><a href="#RootDir#reserve-book/archives.cfm?lang=#lang#">#language.archivedBookings#</a></li>
-<li><a href="#RootDir#reserve-book/profilmod-profileedit.cfm?lang=#lang#">#language.EditProfileButton#</a></li>
-<li><a href="#RootDir#comm/avis-notices.cfm?lang=#lang#">#language.notices#</a></li>
-<li><a href="#RootDir#comm/tarif-tariff.cfm?lang=#lang#">#language.tariff#</a></li>
-<li><a href="#RootDir#ols-login/fls-logout.cfm?lang=#lang#">#language.LogoutButton#</a></li>
+<li><a class="list-group-item" href="#RootDir#reserve-book/archives.cfm?lang=#lang#">#language.archivedBookings#</a></li>
+<li><a class="list-group-item" href="#RootDir#reserve-book/profilmod-profileedit.cfm?lang=#lang#">#language.EditProfileButton#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/avis-notices.cfm?lang=#lang#">#language.notices#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/tarif-tariff.cfm?lang=#lang#">#language.tariff#</a></li>
+<li><a class="list-group-item" href="#RootDir#ols-login/fls-logout.cfm?lang=#lang#">#language.LogoutButton#</a></li>
 <cfelseif structKeyExists(session, 'AdminLoggedIn')>
-<li><a href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#" title="#language.BookingHome#">#language.BookingHome#</a></li>
-<li><a href="#RootDir#comm/resume-summary_ch.cfm?lang=#lang#">#language.bookingsSummary#</a></li>
-<li><a href="#RootDir#comm/calend-cale-dock.cfm?lang=#lang##datetoken#">#language.drydockCalendar#</a></li>
-<li><a href="#RootDir#comm/calend-jet.cfm?lang=#lang##datetoken#">#language.JettyCalendar#</a></li>
-<li><a href="#RootDir#comm/avis-notices.cfm?lang=#lang#">#language.notices#</a></li>
-<li><a href="#RootDir#comm/tarif-tariff.cfm?lang=#lang#">#language.tariff#</a></li>
-<li><a href="#RootDir#ols-login/fls-logout.cfm?lang=#lang#">#language.LogoutButton#</a></li>
+<li><a class="list-group-item" href="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#" title="#language.BookingHome#">#language.BookingHome#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/resume-summary_ch.cfm?lang=#lang#">#language.bookingsSummary#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/calend-cale-dock.cfm?lang=#lang##datetoken#">#language.drydockCalendar#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/calend-jet.cfm?lang=#lang##datetoken#">#language.JettyCalendar#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/avis-notices.cfm?lang=#lang#">#language.notices#</a></li>
+<li><a class="list-group-item" href="#RootDir#comm/tarif-tariff.cfm?lang=#lang#">#language.tariff#</a></li>
+<li><a class="list-group-item" href="#RootDir#ols-login/fls-logout.cfm?lang=#lang#">#language.LogoutButton#</a></li>
 <cfelse>
-<li><a href="#RootDir#ols-login/ols-login.cfm?lang=#lang#">#language.bookingApplicationLogin#</a></li>
-<li><a href="#RootDir#ols-login/utilisateurajout-useradd.cfm?lang=#lang#">#language.addUser#</a></li>
+<li><a class="list-group-item" href="#RootDir#ols-login/ols-login.cfm?lang=#lang#">#language.bookingApplicationLogin#</a></li>
+<li><a class="list-group-item" href="#RootDir#ols-login/utilisateurajout-useradd.cfm?lang=#lang#">#language.addUser#</a></li>
 </cfif>
 </ul>
 </section>

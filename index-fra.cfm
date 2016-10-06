@@ -22,7 +22,7 @@
 				<p><a href="#RootDir#ols-login/ols-login.cfm?lang=fra">#language.bookingApplicationLogin#</a> -
 				  R&eacute;server la cale s&egrave;che et les jet&eacute;es en ligne.</p>
 <p><a href="#RootDir#utils/resume-summary_ch.cfm?lang=fra">#language.bookingsSummaryDateSelection#</a> - Voir toutes les r&eacute;servations.</p>
-<p><a href="http://gazette.gc.ca/rp-pr/p2/2009/2009-12-23/html/sor-dors324-fra.html">Archiv&eacute;e - R&egrave;glement modifiant le R&egrave;glement de 1989 sur la cale s&egrave;che d'Esquimalt</a></p>
+<p><a href="http://publications.gc.ca/gazette/archives/p2/2009/2009-12-23/pdf/g2-14326.pdf">Archiv&eacute;e - R&egrave;glement modifiant le R&egrave;glement de 1989 sur la cale s&egrave;che d'Esquimalt</a></p>
 </div>
 
 <cfinclude template="#RootDir#includes/right-menu-droite-fra.cfm">
