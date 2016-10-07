@@ -52,31 +52,36 @@
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 <cfinclude template="#RootDir#includes/getStructure.cfm">
 
-<cfform action="addVessel_process.cfm?lang=#lang#" method="post" id="addVessel">
+<cfoutput>
+<form action="addVessel_process.cfm?lang=#lang#" method="post" id="addVessel">
 	<div>
 		<label for="CID">Company Name:</label>
-		<cfselect id="CID" name="CID" query="getCompanies" display="Name" value="CID" selected="#variables.CID#" />
+		<select id="CID" name="CID" display="Name" value="CID" selected="#variables.CID#">
+		<cfloop query="GetCompanies">
+			<option value="#getCompanies.CID#">#getCompanies.Name#</option> 
+		</cfloop>
+		</select>
 			
 		<label for="name">Name:</label>
-		<cfinput id="name" name="name" type="text" value="#variables.name#" size="40" maxlength="100" required="yes" message="Please enter the vessel name." />
+		<input id="name" name="name" type="text" value="#variables.name#" size="40" maxlength="100" required="yes" message="Please enter the vessel name." />
 
 		<label for="LloydsID">International Maritime Organization (IMO) Number:</label>
-		<cfinput id="LloydsID" name="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20"  />
+		<input id="LloydsID" name="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20"  />
 
 		<label for="length">Length (m):</label>
-		<cfinput id="length" name="length" type="text" value="#variables.length#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the length in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxLength#</cfoutput></span>
+		<input id="length" name="length" type="text" value="#variables.length#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the length in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxLength#</cfoutput></span>
 
 		<label for="width">Width (m):</label>
-		<cfinput id="width" name="width" type="text" value="#variables.width#" size="8" maxlength="8" validate="float" message="Please enter the width in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxWidth#</cfoutput></span>
+		<input id="width" name="width" type="text" value="#variables.width#" size="8" maxlength="8" validate="float" message="Please enter the width in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxWidth#</cfoutput></span>
 
 		<label for="blocksetuptime">Block Setup Time (days):</label>
-		<cfinput id="blocksetuptime" name="blocksetuptime" type="text" value="#variables.blocksetuptime#" size="2" maxlength="2" validate="float" message="Please enter the block setup time in days." />
+		<input id="blocksetuptime" name="blocksetuptime" type="text" value="#variables.blocksetuptime#" size="2" maxlength="2" validate="float" message="Please enter the block setup time in days." />
 
 		<label for="blockteardowntime">Block Teardown Time (days):</label>
-		<cfinput id="blockteardowntime" name="blockteardowntime" type="text" value="#variables.blockteardowntime#" size="2" maxlength="2" validate="float" message="Please enter the block teardown time in days." />
+		<input id="blockteardowntime" name="blockteardowntime" type="text" value="#variables.blockteardowntime#" size="2" maxlength="2" validate="float" message="Please enter the block teardown time in days." />
 
 		<label for="tonnage">Tonnage:</label>
-		<cfinput id="tonnage" name="tonnage" type="text" value="#variables.tonnage#" size="8" maxlength="8" validate="float" message="Please enter the tonnage." />
+		<input id="tonnage" name="tonnage" type="text" value="#variables.tonnage#" size="8" maxlength="8" validate="float" message="Please enter the tonnage." />
 
 		<label for="Anonymous">Keep this vessel anonymous:</label>
 		<input id="Anonymous" type="checkbox" name="Anonymous" value="Yes" <cfif variables.anonymous>checked="true"</cfif> />
@@ -86,6 +91,7 @@
 		<input type="submit" name="submitForm" value="Submit" class="button-accent button" />
 		<cfoutput><a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 	</div>
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

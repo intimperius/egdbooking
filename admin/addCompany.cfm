@@ -75,44 +75,44 @@
 				</cfif>
 
 				<cfoutput>
-				<cfform action="addCompany_action.cfm?lang=#lang#" id="addCompanyForm" method="post" onsubmit="if(!checkFilledIn('addCompanyForm')) { return false;}">
+				<form action="addCompany_action.cfm?lang=#lang#" id="addCompanyForm" method="post" onsubmit="if(!checkFilledIn('addCompanyForm')) { return false;}">
 					<div>
 						<label for="name">Company Name:</label>
-						<cfinput name="name" id="name" type="text" size="40" maxlength="75" value="#variables.name#" required="yes" message="Please enter the company name." />
+						<input name="name" id="name" type="text" size="40" maxlength="75" value="#variables.name#" required="yes" message="Please enter the company name." />
 
 						<label for="abbrev">Abbreviation:</label>
-						<cfinput name="abbrev" id="abbrev" type="text" size="5" maxlength="3" value="#variables.abbrev#" required="yes" message="Please enter the company abbreviation." />
+						<input name="abbrev" id="abbrev" type="text" size="5" maxlength="3" value="#variables.abbrev#" required="yes" message="Please enter the company abbreviation." />
 
 						<label for="address1">Address 1:</label>
-						<cfinput name="address1" id="address1" type="text" size="40" maxlength="75" value="#variables.address1#" required="yes" message="Please enter the address." />
+						<input name="address1" id="address1" type="text" size="40" maxlength="75" value="#variables.address1#" required="yes" message="Please enter the address." />
 							
 						<label for="address2">Address 2 (optional):</label>
-						<cfinput name="address2" id="address2" type="text" size="40" maxlength="75" value="#variables.address2#" />
+						<input name="address2" id="address2" type="text" size="40" maxlength="75" value="#variables.address2#" />
 
 						<label for="city">City:</label>
-						<cfinput name="city" id="city" type="text" size="25" maxlength="40" value="#variables.city#" required="yes" message="Please enter the city." />
+						<input name="city" id="city" type="text" size="25" maxlength="40" value="#variables.city#" required="yes" message="Please enter the city." />
 
 						<label for="province">Province / State:</label>
-						<cfinput name="province" id="province" type="text" size="25" maxlength="40" value="#variables.province#" required="no" message="Please enter the province or state." />
+						<input name="province" id="province" type="text" size="25" maxlength="40" value="#variables.province#" required="no" message="Please enter the province or state." />
 
 						<label for="country">Country:</label>
-						<cfinput name="country" id="country" type="text" size="25" maxlength="40" value="#variables.country#" required="yes" message="Please enter the country." />
+						<input name="country" id="country" type="text" size="25" maxlength="40" value="#variables.country#" required="yes" message="Please enter the country." />
 
 						<label for="zip">Postal / Zip Code:</label>
-						<cfinput name="zip" id="zip" type="text" size="12" maxlength="10" value="#variables.zip#" required="no" message="Please enter the postal code or zip code." />
+						<input name="zip" id="zip" type="text" size="12" maxlength="10" value="#variables.zip#" required="no" message="Please enter the postal code or zip code." />
 
 						<label for="phone">Phone:</label>
-						<cfinput name="phone" id="phone" type="text" size="25" maxlength="32" value="#variables.phone#" required="yes" message="Please check that the phone number is valid." />
+						<input name="phone" id="phone" type="text" size="25" maxlength="32" value="#variables.phone#" required="yes" message="Please check that the phone number is valid." />
 
 						<label for="fax">Fax (optional):</label>
-						<cfinput name="fax" id="fax" type="text" size="25" maxlength="32" value="#variables.fax#" />
+						<input name="fax" id="fax" type="text" size="25" maxlength="32" value="#variables.fax#" />
 					</div>
 					<div>&nbsp;</div>
 					<div>
 						<input type="submit" name="submitForm" class="button-accent button" value="Submit" />
 						<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 					</div>	
-				</cfform>
+				</form>
 				</cfoutput>
 
 			</div>

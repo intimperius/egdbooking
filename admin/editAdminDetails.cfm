@@ -42,7 +42,7 @@ function EditSubmit ( selectedform )
 <cfinclude template="#RootDir#includes/getStructure.cfm">
 
 <cfoutput>
-<cfform id="emailForm" action="editAdminDetails_action.cfm?lang=#lang#">
+<form id="emailForm" action="editAdminDetails_action.cfm?lang=#lang#">
 Select any of the following administrators to receive email notification about user activities:
 <table style="width:90%;">
 	<tr><th>Name</th><th>Email</th><th></th></tr>
@@ -53,7 +53,7 @@ Select any of the following administrators to receive email notification about u
 		<cfset variables.checked = "no">
 	</cfif>
 		<tr>
-			<td>#AdminName#</td><td>#email#</td><td><cfinput type="checkbox" name="Email#UID#" value="#UID#" checked="#variables.checked#" /></td>
+			<td>#AdminName#</td><td>#email#</td><td><input type="checkbox" name="Email#UID#" value="#UID#" checked="#variables.checked#" /></td>
 		</tr>
 	</cfloop>
 </table>
@@ -62,7 +62,7 @@ Select any of the following administrators to receive email notification about u
 <div style="text-align:right;"><input type="submit" value="Submit" class="button-accent button" />
 <a href="menu.cfm?lang=#lang#">Cancel</a>
 </div>
-</cfform>
+</form>
 
 </cfoutput>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

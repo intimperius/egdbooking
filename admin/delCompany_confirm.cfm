@@ -163,7 +163,8 @@ function EditSubmit ( selectedform )
 	</cfoutput>
 
 <cfelse>
-<cfform action="delCompany_action.cfm?lang=#lang#" method="post" id="delCompanyConfirmForm">
+<cfoutput>
+<form action="delCompany_action.cfm?lang=#lang#" method="post" id="delCompanyConfirmForm">
 	Are you sure you want to delete <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?
 	<input type="hidden" name="CID" value="<cfoutput>#form.CID#</cfoutput>" />
 	<br/><br/>
@@ -193,7 +194,8 @@ function EditSubmit ( selectedform )
 	</cfoutput>
 	</cfoutput>
 
-</cfform>
+</form>
+</cfoutput>
 </cfif>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

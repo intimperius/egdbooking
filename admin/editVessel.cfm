@@ -49,7 +49,8 @@
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 <cfinclude template="#RootDir#includes/getStructure.cfm">
 
-<cfform action="editVessel.cfm?lang=#lang#" method="post" id="chooseVesselForm">
+<cfoutput>
+<form action="editVessel.cfm?lang=#lang#" method="post" id="chooseVesselForm">
 <div>
 	Company:<br/>
 	<CF_TwoSelectsRelated
@@ -75,7 +76,8 @@
 		<cfoutput><a href="menu.cfm?lang=#lang#">Cancel</a></cfoutput>
 	</div>
 
-</cfform>
+</form>
+</cfoutput>
 
 
 <cfif form.VNID NEQ "">
@@ -112,32 +114,33 @@
 		<cflocation addtoken="no" url="menu.cfm?lang=#lang#">
 	</cfif>
 
-	<cfform id="editVessel" action="EditVessel_process.cfm?lang=#lang#" method="post">
+	<cfoutput>
+	<form id="editVessel" action="EditVessel_process.cfm?lang=#lang#" method="post">
 	<h2>Edit <cfoutput>#variables.Name#</cfoutput></h2>
 		
 	Company Name: 
 	<cfoutput>#getVesselDetail.companyName#</cfoutput>
 
 	<label for="name">Name:</label>
-	<cfinput id="name" name="name" type="text" value="#variables.Name#" size="37" maxlength="100" required="yes" message="Please enter the vessel name." />
+	<input id="name" name="name" type="text" value="#variables.Name#" size="37" maxlength="100" required="yes" message="Please enter the vessel name." />
 
 	<label for="LloydsID">International Maritime Organization (IMO) Number:</label>
-	<cfinput id="LloydsID" name="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20" required="no" message="Please enter the International Maritime Organization (I.M.O.) number."/>
+	<input id="LloydsID" name="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20" required="no" message="Please enter the International Maritime Organization (I.M.O.) number."/>
 		
 	<label for="length">Length (m):</label>
-	<cfinput id="length" name="length" type="text" value="#variables.length#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the length in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxLength#</cfoutput>m</span>
+	<input id="length" name="length" type="text" value="#variables.length#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the length in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxLength#</cfoutput>m</span>
 
 	<label for="width">Width (m):</label>
-	<cfinput id="width" name="width" type="text" value="#variables.width#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the width in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxWidth#</cfoutput>m</span>
+	<input id="width" name="width" type="text" value="#variables.width#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the width in metres.">  <span class="smallFont" style="color:red;" />Max: <cfoutput>#Variables.MaxWidth#</cfoutput>m</span>
 
 	<label for="blocksetuptime">Block Setup Time (days):</label>
-	<cfinput id="blocksetuptime" name="blocksetuptime" type="text" value="#variables.blocksetuptime#" size="2" maxlength="2" required="yes" validate="float" message="Please enter the block setup time in days." />
+	<input id="blocksetuptime" name="blocksetuptime" type="text" value="#variables.blocksetuptime#" size="2" maxlength="2" required="yes" validate="float" message="Please enter the block setup time in days." />
 
 	<label for="blockteardowntime">Block Teardown Time (days):</label>
-	<cfinput id="blockteardowntime" name="blockteardowntime" type="text" value="#variables.blockteardowntime#" size="2" maxlength="2" required="yes" validate="float" message="Please enter the block teardown time in days." />
+	<input id="blockteardowntime" name="blockteardowntime" type="text" value="#variables.blockteardowntime#" size="2" maxlength="2" required="yes" validate="float" message="Please enter the block teardown time in days." />
 
 	<label for="tonnage">Tonnage:</label>
-	<cfinput id="tonnage" name="tonnage" type="text" value="#variables.tonnage#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the tonnage." />
+	<input id="tonnage" name="tonnage" type="text" value="#variables.tonnage#" size="8" maxlength="8" required="yes" validate="float" message="Please enter the tonnage." />
 
 	<label for="Anonymous">Keep this vessel anonymous:</label>
 	<input id="Anonymous" type="checkbox" name="Anonymous"<cfif variables.Anonymous EQ 1> checked="true"</cfif> value="Yes" />
@@ -151,7 +154,8 @@
 	
 		
 	</table>
-	</cfform>
+	</form>
+	</cfoutput>
 </cfif>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
