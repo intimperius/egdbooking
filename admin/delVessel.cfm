@@ -50,7 +50,8 @@
 	<cfinclude template="#RootDir#includes/getStructure.cfm">
 </cfif>
 
-<cfform action="delVessel_confirm.cfm?lang=#lang#" method="post" id="delVesselForm">
+<cfoutput>
+<form action="delVessel_confirm.cfm?lang=#lang#" method="post" id="delVesselForm">
 <div>
 	Company:<br/>
 	<CF_TwoSelectsRelated
@@ -74,8 +75,9 @@
 		<!---<cfselect name="VNID" query="getVessels" value="VNID" display="Name" />--->
 <div>
 	<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
-	<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#">Cancel </a></cfoutput>
+	<a href="#RootDir#admin/menu.cfm?lang=#lang#">Cancel </a>
 </div>
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

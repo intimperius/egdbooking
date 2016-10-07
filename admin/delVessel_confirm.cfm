@@ -77,11 +77,11 @@
 </cfif>
 
 <cfif getVesselDockBookings.recordCount EQ 0 AND getVesselJettyBookings.recordCount EQ 0>
-	<cfform action="delVessel_action.cfm?lang=#lang#" method="post" id="delVesselConfirmForm">
+	<cfoutput query="getVessel">
+	<form action="delVessel_action.cfm?lang=#lang#" method="post" id="delVesselConfirmForm">
 		Are you sure you want to delete <cfoutput><strong>#getVessel.Name#</strong></cfoutput>?
 		<input type="hidden" name="VNID" value="<cfoutput>#form.VNID#</cfoutput>" />
 		<br /><br />
-		<cfoutput query="getVessel">
 			<div class="module-info widemod">
 				<h2>Vessel Profile</h2>
 				<ul>
@@ -100,8 +100,8 @@
 				<a href="delVessel.cfm?lang=#lang#" class="textbutton">Back</a>
 				<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 			</div>
-		</cfoutput>
-	</cfform>
+	</form>
+	</cfoutput>
 <cfelse>
 
 		<cfoutput><strong>#getVessel.name#</strong></cfoutput> cannot be deleted as it is booked for the following dates:<br />
