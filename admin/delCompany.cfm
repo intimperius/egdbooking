@@ -55,19 +55,11 @@
 </cfif>
 
 <div>
-	<cfoutput>
-	<form action="delCompany_confirm.cfm?lang=#lang#" method="post" id="delCompanyForm">
-		<select name="CID"value="CID" display="name" selected="#variables.CID#">
-			<cfloop query="getcompanyList">
-				<option value="#getcompanyList.CID#">#getcompanyList.Name#</option>
-			</cfloop>
-		</select>
-		<br />
+	<cfform action="delCompany_confirm.cfm?lang=#lang#" method="post" id="delCompanyForm">
+		<cfselect name="CID" query="getcompanyList" value="CID" display="name" selected="#variables.CID#"/>
 		<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
-		<br />
-		<a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-	</form>
-	</cfoutput>
+		<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
+	</cfform>
 </div>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

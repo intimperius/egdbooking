@@ -87,7 +87,6 @@
 		</div>
 		<br/>
 		<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
-		<br />
 		<a href="bookingManage.cfm?#urltoken#">Cancel</a>
 	</form>
 </cfoutput>

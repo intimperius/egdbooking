@@ -52,7 +52,6 @@ function EditSubmit ( selectedform )
 						<a href="delAdministrator.cfm" class="textbutton">Back</a>
 						<a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a--->
 						<input type="submit" value="Remove" class="button-accent button" />
-						<br />
 						<cfoutput><a href="delAdministrator.cfm?lang=#lang#" class="textbutton">Back</a></cfoutput>
 						<cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 
