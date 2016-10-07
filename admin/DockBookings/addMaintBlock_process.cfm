@@ -233,8 +233,9 @@ function EditSubmit ( selectedform )
 </div>
 	<br/>
 	<input type="submit" value="Confirm" class="button button-accent" />
-	<cfoutput><a href="bookingManage.cfm?#urltoken#" />Cancel</a></cfoutput>
-	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
+	<br />
+	<cfoutput><a href="bookingManage.cfm?#urltoken#" style="padding-right: 10px">Cancel</a></cfoutput>
+	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton" style=>Back</a></cfoutput>
 
 </cfform>
 

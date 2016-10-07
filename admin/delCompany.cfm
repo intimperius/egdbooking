@@ -62,7 +62,9 @@
 				<option value="#getcompanyList.CID#">#getcompanyList.Name#</option>
 			</cfloop>
 		</select>
+		<br />
 		<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
+		<br />
 		<a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 	</form>
 	</cfoutput>
