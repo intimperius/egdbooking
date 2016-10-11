@@ -190,11 +190,11 @@ function EditSubmit ( selectedform )
 	<!--- ---------------------------------------------------------------------------------------------------------------- --->
 
 
-	<!-- Gets all Bookings that would be affected by the requested booking --->
+	<!-- Gets all Bookings that would be affected by the requested booking -->
 	<cfset Variables.StartDate = #CreateODBCDate(Variables.StartDate)#>
 	<cfset Variables.EndDate = #CreateODBCDate(Variables.EndDate)#>
 
-	<p>Please confirm the following maintenance block information.</p>
+	<p>Please confirm the following information.</p>
 	<cfform action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
 <cfoutput>
 
@@ -224,8 +224,8 @@ function EditSubmit ( selectedform )
 	<br />
 
 		<input type="submit" value="Submit" class="button button-accent" />
-		
-		<cfoutput><a href="jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" />Cancel</a></cfoutput>
+		<br />
+		<cfoutput><a href="jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" style="padding-right: 10px">Cancel</a></cfoutput>
 		<cfoutput><a href="addJettyBooking.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Back</a></cfoutput>
 			
 	</cfform>

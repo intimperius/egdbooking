@@ -189,6 +189,7 @@ function EditSubmit ( selectedform )
 					<input type="submit" name="submitForm" class="button button-accent" value="Override" />
 					</cfif>
 				</cfif>
+				<br />
 				<cfoutput><a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 	</cfoutput>
 	</cfform>

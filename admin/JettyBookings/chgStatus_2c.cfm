@@ -223,7 +223,7 @@ SELECT
 		</div>
 		<br/>
 	<input type="submit" value="Confirm" class="button-accent button" />
-
+			<br />
 		  <a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#Variables.BRID###id#Variables.BRID#">Cancel</a>
 		</cfoutput>
 </cfform>
