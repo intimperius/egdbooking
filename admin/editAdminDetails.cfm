@@ -42,18 +42,13 @@ function EditSubmit ( selectedform )
 <cfinclude template="#RootDir#includes/getStructure.cfm">
 
 <cfoutput>
-<form id="emailForm" action="editAdminDetails_action.cfm?lang=#lang#">
+<form id="emailForm" action="editAdminDetails_action.cfm?lang=#lang#" method="post">
 Select any of the following administrators to receive email notification about user activities:
 <table style="width:90%;">
 	<tr><th>Name</th><th>Email</th><th></th></tr>
 	<cfloop query="getAdministrators">
-	<cfif ListContains(getEmails.email, "#email#") NEQ 0>
-		<cfset variables.checked = "yes">
-	<cfelse>
-		<cfset variables.checked = "no">
-	</cfif>
 		<tr>
-			<td>#AdminName#</td><td>#email#</td><td><input type="checkbox" name="Email#UID#" value="#UID#" checked="#variables.checked#" /></td>
+			<td>#AdminName#</td><td>#email#</td><td><input type="checkbox" name="Email#UID#" value="#UID#" <cfif ListContains(getEmails.email, "#email#") NEQ 0>checked</cfif> /></td>
 		</tr>
 	</cfloop>
 </table>
