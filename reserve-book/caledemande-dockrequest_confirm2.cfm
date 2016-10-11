@@ -218,7 +218,7 @@
 				<CFINCLUDE template="#RootDir#includes/user_menu.cfm">
 
 				<cfoutput>
-				<cfform action="#RootDir#reserve-book/caledemande-dockrequest_action2.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
+				<form action="#RootDir#reserve-book/caledemande-dockrequest_action2.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
 					<p>#language.bookingFound# #myDateFormat(Variables.FoundStartDate, request.datemask)# - #myDateFormat(Variables.FoundEndDate, request.datemask)#.</p>
 
 					<p class="color-accent">#language.vesselLabel# #getVessel.VesselName#</p>
@@ -236,7 +236,7 @@
 						<input type="submit" value="#language.requestBooking#" class="button button-accent"/>
 					</div>
 
-				</cfform>
+				</form>
 				</cfoutput>
 
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

@@ -233,7 +233,7 @@
 
 				<p>#language.bookingAvailable#</p>
 
-				<cfform action="#RootDir#reserve-book/jetdemande-jetrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
+				<form action="#RootDir#reserve-book/jetdemande-jetrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
 					<fieldset>
             <legend>#language.booking#</legend>
 			
@@ -266,7 +266,7 @@
 						<input type="submit" value="#language.confirm#" class="button button-accent" />
 					</div>
 
-				</cfform>
+				</form>
 				</cfoutput>
 
 

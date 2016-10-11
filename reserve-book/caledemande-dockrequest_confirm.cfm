@@ -196,7 +196,7 @@
             #language.bookingAvailable#
           </cfif>
         </p>
-        <cfform action="#RootDir#reserve-book/caledemande-dockrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
+        <form action="#RootDir#reserve-book/caledemande-dockrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
         <h2>#language.new#</h2>
           <fieldset>
             <legend>#language.booking#</legend>
@@ -216,7 +216,7 @@
           <div class="buttons">
             <input type="submit" value="#language.Submit#" class="button button-accent" />
           </div>
-        </cfform>
+        </form>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->
 </cfoutput>
 
