@@ -172,12 +172,11 @@ function EditSubmit ( selectedform )
 								<form style="display:none;" action="removeNewUserCompany_confirm.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" method="post" id="remCompany#ID#">
 								<input type="hidden" name="CID" value="#ID#" />
 							</form>
-							<cfset left = left &"#detailsID.Name#<br/>"/>
+							<cfset left = left &"#detailsID.Name#<br />"/>
 							<cfset right = right & "<a href=""javascript:EditSubmit('remCompany#ID#');"" class=""textbutton"">Remove</a><br/>" />
 						<cfset counter = counter + 1>
 					</cfloop>
-					<br/>
-
+					<br />
 					<div class="span-2">#left#</div>
 					<div class="span-3">#right#</div>
 

@@ -76,15 +76,19 @@ function EditSubmit ( selectedform )
 	</cfif>
 </cfif>
 
-<cfform action="addBooking.cfm?#urltoken#" method="post" id="chooseUserForm">
-	<p><label for="selectCompany">Select Company:</label> <cfselect query="getCompanies" id="selectCompany" name="compID" value="CID" display="Name" selected="#Variables.compID#" />
+<cfoutput>
+<form action="addBooking.cfm?#urltoken#" method="post" id="chooseUserForm">
+	<label for="selectCompany">Select Company:</label> <select id="selectCompany" name="compID" value="CID" display="Name" selected="#Variables.compID#">
+		<cfloop query="getCompanies"><option value="#getCompanies.CID#">#getCompanies.Name#</option></cfloop>
+	</select>
 	&nbsp;&nbsp;&nbsp;
 	<!--a href="javascript:EditSubmit('chooseUserForm');" class="textbutton">Submit</a-->
 	<br />
 	<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 	<br />
 	<cfoutput><a href="bookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
-</cfform>
+</form>
+</cfoutput>
 
 <cfif Variables.compID NEQ "">
 
@@ -92,8 +96,9 @@ function EditSubmit ( selectedform )
 		<cfset Session.Company = "#form.compID#">
 	</cflock>
 
-	<cfform action="addBooking_process.cfm?#urltoken#" method="post" id="addBookingForm">
 	<cfoutput>
+	<form action="addBooking_process.cfm?#urltoken#" method="post" id="addBookingForm">
+	
 
 	<cfquery name="getVessels" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 		SELECT VNID, Name
@@ -120,7 +125,8 @@ function EditSubmit ( selectedform )
 	<h2> #getCompanyName.Name#</h2><br/>
 	<label for="VNID">Vessel:</label>
 	<cfif getVessels.recordCount GE 1>
-		<cfselect name="VNID" query="getVessels" display="Name" value="VNID" selected="#Variables.VNID#" />
+		<select name="VNID" query="getVessels" display="Name" value="VNID" selected="#Variables.VNID#"><cfloop query="getVessels"><option value="#getVessels.VNID#">#getVessels.Name#</option></cfloop>
+		</select>
 	<cfelse>
 		No ships currently registered.
 	</cfif>
@@ -128,7 +134,8 @@ function EditSubmit ( selectedform )
 	<cfif getVessels.recordCount GE 1>
 	<label for="UID">Agent:</label>
 		<cfif getAgents.recordCount GE 1>
-			<cfselect name="UID" query="getAgents" display="UserName" value="UID" selected="#Variables.UID#" />
+			<select name="UID" query="getAgents" display="UserName" value="UID" selected="#Variables.UID#"><cfloop query="getAgents"><option value="#getAgents.UID#">#getAgents.UserName#</option></cfloop>
+			</select>
 		<cfelse>
 			No agents currently registered.
 		</cfif>
@@ -136,18 +143,18 @@ function EditSubmit ( selectedform )
 	<cfif getVessels.recordCount GE 1 AND getAgents.recordCount GE 1>
 		<label for="startDate">Start Date:</label>
 			<cfoutput>
-				<cfinput id="startDate" type="text" name="startDate" message="Please enter a start date." validate="date" required="yes" class="datepicker startDate" value="#DateFormat(Variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
+				<input id="startDate" type="text" name="startDate" message="Please enter a start date." validate="date" required="yes" class="datepicker startDate" value="#DateFormat(Variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
 			</cfoutput>
 		<label for="endDate">End Date:</label>
 			<cfoutput>
-				<cfinput id="endDate" type="text" name="endDate" message="Please enter an end date." validate="date" required="yes" class="datepicker endDate" value="#DateFormat(Variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
+				<input id="endDate" type="text" name="endDate" message="Please enter an end date." validate="date" required="yes" class="datepicker endDate" value="#DateFormat(Variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
 			</cfoutput>
 		<label for="bookingDate">Booking Date:</label>
 			<cfoutput>
-				<cfinput id="bookingDate" name="bookingDate" type="text" value="#DateFormat(Variables.TheBookingDate, 'mm/dd/yyyy')#" class="datepicker" size="15" maxlength="10" required="yes" message="Please enter a valid booking date." validate="date" /> #language.dateform#
+				<input id="bookingDate" name="bookingDate" type="text" value="#DateFormat(Variables.TheBookingDate, 'mm/dd/yyyy')#" class="datepicker" size="15" maxlength="10" required="yes" message="Please enter a valid booking date." validate="date" /> #language.dateform#
 			</cfoutput>
 		<label for="bookingTime">Booking Time:</label>
-			<cfinput name="bookingTime" type="text" value="#TimeFormat(Variables.TheBookingTime, 'HH:mm')#" size="5" maxlength="8" required="yes" message="Please enter a valid booking time." validate="time" /> (HH:MM)
+			<input name="bookingTime" type="text" value="#TimeFormat(Variables.TheBookingTime, 'HH:mm')#" size="5" maxlength="8" required="yes" message="Please enter a valid booking time." validate="time" /> (HH:MM)
 
 
 		<div class="module-note module-simplify">
@@ -171,10 +178,11 @@ function EditSubmit ( selectedform )
 			<input type="hidden" name="compID" value="#Variables.compID#" />
 			<input type="submit" name="submitForm" class="button button-accent" value="Submit" />
 		</cfif>
+		<br />
 		<cfoutput><a href="bookingManage.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 	</div>
+	</form>
 	</cfoutput>
-	</cfform>
 </cfif>
 
 
