@@ -89,6 +89,7 @@
 	<div>&nbsp;</div>
 	<div>
 		<input type="submit" name="submitForm" value="Submit" class="button-accent button" />
+		<br />
 		<cfoutput><a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 	</div>
 </form>

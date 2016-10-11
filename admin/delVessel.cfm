@@ -75,6 +75,7 @@
 		<!---<cfselect name="VNID" query="getVessels" value="VNID" display="Name" />--->
 <div>
 	<input type="submit" name="submitForm" class="button-accent button" value="Delete" />
+	<br />
 	<a href="#RootDir#admin/menu.cfm?lang=#lang#">Cancel </a>
 </div>
 </form>

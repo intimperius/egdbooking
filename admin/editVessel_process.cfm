@@ -91,6 +91,7 @@
 	<input type="hidden" name="VNID" value="<cfoutput>#Form.VNID#</cfoutput>" />
 	<input type="hidden" name="CID" value="<cfoutput>#Form.CID#</cfoutput>" />
 	<input type="submit" value="Confirm" class="button-accent button" />
+	<br />
 	<a href="editVessel.cfm?lang=#lang#" class="textbutton">Back</a>
 	<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 </form>

@@ -73,6 +73,7 @@
 </div>
 	<div >
 		<input type="submit" name="submitForm" class="button-accent button" value="Edit" />
+		<br />
 		<cfoutput><a href="menu.cfm?lang=#lang#">Cancel</a></cfoutput>
 	</div>
 
@@ -150,6 +151,7 @@
 		<input type="hidden" name="VNID" value="<cfoutput>#form.VNID#</cfoutput>" />
 		<input type="hidden" name="CID" value="<cfoutput>#form.CID#</cfoutput>" />
 		<input type="submit" value="Submit" class="button-accent button" />
+		<br />
 		<cfoutput><a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 	
 		

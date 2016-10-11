@@ -89,7 +89,8 @@ Please confirm the following information: <br/><br/>
 	<br/>
 
 	<input type="submit" value="Submit" class="button-accent button" />
-	<a href="addVessel.cfm?lang=#lang#">Back</a>
+	<br />
+	<a href="addVessel.cfm?lang=#lang#" style="padding-right: 5px">Back</a>
 	<a href="menu.cfm?lang=#lang#">Cancel</a>
 							
 	</form>

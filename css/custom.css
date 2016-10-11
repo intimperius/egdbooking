@@ -26,6 +26,8 @@
 	border-style: solid;
 	padding:0 30px 30px 30px;
 	margin-bottom: 200px;
+	border-color: grey;
+	border-width: 1px;
 }
 
 .color-accent {
