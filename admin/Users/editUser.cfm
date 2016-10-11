@@ -93,29 +93,36 @@ function EditSubmit ( selectedform )
 				</cfif>
 
 				<div style="text-align:left;">
-					<cfform action="editUser.cfm?lang=#lang#" id="chooseUserForm" method="post">
-						<cfselect name="UID" query="getUserList" value="UID" display="UserName" selected="#form.UID#" />
+					<cfoutput>
+					<form action="editUser.cfm?lang=#lang#" id="chooseUserForm" method="post">
+						<select name="UID" value="UID" display="UserName" selected="#form.UID#">
+							<cfloop query="getUserList">
+								<option value="#getUserList.UID#">#getUserList.UserName#</option>
+							</cfloop>
+						</select>
 						<!--a href="javascript:EditSubmit('chooseUserForm');" class="textbutton">Edit</a-->
 						<input type="submit" name="submitForm" value="View" class="button-accent button" />
-					</cfform>
+					</form>
+					</cfoutput>
 				</div>
 
-				<cfform action="editUser_action.cfm?lang=#lang#" id="editUserForm" method="post">
+				<cfoutput>
+				<form action="editUser_action.cfm?lang=#lang#" id="editUserForm" method="post">
 					<div>
             <strong>Edit Profile:</strong><br />
 						<label for="firstname">First Name:</label>
-						<cfinput name="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40" required="yes" id="firstName" message="Please enter a first name." /><br /><br />
+						<input name="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40" required="yes" id="firstName" message="Please enter a first name." /><br /><br />
 						<label for="lastName">Last Name:</label>
-						<cfinput name="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40" required="yes" id="lastName" message="Please enter a last name." /><br /><br />
+						<input name="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40" required="yes" id="lastName" message="Please enter a last name." /><br /><br />
 						Read Only:<br />
 							<cfif #variables.ReadOnly# NEQ "1">
-							<cfinput type="radio" name="ReadOnly" value="0" checked>No<cfinput type="radio" name="ReadOnly" value="1" />Yes
+							<input type="radio" name="ReadOnly" value="0" checked>No<input type="radio" name="ReadOnly" value="1" />Yes
 							<cfelse>
-							<cfinput type="radio" name="ReadOnly" value="0" />No<cfinput type="radio" name="ReadOnly" value="1" checked="true" />Yes
+							<input type="radio" name="ReadOnly" value="0" />No<input type="radio" name="ReadOnly" value="1" checked="true" />Yes
 							</cfif>
 						<br /><br />
 						Email:<br />
-						<cfinput name="email" type="text" value="#variables.email#" size="25" maxlength="40" required="yes" id="email" />
+						<input name="email" type="text" value="#variables.email#" size="25" maxlength="40" required="yes" id="email" />
 							
             <!---<td headers="Email"><cfoutput>#variables.email#</cfoutput></td>--->
 
@@ -123,7 +130,8 @@ function EditSubmit ( selectedform )
               <cfif isDefined("form.UID")><cfoutput><input type="hidden" name="UID" value="#form.UID#" /></cfoutput></cfif>
               <input type="submit" value="Save Profile Changes" class="button-accent button" />
 						</div>
-				</cfform>
+				</form>
+				</cfoutput>
 
 				<hr width="65%" align="center">
 
@@ -147,38 +155,42 @@ function EditSubmit ( selectedform )
 				</cfoutput>
 				</table>
 
-				<cfform action="addUserCompany_action.cfm?lang=#lang#" id="addUserCompanyForm" method="post">
+				<cfoutput>
+				<form action="addUserCompany_action.cfm?lang=#lang#" id="addUserCompanyForm" method="post">
         <br />
 					<div>
 						<label for="companySelect"><b>Add Company:</b></label>
-              <cfselect name="CID" id="companySelect" required="yes" message="Please select a company.">
+              <select name="CID" id="companySelect" required="yes" message="Please select a company.">
                 <option value="">(Please select a company)
                 <cfloop query="getCompanies">
                   <cfoutput><option value="#CID#">#Name#</cfoutput>
                 </cfloop>
-              </cfselect>
+              </select>
               <input type="submit" name="submitForm" value="Add" class="textbutton" />
               <cfoutput><input type="hidden" name="UID" value="#form.UID#" /></cfoutput>
               <cfoutput><font size="-2">If the desired company is not listed, click <a href="editUser_addCompany.cfm?lang=#lang#&UID=#form.UID#">here</a> to create one.</font></cfoutput>
 					</div>
-				</cfform>
+				</form>
+				</cfoutput>
 
 				<hr width="65%" align="center"><br />
         
         <br />
-				<cfform action="changePassword.cfm?lang=#lang#" method="post" id="changePassForm">
+        		<cfoutput>
+				<form action="changePassword.cfm?lang=#lang#" method="post" id="changePassForm">
           <div>
 						<strong>Change Password:</strong>
 						<label for="pass">Password <span class="smallFont">(*min. 8 characters)</span>:</label>
-						<cfinput type="password" id="pass" name="password1" required="yes" size="25" message="Please enter a password." /><br />
+						<input type="password" id="pass" name="password1" required="yes" size="25" message="Please enter a password." /><br />
 						<label for="repeatPass">Repeat Password:</label>
-						<cfinput type="password" id="repeatPass" name="password2" required="yes" size="25" message="Please repeat the password for verification." /><br />
+						<input type="password" id="repeatPass" name="password2" required="yes" size="25" message="Please repeat the password for verification." /><br />
 						<input type="submit" value="Change Password" class="button-accent button" />
 						<cfoutput><input type="hidden" name="UID" value="#form.UID#" /></cfoutput>
 					</div>
 					<br />
 					<div><cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-				</cfform>
+				</form>
+				</cfoutput>
 
 				<p><em>*Email notification of profile updates is automatically sent to the user after their password is changed or a company is added to their profile.</em></p>
 

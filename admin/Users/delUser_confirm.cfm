@@ -120,7 +120,8 @@ function EditSubmit ( selectedform )
 					</table>
 				</cfoutput>
 
-				<cfform action="delUser_action.cfm?lang=#lang#" method="post" id="delUserConfirmForm">
+				<cfoutput>
+				<form action="delUser_action.cfm?lang=#lang#" method="post" id="delUserConfirmForm">
 					<div>
 						<cfif getCompanies.recordCount GTE 1>
 							<input type="submit" value="Delete user account" class="button-accent button" />
@@ -138,7 +139,8 @@ function EditSubmit ( selectedform )
 					</div>
 
 					<input type="hidden" name="UID" value="<cfoutput>#form.UID#</cfoutput>" />
-				</cfform>
+				</form>
+				</cfoutput>
 
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

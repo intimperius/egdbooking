@@ -66,7 +66,8 @@ function EditSubmit ( selectedform )
 					<cfinclude template="#RootDir#includes/getStructure.cfm">
 				</cfif>
 
-				<cfform action="delUser_confirm.cfm?lang=#lang#" method="post" id="delUserForm">
+				<cfoutput>
+				<form action="delUser_confirm.cfm?lang=#lang#" method="post" id="delUserForm">
 				<div>
 					Company: <br />
 					<CF_TwoSelectsRelated
@@ -91,7 +92,7 @@ function EditSubmit ( selectedform )
           <input type="submit" name="submitForm" value="Delete" class="button-accent button" />
           <cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 				</div>
-				</cfform>
-
+				</form>
+				</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

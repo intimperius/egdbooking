@@ -49,18 +49,19 @@
 	<cfset Variables.action = "addNewUserCompany.cfm?lang=#lang#">
 </cfif>
 
-<cfform action="#Variables.action#" id="addUserForm" method="post">
+<cfoutput>
+<form action="#Variables.action#" id="addUserForm" method="post">
 
-		<label for="firstname">First Name:</label><cfinput name="firstname" id="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40" required="yes" message="Please enter a first name." />
-		<label for="lastname">Last Name:</label><cfinput name="lastname" id="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40" required="yes" message="Please enter a last name." />
-		<label for="password1">Password:</label><cfinput id="password1" type="password" name="password1" required="yes" size="25" message="Please enter a password."><span class="smallFont" />(*min. 8 characters)</span>
-		<label for="password2">Repeat Password:</label><cfinput id="password2" type="password" name="password2" required="yes" size="25" message="Please repeat the password for verification." />
-		<label for="email">Email:</label><cfinput name="email" id="email" type="text" value="#variables.email#" size="40" maxlength="100" required="yes" message="Please enter an email address." />
+		<label for="firstname">First Name:</label><input name="firstname" id="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40" required="yes" message="Please enter a first name." />
+		<label for="lastname">Last Name:</label><input name="lastname" id="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40" required="yes" message="Please enter a last name." />
+		<label for="password1">Password:</label><input id="password1" type="password" name="password1" required="yes" size="25" message="Please enter a password."><span class="smallFont" />(*min. 8 characters)</span>
+		<label for="password2">Repeat Password:</label><input id="password2" type="password" name="password2" required="yes" size="25" message="Please repeat the password for verification." />
+		<label for="email">Email:</label><input name="email" id="email" type="text" value="#variables.email#" size="40" maxlength="100" required="yes" message="Please enter an email address." />
 		<br/>
 				<!--a href="javascript:document.addUserForm.submitForm.click();" class="textbutton">Submit</a-->
 				<input type="submit" name="submitForm" value="Continue" class="button button-accent" />
 				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 			
-</cfform>
-
+</form>
+</cfoutput>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
