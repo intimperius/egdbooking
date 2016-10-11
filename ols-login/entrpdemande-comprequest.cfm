@@ -247,7 +247,8 @@ function EditSubmit ( selectedform )
 			<cfset companies = URLEncodedFormat(ToBase64(cfusion_encrypt(companyList, "shanisnumber1")))>
 		</cfif>	
 		
-		<cfform action="entrpdemande-comprequest.cfm?lang=#lang#&amp;companies=#companies#&amp;info=#Variables.info#" id="addUserCompanyForm" method="post">
+		<cfoutput>
+		<form action="entrpdemande-comprequest.cfm?lang=#lang#&amp;companies=#companies#&amp;info=#Variables.info#" id="addUserCompanyForm" method="post">
 			<div class="span-6">
 				<div class="span-1">
 					<br>
@@ -264,14 +265,14 @@ function EditSubmit ( selectedform )
 					</cfif>
 					
 					
-					<cfselect name="CID" id="companies" required="yes" message="#language.selectCompany#">
+					<select name="CID" id="companies" required="yes" message="#language.selectCompany#">
 					<option value="">(#language.selectCompany#)</option>
 					<cfloop query="getCompanies">
 						<cfif ListFind(companyList, "#CID#") EQ 0>
 							<option value="#CID#"><cfif name_f eq ''>#Name#<cfelse>#Name_f#</cfif>
 						</cfif>
 					</cfloop>
-					</cfselect>
+					</select>
 					<input type="submit" name="submitCompany" value="#language.add#" class="button" />
 				</div>
 				<div class="span-1"></div>
@@ -279,8 +280,8 @@ function EditSubmit ( selectedform )
 				<span class="small">#language.notListed# <a href="entrpajout-compadd.cfm?lang=#lang#&amp;info=#Variables.info#&amp;companies=#companies#">#language.toCreate#</a></span>
 				</div>
 			</div>
-		</cfform>
-		
+		</form>
+		</cfoutput>		
 		
 		<!--- added Moved insertNewUser query here, because if the password contain "&"we want
 		to store to db first and replace it with escape chara in the input value so that 

@@ -61,14 +61,14 @@ function EditSubmit ( selectedform )
 					Also display any errors returned --->
 			<cfinclude template="#RootDir#includes/getStructure.cfm">
 		</cfif>
-		<cfform action="entrpsup-comprem_action.cfm?lang=#lang#&companies=#companies#&info=#url.info#" method="post" id="remCompanyConfirmForm">
+		<form action="entrpsup-comprem_action.cfm?lang=#lang#&companies=#companies#&info=#url.info#" method="post" id="remCompanyConfirmForm">
 			<div>#language.areYouSure# <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?</div>
 			<br/>
 			<input type="submit" value="#language.Remove#" class="button button-accent" />
 			
 
 			<input type="hidden" name="CID" value="#form.CID#" />
-		</cfform>
+		</form>
 	</cfoutput>
 
 <!-- CONTENT ENDS | FIN DU CONTENU -->
