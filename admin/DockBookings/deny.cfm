@@ -61,7 +61,8 @@
 	</cfif>
 </cfif>
 
-<cfform action="deny_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" id="deny">
+<cfoutput>
+<form action="deny_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" id="deny">
 	Are you sure you want to deny the confirmation and change this booking's status to tentative?
 <br />
 <br />
@@ -86,6 +87,7 @@
 	<input type="submit" value="Submit" class="button button-accent" />
 	<cfoutput><a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#">Cancel</a></cfoutput>
 	</div>
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

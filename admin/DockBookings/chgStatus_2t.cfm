@@ -62,8 +62,8 @@ function EditSubmit ( selectedform )
 		
 	</cfif>
 </cfif>
-			
-<cfform action="chgStatus_2t_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" name="change2tentative">
+<cfoutput>			
+<form action="chgStatus_2t_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" name="change2tentative">
 Are you sure you want to change this booking's status to tentative?
 <br /><br />
 <cfoutput>
@@ -92,6 +92,7 @@ Are you sure you want to change this booking's status to tentative?
 		<a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#" class="textbutton">Cancel</a>
 		</cfoutput>
 	</div>
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

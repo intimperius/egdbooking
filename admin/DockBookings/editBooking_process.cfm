@@ -188,7 +188,8 @@ function EditSubmit ( selectedform )
 <cfset Variables.EndDate = #CreateODBCDate(Variables.EndDate)#>
 
 Please confirm the following information.
-<cfform action="editBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="bookingreq" preservedata="Yes">
+<cfoutput>
+<form action="editBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="bookingreq" preservedata="Yes">
 <cfoutput><input type="hidden" name="BRID" value="#Variables.BRID#" /></cfoutput>
 <br/>
 <div class="module-info widemod">
@@ -218,6 +219,7 @@ Please confirm the following information.
 	<input type="submit" value="Confirm" class="button button-accent" />
 	<cfoutput><a href="editBooking.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" class="textbutton">Back</a></cfoutput>
 	<cfoutput><a href="#returnTo#?#urltoken#&BRID=#variables.BRID#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" class="textbutton">Cancel</a></cfoutput>	
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

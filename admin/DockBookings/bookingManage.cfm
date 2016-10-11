@@ -323,7 +323,8 @@ function EditSubmit ( selectedform )
 			</div>
 			<br/>
 			<div style="margin-left:-10px;"><label for="EndHighlight">Highlight for:</label>
-				<cfform action="highlight_action.cfm?BRID=#BRID#" method="post" id="updateHighlight">
+				<cfoutput>
+				<form action="highlight_action.cfm?BRID=#BRID#" method="post" id="updateHighlight">
 					<cfif EndHighlight NEQ "">
 					<cfset datediffhighlight = DateDiff("d", PacificNow, EndHighlight)>
 					<cfset datediffhighlight = datediffhighlight+"1">
@@ -331,8 +332,9 @@ function EditSubmit ( selectedform )
 					<cfelse>
 					<cfset datediffhighlight = "0">
 					</cfif>
-					<cfinput id="EndHighlight" name="EndHighlight" type="text" value="#datediffhighlight#" size="3" maxlength="3" required="yes" message="Please enter an End Highlight Date." /> Days <input type="submit" name="submitForm" class="button" value="Update" />
-				</cfform>
+					<input id="EndHighlight" name="EndHighlight" type="text" value="#datediffhighlight#" size="3" maxlength="3" required="yes" message="Please enter an End Highlight Date." /> Days <input type="submit" name="submitForm" class="button" value="Update" />
+				</form>
+				</cfoutput>
 			</div>
 			
 			<b>Highlight Until:</b> <cfif datediffhighlight NEQ "0">#DateFormat(EndHighlight, "mmm dd, yyyy")#</cfif>
