@@ -50,7 +50,7 @@ function EditSubmit ( selectedform )
 				</cfif>
 
 				<cfoutput>
-				<cfform action="removeUserCompany_action.cfm?lang=#lang#&UID=#form.UID#" method="post" id="remCompanyConfirmForm">
+				<form action="removeUserCompany_action.cfm?lang=#lang#&UID=#form.UID#" method="post" id="remCompanyConfirmForm">
 					<div style="text-align:center;">Are you sure you want to remove <strong>#getUser.UserName#</strong> from <strong>#getCompany.Name#</strong>?</div>
 
 					<p><div style="text-align:center;">
@@ -62,7 +62,7 @@ function EditSubmit ( selectedform )
 
 					<input type="hidden" name="CID" value="#form.CID#" />
 					<input type="hidden" name="UID" value="#form.UID#" />
-				</cfform>
+				</form>
 				</cfoutput>
 
 			</div>
