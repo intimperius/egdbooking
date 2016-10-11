@@ -35,48 +35,47 @@
 <cfinclude template="#RootDir#includes/getStructure.cfm">
 
 <cfoutput>
-<cfform action="addCompany_action.cfm?lang=#lang#&info=#url.info#&companies=#url.companies#" id="addCompanyForm" method="post" onsubmit="if(!checkFilledIn('addCompanyForm')) { return false;
-	}">
+<form action="addCompany_action.cfm?lang=#lang#&info=#url.info#&companies=#url.companies#" id="addCompanyForm" method="post" onsubmit="if(!checkFilledIn('addCompanyForm')) { return false; }">
 	
 		
 			<label for="name">Name:</label>
-			<cfinput name="name" value="#variables.name#" id="name" type="text" size="40" maxlength="75" required="yes" message="#language.nameError#" />
+			<input name="name" value="#variables.name#" id="name" type="text" size="40" maxlength="75" required="yes" message="#language.nameError#" />
 		
 		
 			<label for="abbrev">Abbreviation:</label>
-			<cfinput name="abbrev" id="abbrev" type="text" size="10" maxlength="3" value="#variables.abbrev#" required="yes" message="#language.abbrevError#" />
+			<input name="abbrev" id="abbrev" type="text" size="10" maxlength="3" value="#variables.abbrev#" required="yes" message="#language.abbrevError#" />
 		
 		
 			<label for="address1">Address 1:</label>
-			<cfinput name="address1" value="#variables.address1#" id="address1" type="text" size="40" maxlength="75" required="yes" message="#language.addressError#" />
+			<input name="address1" value="#variables.address1#" id="address1" type="text" size="40" maxlength="75" required="yes" message="#language.addressError#" />
 		
 		
 			<label for="address2">Address 2 (optional):</label>
-			<cfinput name="address2" value="#variables.address2#" id="address2" type="text" size="40" maxlength="75" />
+			<input name="address2" value="#variables.address2#" id="address2" type="text" size="40" maxlength="75" />
 		
 		
 			<label for="city">City:</label>
-			<cfinput name="city" value="#variables.city#" id="city" type="text" size="25" maxlength="40" required="yes" message="#language.cityError#" />
+			<input name="city" value="#variables.city#" id="city" type="text" size="25" maxlength="40" required="yes" message="#language.cityError#" />
 		
 		
 			<label for="province">Province:</label>
-			<cfinput name="province" value="#variables.province#" id="province" type="text" size="25" maxlength="40" required="no" message="#language.provinceError#" />
+			<input name="province" value="#variables.province#" id="province" type="text" size="25" maxlength="40" required="no" message="#language.provinceError#" />
 		
 		
 			<label for="country">Country:</label>
-			<cfinput name="country" value="#variables.country#" id="country" type="text" size="25" maxlength="40" required="yes" message="#language.countryError#" />
+			<input name="country" value="#variables.country#" id="country" type="text" size="25" maxlength="40" required="yes" message="#language.countryError#" />
 		
 		
 			<label for="zip">Postal / Zip Code:</label>
-			<cfinput name="zip" value="#variables.zip#" id="zip" type="text" size="12" maxlength="10" required="no" message="#language.zipError#" />
+			<input name="zip" value="#variables.zip#" id="zip" type="text" size="12" maxlength="10" required="no" message="#language.zipError#" />
 		
 		
 			<label for="phone">Phone:</label>
-			<cfinput name="phone" value="#variables.phone#" id="phone" type="text" size="25" maxlength="32" required="yes" message="#language.phoneError#" />
+			<input name="phone" value="#variables.phone#" id="phone" type="text" size="25" maxlength="32" required="yes" message="#language.phoneError#" />
 		
 		
 			<label for="fax">Fax (optional):</label>
-			<cfinput name="fax" value="#variables.fax#" id="fax" type="text" size="25" maxlength="32" />
+			<input name="fax" value="#variables.fax#" id="fax" type="text" size="25" maxlength="32" />
 		
 		
 			<br/>
@@ -85,7 +84,7 @@
 			
 		
 	</table>
-</cfform>
+</form>
 </cfoutput>
 
 </div>
