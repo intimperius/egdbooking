@@ -207,8 +207,8 @@ SELECT
 </cfif>
 <p>Please confirm the following information.</p>
 <!--- -------------------------------------------------------------------------------------------- --->
-<cfform id="BookingConfirm" action="chgStatus_2c_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post">
-  <cfoutput>
+<cfoutput>
+<form id="BookingConfirm" action="chgStatus_2c_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post">
 	<input type="hidden" name="BRID" value="#Variables.BRID#" />
   
   <div class="module-info widemod">
@@ -225,7 +225,7 @@ SELECT
 	<input type="submit" value="Confirm" class="button-accent button" />
 			<br />
 		  <a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#Variables.BRID###id#Variables.BRID#">Cancel</a>
-		</cfoutput>
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

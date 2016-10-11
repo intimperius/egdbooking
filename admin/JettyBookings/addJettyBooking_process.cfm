@@ -195,8 +195,9 @@ function EditSubmit ( selectedform )
 	<cfset Variables.EndDate = #CreateODBCDate(Variables.EndDate)#>
 
 	<p>Please confirm the following information.</p>
-	<cfform action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
-<cfoutput>
+	<cfoutput>
+	<form action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
+
 
 <div class="module-info widemod">
 	<h2>Booking Details</h2>
@@ -219,7 +220,6 @@ function EditSubmit ( selectedform )
 		    </cfif><br/>
 	</ul>
 </div>
-</cfoutput>
 
 	<br />
 
@@ -228,7 +228,8 @@ function EditSubmit ( selectedform )
 		<cfoutput><a href="jettyBookingManage.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" style="padding-right: 10px">Cancel</a></cfoutput>
 		<cfoutput><a href="addJettyBooking.cfm?lang=#lang#&startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" class="textbutton">Back</a></cfoutput>
 			
-	</cfform>
+	</form>
+	</cfoutput>
 
 
 		

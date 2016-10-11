@@ -62,10 +62,11 @@
 	<cfset variables.dateValue = "">
 </cfif>
 
-<cfform action="deleteJettyBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="delBookingConfirm">
+<cfoutput query="getBooking">
+<form action="deleteJettyBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="delBookingConfirm">
 	Are you sure you want to <cfoutput>#variables.action#</cfoutput> the following booking?<br/><br/>
 	<input type="hidden" name="BRID" value="<cfoutput>#variables.BRID#</cfoutput>" />
-	<cfoutput query="getBooking">
+	<cfoutput>
 	
 	<div class="module-info widemod">
 		<h2>Booking Details</h2>
@@ -94,6 +95,7 @@
 		<cfoutput><a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue####variables.BRID#">Back</a></cfoutput>
 	</div>
 
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

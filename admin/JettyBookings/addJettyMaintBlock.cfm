@@ -100,7 +100,7 @@ function EditSubmit ( selectedform )
 
 
 				<!--- -------------------------------------------------------------------------------------------- --->
-				<cfform id="AddJettyMaintBlock" action="addJettyMaintBlock_process.cfm?#urltoken#" method="post">
+				<form id="AddJettyMaintBlock" action="addJettyMaintBlock_process.cfm?#urltoken#" method="post">
 				<input type="hidden" name="BRID" value="#Variables.BRID#" />
 				<div>
           <label for="startDate">Start Date:<br /><small>#language.dateform#</small></label>
@@ -110,13 +110,13 @@ function EditSubmit ( selectedform )
           <br/>
           Please select the jetty/jetties that you wish to book for maintenance:
           <label for="northJetty">North Landing Wharf</label>
-					<cfinput type="checkbox" name="NorthJetty" id="northJetty" checked="#Variables.NorthJetty#" /><br />
+					<input type="checkbox" name="NorthJetty" id="northJetty" checked="#Variables.NorthJetty#" /><br />
           <label for="southJetty">South Jetty</label>
-          <cfinput type="checkbox" name="SouthJetty" id="southJetty" checked="#Variables.SouthJetty#" />
+          <input type="checkbox" name="SouthJetty" id="southJetty" checked="#Variables.SouthJetty#" />
           <input type="submit" value="Submit" class="button button-accent" />
           <a href="jettyBookingManage.cfm?#urltoken#;">Cancel</a>
 				</div>
-				</cfform>
+				</form>
 
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

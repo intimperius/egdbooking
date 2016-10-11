@@ -79,8 +79,8 @@
 	<cfset Variables.End = CreateODBCDate(form.EndDate)>
 </cfif>
 
-
-<cfform action="chgStatus_2t_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" name="change2tentative">
+<cfoutput>
+<form action="chgStatus_2t_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" name="change2tentative">
 	Are you sure you want to change this booking's status to tentative?
 <br /><br />
 	<cfoutput>
@@ -99,7 +99,9 @@
 	<br/>
 	
 	<input type="submit" value="Submit" class="button-accent button" />
+	<br />
 	<cfoutput><a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#Variables.BRID###id#Variables.BRID#">Cancel</a></cfoutput>
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

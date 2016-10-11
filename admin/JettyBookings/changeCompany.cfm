@@ -28,11 +28,11 @@ SELECT Companies.CID, Companies.Name
 <cfoutput>  #CompanyURL# cannot be changed because #vesselNameURL# isn't available in another company.
 </cfoutput>
 <cfelse>
-	<cfoutput><cfform action="changeCompany2.cfm" method="post">
-		<cfinput type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
-		<cfinput type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
-		<cfinput type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
-		<cfinput type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
+	<cfoutput><form action="changeCompany2.cfm" method="post">
+		<input type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
+		<input type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
+		<input type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
+		<input type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
 	<div class="module-info modwide">
 		<h2>#vesselNameURL#</h2>
 		<ul>
@@ -41,13 +41,13 @@ SELECT Companies.CID, Companies.Name
 		</ul>
 	</div>
 	<br/>
-		Change to Company: <cfselect name="newCID" size="1" required="yes">
+		Change to Company: <select name="newCID" size="1" required="yes">
 		  <cfloop query="getCompanyList">
 			<option value="#CID#">#Name#</option>
-		  </cfloop> </cfselect></td>
+		  </cfloop> </select></td>
 	  <br/>
 	  <input id="submit" type="submit" value="Submit" class="button button-accent" />	
-	</cfform> </cfoutput> 
+	</form> </cfoutput> 
 </cfif>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
