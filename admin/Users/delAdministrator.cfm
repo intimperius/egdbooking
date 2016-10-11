@@ -42,13 +42,19 @@
 	</cfif>
 </cfif>
 
+<cfoutput>
 <div >
-	<cfform action="delAdministrator_confirm.cfm?lang=#lang#" method="post" id="delAdministratorForm">
-		<cfselect name="UID" query="getAdminList" value="UID" display="UserName" selected="#variables.UID#" />
+	<form action="delAdministrator_confirm.cfm?lang=#lang#" method="post" id="delAdministratorForm">
+		<select name="UID" value="UID" display="UserName" selected="#variables.UID#">
+			<cfloop query="getAdminList">
+				<option value="#getAdminList.UID#">#getAdminList.UserName#</option>
+			</cfloop>
+		</select>
 		<br />
 		<input type="submit" value="Remove" class="button-accent button" />
 		<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-	</cfform>
+	</form>
 </div>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

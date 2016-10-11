@@ -56,13 +56,19 @@ function EditSubmit ( selectedform )
 				</cfform>
 			</div>--->
 
-			<cfform action="addAdministrator_action.cfm?lang=#lang#" id="addAdministratorForm" method="post">
-				Select User: <cfselect name="UID" query="getUserList" value="UID" display="UserName" />
+			<cfoutput>
+			<form action="addAdministrator_action.cfm?lang=#lang#" id="addAdministratorForm" method="post">
+				Select User: <select name="UID" value="UID" display="UserName">
+				<cfloop query="getUserList">
+					<option value="#getUserList.UID#">#getUserList.UserName#</option>
+				</cfloop>
+				</select>
 				&nbsp;&nbsp;&nbsp;
 				<!--a href="javascript:EditSubmit('addAdministratorForm');" class="textbutton">Submit</a-->
 				<input type="submit" name="submitForm" value="Submit" class="button button-accent" />
 				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-			</cfform>
+			</form>
+			</cfoutput>
 
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

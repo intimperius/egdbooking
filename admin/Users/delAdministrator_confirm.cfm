@@ -44,7 +44,7 @@ function EditSubmit ( selectedform )
 					<cfinclude template="#RootDir#includes/getStructure.cfm">
 				</cfif>
 
-				<cfform action="delAdministrator_action.cfm?lang=#lang#" method="post" id="delAdministratorConfirmForm">
+				<form action="delAdministrator_action.cfm?lang=#lang#" method="post" id="delAdministratorConfirmForm">
 					<div >
 						Are you sure you want to remove <cfoutput><strong>#getAdmin.UserName#</strong></cfoutput> from administration?
 						<br /><br />
@@ -59,7 +59,7 @@ function EditSubmit ( selectedform )
 					</div>
 
 					<input type="hidden" name="UID" value="<cfoutput>#form.UID#</cfoutput>" />
-				</cfform>
+				</form>
 
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
