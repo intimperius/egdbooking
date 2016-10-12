@@ -532,4 +532,14 @@ ul, dl, ol {
 		text-decoration: none;
 	}
 
+	div.calendar .day, div.calendar .day_header
+	{
+		width: 14.24%;
+	}
+
+	div.calendar .week
+	{
+		page-break-inside: avoid;
+	}
+
 }
