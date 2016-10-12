@@ -1,7 +1,7 @@
 <!-- MainContentEnd -->
 </div>
 </main>
-<div class="container">
+<div class="container no-print">
 <div class="row pagedetails">
 <div class="col-sm-5 col-xs-12 datemod">
 <dl id="wb-dtmd">
@@ -20,7 +20,7 @@
 </div>
 </div>
 
-<aside class="gc-nttvs container">
+<aside class="gc-nttvs container no-print">
 <h2>Government of Canada activities and initiatives</h2>
 <div class="wb-eqht row mrgn-bttm-md" data-ajax-replace="https://cdn.canada.ca/gcweb-cdn-live/features/features-en.html">
     <p><ul><li><a href="http://www.canada.ca/en/">Visit the Canada.ca home page to see activities and initiatives in the Government of Canada.</a></li></ul></p>

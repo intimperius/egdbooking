@@ -504,3 +504,32 @@ ul, dl, ol {
     zoom: 1;
     overflow: hidden;
 }
+
+@media print
+{    
+    .no-print
+    {
+        display: none !important;
+    }
+
+    #wb-main-in
+    {
+    	width: 100% !important;
+    }
+
+    table:not(.keytable)
+    {
+    	width: 100% !important;
+    }
+
+	a[href]::after
+	{
+		content: none ;
+	}
+
+	a
+	{
+		text-decoration: none;
+	}
+
+}

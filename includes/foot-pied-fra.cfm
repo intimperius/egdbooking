@@ -2,7 +2,7 @@
 <!-- EndEditableContent -->
 </div>
 
-<div id="wb-sec"><div id="wb-sec-in">
+<div id="wb-sec" class="no-print"><div id="wb-sec-in">
 <cfinclude template="#RootDir#includes/left-menu-gauche-fra.cfm" />
 </div>
 </div>
@@ -10,7 +10,7 @@
 <!-- MainContentEnd -->
 </main>
 
-<div class="container">
+<div class="container no-print">
 <div class="row pagedetails">
 <div class="col-sm-5 col-xs-12 datemod">
 <dl id="wb-dtmd">
@@ -23,13 +23,13 @@
 <a href="http://www.canada.ca/fr/contact/retroaction.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>R&eacute;troaction</a>
 </div>
 <div class="col-sm-3 col-xs-6 text-right">
-<div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
+<!-- <div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div> -->
 </div>
 <div class="clear visible-xs"></div>
 </div>
 </div>
 
-<aside class="gc-nttvs container">
+<aside class="gc-nttvs container no-print">
 <h2>Activit&eacute;s et initiatives du gouvernement du Canada</h2>
 <div class="wb-eqht row mrgn-bttm-md" data-ajax-replace="https://cdn.canada.ca/gcweb-cdn-live/features/features-fr.html">
     <p><ul><li><a href="http://www.canada.ca/en/">Visitez la page d'accueil Canada.ca pour voir activit&eacute;s et initiatives du Government of Canada.</a></li></ul></p>

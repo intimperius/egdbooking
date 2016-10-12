@@ -68,7 +68,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 </ul>
 
 <header role="banner">
-<div id="wb-bnr" class="container">
+<div id="wb-bnr" class="container no-print">
 <section id="wb-lng" class="visible-md visible-lg text-right">
 <h2 class="wb-inv">S&eacute;lection de la langue</h2>
 <div class="row">
@@ -133,7 +133,7 @@ wet-boew.github.com/wet-boew/License-eng.txt / wet-boew.github.com/wet-boew/Lice
 </div>
 </nav>
 
-<nav role="navigation" id="wb-bc" property="breadcrumb">
+<nav role="navigation" id="wb-bc" property="breadcrumb" class="no-print">
 <h2>Vous &ecirc;tes ici:</h2>
 <div class="container">
 <div class="row">
