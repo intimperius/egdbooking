@@ -1,4 +1,5 @@
-<CFIF #URL.jetty#>
+
+<cfif #URL.jetty#>
 	<cfquery name="confirmRequest" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 		UPDATE	Jetties
 		SET		Status = 'PC'
@@ -10,14 +11,16 @@
 		SET		Status = 'PC'
 		WHERE	BRID = <cfqueryparam value="#Form.BRID#" cfsqltype="cf_sql_integer" />
 	</cfquery>
-</CFIF>
+</cfif>
+
 <cfquery name="getBooking" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 	SELECT	Vessels.Name AS VesselName, StartDate, EndDate
 	FROM	Bookings INNER JOIN	Vessels ON Bookings.VNID = Vessels.VNID
 	WHERE	Bookings.BRID = <cfqueryparam value="#Form.BRID#" cfsqltype="cf_sql_integer" />
 </cfquery>
 
-<CFIF #URL.jetty#>
+
+<cfif #URL.jetty#>
 <cfquery name="NorthSouth" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 	SELECT	NorthJetty, SouthJetty, Jetties.BRID
 	FROM	Jetties 
@@ -27,7 +30,7 @@
 <cfif NorthJetty EQ "1"><cfset northorsouth = "North"></cfif>
 <cfif SouthJetty EQ "1"><cfset northorsouth = "South"></cfif>
 </cfoutput>
-</CFIF>
+</cfif>
 
 <cflock scope="session" throwontimeout="no" timeout="30" type="READONLY">
 	<cfquery name="getUser" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
