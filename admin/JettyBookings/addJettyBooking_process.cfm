@@ -150,7 +150,7 @@
 	WHERE	Companies.CID = <cfqueryparam value="#form.CID#" cfsqltype="cf_sql_integer" />
 </cfquery>
 <cfquery name="getVessel" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
-	SELECT	Name
+	SELECT	Name, Length
 	FROM	Vessels
 	WHERE	Vessels.VNID = <cfqueryparam value="#Form.VNID#" cfsqltype="cf_sql_integer" />
 </cfquery>
@@ -188,6 +188,136 @@ function EditSubmit ( selectedform )
 
 	<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 	<!--- ---------------------------------------------------------------------------------------------------------------- --->
+
+
+<!---Check to see if jetty has already reached capacity (304m for NLW and 301m for South Jetty)--->
+<CFIF Variables.NorthJetty>
+  <CFSET error=0>
+  <CFSET tempDate = #Variables.StartDate#>
+  <!---Loop through each day of the booking to check for capacity--->
+  <CFLOOP condition = "#tempDate# LESS THAN OR EQUAL TO #Variables.EndDate#">
+	<cfquery name="checkLength" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+	SELECT	SUM(Vessels.Length) as sumLength
+	FROM		Bookings INNER JOIN
+	Jetties ON Bookings.BRID = Jetties.BRID INNER JOIN
+	Vessels ON Bookings.VNID = Vessels.VNID
+	WHERE		((Bookings.StartDate <= <cfqueryparam value="#tempDate#" cfsqltype="cf_sql_date" /> AND Bookings.EndDate >= <cfqueryparam value="#tempDate#" cfsqltype="cf_sql_date" />))
+	AND Jetties.NorthJetty = '1'
+	AND	Bookings.Deleted = '0'
+	AND Jetties.Status = 'C'
+	</cfquery>
+	<cfoutput>
+	  <!---check capacity for that day and see if it's the first error--->
+	  <CFIF (#checkLength.sumLength# NEQ "") AND (#checkLength.sumLength#+#getVessel.Length#) GT 304 AND NOT #error#>
+		<CFSET error=1>
+		<div class="critical">
+		<p>WARNING: Max Length (304m) Exceeded on #DateFormat(tempDate, "mmm d YYYY")#<br />
+		  Current Usage: #checkLength.sumLength#m &nbsp;&nbsp; Booking Vessel Length: #getVessel.Length#m</p>
+		<table class="basic smallFont">
+		<tr>
+		  <th id="Dates" align="left">Docking Dates</th>
+		  <th id="Vessel" align="left">Vessel</th>
+		  <th align=left>Length</th>
+		</tr>
+		<CFSET errorDate = #tempDate#>
+		<CFELSEIF #getVessel.Length# GT 304 AND NOT #error#>
+		<CFSET error=1>
+		<div class="critical">
+		<p>WARNING: Max Length (304m) Exceeded on #DateFormat(tempDate, "mmm d YYYY")#</strong><br />
+		Current Usage: 0m &nbsp;&nbsp; Booking Vessel Length: #getVessel.Length#m</p>
+		<CFSET errorDate = #tempDate#>
+	  </CFIF>
+	  <CFSET tempDate = DateFormat(DateAdd('d', 1, tempDate))>
+	</cfoutput>
+  </CFLOOP>
+  <!---display table cells which list all boats that are confirmed on that day--->
+  <CFIF #error#>
+	<cfquery name="getLengthConflicts" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+	SELECT	Bookings.StartDate, Bookings.EndDate, Vessels.Length, Vessels.Name
+	FROM		Bookings INNER JOIN
+	Jetties ON Bookings.BRID = Jetties.BRID INNER JOIN
+	Vessels ON Bookings.VNID = Vessels.VNID
+	WHERE		((Bookings.StartDate <= <cfqueryparam value="#errorDate#" cfsqltype="cf_sql_date" /> AND Bookings.EndDate >= <cfqueryparam value="#errorDate#" cfsqltype="cf_sql_date" />))
+	AND Jetties.NorthJetty = '1'
+	AND	Bookings.Deleted = '0'
+	AND Jetties.Status = 'C'
+	</cfquery>
+	<CFLOOP QUERY="getLengthConflicts">
+	  <cfoutput>
+		<tr valign="top">
+		  <td headers="Dates" valign="top">#DateFormat(getLengthConflicts.StartDate, "mmm d")# - #DateFormat(getLengthConflicts.EndDate, "mmm d")#</td>
+		  <td headers="Vessel" valign="top">#trim(getLengthConflicts.Name)#</td>
+		  <td headers="Length" valign="top">#trim(getLengthConflicts.Length)#m</td>
+		</tr>
+	  </cfoutput>
+	</CFLOOP>
+	</table>
+	</div>
+  </CFIF>
+  <CFELSEIF Variables.SouthJetty>
+  <CFSET error=0>
+  <CFSET tempDate = #Variables.StartDate#>
+  <!---Loop through each day of the booking to check for capacity--->
+  <CFLOOP condition = "#tempDate# LESS THAN OR EQUAL TO #Variables.EndDate#">
+	<cfquery name="checkLength" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+	SELECT	SUM(Vessels.Length) as sumLength
+	FROM		Bookings INNER JOIN
+	Jetties ON Bookings.BRID = Jetties.BRID INNER JOIN
+	Vessels ON Bookings.VNID = Vessels.VNID
+	WHERE		((Bookings.StartDate <= <cfqueryparam value="#tempDate#" cfsqltype="cf_sql_date" /> AND Bookings.EndDate >= <cfqueryparam value="#tempDate#" cfsqltype="cf_sql_date" />))
+	AND Jetties.SouthJetty = '1'
+	AND	Bookings.Deleted = '0'
+	AND Jetties.Status = 'C'
+	</cfquery>
+	<cfoutput>
+	  <!---check capacity for that day and see if it's the first error--->
+	  <CFIF (#checkLength.sumLength# NEQ "") AND (#checkLength.sumLength#+#getVessel.Length#) GT 301 AND NOT #error#>
+		<CFSET error=1>
+		<div class="critical">
+		<p>WARNING: Max Length (301m) Exceeded on #DateFormat(tempDate, "mmm d YYYY")#</strong><br />
+		  Current Usage: #checkLength.sumLength#m &nbsp;&nbsp; Booking Vessel Length: #getVessel.Length#m</p>
+		<table class="basic smallFont">
+		<tr>
+		  <th id="Dates" align="left">Docking Dates</th>
+		  <th id="Vessel" align="left">Vessel</th>
+		  <th align=left>Length</th>
+		</tr>
+		<CFSET errorDate = #tempDate#>
+		<CFELSEIF #getVessel.Length# GT 301 AND NOT #error#>
+		<CFSET error=1>
+		<div class="critical">
+		<p>WARNING: Max Length (301m) Exceeded on #DateFormat(tempDate, "mmm d YYYY")#</strong><br />
+		Current Usage: 0m &nbsp;&nbsp; Booking Vessel Length: #getVessel.Length#m</p>
+		<CFSET errorDate = #tempDate#>
+	  </CFIF>
+	  <CFSET tempDate = DateFormat(DateAdd('d', 1, tempDate))>
+	</cfoutput>
+  </CFLOOP>
+  <!---display table cells which list all boats that are confirmed on that day--->
+  <CFIF #error#>
+	<cfquery name="getLengthConflicts" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
+	SELECT	Bookings.StartDate, Bookings.EndDate, Vessels.Length, Vessels.Name
+	FROM		Bookings INNER JOIN
+	Jetties ON Bookings.BRID = Jetties.BRID INNER JOIN
+	Vessels ON Bookings.VNID = Vessels.VNID
+	WHERE		((Bookings.StartDate <= <cfqueryparam value="#errorDate#" cfsqltype="cf_sql_date" /> AND Bookings.EndDate >= <cfqueryparam value="#errorDate#" cfsqltype="cf_sql_date" />))
+	AND Jetties.SouthJetty = '1'
+	AND	Bookings.Deleted = '0'
+	AND Jetties.Status = 'C'
+	</cfquery>
+	<CFLOOP QUERY="getLengthConflicts">
+	  <cfoutput>
+		<tr valign="top">
+		  <td headers="Dates" valign="top">#DateFormat(getLengthConflicts.StartDate, "mmm d")# - #DateFormat(getLengthConflicts.EndDate, "mmm d")#</td>
+		  <td headers="Vessel" valign="top">#trim(getLengthConflicts.Name)#</td>
+		  <td headers="Length" valign="top">#trim(getLengthConflicts.Length)#m</td>
+		</tr>
+	  </cfoutput>
+	</CFLOOP>
+	</table>
+	</div>
+  </CFIF>
+</CFIF>
 
 
 	<!-- Gets all Bookings that would be affected by the requested booking -->
