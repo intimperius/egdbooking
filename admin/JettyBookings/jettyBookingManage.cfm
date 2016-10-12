@@ -183,7 +183,9 @@ function EditSubmit ( selectedform )
 		<label for="showTent" class="tentative">Tentative<input type="checkbox" id="showTent" name="show" value="t"<cfif showTent eq true> checked="true"</cfif> /></label>
 		<label for="showConf" class="confirmed">Confirmed<input type="checkbox" name="show" value="c" id="showConf" <cfif showConf EQ true>checked="true"</cfif> /></label></td>
 	</div>
+	<div class="no-print">
 	<input type="submit" value="Submit" class="button button-accent" />
+	</div>
 </form>
 
 

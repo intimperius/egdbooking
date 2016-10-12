@@ -145,7 +145,9 @@ function EditSubmit ( selectedform )
 		<label for="showTent" class="tentative">Tentative<input type="checkbox" id="showTent" name="show" value="t"<cfif showTent eq true> checked="true"</cfif> /></label>
 		<label for="showConf" class="confirmed">Confirmed<input type="checkbox" id="showConf" name="show" value="c"<cfif showConf eq true> checked="true"</cfif> /></label>
 	</div>
+	<div class="no-print">
 	<input type="submit" class="button button-accent" value="Submit" />	
+	</div>
 </form>
 
 <cfif form.startDate NEQ "" and form.endDate NEQ "">
