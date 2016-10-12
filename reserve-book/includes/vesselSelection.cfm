@@ -12,7 +12,7 @@
     <p>#language.None#</p>
   <cfelse>
     <form action="#RootDir#reserve-book/detail-navire-vessel.cfm" method="get">
-      <fieldset>
+      <fieldset class="no-print">
         <legend>#language.vesselSelection#</legend>
         <label for="VNID">#language.vessels#</label>
         <select id="VNID" name="VNID">
