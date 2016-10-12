@@ -60,6 +60,7 @@
 		<br/>
 				<!--a href="javascript:document.addUserForm.submitForm.click();" class="textbutton">Submit</a-->
 				<input type="submit" name="submitForm" value="Continue" class="button button-accent" />
+				<br />
 				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 			
 </form>

@@ -90,6 +90,7 @@ function EditSubmit ( selectedform )
 					<!--a href="javascript:EditSubmit('delUserForm');" class="textbutton">Submit</a-->
 					<br />
           <input type="submit" name="submitForm" value="Delete" class="button-accent button" />
+          <br />
           <cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 				</div>
 				</form>

@@ -83,7 +83,9 @@ function EditSubmit ( selectedform )
 </cfloop>
 </select>
 <!---a href="javascript:EditSubmit('chooseCompanyForm');" class="textbutton">View</a--->
+<br />
 <input type="submit" value="View" class="button-accent button" />
+<br />
 <cfoutput><a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 </form>
 </cfoutput>
@@ -163,7 +165,9 @@ function EditSubmit ( selectedform )
 	
 	<br/><br/>
 		<input type="hidden" name="CID" value="#form.CID#" />
+		<br />
 		<input type="submit" class="button-accent button" value="Submit" />
+		<br />
 		<a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 		
 

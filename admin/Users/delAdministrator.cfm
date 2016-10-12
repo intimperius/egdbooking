@@ -52,6 +52,7 @@
 		</select>
 		<br />
 		<input type="submit" value="Remove" class="button-accent button" />
+		<br />
 		<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 	</form>
 </div>

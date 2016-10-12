@@ -123,7 +123,11 @@ function EditSubmit ( selectedform )
 
 <h1 id="wb-cont">Drydock Booking Management</h1>
 
+
+
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+
+<div class="no-print">
 
 <p>Please enter a range of dates for which you would like to see the bookings:</p>
 <form action="bookingManage.cfm?lang=#lang#" method="get">
@@ -145,10 +149,9 @@ function EditSubmit ( selectedform )
 		<label for="showTent" class="tentative">Tentative<input type="checkbox" id="showTent" name="show" value="t"<cfif showTent eq true> checked="true"</cfif> /></label>
 		<label for="showConf" class="confirmed">Confirmed<input type="checkbox" id="showConf" name="show" value="c"<cfif showConf eq true> checked="true"</cfif> /></label>
 	</div>
-	<div class="no-print">
 	<input type="submit" class="button button-accent" value="Submit" />	
-	</div>
 </form>
+</div>
 
 <cfif form.startDate NEQ "" and form.endDate NEQ "">
 	<cfif isDate(form.startDate)>
@@ -173,13 +176,13 @@ function EditSubmit ( selectedform )
 	<h2>Drydock <cfif #countPending.numPend# NEQ 0>(#countPending.numPend# #language.pending#)</cfif></h2>
 
 <p>
-<a href="addBooking.cfm?#urltoken#" class="textbutton">Add New Drydock Booking</a>
+<a href="addBooking.cfm?#urltoken#" class="textbutton no-print">Add New Drydock Booking</a>
 </p>
 <p>
 		<cfif form.expandAll NEQ "yes">
-			<a href="javascript:EditSubmit('expandAll');">Expand All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Expand All</a>
 		<cfelse>
-			<a href="javascript:EditSubmit('expandAll');">Collapse All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Collapse All</a>
 		</cfif>
 </p>
 
@@ -377,18 +380,18 @@ function EditSubmit ( selectedform )
 		</cfif>
 
 	</table>
-	<div style="float:left;"><a href="addBooking.cfm?#urltoken#" class="textbutton">Add New Drydock Booking</a></div>
+	<div style="float:left;"><a href="addBooking.cfm?#urltoken#" class="textbutton no-print">Add New Drydock Booking</a></div>
 	<div style="text-align:right;">
 		<cfif form.expandAll NEQ "yes">
-			<a href="javascript:EditSubmit('expandAll');">Expand All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Expand All</a>
 		<cfelse>
-			<a href="javascript:EditSubmit('expandAll');">Collapse All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Collapse All</a>
 		</cfif>
 	</div>
 
 	<hr />
 	<h2>Maintenance</h2>
-	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton">Add New Maintenance Block</a></cfoutput>
+	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton no-print">Add New Maintenance Block</a></cfoutput>
 
 	<cfquery name="getMaintenance" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 		SELECT  Bookings.*, Docks.Section1, Docks.Section2, Docks.Section3
@@ -431,8 +434,8 @@ function EditSubmit ( selectedform )
 							<cfif getMaintenance.Section3><cfif getMaintenance.Section1 OR getMaintenance.Section2> &amp; </cfif>Section 3</cfif>
 						</cfif>
 					</td>
-					<td><a href="#RootDir#admin/DockBookings/editMaintBlock.cfm?BRID=#getMaintenance.BRID#">Edit</a></td>
-					<td><a href="#RootDir#admin/DockBookings/deleteMaintBlock_confirm.cfm?BRID=#getMaintenance.BRID#">#variables.actionCap#</a></td>
+					<td><a href="#RootDir#admin/DockBookings/editMaintBlock.cfm?BRID=#getMaintenance.BRID#" class="no-print">Edit</a></td>
+					<td><a href="#RootDir#admin/DockBookings/deleteMaintBlock_confirm.cfm?BRID=#getMaintenance.BRID#" class="no-print">#variables.actionCap#</a></td>
 				</tr>
 			</cfoutput>
 		<cfelse>
@@ -444,7 +447,7 @@ function EditSubmit ( selectedform )
 		</cfif>
 	</table>
 
-	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton">Add New Maintenance Block</a></cfoutput>
+	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton no-print">Add New Maintenance Block</a></cfoutput>
 
 </cfif>
 <!-- CONTENT ENDS | FIN DU CONTENU -->

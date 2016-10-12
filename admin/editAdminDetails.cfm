@@ -54,8 +54,8 @@ Select any of the following administrators to receive email notification about u
 </table>
 
 <br />
-<div style="text-align:right;"><input type="submit" value="Submit" class="button-accent button" />
-<a href="menu.cfm?lang=#lang#">Cancel</a>
+<div style="text-align:left;"><input type="submit" value="Submit" class="button-accent button no-print" />
+<a href="menu.cfm?lang=#lang#" class="no-print">Cancel</a>
 </div>
 </form>
 

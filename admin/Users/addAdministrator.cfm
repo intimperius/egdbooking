@@ -69,7 +69,9 @@ function EditSubmit ( selectedform )
 				</select>
 				&nbsp;&nbsp;&nbsp;
 				<!--a href="javascript:EditSubmit('addAdministratorForm');" class="textbutton">Submit</a-->
+				<br />
 				<input type="submit" name="submitForm" value="Submit" class="button button-accent" />
+				<br />
 				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 			</form>
 			</cfoutput>

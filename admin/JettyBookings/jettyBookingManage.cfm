@@ -164,6 +164,8 @@ function EditSubmit ( selectedform )
 
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
+<div class="no-print">
+
 <p>Please enter a range of dates for which you would like to see the bookings:</p>
 <form action="jettyBookingManage.cfm?lang=<cfoutput>#lang#</cfoutput>" method="get" name="dateSelect">
 	<input type="hidden" name="lang" value="<cfoutput>#lang#</cfoutput>" />
@@ -183,11 +185,9 @@ function EditSubmit ( selectedform )
 		<label for="showTent" class="tentative">Tentative<input type="checkbox" id="showTent" name="show" value="t"<cfif showTent eq true> checked="true"</cfif> /></label>
 		<label for="showConf" class="confirmed">Confirmed<input type="checkbox" name="show" value="c" id="showConf" <cfif showConf EQ true>checked="true"</cfif> /></label></td>
 	</div>
-	<div class="no-print">
 	<input type="submit" value="Submit" class="button button-accent" />
-	</div>
 </form>
-
+</div>
 
 <cfif variables.startDate NEQ "" and variables.endDate NEQ "">
 	<cfif isDate(form.startDate)>
@@ -210,12 +210,12 @@ function EditSubmit ( selectedform )
 		<input type="hidden" name="show" value="#url.show#" />
 	</form>
 
-	<p><a href="addJettyBooking.cfm?#urltoken#" class="textbutton">Add New South Jetty / North Landing Wharf Booking</a></p>
+	<p><a href="addJettyBooking.cfm?#urltoken#" class="textbutton no-print">Add New South Jetty / North Landing Wharf Booking</a></p>
 	<p>
 		<cfif form.expandAll NEQ "yes">
-			<a href="javascript:EditSubmit('expandAll');">Expand All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Expand All</a>
 		<cfelse>
-			<a href="javascript:EditSubmit('expandAll');">Collapse All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Collapse All</a>
 		</cfif>
 	</p>
 	</cfoutput>
@@ -432,18 +432,18 @@ function EditSubmit ( selectedform )
 
 </cfloop>
 
-<cfoutput><div style="float:left;"><a href="addJettyBooking.cfm?#urltoken#" class="textbutton">Add New South Jetty / North Landing Wharf Booking</a></div></cfoutput>
+<cfoutput><div style="float:left;"><a href="addJettyBooking.cfm?#urltoken#" class="textbutton no-print">Add New South Jetty / North Landing Wharf Booking</a></div></cfoutput>
 <div style="text-align:right;">
 	<cfif form.expandAll NEQ "yes">
-		<a href="javascript:EditSubmit('expandAll');">Expand All</a>
+		<a href="javascript:EditSubmit('expandAll');" class="no-print">Expand All</a>
 	<cfelse>
-		<a href="javascript:EditSubmit('expandAll');">Collapse All</a>
+		<a href="javascript:EditSubmit('expandAll');" class="no-print">Collapse All</a>
 	</cfif>
 </div>
 </cfif>
 <hr />
 <h2>Maintenance</h2>
-<cfoutput><a href="addJettyMaintBlock.cfm?#urltoken#" class="textbutton">Add New Maintenance Block</a></cfoutput>
+<cfoutput><a href="addJettyMaintBlock.cfm?#urltoken#" class="textbutton no-print">Add New Maintenance Block</a></cfoutput>
 
 <cfquery name="getMaintenance" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 	SELECT 	Bookings.*, Jetties.NorthJetty, Jetties.SouthJetty
@@ -481,8 +481,8 @@ function EditSubmit ( selectedform )
 					<cfif NorthJetty>North Landing Wharf</cfif>
 					<cfif SouthJetty><cfif NorthJetty> &amp; </cfif>South Jetty</cfif>
 				</td>
-				<td><a href="#RootDir#admin/JettyBookings/editJettyMaintBlock.cfm?BRID=#getMaintenance.BRID#">Edit</a></td>
-				<td><a href="#RootDir#admin/JettyBookings/deleteJettyMaintBlock_confirm.cfm?BRID=#getMaintenance.BRID#">#variables.actionCap#</a></td>
+				<td><a href="#RootDir#admin/JettyBookings/editJettyMaintBlock.cfm?BRID=#getMaintenance.BRID#" class="no-print">Edit</a></td>
+				<td><a href="#RootDir#admin/JettyBookings/deleteJettyMaintBlock_confirm.cfm?BRID=#getMaintenance.BRID#" class="no-print">#variables.actionCap#</a></td>
 			</tr>
 		</cfoutput>
 	<cfelse>
@@ -493,6 +493,6 @@ function EditSubmit ( selectedform )
 		</tr>
 	</cfif>
 </table>
-<cfoutput><a href="addJettyMaintBlock.cfm?#urltoken#" class="textbutton">Add New Maintenance Block</a></cfoutput>
+<cfoutput><a href="addJettyMaintBlock.cfm?#urltoken#" class="textbutton no-print">Add New Maintenance Block</a></cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
