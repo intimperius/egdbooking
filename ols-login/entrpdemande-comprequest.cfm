@@ -105,9 +105,9 @@
 	</cfif>
 
 	<cfif isDefined("url.companies")>
-		<cfset Variables.action = "utilisateurajout-useradd.cfm?lang=#lang#&companies=#url.companies#">
+		<cfset Variables.action = "gestionutilisateur-usermanagement.cfm?lang=#lang#&companies=#url.companies#">
 	<cfelse>
-		<cfset Variables.action = "utilisateurajout-useradd.cfm?lang=#lang#">
+		<cfset Variables.action = "gestionutilisateur-usermanagement.cfm?lang=#lang#">
 	</cfif>
 
 	<cfif Proceed_OK EQ "No">
@@ -341,8 +341,8 @@ function EditSubmit ( selectedform )
 			<input type="submit" value="#language.SubmitUserRequest#" class="button button-accent" />
 			
 			<div>
-				<a href="utilisateurajout-useradd.cfm?lang=#lang#&amp;info=#Variables.info#&amp;companies=#companies#" class="textbutton">#language.editProfile#</a>
-				<a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.cancel#</a>
+<!--- 				<a href="gestionutilisateur-usermanagement.cfm?lang=#lang#&amp;info=#Variables.info#&amp;companies=#companies#" class="textbutton">#language.editProfile#</a> --->
+				<a href="gestionutilisateur-usermanagement.cfm?lang=#lang#" class="textbutton">#language.cancel#</a>
 			</div>
 		</form>
 	</cfoutput>

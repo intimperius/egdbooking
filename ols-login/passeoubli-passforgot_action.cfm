@@ -34,7 +34,7 @@
 <cfif Proceed_OK EQ "No">
 	<cfinclude template="#RootDir#includes/build_return_struct.cfm">
 	<cfset Session.Return_Structure.Errors = Variables.Errors>
-	<cflocation url="passeoubli-passforgot.cfm?lang=#lang#" addtoken="no">
+	<cflocation url="gestionutilisateur-usermanagement.cfm?lang=#lang#" addtoken="no">
 </cfif>
 
 <cfif getPassword.recordCount EQ 0>

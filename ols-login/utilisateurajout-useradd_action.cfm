@@ -163,8 +163,8 @@
 					</p>
 					
 					<br /><br />	
-					<div><a href="ols-login.cfm?lang=#lang#" class="button button-accent">#language.login#</a></div>
+					<div><a href="#RootDir#index-#lang#.cfm">#language.login#</a></div>
 				</cfoutput>
 			</div>
 			<!-- CONTENT ENDS | FIN DU CONTENU -->
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">

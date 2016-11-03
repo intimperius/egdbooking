@@ -32,7 +32,7 @@
 					
 					<div>#language.sentPassword#</div><br />
 					
-					<div><a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.returnlogin#</a></div>
+					<div><a href="#RootDir#index-#lang#.cfm" class="textbutton">#language.returnlogin#</a></div>
 				</cfoutput>					
 			<!-- CONTENT ENDS | FIN DU CONTENU -->
 		<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
