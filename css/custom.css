@@ -448,6 +448,10 @@ ul, dl, ol {
 	margin: 10px;
 }
 
+#wb-main table.public {
+	width: 100%;
+}
+
 #wb-main table > tbody > tr > td, #wb-main table > tbody > tr > th, #wb-main table > tfoot > tr > td, #wb-main table > tfoot > tr > th, #wb-main table > thead > tr > td, table > thead > tr > th {
     padding: 8px;
     line-height: 1.4375;

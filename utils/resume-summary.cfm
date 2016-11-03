@@ -2,7 +2,7 @@
 
 <cfif lang EQ "eng">
 	<CFSET langVar = "eng">
-	<cfset language.bookingsSummary = "Public Bookings Summary">
+	<cfset language.bookingsSummary = "Esquimalt Graving Dock public bookings summary">
 	<cfset language.description = "Allows user to view a summary of all bookings from present onward.">
 	<cfset language.vesselCaps = "VESSEL">
 	<cfset language.dockingCaps = "DOCKING DATES">
@@ -12,9 +12,20 @@
 	<cfset language.noBookings = "There are no bookings to view.">
 	<cfset language.booked = "Booked">
 	<cfset language.printable = "VIEW PRINTABLE VERSION">
+	<cfset language.introduction = "Find a public summary of bookings at the Esquimalt Graving Dock.">
+	<cfset language.newsearch = "Conduct a new search">
+	<cfset language.newsearchlink = "Consult the public summary of bookings">
+	<cfset language.bookspace = "Book space">
+	<cfset language.bookspacelink = "Sign in to book a space">
+
+	<cfset language.dcdescription = "Allows to consult the public summary of bookings of the Drydock, the North Landing Wharf and the South Jetty facilities at the Esquimalt Graving Dock without signing in or registering an account.">
+	<cfset language.dccreator = "Government of Canada, Public Works and Government Services, Real Property Branch">
+	<cfset language.dctitle = "Esquimalt Graving Dock public bookings summary – Booking space at the Esquimalt Graving Dock – Esquimalt Graving Dock – Vessels design, construction and maintenance – Marine transportation – Transport and infrastructure">
+	<cfset language.dcsubject = "Government of Canada; marine installations; wharfs; vessels; ships">
+	<cfset language.dckeywords = "Esquimalt Graving Dock, EGD, Drydock, North Landing Wharf, South Jetty, public bookings summary, bookings, space booking, reserve a space, reservation, booking dates, docking dates, commercial drydock, dry-dock, ship repair facility">
 <cfelse>
 	<CFSET langVar = "fre">
-	<cfset language.bookingsSummary = "R&eacute;sum&eacute; des r&eacute;servations Publique">
+	<cfset language.bookingsSummary = "R&eacute;sum&eacute; des r&eacute;servations publique de la Cale s&egrave;che d'Esquimalt">
 	<cfset language.description = "Permet &agrave; l'utilisateur de voir un sommaire de toutes les r&eacute;servations &agrave; partir de maintenant.">
 	<cfset language.vesselCaps = "NAVIRE">
 	<cfset language.dockingCaps = "DATES D'AMARRAGE">
@@ -24,17 +35,38 @@
 	<cfset language.noBookings = "Il n'existe aucune r&eacute;servation &agrave; afficher.">
 	<cfset language.booked = "R&eacute;serv&eacute;">
 	<cfset language.printable = "VOIR LA VERSION IMPRIMABLE">
+	<cfset language.introduction = "Trouvez un r&eacute;sum&eacute; des r&eacute;servations publique de la Cale s&egrave;che d'Esquimalt.">
+
+	<cfset language.newsearch = "Effectuer une nouvelle recherche">
+	<cfset language.newsearchlink = "Consulter le r&eacute;sum&eacute; des r&eacute;servations publique">
+	<cfset language.bookspace = "R&eacute;server">
+	<cfset language.bookspacelink = "Ouvrir une session pour r&eacute;server">
+
+	<cfset language.dcdescription = "TBD">
+	<cfset language.dccreator = "TBD">
+	<cfset language.dctitle = "TBD">
+	<cfset language.dcsubject = "TBD">
+	<cfset language.dckeywords = "TBD">	
 </cfif>
 
+<cfset PageFileName = listlast(cgi.CF_TEMPLATE_PATH,slash)>
+<cfset PageDir = listDeleteAt(cgi.CF_TEMPLATE_PATH, listLen(cgi.CF_TEMPLATE_PATH,slash), slash)>
+<cfdirectory action="LIST" directory="#PageDir#" name="GetFile" filter="#PageFileName#">
+<cfset PageFileName = listlast(cgi.CF_TEMPLATE_PATH,slash)>
+<cfset language.dcdatemodified = DateFormat(GetFile.DateLastModified, "yyyy-mm-dd")>
+
 <cfhtmlhead text="
-	<meta name=""dcterms.title"" content=""#language.bookingsSummary# - #language.esqGravingDock# - #language.PWGSC#"" />
-	<meta name=""keywords"" content=""#language.masterKeywords#"" />
-	<meta name=""description"" content=""#language.description#"" />
-	<meta name=""dcterms.description"" content=""#language.description#"" />
-	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
-	<title>#language.bookingsSummary# - #language.esqGravingDock# - #language.PWGSC#</title>">
-<cfset request.title = language.bookingsSummary />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+	<meta name=""dcterms.title"" content=""#language.dctitle#"" />
+	<meta name=""keywords"" content=""#language.dckeywords#"" />
+	<meta name=""description"" content=""#language.dcdescription#"" />
+	<meta name=""dcterms.description"" content=""#language.dcdescription#"" />
+	<meta name=""dcterms.creator"" content=""#language.dccreator#"" />
+	<meta name=""dcterms.subject"" content=""#language.dcsubject#"" />
+	<meta name=""dcterms.modified"" content=""#language.dcdatemodified#"" />
+	<title>#language.dctitle#</title>">
+	<cfset request.title = language.bookingsSummary />
+
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 <cfset Variables.Errors = ArrayNew(1)>
 <cfset Proceed_OK = "Yes">
@@ -142,10 +174,18 @@ function popUp(pageID) {
 					#language.bookingsSummary#
 					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
 					</h1>
+					<p>#language.introduction#</p>
 
+					<ul>
+						<li><a href="###language.Drydock#">#language.Drydock#</a></li>
+						<li><a href="###language.northLandingWharf#">#language.northLandingWharf#</a></li>
+						<li><a href="###language.southJetty#">#language.southJetty#</a></li>
+					</ul>
+
+				<a name="#language.Drydock#"></a>
 				<h2>#language.Drydock#</h2>
         <cfif getDockBookings.RecordCount neq 0>
-          <table class="basic mediumFont">
+          <table class="basic mediumFont public">
             <thead>
               <tr>
                 <th id="section" style="width: 20%;">#language.SECTIONCaps#</th>
@@ -178,9 +218,10 @@ function popUp(pageID) {
           </p>
 				</cfif>
 				
+				<a name="#language.northLandingWharf#"></a>
 				<h2>#language.northLandingWharf#</h2>
         <cfif getNJBookings.RecordCount neq 0>
-          <table class="basic mediumFont">
+          <table class="basic mediumFont public">
             <thead>
               <tr>
                 <th id="section2" style="width: 20%;">#language.SECTIONCaps#</th>
@@ -206,9 +247,10 @@ function popUp(pageID) {
           </p>
 				</cfif>
 				
+				<a name="#language.southJetty#"></a>
 				<h2>#language.southJetty#</h2>
         <cfif getSJBookings.RecordCount neq 0>
-          <table class="basic mediumFont">
+          <table class="basic mediumFont public">
             <thead>
               <tr>
                 <th id="section3" style="width: 20%;">#language.SECTIONCaps#</th>
@@ -232,5 +274,22 @@ function popUp(pageID) {
             #language.noBookings#
           </p>
 				</cfif>
+
+
+<div>
+	<h2>#language.newsearch#</h2>
+	<ul><li>
+	<a href="#RootDir#index-#lang#.cfm">#language.newsearchlink#</a>
+	</li></ul>
+</div>
+
+<div>
+	<h2>#language.bookspace#</h2>
+	<ul><li>
+	<a href="#RootDir#index-#lang#.cfm">#language.bookspacelink#</a>
+	</li></ul>
+</div>
+
+
 </cfoutput>
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
+<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
