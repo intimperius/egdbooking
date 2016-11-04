@@ -1,3 +1,161 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr class="active">
+      <th id="ar1">Article</th>
+      <th colspan="2" id="ac1">Services and facilities</th>
+      <th id="ac2">April&nbsp;1,&nbsp;2017</th>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar2" headers="ar1">1</th>
+      <td colspan="2" headers="ar1 ar2 ac1">Booking</td>
+      <td class="text-right" headers="ar1 ar2 ac2">$5,427.93</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar3" headers="ar1">2</th>
+      <td colspan="2" headers="ar1 ar3 ac1">Draining, per section</td>
+      <td class="text-right" headers="ar1 ar3 ac2">$5,427.93</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar4">3</th>
+      <td colspan="2" headers="ar1 ar4 ac1">Berthage, per metre, per day</td>
+      <td class="text-right" headers="ar1 ar4 ac2">$6.34</td>
+    </tr>
+    <tr>
+      <th rowspan="3" class="text-center" id="ar5" headers="ar1">4</th>
+      <th rowspan="3" id="ar5a" headers="ar1 ar5 ac1" style="vertical-align: top !important;">Rail mounted crane, per hour</th>
+      <th id="ar5b" headers="ar1 ar5 ar5a ac1">(<i>a</i>) with light hook</th>
+      <td class="text-right" headers="ar1 ar5 ar5a ar5b ac1 ac2">$498.36</td>
+    </tr>
+    <tr>
+      <th id="ar5c" headers="ar1 ar5 ar5a ac1">(<i>b</i>) with main hook, up to 50&nbsp;tonne lift</th>
+      <td class="text-right" headers="ar1 ar5 ar5a ar5c ac1 ac2">$719.85</td>
+    </tr>
+    <tr>
+      <th id="ar5d" headers="ar1 ar5 ar5a ac1">(<i>c</i>) with main hook, over 50&nbsp;tonne lift</th>
+      <td class="text-right" headers="ar1 ar5 ar5a ar5d ac1 ac2">$1,107.48</td>
+    </tr>
+    <tr>
+      <th rowspan="5" class="text-center" id="ar6" headers="ar1">5</th>
+      <th rowspan="5" id="ar6a" headers="ar1 ar6 ac1" style="vertical-align: top !important;">Mobile crane, per hour</th>
+      <th id="ar6b" headers="ar1 ar6 ar6a ac1">(<i>a</i>) 9-tonne crane</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6b ac1 ac2">$138.44</td>
+    </tr>
+    <tr>
+      <th id="ar6c" headers="ar1 ar6 ar6a ac1">(<i>b</i>) 20-tonne crane</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6c ac1 ac2">$177.20</td>
+    </tr>
+    <tr>
+      <th id="ar6d" headers="ar1 ar6 ar6a ac1"><i>(c) </i>30-tonne crane</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6d ac1 ac2">$215.96</td>
+    </tr>
+    <tr>
+      <th id="ar6e" headers="ar1 ar6 ar6a ac1"><i>(d) </i>Forklift</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6e ac1 ac2">$105.21</td>
+    </tr>
+    <tr>
+      <th id="ar6f" headers="ar1 ar6 ar6a ac1"><i>(e) </i>Tower crane</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6f ac1 ac2">$177.20</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar7" headers="ar1">6</th>
+      <td colspan="2" headers="ar1 ar7 ac1">Air compressor (first), per manifold hour</td>
+      <td class="text-right" headers="ar1 ar7 ac2">$121.82</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar8" headers="ar1">7</th>
+      <td colspan="2" headers="ar1 ar8 ac1">Air compressor (second), per manifold hour</td>
+      <td class="text-right" headers="ar1 ar8 ac2">$116.29</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar9" headers="ar1">8</th>
+      <td colspan="2" headers="ar1 ar9 ac1">Air compressor (wheeled), per manifold hour</td>
+      <td class="text-right" headers="ar1 ar9 ac2">$60.91</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar10" headers="ar1">9</th>
+      <td colspan="2" headers="ar1 ar10 ac1">Motorized vessel, per hour</td>
+      <td class="text-right" headers="ar1 ar10 ac2">$201.35</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar11" headers="ar1">10</th>
+      <td colspan="2" headers="ar1 ar11 ac1">Fresh water, per cubic metre</td>
+      <td class="text-right" headers="ar1 ar11 ac2">$1.39</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar12" headers="ar1">11</th>
+      <td colspan="2" headers="ar1 ar11 ac1">Electric power, per kilowatt hour</td>
+      <td class="text-right" headers="ar1 ar11 ac2">$0.17</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar13" headers="ar1">12</th>
+      <td colspan="2" headers="ar1 ar13 ac1">Tie-up or letting go</td>
+      <td class="text-right" headers="ar1 ar13 ac2">$880.95</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar14" headers="ar1">13</th>
+      <td colspan="2" headers="ar1 ar14 ac1">Overtime labour services, dry-dock employee, per hour</td>
+      <td class="text-right" headers="ar1 ar14 ac2">$107.74</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar15" headers="ar1">14</th>
+      <td colspan="2" headers="ar1 ar15 ac1">Security services, per vessel, per day</td>
+      <td class="text-right" headers="ar1 ar15 ac2">$498.36</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar16" headers="ar1">15</th>
+      <td colspan="2" headers="ar1 ar16 ac1">Dockage, 1&nbsp;section, per day</td>
+      <td class="text-right" headers="ar1 ar16 ac2">$3,256.76</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar17" headers="ar1">16</th>
+      <td colspan="2" headers="ar1 ar17 ac1">Dockage, 2&nbsp;sections, per day</td>
+      <td class="text-right" headers="ar1 ar17 ac2">$10,855.87</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar18" headers="ar1">17</th>
+      <td colspan="2" headers="ar1 ar18 ac1">Dockage, 3&nbsp;sections, per day</td>
+      <td class="text-right" headers="ar1 ar18 ac2">$15,198.22</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar19" headers="ar1">18</th>
+      <td colspan="2" headers="ar1 ar19 ac1">Dockage per ton, per day: under 5,000&nbsp;gross tonnage</td>
+      <td class="text-right" headers="ar1 ar19 ac2">$0.00</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar20" headers="ar1">19</th>
+      <td colspan="2" headers="ar1 ar20 ac1">Dockage per ton, per day: 5,000-34,999&nbsp;gross tonnage</td>
+      <td class="text-right" headers="ar1 ar20 ac2">$0.13</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar21" headers="ar1">20</th>
+      <td colspan="2" headers="ar1 ar21 ac1">Dockage per ton, per day: 35,000-69,999 gross tonnage</td>
+      <td class="text-right" headers="ar1 ar21 ac2">$0.12</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar22" headers="ar1">21</th>
+      <td colspan="2" headers="ar1 ar22 ac1">Dockage per ton, per day: 70,000-89,999&nbsp;gross tonnage</td>
+      <td class="text-right" headers="ar1 ar22 ac2">$0.10</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar23" headers="ar1">22</th>
+      <td colspan="2" headers="ar1 ar23 ac1">Dockage per ton, per day: over 89,999&nbsp;gross tonnage</td>
+      <td class="text-right" headers="ar1 ar23 ac2">$0.09</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar24" headers="ar1">23</th>
+      <td colspan="2" headers="ar1 ar24 ac1">Sewer Discharge, per litre</td>
+      <td class="text-right" headers="ar1 ar24 ac2">$0.01</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar25" headers="ar1">24</th>
+      <td colspan="2" headers="ar1 ar25 ac1">Vacuum loader</td>
+      <td class="text-right" headers="ar1 ar25 ac2">$71.98</td>
+    </tr>
+  </tbody>
+</table>
+
+<br /><br /><br />
+
 <table>
 	<tr>
 		<th style="text-align: center;">Item</th>
