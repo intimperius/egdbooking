@@ -21,7 +21,7 @@
 <h1 id="wb-cont">#language.bookingSpace#</h1>
 
 <div class="span-4">
-<img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" />
+<!--- <img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" /> --->
 <!--- Previous blurb, before Comms Review edit --->
 <!---
 <p>To reserve space for a vessel at any of the facilities of the Esquimalt Graving
@@ -31,11 +31,13 @@ Dock, please proceed to the <a href="#RootDir#ols-login/ols-login.cfm?lang=eng">
 
   <!--- New blurb, after Comms Review edit --->
 
+  <br />
+
   <p>tbd</p>
 
 <p style="border: solid 1px gray; padding: 4px"><strong>Les frais</strong><br />Les frais de r&eacute;servation de la cale s&egrave;che d&rsquo;Esquimalt sont de 4&nbsp;800,00$  canadiens, plus 240,00$ de taxe de vente g&eacute;n&eacute;rale (TVG), ce qui donne en  tout 5&nbsp;040,00$ payables en esp&egrave;ces, par ch&egrave;que certifi&eacute; d&rsquo;une banque  canadienne ou par mandat international. Le 1<sup>er</sup> avril 2008, des int&eacute;r&ecirc;ts seront appliqu&eacute;s sur un compte en suspens plus de 30 jours.  Les demandes de r&eacute;servation sont  provisoires jusqu&rsquo;&agrave; ce que les frais de r&eacute;servation soient pay&eacute;s. Les frais de r&eacute;servation ne sont pas remboursables.</p>
 
-<h1>tbd</h1>
+<h2>tbd</h2>
 
 <ul>
 <li><a href="##login">tbd</a></li>

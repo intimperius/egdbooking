@@ -61,13 +61,13 @@
 </cfif>
 
 <cfoutput>
-  <h1 id="wb-cont">#language.login#</h1>
+  <h2 id="wb-cont">#language.login#</h2>
   <form action="#RootDir#ols-login/ols-login_action.cfm?lang=#lang#" method="post" id="login_form">
     <fieldset>
       <!--- <legend>#language.login#</legend> --->
       <!--- <p>#language.info#</p> --->
       <p><strong>#language.accountRequired#</strong></p>
-      <ul><li><a href="ols-login/gestionutilisateur-usermanagement.cfm">#language.addUser#</a></li></ul>
+      <ul><li><a href="ols-login/gestionutilisateur-usermanagement.cfm?lang=#lang###ajout-add">#language.addUser#</a></li></ul>
       <br />
       <p><strong>#language.instructions#</strong></p>
       <br />
@@ -98,6 +98,6 @@
       <input type="submit" name="submitForm" value="#language.loginButton#" class="button button-accent" />
     </fieldset>
   </form>
-  <ul><li><a href="ols-login/gestionutilisateur-usermanagement.cfm##oubli-forgot">#language.Forgot#</a></li></ul>
+  <ul><li><a href="ols-login/gestionutilisateur-usermanagement.cfm?lang=#lang###oubli-forgot">#language.Forgot#</a></li></ul>
   <br />
 </cfoutput>

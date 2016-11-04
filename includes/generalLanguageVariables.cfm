@@ -46,7 +46,7 @@
   <cfset language.confirmedInNorthLandingWharf = "Confirmed In North Landing Wharf">
   <cfset language.confirmedInSouthJetty = "Confirmed In South Jetty">
   <cfset language.confirming = "pending confirmation">
-  <cfset language.contact = "Contact">
+  <cfset language.contact = "Contact Esquimalt Graving Dock">
   <cfset language.currentCompany = "You are currently looking at details for: ">
   <cfset language.dateInclusive = "<strong>Note: Booking dates are inclusive</strong>; i.e. a three day booking is denoted as from May 1 to May 3.">
   <cfset language.dateSelect = "Date Selection" />
@@ -203,7 +203,7 @@
   <cfset language.confirmedInNorthLandingWharf = "Quai de d&eacute;barquement nord confirm&eacute;e">
   <cfset language.confirmedInSouthJetty = "Jet&eacute;e sud confirm&eacute;e">
   <cfset language.confirming = "confirmation ">
-  <cfset language.contact = "Contactez" />
+  <cfset language.contact = "Contactez le Cale sèche d'Esquimalt" />
   <cfset language.currentCompany = "Vous regardez les renseignements portant sur :">
   <cfset language.dateInclusive = "Nota : les dates des r&eacute;servations sont inclusives; une r&eacute;servation de trois jours couvrira la p&eacute;riode du 1<sup>er</sup> mai au 3 mai, par exemple.">
   <cfset language.dateSelect = "Choix de la date" />

@@ -22,7 +22,7 @@
 <h1 id="wb-cont">#language.bookingSpace#</h1>
 
 <div class="span-4">
-<img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" />
+<!--- <img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" /> --->
 <!--- Previous blurb, before Comms Review edit --->
 <!---
 <p>To reserve space for a vessel at any of the facilities of the Esquimalt Graving
@@ -31,12 +31,14 @@ Dock, please proceed to the <a href="#RootDir#ols-login/ols-login.cfm?lang=eng">
   --->
 
   <!--- New blurb, after Comms Review edit --->
-
+<br />
   <p>Companies and individuals can book space for vessels at our facilities on a first-come, first-served basis. You can also consult the public summary of bookings. The Esquimalt Graving Dock is the largest solid-bottom commercial drydock on the West Coast of Americas, which is located in an ice-free harbour on Vancouver Island.</p>
+
+
 
 <p style="border: solid 1px gray; padding: 4px"><strong>Fees</strong><br />The Esquimalt Graving Dock booking fee is $4,800.00 Canadian plus $240.00 GST for a total of $5,040.00 payable in cash, certified cheque drawn on a Canadian bank or by an international money order.  Effective April 1, 2008, interest will be applied on any account outstanding over 30 days.  Reservation requests are tentative until the booking fee is paid. Booking fees are non-refundable.</p>
 
-<h1>On this page</h1>
+<h2>On this page</h2>
 
 <ul>
 <li><a href="##login">Sign in to book or cancel a space</a></li>

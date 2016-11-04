@@ -52,11 +52,11 @@
 <cfhtmlhead text="#js#">
 <cfset request.title = language.bookingsSummaryDateSelection />
 
-				<h1 id="wb-cont">
+				<h2 id="wb-cont">
 					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
 					#language.bookingsSummaryDateSelection#
 					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
-					</h1>
+					</h2>
 
 				<cfparam name="Variables.startDate" default="#PacificNow#">
 				<cfparam name="Variables.endDate" default="12/31/2031">
@@ -80,8 +80,8 @@
 					<fieldset>
             <legend>#language.bookingsSummary#</legend>
             <div>
-              <label for="start">#language.fromDate#<br />
-			  <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+              <label for="start"><strong>#language.fromDate#</strong><br />
+			  <small>#language.dateform#</small>
 				<br>
 				 <cfif Variables.startDate neq "" and not isDate(Variables.startDate)>
 				<cfset Variables.startDate = "" />
@@ -92,7 +92,7 @@
             </div>
             
             <div>
-              <label for="end">#language.toDate#<br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+              <label for="end"><strong>#language.toDate#</strong><br /><small>#language.dateform#</small>
 			  <br>
 					<cfif Variables.endDate neq "" and not isDate(Variables.endDate)>
 					<cfset Variables.endDate = "" />
