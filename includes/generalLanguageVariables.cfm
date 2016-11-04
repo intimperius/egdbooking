@@ -23,7 +23,7 @@
   <cfset language.bookingForms = "Booking Forms">
   <cfset language.bookingHome = "Booking Home">
   <cfset language.bookingRequest = "Booking Request">
-  <cfset language.bookingSpace = "Booking Space at the <abbr title=""Esquimalt Graving Dock"">EGD</abbr>">
+  <cfset language.bookingSpace = "Booking Space at the Esquimalt Graving Dock">
   <cfset language.bookings = "Bookings">
   <cfset language.bookingsFor = "Bookings for" />
   <cfset language.bookingsSummary = "Bookings Summary">
@@ -70,7 +70,7 @@
   <cfset language.esqGravingDockCaps = "ESQUIMALT GRAVING DOCK">
   <cfset language.fax = "Fax">
   <cfset language.footnote = "See footnote" />
-  <cfset language.forgot = "Forgot password">
+  <cfset language.forgot = "Forgot your password">
   <cfset language.go = "Go">
   <cfset language.help = "Help">
   <cfset language.jetty = "Jetty">
@@ -179,7 +179,7 @@
   <cfset language.bookingForms = "Formulaires de r&eacute;servation">
   <cfset language.bookingHome = "Accueil - R&eacute;servation">
   <cfset language.bookingRequest = "Demande de r&eacute;servation">
-  <cfset language.bookingSpace = "R&##233;servation pour travaux le <abbr title=""Cale s&##232;che d'Esquimalt"">CSE</abbr>">
+  <cfset language.bookingSpace = "R&##233;servation pour travaux le Cale s&##232;che d'Esquimalt">
   <cfset language.bookings = "R&eacute;servations">
   <cfset language.bookingsFor = "R&eacute;servations pour" />
   <cfset language.bookingsSummary = "R&eacute;sum&eacute; des R&eacute;servations">

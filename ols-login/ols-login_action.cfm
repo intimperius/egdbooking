@@ -87,7 +87,7 @@
 
 
 		<cfinclude template="#RootDir#includes/build_return_struct.cfm">
-		<cflocation url="ols-login.cfm?lang=#lang#" addtoken="no">
+		<cflocation url="#RootDir#index-#lang#.cfm##login" addtoken="no">
 		
 	<!---Otherwise send them to the home page of the application --->
 	<cfelse>

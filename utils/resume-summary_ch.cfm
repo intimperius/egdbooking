@@ -1,8 +1,8 @@
 <cfoutput>
 
 <cfif lang EQ "eng">
-	<cfset language.bookingsSummaryDateSelection = "Public Bookings Summary Date Selection">
-	<cfset language.ScreenMessage = '<p>To start from the first booking record, clear the "From Date" field.  To end after the last booking record, clear the "To Date" field.  To see all records, clear both fields.</p>'>
+	<cfset language.bookingsSummaryDateSelection = "Consult the public summary of bookings">
+	<cfset language.ScreenMessage = '<p>If you would like to view a public summary of bookings of the Drydock, the North Landing Wharf and the South Jetty facilities at the Esquimalt Graving Dock without signing in or registering an account, first select a facility and then, select a period of time.</p>'>
 	<cfset language.description = "Allows user to view a summary of all bookings from present onward.">
 	<cfset language.subjects = language.masterSubjects & "">
 	<cfset language.vesselCaps = "VESSEL">
@@ -20,9 +20,11 @@
 	<cfset language.reset = "reset">
 	<cfset language.calendar = "calendar">
 	<cfset language.clear = "clear">
+	<cfset language.timePeriod = "Select a time period:">
+	<cfset language.seeRecords = "To see all records, clear both fields">
 <cfelse>
-	<cfset language.bookingsSummaryDateSelection = "R&eacute;sum&eacute; des r&eacute;servations Publique S&eacute;lection de Date">
-	<cfset language.ScreenMessage = "<p>Pour d&eacute;buter au premier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de d&eacute;but&nbsp;&raquo;. Pour terminer apr&egrave;s le dernier dossier de r&eacute;servation, vider le champ &laquo;&nbsp;Date de fin&nbsp;&raquo;. Pour voir tous les dossiers, vider les deux champs.</p>">
+	<cfset language.bookingsSummaryDateSelection = "tbd">
+	<cfset language.ScreenMessage = "<p>tbd</p>">
 	<cfset language.description = "Permet &agrave; l'utilisateur de voir un r&eacute;sum&eacute; de toutes les r&eacute;servations, depuis le moment pr&eacute;sent.">
 	<cfset language.subjects = language.masterSubjects & "">
 	<cfset language.vesselCaps = "NAVIRE">
@@ -40,19 +42,15 @@
 	<cfset language.reset = "R&eacute;initialiser">
 	<cfset language.calendar = "Calendrier">
 	<cfset language.clear = "effacer">
+	<cfset language.timePeriod = "tbd:">
+	<cfset language.seeRecords = "tbd">
 
 </cfif>
 <cfsavecontent variable="js">
-	<meta name="dcterms.title" content="#language.bookingsSummaryDateSelection# - #language.esqGravingDock# - #language.PWGSC#" />
-	<meta name="keywords" content="#language.masterKeywords#" />
-	<meta name="description" content="#language.description#" />
-	<meta name="dcterms.description" content="#language.description#" />
-	<meta name="dcterms.subject" title="gccore" content="#language.subjects#" />
 	<title>#language.bookingsSummaryDateSelection# - #language.esqGravingDock# - #language.PWGSC#</title>
 </cfsavecontent>
 <cfhtmlhead text="#js#">
 <cfset request.title = language.bookingsSummaryDateSelection />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
 
 				<h1 id="wb-cont">
 					<!-- CONTENT TITLE BEGINS | DEBUT DU TITRE DU CONTENU -->
@@ -74,8 +72,11 @@
         </cfif>
 		
 		#Language.ScreenMessage#
+		<br />
+		<p><strong>#language.timePeriod#</strong><br />
+		#language.seeRecords#</p>
 
-				<form action="resume-summary.cfm?lang=#lang#" method="post" id="bookSum">
+				<form action="#RootDir#utils/resume-summary.cfm?lang=#lang#" method="post" id="bookSum">
 					<fieldset>
             <legend>#language.bookingsSummary#</legend>
             <div>
@@ -106,5 +107,4 @@
             </div>
 					</fieldset>
 				</form>
-<cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm" />
 </cfoutput>
