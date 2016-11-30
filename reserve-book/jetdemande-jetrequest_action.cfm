@@ -89,7 +89,7 @@
 <cfset Session.Eng.Success.Link = "#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#&amp;CID=#getCompany.CID#">
 <cfset Session.Fra.Success.Breadcrumb = "Pr&eacute;sentation d'une demande de r&eacute;servation de jet&eacute;e">
 <cfset Session.Fra.Success.Title = "&Eacute;tablir une nouvelle r&eacute;servation de jet&eacute;e">
-<cfset Session.Fra.Success.Message = "Une nouvelle r&eacute;servation pour <strong>#getDetails.vesselName#</strong> du #DateFormat(CreateODBCDate(form.startDate), request.datemask)# au #DateFormat(CreateODBCDate(form.endDate), request.datemask)# a &eacute;t&eacute; faite avec succ&egrave;s.">
+<cfset Session.Fra.Success.Message = "Une nouvelle r&eacute;servation pour <strong>#getDetails.vesselName#</strong> du #myDateFormat(CreateODBCDate(form.startDate), request.datemask)# au #myDateFormat(CreateODBCDate(form.endDate), request.datemask)# a &eacute;t&eacute; faite avec succ&egrave;s.">
 <cfset Session.Fra.Success.Back = "Retour &agrave; Accueil&nbsp;- R&eacute;servation">
 <cfset Session.Fra.Success.Link = "#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#&amp;CID=#getCompany.CID#">
 <cflocation addtoken="no" url="#RootDir#comm/succes.cfm?lang=#lang#">

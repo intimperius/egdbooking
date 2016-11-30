@@ -2,11 +2,11 @@
 <cfif lang EQ "eng">
 	<cfset language.address = "The email address">
 	<cfset language.notReg = "is not registered">
-	<cfset language.enterInfoError = "Please enter your login information.">
+	<cfset language.enterInfoError = "Your login information may be missing, invalid or incomplete. Please try again.">
 <cfelse>
 	<cfset language.address = "L'adresse de courriel">
 	<cfset language.notReg = "n'est pas enregistr&eacute;e">
-	<cfset language.enterInfoError = "Veuillez entrer les renseignements dont vous avez besoin pour ouvrir une session.">
+	<cfset language.enterInfoError = "Votre renseignement utilisateur pourrait ne pas tre indiqu&eacute;, ou &ecirc;tre invalide ou incomplet. Veuillez r&eacute;essayer.">
 </cfif>
 
 <!-- If a cookie is present on the system, bypass the login and go right into the system -->
@@ -87,7 +87,7 @@
 
 
 		<cfinclude template="#RootDir#includes/build_return_struct.cfm">
-		<cflocation url="ols-login.cfm?lang=#lang#" addtoken="no">
+		<cflocation url="#RootDir#index-#lang#.cfm##login" addtoken="no">
 		
 	<!---Otherwise send them to the home page of the application --->
 	<cfelse>
@@ -100,7 +100,7 @@
 	</cfif>
 </cfif>
 
-<CFCOOKIE NAME="LoggedIn" value="Yes" PATH="/EGD" DOMAIN="cse-egd.tpsgc-pwgsc.gc.ca">
+<!---<CFCOOKIE NAME="LoggedIn" value="Yes" PATH="/EGD" DOMAIN="cse-egd.tpsgc-pwgsc.gc.ca">--->
 
 <CFIF IsDefined('form.remember')>
 	<!---SET COOKIE--->
@@ -126,6 +126,14 @@
 	</CFSCRIPT>
 </cflock>
 
+
+<!--- Session variables are tied to applications, use cookies to pass information instead --->
+<CFCOOKIE NAME="UID" value="#Session.UID#" EXPIRES="Never">
+<CFCOOKIE NAME="FirstName" value="#Session.FirstName#" EXPIRES="Never">
+<CFCOOKIE NAME="LastName" value="#Session.LastName#" EXPIRES="Never">
+<CFCOOKIE NAME="EMail" value="#Session.EMail#" EXPIRES="Never">
+
+
 <cfquery name="CheckAdmin" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 	SELECT	Count(UID) AS NumFound
 	FROM	Administrators
@@ -136,13 +144,26 @@
 	<CFLOCK TIMEOUT="60" THROWONTIMEOUT="No" TYPE="EXCLUSIVE" SCOPE="SESSION"> 
 		<CFSET Session.AdminLoggedIn = "1">
 		<CFSET Session.AdminEmail = "egd-cse@pwgsc-tpsgc.gc.ca">
+		
+		
+		<!---Cookies to pass session variables--->
+		<CFCOOKIE NAME="AdminLoggedIn" value="1" EXPIRES="Never">
+		<CFCOOKIE NAME="AdminEmail" value="egd-cse@pwgsc-tpsgc.gc.ca" EXPIRES="Never">
+		
+		
 	</CFLOCK>
 	<CFheadER STATUSCODE="302" STATUSTEXT="Object Temporarily Moved">
 	<CFheadER NAME="location" value="#RootDir#admin/menu.cfm?lang=#lang#">
 <cfelse>
 	<CFLOCK TIMEOUT="60" THROWONTIMEOUT="No" TYPE="EXCLUSIVE" SCOPE="SESSION"> 
 		<CFSET Session.LoggedIn = "1">
-	</CFLOCK>
+		
+		
+		<!---Cookie to pass session variable--->
+		<CFCOOKIE NAME="LoggedIn" value="1" EXPIRES="Never">
+		
+		
+	</CFLOCK><CFSET Session.LoggedIn = "1">
 	<CFheadER STATUSCODE="302" STATUSTEXT="Object Temporarily Moved">
 	<CFheadER NAME="location" value="#RootDir#reserve-book/reserve-booking.cfm?lang=#lang#">
 </cfif>

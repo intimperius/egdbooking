@@ -50,19 +50,31 @@ function EditSubmit ( selectedform )
 			</cfif>
 
 			<!---<div style="text-align:left;">
-				<cfform action="addAdministrator_action.cfm?lang=#lang#" id="chooseUserForm" method="post">
-					<cfselect name="UID" query="getUserList" value="UID" display="UserName" />
+				<form action="addAdministrator_action.cfm?lang=#lang#" id="chooseUserForm" method="post">
+					<select name="UID" value="UID" display="UserName">
+					<cfloop query="getUserList">
+						<option value="#getUserList.UID#">#getUserList.UserName#</option>
+					</cfloop>
+					</select>
 					<a href="javascript:EditSubmit('chooseUserForm');">Add</a>
-				</cfform>
+				</form>
 			</div>--->
 
-			<cfform action="addAdministrator_action.cfm?lang=#lang#" id="addAdministratorForm" method="post">
-				Select User: <cfselect name="UID" query="getUserList" value="UID" display="UserName" />
+			<cfoutput>
+			<form action="addAdministrator_action.cfm?lang=#lang#" id="addAdministratorForm" method="post">
+				Select User: <select name="UID" value="UID" display="UserName">
+				<cfloop query="getUserList">
+					<option value="#getUserList.UID#">#getUserList.UserName#</option>
+				</cfloop>
+				</select>
 				&nbsp;&nbsp;&nbsp;
 				<!--a href="javascript:EditSubmit('addAdministratorForm');" class="textbutton">Submit</a-->
+				<br />
 				<input type="submit" name="submitForm" value="Submit" class="button button-accent" />
+				<br />
 				<cfoutput><a href="../menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-			</cfform>
+			</form>
+			</cfoutput>
 
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

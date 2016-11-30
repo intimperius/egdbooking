@@ -1,5 +1,11 @@
 <cfinclude template="#RootDir#includes/restore_params.cfm">
 <cfinclude template="#RootDir#includes/errorMessages.cfm">
+
+<cfif not StructKeyExists(Form, 'StartDate') || not StructKeyExists(Form, 'EndDate') || not StructKeyExists(Form, 'NumDays')>
+  <cflocation url="#RootDir#reserve-book/Caledemande-dockrequest.cfm?lang=#lang#" addtoken="no" />
+</cfif>
+
+
 <cfif lang EQ "eng">
 	<cfset language.newBooking = "Submit Drydock Booking Information">
 	<cfset language.keywords = language.masterKeywords & ", Drydock Booking Information">
@@ -11,6 +17,12 @@
 	<cfset language.bookingFound = "A booking has been found for">
 	<cfset language.requestedStatus = "Requested Status">
 	<cfset language.tplbookingError = "already has a booking for">
+	
+	<cfset language.VesselLabel = "Vessel:">
+	<cfset language.startDateLabel = "Start Date:">
+	<cfset language.endDateLabel = "End Date:">
+	<cfset language.requestedStatusLabel = "Requested Status:">
+	<cfset language.NumDaysLabel = "Number of days:">
 <cfelse>
 	<cfset language.newBooking = "Pr&eacute;sentation des renseignements pour la r&eacute;servation de la cale s&egrave;che">
 	<cfset language.keywords = language.masterKeywords & ", renseignements pour la r&eacute;servation de la cale s&egrave;che">
@@ -22,6 +34,12 @@
 	<cfset language.bookingFound = "Une r&eacute;servation a &eacute;t&eacute; trouv&eacute;e pour ">
 	<cfset language.requestedStatus = "&Eacute;tat demand&eacute;">
 	<cfset language.tplbookingError = "a d&eacute;j&agrave; une r&eacute;servation pour :">
+	
+	<cfset language.VesselLabel = "Navire&nbsp:">
+	<cfset language.startDateLabel = "Date de d&eacute;but&nbsp;:">
+	<cfset language.endDateLabel = "Date de fin&nbsp:">
+	<cfset language.requestedStatusLabel = "&Eacute;tat demand&eacute;&nbsp:">
+	<cfset language.NumDaysLabel = "Nombre de jours&nbsp:">
 </cfif>
 
 <cfhtmlhead text="
@@ -200,30 +218,25 @@
 				<CFINCLUDE template="#RootDir#includes/user_menu.cfm">
 
 				<cfoutput>
-				<cfform action="#RootDir#reserve-book/caledemande-dockrequest_action2.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
+				<form action="#RootDir#reserve-book/caledemande-dockrequest_action2.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
 					<p>#language.bookingFound# #myDateFormat(Variables.FoundStartDate, request.datemask)# - #myDateFormat(Variables.FoundEndDate, request.datemask)#.</p>
 
-					<label for="VNID">#language.vessel#:</label>
-					<input type="hidden" id="VNID"  name="VNID" value="#Form.bookingByRange_VNID#" />
-					<p class="color-accent">#getVessel.VesselName#</p>
-
-					<label for="startDate">#language.StartDate#:</label>
-					<input type="hidden" id="startDate" name="startDate" value="#Variables.FoundStartDate#" />
-					<p class="color-accent">#myDateFormat(CreateODBCDate(Variables.StartDate), request.datemask)#</p>
-
-					<label for="EndDate">#language.EndDate#:</label>
-					<input type="hidden" id="EndDate" name="EndDate" value="#Variables.FoundEndDate#" />
-					<p class="color-accent">#myDateFormat(Variables.EndDate, request.datemask)#</p>
-
-					<label for="Status">#language.requestedStatus#:</label>
+					<p class="color-accent">#language.vesselLabel# #getVessel.VesselName#</p>
+					<p class="color-accent">#language.StartDateLabel# #myDateFormat(CreateODBCDate(Variables.StartDate), request.datemask)#</p>
+					<p class="color-accent">#language.EndDateLabel# #myDateFormat(Variables.EndDate, request.datemask)#</p>
+					<p class="color-accent">#language.requestedStatusLabel# <cfif form.status eq "tentative">#language.tentative#<cfelse>#language.confirmed#</cfif></p>
+					
+					<input type="hidden" id="VNID"  name="VNID" value="#Form.bookingByRange_VNID#" />			
+					<input type="hidden" id="startDate" name="startDate" value="#Variables.FoundStartDate#" />					
+					<input type="hidden" id="EndDate" name="EndDate" value="#Variables.FoundEndDate#" />				
 					<input type="hidden" id="Status" name="Status" value="<cfoutput>#Form.Status#</cfoutput>">
-					<p class="color-accent"><cfif form.status eq "tentative">#language.tentative#<cfelse>#language.confirmed#</cfif></p>
+					
 
 					<div class="buttons">
 						<input type="submit" value="#language.requestBooking#" class="button button-accent"/>
 					</div>
 
-				</cfform>
+				</form>
 				</cfoutput>
 
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

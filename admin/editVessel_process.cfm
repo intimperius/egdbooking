@@ -72,7 +72,7 @@
 	<div id="actionErrors">Note: The ship measurements exceed the maximum dimensions of the dock (<cfoutput>#Variables.MaxLength#m x #Variables.MaxWidth#m</cfoutput>).</div>
 </cfif>
 <cfoutput>
-<cfform id="editVessel" action="EditVessel_action.cfm?lang=#lang#" method="post">
+<form id="editVessel" action="EditVessel_action.cfm?lang=#lang#" method="post">
 	<div class="module-info widemod">
 		<h2>Vessel Details</h2>
 		<ul>
@@ -91,9 +91,10 @@
 	<input type="hidden" name="VNID" value="<cfoutput>#Form.VNID#</cfoutput>" />
 	<input type="hidden" name="CID" value="<cfoutput>#Form.CID#</cfoutput>" />
 	<input type="submit" value="Confirm" class="button-accent button" />
+	<br />
 	<a href="editVessel.cfm?lang=#lang#" class="textbutton">Back</a>
 	<a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
-</cfform>
+</form>
 </cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

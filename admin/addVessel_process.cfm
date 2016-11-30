@@ -71,7 +71,7 @@ Please confirm the following information: <br/><br/>
 	<div id="actionErrors">Note: The ship measurements exceed the maximum dimensions of the dock (<cfoutput>#Variables.MaxLength#m x #Variables.MaxWidth#m</cfoutput>).</div>
 </cfif>
 <cfoutput>
-<cfform id="addVessel" action="addVessel_action.cfm?lang=#lang#" method="post">
+<form id="addVessel" action="addVessel_action.cfm?lang=#lang#" method="post">
 	<div class="module-info widemod">
 		<h2>Vessel Profile</h2>
 		<ul>
@@ -89,10 +89,11 @@ Please confirm the following information: <br/><br/>
 	<br/>
 
 	<input type="submit" value="Submit" class="button-accent button" />
-	<a href="addVessel.cfm?lang=#lang#">Back</a>
+	<br />
+	<a href="addVessel.cfm?lang=#lang#" style="padding-right: 5px">Back</a>
 	<a href="menu.cfm?lang=#lang#">Cancel</a>
 							
-	</cfform>
+	</form>
 	</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

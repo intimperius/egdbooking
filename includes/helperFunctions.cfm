@@ -41,30 +41,31 @@
 <cffunction name="bookingsTable" output="true">
   <cfargument name="query">
   <cfargument name="counts">
+  <cfargument name="uniqueId">
 
   <cfif query.recordCount GE 1>
     <table class="basic">
       <thead>
         <tr>
-          <th scope="col">#language.booking#</th>
-          <th scope="col">#language.startdate#</th>
-          <th scope="col">#language.enddate#</th>
-          <th scope="col">#language.status#</th>
+          <th id="BookingA#uniqueId#" scope="col">#language.booking#</th>
+          <th id="StartDateA#uniqueId#" scope="col">#language.startdate#</th>
+          <th id="EndDateA#uniqueId#" scope="col">#language.enddate#</th>
+          <th id="StatusA#uniqueId#" scope="col">#language.status#</th>
         </tr>
       </thead>
       <tbody>
         <cfloop query="query">
           <tr>
-            <td>
+            <td headers="BookingA#uniqueId#">
               <a href="#RootDir#comm/detail-res-book.cfm?lang=#lang#&amp;BRID=#BRID#" title="#language.booking# ###BRID#">
                 #language.booking# ###BRID#:
                 <cfif #EndHighlight# GTE PacificNow>*</cfif>
                 #Name#
               </a>
             </td>
-            <td>#myDateFormat(CreateODBCDate(startDate), request.datemask)#</td>
-            <td>#myDateFormat(endDate, request.datemask)#</td>
-            <td>
+            <td headers="StartDateA#uniqueId#">#myDateFormat(CreateODBCDate(startDate), request.datemask)#</td>
+            <td headers="EndDateA#uniqueId#">#myDateFormat(endDate, request.datemask)#</td>
+            <td headers="StatusA#uniqueId#">
               <cfif status EQ "P" or status EQ "PT"><span class="pending">#language.pending#</span>
               <cfelseif status EQ "C"><span class="confirmed">#language.confirmed#</span>
               <cfelseif status EQ "T"><span class="tentative">#language.tentative#</span>
@@ -72,7 +73,7 @@
               <cfelseif status EQ "PX"><span class="cancelled">#language.pending_cancelling#</span>
               </cfif>
             </td>
-          </tr>
+			</tr>
         </cfloop>
       </tbody>
     </table>

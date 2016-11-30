@@ -18,3 +18,12 @@ jQuery.noConflict();
     });
   });
 })(jQuery);
+
+(function($) {
+  $(function() {
+    if (!$( '#wb-sec' ).length) {
+        $( '#wb-main-in' ).css('float', 'none');
+        $( '#wb-main-in' ).css('width', '100%');
+    }
+  });
+})(jQuery);

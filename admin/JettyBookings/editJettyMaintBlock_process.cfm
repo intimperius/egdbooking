@@ -57,8 +57,8 @@ function EditSubmit ( selectedform )
 					<cflocation addtoken="no" url="editbooking.cfm?lang=#lang#">
 				</cfif>
 
-				<!--- <cfset Variables.StartDate = CreateODBCDate(#Variables.StartDate#)>
-				<cfset Variables.EndDate = CreateODBCDate(#Variables.EndDate#)> --->
+				<!-- <cfset Variables.StartDate = CreateODBCDate(#Variables.StartDate#)>
+				<cfset Variables.EndDate = CreateODBCDate(#Variables.EndDate#)> -->
 
 				<cfif IsDefined("Session.Return_Structure")>
 					#StructDelete(Session, "Return_Structure")#
@@ -79,7 +79,7 @@ function EditSubmit ( selectedform )
 							OR	(	Bookings.StartDate >= <cfqueryparam value="#Variables.StartDate#" cfsqltype="cf_sql_date" /> AND <cfqueryparam value="#Variables.EndDate#" cfsqltype="cf_sql_date" /> >= Bookings.EndDate )
 							)
 					AND		(
-								(	NorthJetty = '1' AND <cfqueryparam '#Variables.NorthJetty#' = '1')
+								(	NorthJetty = '1' AND '#Variables.NorthJetty#' = '1')
 							OR	( 	SouthJetty = '1' AND '#Variables.SouthJetty#' = '1')
 							)
 				</cfquery>
@@ -141,7 +141,7 @@ function EditSubmit ( selectedform )
 				</cfif>
 
 
-				<!-- Gets all Bookings that would be affected by the maintenance block --->
+				<!-- Gets all Bookings that would be affected by the maintenance block -->
 				<cfquery name="checkConflicts" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 					SELECT	NorthJetty, SouthJetty, StartDate, EndDate, V.Name AS VesselName, C.Name AS CompanyName
 					FROM	Bookings B INNER JOIN Jetties J ON B.BRID = J.BRID
@@ -197,7 +197,7 @@ function EditSubmit ( selectedform )
 					<p>Please confirm the following maintenance block information.</p>
 				</CFIF>
 
-				<cfform action="editJettyMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+				<form action="editJettyMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
 				<input type="hidden" name="BRID" value="#Variables.BRID#" />
 
 				<table style="width:80%;" align="center">
@@ -230,14 +230,14 @@ function EditSubmit ( selectedform )
 					<tr>
 						<td colspan="2" align="center">
 
-							<input type="submit" value="submit" class="button button-accent" />
+							<input type="submit" value="Submit" class="button button-accent" />
 							<a href="editJettyMaintBlock.cfm?#urltoken#" class="textbutton">Back</a>
 							<a href="jettyBookingManage.cfm?#urltoken#" class="textbutton">Cancel</a>
 						</td>
 					</tr>
 				</table>
 
-				</cfform>
+				</form>
 			</div>
 
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

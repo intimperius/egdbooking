@@ -1,31 +1,78 @@
 <cfoutput>
+
+	<cfset language.moreinformation = "TBD">
+	<cfset language.learnmore = "TBD">
+	<cfset language.importantnotices = "TBD">
+
 <cfsavecontent variable="head">
-<title>R&eacute;servation pour travaux le CSE - Cale s&egrave;che d'Esquimalt - TPSGC</title>
-<meta name="description" content="Reservation pour travaux le Cale seche d'Esquimalt" />
-<meta name="dcterms.description" content="Reservation pour travaux le Cale seche d'Esquimalt" />
-<meta name="dcterms.title" content="R&eacute;servation pour travaux le CSE - Cale s&egrave;che d'Esquimalt - TPSGC" />
-<meta name="dcterms.subject" title="gccore" content="#language.masterSubjects#" />
-<meta name="keywords" content="cale seche d'Esquimalt, reservation pour travaux, reparation de navires, bateaux, entretien de navires, cale seche, bassin de radoub, chantier naval" />
+<title>Booking Space at the EGD - Esquimalt Graving Dock - PWGSC</title>
+<meta name="description" content="Companies and individuals can book space for a watercraft at any of the facilities of the Esquimalt Graving Dock on a first-come, first-served basis or can consult the public summary of bookings." />
+<meta name="dcterms.description" content="Introduction page for the booking application" />
+<meta name="dcterms.title" content="Booking space at the Esquimalt Graving Dock – Esquimalt Graving Dock – Vessels design, construction and maintenance – Marine transportation – Transport and infrastructure" />
+<meta name="dcterms.creator" content="Government of Canada, Public Works and Government Services, Real Property Branch" />
+<meta name="dcterms.subject" title="gccore" content="Government of Canada; marine installations; wharfs; vessels; ships;" />
+<meta name="dcterms.modified" content="2016-10-XX" />
+<meta name="keywords" content="Esquimalt Graving Dock, EGD, Drydock, North Landing Wharf, South Jetty,  bookings, space booking, reserve a space, reservation, cancellation, booking dates, docking dates, commercial drydock, dry-dock, ship repair facility" />
 </cfsavecontent>
 <cfhtmlhead text="#head#">
 <cfset request.title = language.bookingSpace>
 
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 <h1 id="wb-cont">#language.bookingSpace#</h1>
 
 <div class="span-4">
-<img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" />
+<!--- <img src="#RootDir#images/EGD_aerial_small.jpg" alt="" width="405" height="342" /> --->
+<!--- Previous blurb, before Comms Review edit --->
+<!---
+<p>To reserve space for a vessel at any of the facilities of the Esquimalt Graving
+Dock, please proceed to the <a href="#RootDir#ols-login/ols-login.cfm?lang=eng">#language.bookingApplicationLogin#</a> page.  If you experience any problems with the booking application, please
+  use the <a href="#EGD_URL#/cn-cu-#lang#.html">#language.contact# <abbr title="#language.esqGravingDock#">#language.egd#</abbr></a> page.</p>
+  --->
 
-<p>Afin de r&eacute;server une place pour un navire &agrave; l'une des installations de la Cale s&egrave;che d'Esquimalt, veuillez lancer la page d'<a href="#RootDir#ols-login/ols-login.cfm?lang=fra">#language.bookingApplicationLogin#</a>.
-			    Si vous &eacute;prouvez des probl&egrave;mes avec l'application des r&eacute;servations, pri&egrave;re d'utiliser la page <a href="#EGD_URL#/cn-cu-#lang#.html">#language.contact# <abbr title="#language.esqGravingDock#">#language.egd#</abbr></a>.</p>
-          <p>Les frais de r&eacute;servation de la cale s&egrave;che d&rsquo;Esquimalt sont de 4&nbsp;800,00$  canadiens, plus 240,00$ de taxe de vente g&eacute;n&eacute;rale (TVG), ce qui donne en  tout 5&nbsp;040,00$ payables en esp&egrave;ces, par ch&egrave;que certifi&eacute; d&rsquo;une banque  canadienne ou par mandat international. Le 1<sup>er</sup> avril 2008, des int&eacute;r&ecirc;ts seront appliqu&eacute;s sur un compte en suspens plus de 30 jours.  Les demandes de r&eacute;servation sont  provisoires jusqu&rsquo;&agrave; ce que les frais de r&eacute;servation soient pay&eacute;s. Les frais de r&eacute;servation ne sont pas remboursables.</p>
-				<p><a href="#RootDir#ols-login/ols-login.cfm?lang=fra">#language.bookingApplicationLogin#</a> -
-				  R&eacute;server la cale s&egrave;che et les jet&eacute;es en ligne.</p>
-<p><a href="#RootDir#utils/resume-summary_ch.cfm?lang=fra">#language.bookingsSummaryDateSelection#</a> - Voir toutes les r&eacute;servations.</p>
-<p><a href="http://gazette.gc.ca/rp-pr/p2/2009/2009-12-23/html/sor-dors324-fra.html">Archiv&eacute;e - R&egrave;glement modifiant le R&egrave;glement de 1989 sur la cale s&egrave;che d'Esquimalt</a></p>
+  <!--- New blurb, after Comms Review edit --->
+
+  <br />
+
+  <p>tbd</p>
+
+<p style="border: solid 1px gray; padding: 4px"><strong>Les frais</strong><br />Les frais de r&eacute;servation de la cale s&egrave;che d&rsquo;Esquimalt sont de 4&nbsp;800,00$  canadiens, plus 240,00$ de taxe de vente g&eacute;n&eacute;rale (TVG), ce qui donne en  tout 5&nbsp;040,00$ payables en esp&egrave;ces, par ch&egrave;que certifi&eacute; d&rsquo;une banque  canadienne ou par mandat international. Le 1<sup>er</sup> avril 2008, des int&eacute;r&ecirc;ts seront appliqu&eacute;s sur un compte en suspens plus de 30 jours.  Les demandes de r&eacute;servation sont  provisoires jusqu&rsquo;&agrave; ce que les frais de r&eacute;servation soient pay&eacute;s. Les frais de r&eacute;servation ne sont pas remboursables.</p>
+
+<h2>tbd</h2>
+
+<ul>
+<li><a href="##login">tbd</a></li>
+<li><a href="##bookings">tbd</a></li>
+<li><a href="##information">tbd</a></li>
+</ul>
+
+<cfinclude template="#RootDir#ols-login/ols-login.cfm">
+
+<cfinclude template="#RootDir#utils/resume-summary_ch.cfm">
+	<h2>#language.moreinformation#</h2>
+	<ul><li>
+	#language.learnmore#<a href="http://www.tpsgc-pwgsc.gc.ca/biens-property/cse-egd/index-#lang#.html">#language.esqGravingDock#</a>
+	</li></ul>
+	<ul><li>
+	<a href="http://www.tpsgc-pwgsc.gc.ca/biens-property/cse-egd/avis-notices-#lang#.html">#language.importantnotices#</a>
+	</li></ul>
+	<ul><li>
+	<a href="http://www.tpsgc-pwgsc.gc.ca/biens-property/cse-egd/cn-cu-#lang#.html">#language.contact#</a>
+	</li></ul>
+</div>
+</div> <!--- this div added because previous closing tag is in removed lower section --->
+
+<!--- Previous content, removed after Comms Review --->
+
+<!---
+
+<p><a href="#RootDir#ols-login/ols-login.cfm?lang=eng">#language.bookingApplicationLogin#</a> - Book drydock and jetty space online.</p>
+<p><a href="#RootDir#utils/resume-summary_ch.cfm?lang=eng">#language.bookingsSummaryDateSelection#</a> - View all bookings.</p>
+<p><a href="http://publications.gc.ca/gazette/archives/p2/2009/2009-12-23/pdf/g2-14326.pdf">Archived - Regulations amending the Esquimalt Graving Dock regulations</a></p>
 </div>
 
-<cfinclude template="#RootDir#includes/right-menu-droite-fra.cfm">
-<cfinclude template="#RootDir#includes/foot-pied-fra.cfm" />
+<cfinclude template="#RootDir#includes/right-menu-droite-eng.cfm">
+--->
+
+<cfinclude template="#RootDir#includes/pied_site-site_footer-eng.cfm" />
 </cfoutput>
 

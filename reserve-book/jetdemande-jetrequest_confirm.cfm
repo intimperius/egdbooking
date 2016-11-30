@@ -19,6 +19,13 @@
 	<cfset language.southJetty = "South Jetty">
 	<cfset language.tplbookingError = "already has a booking for">
 	<cfset language.requestedStatus = "Requested Status">
+	
+	<cfset language.CompanyLabel = "Company:">
+	<cfset language.VesselLabel = "Vessel:">
+	<cfset language.startDateLabel = "Start Date:">
+	<cfset language.endDateLabel = "End Date:">
+	<cfset language.requestedStatusLabel = "Requested Status:">
+	<cfset language.requestedJettyLabel = "Requested Jetty:">
 <cfelse>
 	<cfset language.submitJettyBooking = "Pr&eacute;sentation des renseignements pour la r&eacute;servation de jet&eacute;e">
 	<cfset language.keywords = language.masterKeywords & ", renseignements pour la r&eacute;servation de jet&eacute;e">
@@ -33,6 +40,13 @@
 	<cfset language.southJetty = "Jet&eacute;e sud">
 	<cfset language.tplbookingError = "a d&eacute;j&agrave; une r&eacute;servation pour le">
 	<cfset language.requestedStatus = "&Eacute;tat demand&eacute;">
+	
+	<cfset language.CompanyLabel = "Entreprise&nbsp:">
+	<cfset language.VesselLabel = "Navire&nbsp:">
+	<cfset language.startDateLabel = "Date de d&eacute;but&nbsp;:">
+	<cfset language.endDateLabel = "Date de fin&nbsp:">
+	<cfset language.requestedStatusLabel = "&Eacute;tat demand&eacute;&nbsp:">
+	<cfset language.requestedJettyLabel = "Jet&eacute;e demand&eacute;e&nbsp:">
 </cfif>
 
 
@@ -219,51 +233,40 @@
 
 				<p>#language.bookingAvailable#</p>
 
-				<cfform action="#RootDir#reserve-book/jetdemande-jetrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
+				<form action="#RootDir#reserve-book/jetdemande-jetrequest_action.cfm?lang=#lang#" method="post" id="bookingreq" preservedata="Yes">
 					<fieldset>
             <legend>#language.booking#</legend>
-
-						<label for="CID">#language.Company#:</label>
-						<input type="hidden" id="CID" name="CID" value="#getInfo.CID#" />
-						<p class="color-accent">#getInfo.CompanyName#</p>
-
-
-						<label for="VNID">#language.vessel#:</label>
-						<input type="hidden" id="VNID" name="VNID" value="#getInfo.VNID#" />
-						<p class="color-accent">#getInfo.VesselName#</p>
-
-
-						<label for="startDate">#language.StartDate#:</label>
-						<input type="hidden" id="startDate" name="startDate" value="#CreateODBCDate(startDate)#" />
-						<p class="color-accent">#myDateFormat(CreateODBCDate(startDate), request.datemask)#</p>
-
-
-						<label for="endDate">#language.EndDate#:</label>
-						<input type="hidden" id="endDate" name="endDate" value="#CreateODBCDate(endDate)#" />
-						<p class="color-accent">#myDateFormat(CreateODBCDate(endDate), request.datemask)#</p>
-
-
-						<label for="Status">#language.requestedStatus#:</label>
-						<input type="hidden" id="Status" name="Status" value="#Form.Status#" />
-						<p class="color-accent"><cfif form.status eq "tentative">#language.tentative#<cfelse>#language.confirmed#</cfif></p>
-
-
-						<label for="jetty">#language.RequestedJetty#:</label>
-						<input id="jettySelect" id="jetty" type="hidden" name="jetty" value="#Form.Jetty#" />
+			
+						<p class="color-accent"> #language.CompanyLabel# #getInfo.CompanyName#</p>					
+						<p class="color-accent">#language.vesselLabel# #getInfo.VesselName#</p>				
+						<p class="color-accent">#language.StartDateLabel# #myDateFormat(CreateODBCDate(startDate), request.datemask)#</p>
+						<p class="color-accent">#language.EndDateLabel# #myDateFormat(CreateODBCDate(endDate), request.datemask)#</p>
+						<p class="color-accent">#language.requestedStatusLabel# <cfif form.status eq "tentative">#language.tentative#<cfelse>#language.confirmed#</cfif></p>
 						<p class="color-accent">
+						#language.RequestedJettyLabel#
 							<cfif Form.Jetty EQ "north">
 								#language.northJetty#
 							<cfelse>
 								#language.southJetty#
 							</cfif>
 						</p>
+			
+			
+						<input type="hidden" id="CID" name="CID" value="#getInfo.CID#" />	
+						<input type="hidden" id="VNID" name="VNID" value="#getInfo.VNID#" />
+						<input type="hidden" id="startDate" name="startDate" value="#CreateODBCDate(startDate)#" />
+						<input type="hidden" id="endDate" name="endDate" value="#CreateODBCDate(endDate)#" />
+						<input type="hidden" id="Status" name="Status" value="#Form.Status#" />
+						<input type="hidden" id="jetty" name="jetty" value="#Form.Jetty#" />
+						
+						
 					</fieldset>
 
 					<div class="buttons">
 						<input type="submit" value="#language.confirm#" class="button button-accent" />
 					</div>
 
-				</cfform>
+				</form>
 				</cfoutput>
 
 

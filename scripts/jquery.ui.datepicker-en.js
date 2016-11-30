@@ -1,6 +1,6 @@
 jQuery(function($){
 	$.datepicker.regional['en'] = {
-    buttonText: 'Calendar',
+    buttonText: 'Calendar'
   };
 	$.datepicker.setDefaults($.datepicker.regional['en']);
 });

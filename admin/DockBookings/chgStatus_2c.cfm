@@ -122,8 +122,9 @@
 	<p>Please confirm the following information.</p>
 </cfif>
 			<!--- -------------------------------------------------------------------------------------------- --->
-<cfform id="BookingConfirm" action="chgStatus_2c_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post">
-<cfoutput><input type="hidden" name="BRID" value="#Variables.BRID#" /></cfoutput>
+<cfoutput>
+<form id="BookingConfirm" action="chgStatus_2c_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post">
+<input type="hidden" name="BRID" value="#Variables.BRID#" />
 <div class="module-info widemod">
 	<h2>Booking Details</h2>
 	<ul>
@@ -154,7 +155,7 @@ Please choose the sections of the dock that you wish to book.<br/>
 	<cfinclude template="#RootDir#includes/showConflicts.cfm">
 </cfif>
 
-</cfform>
-
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

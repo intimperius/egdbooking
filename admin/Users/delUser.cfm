@@ -66,7 +66,8 @@ function EditSubmit ( selectedform )
 					<cfinclude template="#RootDir#includes/getStructure.cfm">
 				</cfif>
 
-				<cfform action="delUser_confirm.cfm?lang=#lang#" method="post" id="delUserForm">
+				<cfoutput>
+				<form action="delUser_confirm.cfm?lang=#lang#" method="post" id="delUserForm">
 				<div>
 					Company: <br />
 					<CF_TwoSelectsRelated
@@ -87,10 +88,12 @@ function EditSubmit ( selectedform )
 								DEFAULT2 ="#variables.UID#"
 								FORMNAME="delUserForm">
 					<!--a href="javascript:EditSubmit('delUserForm');" class="textbutton">Submit</a-->
+					<br />
           <input type="submit" name="submitForm" value="Delete" class="button-accent button" />
+          <br />
           <cfoutput><a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
 				</div>
-				</cfform>
-
+				</form>
+				</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

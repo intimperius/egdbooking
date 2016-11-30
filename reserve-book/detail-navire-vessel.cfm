@@ -9,9 +9,19 @@
 	<cfset language.deleteVessel = "Delete Vessel">
 	<cfset language.company = "Company">
 	<cfset language.tonnes = "tonnes">
-	<cfset language.anon = "Anonymous">
+
 	<cfset language.yes = "Yes">
 	<cfset language.no = "No">
+	<cfset language.vesselLabel = "Vessel:" >
+	<cfset language.CompanyLabel = "Company:" >
+	<cfset language.LengthLabel = "Length (m):" >
+	<cfset language.WidthLabel = "Width (m):" >
+	<cfset language.BlockSetupLabel = "Block Setup Time:" >
+	<cfset language.BlockTeardownLabel = "Block Teardown Time:" >
+	<cfset language.LloydsIDLabel = "<abbr title='International Maritime Organization'>IMO</abbr> Number:" >
+	<cfset language.TonnageLabel = "Tonnage:" >
+		<cfset language.anonLabel = "Anonymous:">
+	
 <cfelse>
 	<cfset language.vesselDetail = "D&eacute;tails concernant le navire">
 	<cfset language.keywords = language.masterKeywords & ", D&eacute;tails concernant le navire">
@@ -26,6 +36,15 @@
 	<cfset language.anon = "Anonyme">
 	<cfset language.yes = "Oui">
 	<cfset language.no = "Non">
+	<cfset language.vesselLabel = "Navire&nbsp:" >
+	<cfset language.CompanyLabel = "Entreprises&nbsp:" >
+	<cfset language.LengthLabel = "Longueur (m)&nbsp:" >
+	<cfset language.WidthLabel = "Largeur (m)&nbsp:" >
+	<cfset language.BlockSetupLabel = "Temps d'installation des tins&nbsp:" >
+	<cfset language.BlockTeardownLabel = "Temps de retrait des tins&nbsp:" >
+	<cfset language.LloydsIDLabel = "Code d'identification de la Lloyds&nbsp:" >
+	<cfset language.TonnageLabel = "Tonnage&nbsp:" >
+	<cfset language.anonLabel = "Anonyme&nbsp:" >
 </cfif>
 
 <cfoutput>
@@ -95,39 +114,39 @@
 
 					<table class="details">
 						<tr>
-							<th id="vessel">#language.vessel#:</th>
+							<th id="vessel">#language.vesselLabel#</th>
 							<td headers="vessel">#getVesselDetail.name#</td>
 						</tr>
 						<tr>
-							<th id="Company">#language.Company#:</th>
+							<th id="Company">#language.CompanyLabel#</th>
 							<td headers="Company">#getVesselDetail.companyname#</td>
 						</tr>
 						<tr>
-							<th id="Length">#language.Length#:</th>
+							<th id="Length">#language.LengthLabel#</th>
 							<td headers="Length">#getVesselDetail.length# m</td>
 						</tr>
 						<tr>
-							<th id="Width">#language.Width#:</th>
+							<th id="Width">#language.WidthLabel#</th>
 							<td headers="Width">#getVesselDetail.width# m</td>
 						</tr>
 						<tr>
-							<th id="BlockSetup">#language.BlockSetup#:</th>
+							<th id="BlockSetup">#language.BlockSetupLabel#</th>
 							<td headers="BlockSetup">#getVesselDetail.blocksetuptime# #language.days#</td>
 						</tr>
 						<tr>
-							<th id="BlockTeardown">#language.BlockTeardown#:</th>
+							<th id="BlockTeardown">#language.BlockTeardownLabel#</th>
 							<td headers="BlockTeardown">#getVesselDetail.blockteardowntime# #language.days#</td>
 						</tr>
 						<tr>
-							<th id="LloydsID">#language.LloydsID#:</th>
+							<th id="LloydsID">#language.LloydsIDLabel#</th>
 							<td headers="LloydsID">#getVesselDetail.lloydsid#</td>
 						</tr>
 						<tr>
-							<th id="Tonnage">#language.Tonnage#:</th>
+							<th id="Tonnage">#language.TonnageLabel#</th>
 							<td headers="Tonnage">#getVesselDetail.tonnage# #language.tonnes#</td>
 						</tr>
 						<tr>
-							<th id="anon">#language.anon#:</th>
+							<th id="anon">#language.anonLabel#</th>
 							<td headers="anon"><cfif getVesselDetail.anonymous>#language.yes#<cfelse>#language.no#</cfif></td>
 						</tr>
 					</table>

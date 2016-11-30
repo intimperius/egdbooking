@@ -53,7 +53,8 @@
 	</cfif>
 </cfif>
 
-<cfform action="chgStatus_2p_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" name="change2pending">
+<cfoutput>
+<form action="chgStatus_2p_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" name="change2pending">
 	Are you sure you want to change this booking's status back to pending?
 <br /><br />
 	<cfoutput>
@@ -86,8 +87,8 @@
 	<input type="submit" value="Submit" class="button button-accent" />
 	<cfoutput><a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#">Cancel</a></cfoutput>
 	</div>
-</cfform>
-
+</form>
+</cfoutput>
 
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

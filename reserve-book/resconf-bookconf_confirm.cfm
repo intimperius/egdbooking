@@ -42,7 +42,7 @@
 </CFIF>
 
 <cfif isDefined("url.date")>
-	<cfset variables.dateValue = "&date=#url.date#">
+	<cfset variables.dateValue = "&amp;date=#url.date#">
 <cfelse>
 	<cfset variables.dateValue = "">
 </cfif>
@@ -70,13 +70,14 @@
 				<cfoutput>
 				<p>#language.areYouSure# <strong>#getBooking.VesselName#</strong> #language.from# #myDateFormat(getBooking.StartDate, request.datemask)# #language.to# #myDateFormat(getBooking.endDate, request.datemask)#?</p>
 				<div style="text-align:center;">
-					<CFFORM action="#RootDir#reserve-book/resconf-bookconf_action.cfm?lang=#lang#&amp;CID=#getBooking.CID#&amp;referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#&amp;jetty=#URL.jetty#" id="ConfirmBooking">
+					<form action="#RootDir#reserve-book/resconf-bookconf_action.cfm?lang=#lang#&amp;CID=#getBooking.CID#&amp;referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#&amp;jetty=#URL.jetty#" id="ConfirmBooking" method="post">
           <fieldset>
 					<legend>#language.ConfirmBooking#</legend>
               <input type="hidden" name="BRID" value="#url.BRID#" />
+              <input type="hidden" name="jetty" value="#url.jetty#" />
               <input type="submit" value="#language.Continue#" class="textbutton" />
           </fieldset>
-					</CFFORM>
+					</form>
 				</div>
 				</cfoutput>
 

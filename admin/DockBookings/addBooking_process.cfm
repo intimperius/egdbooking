@@ -135,7 +135,7 @@
 
 </cfif>
 
-<cfform action="addBooking_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+<form action="addBooking_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
 <br />
 <div class="module-info widemod">
 	<h2>New Booking</h2>
@@ -174,7 +174,7 @@
 		This booking conflicts with other bookings. Please choose the sections of the dock that you wish to book:<br/><br/>
 		<div class="form-checkbox">
 			<label for="Section1">Section 1
-			<cfinput type="checkbox" name="Section1B" id="Section1" /></label>
+			<input type="checkbox" name="Section1B" id="Section1" /></label>
 			<label for="Section2">Section 2
 			<td headers="header2"><cfinput type="checkbox" name="Section2B" id="Section2" /></label>
 			<label for="Section3">Section 3
@@ -186,9 +186,10 @@
 <br />
 <input type="hidden" value="<cfoutput>#Form.Status#</cfoutput>" name="Status" />
 <input type="submit" value="Submit" class="button button-accent" />
-<cfoutput><a href="bookingManage.cfm?#urltoken#" />Cancel</a></cfoutput>
+<br />
+<cfoutput><a href="bookingManage.cfm?#urltoken#" style="padding-right: 10px" />Cancel</a></cfoutput>
 <cfoutput><a href="addBooking.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
 
 
-</cfform>
+</form>
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

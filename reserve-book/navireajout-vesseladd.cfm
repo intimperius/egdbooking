@@ -9,6 +9,16 @@
 	<cfset language.anonymousWarning = "Anonymous vessels are only anonymous to other companies' users.  The Esquimalt Graving Dock administrators have access to all vessel information regardless of anonymity.">
   <cfset language.footnotereturn = "Return to footnote">
   <cfset language.footnotehead = "Footnote">
+  
+  <cfset language.vesselLabel = "Vessel:" >
+	<cfset language.CompanyNameLabel = "Company Name:" >
+	<cfset language.vesselNameLabel = "Name:" >
+	<cfset language.LengthLabel = "Length (m):" >
+	<cfset language.WidthLabel = "Width (m):" >
+	<cfset language.daysLabel = "days:" >
+	<cfset language.LloydsIDLabel = "<abbr title='International Maritime Organization'>IMO</abbr> Number:" >
+	<cfset language.TonnageLabel = "Tonnage:" >
+	<cfset language.anonymousLabel = "Keep this vessel anonymous:">
 <cfelse>
 	<cfset language.addVessel = "Ajout d'un nouveau navire">
 	<cfset language.keywords = language.masterKeywords & ", Ajout d'un nouveau navire">
@@ -18,6 +28,16 @@
 	<cfset language.anonymousWarning = "Les navires anonymes ne sont anonymes qu'aux utilisateurs d'autres entreprises. Les administrateurs de la cale s&egrave;che d'Esquimalt ont acc&egrave;s &agrave; la totalit&eacute; de l'information concernant les navires, peu importe l'anonymat.">
   <cfset language.footnotereturn = "Retour &agrave; la r&eacute;f&eacute;rence">
   <cfset language.footnotehead = "Note de bas de page">
+  
+  <cfset language.vesselLabel = "Navire&nbsp;:" >
+	<cfset language.CompanyNameLabel = "Raison sociale&nbsp;:" >
+	<cfset language.vesselNameLabel = "Nom&nbsp;:" >
+	<cfset language.LengthLabel = "Longueur (m)&nbsp;:" >
+	<cfset language.WidthLabel = "Largeur (m)&nbsp;:" >
+	<cfset language.daysLabel = "jours&nbsp;:" >
+	<cfset language.LloydsIDLabel = "Code d'identification de la Lloyds&nbsp;:" >
+	<cfset language.TonnageLabel = "Tonnage&nbsp;:" >
+	<cfset language.anonymousLabel = "Garder ce navire anonyme&nbsp;:">
 </cfif>
 
 <cfhtmlhead text="
@@ -103,11 +123,11 @@
               <cfif getCompanies.recordCount GT 1>
                 <label for="CID">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.CompanyName#:
+                  #language.CompanyNameLabel#
                 </label>
                 <select name="CID" id="CID" query="getCompanies" display="Name" value="CID" selected="#variables.CID#" />
               <cfelse>
-                <label for="CompName">#language.CompanyName#:</label>
+                <label for="CompName">#language.CompanyNameLabel#</label>
                 <input type="text" id="CompName" disabled="disabled" readonly="readonly" value="#getCompanies.Name#" style="width: 260px;" />
                 <input type="hidden" id="CID" name="CID" value="#getCompanies.CID#" />
               </cfif>
@@ -116,7 +136,7 @@
             <div>
               <label for="name">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.vesselName#:<span class="form-text">#error("name")#</span>
+                #language.vesselNameLabel#<span class="form-text">#error("name")#</span>
               </label>
             </div>
             <div class="#err_name#">
@@ -125,38 +145,42 @@
             </div>
             
 						<div>
-              <label for="LloydsID" id="lloyds_id">#language.LloydsID#:</label>
+              <label for="LloydsID" id="lloyds_id">#language.LloydsIDLabel#</label>
               <input name="LloydsID" id="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20" />
 						</div>
 
 						<div>
               <label for="length">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.Length#:<span class="form-text">#error("length")#</span>
+                #language.LengthLabel# 
+				<span class="color-medium">(#language.Max#: #Variables.MaxLength#)
+				</span><span class="form-text">#error("length")#</span>
               </label>
             </div>
             <div class="#err_lgt#">
               <input name="length" id="length" type="text" value="#variables.length#" size="8" maxlength="8"/>
-              <span class="color-medium">(#language.Max#: #Variables.MaxLength#)</span>
+              
               
 						</div>
             
 						<div>
               <label for="width">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.Width#:<span class="form-text">#error("width")#</span>
+                #language.WidthLabel#
+				<span class="color-medium">(#language.Max#: #Variables.MaxWidth#)</span>
+				<span class="form-text">#error("width")#</span>
               </label>
             </div>
             <div class="#err_wdt#">
               <input name="width" id="width" type="text" value="#variables.width#" size="8" maxlength="8" />
-              <span class="color-medium">(#language.Max#: #Variables.MaxWidth#)</span>
+              
               
 						</div>
             
 						<div>
               <label for="blocksetuptime" id="block_setup_time">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.BlockSetup# #language.days#:<span class="form-text">#error("blocksetuptime")#</span>
+                #language.BlockSetup# #language.daysLabel#<span class="form-text">#error("blocksetuptime")#</span>
               </label>
             </div>
             <div class="#err_bst#">
@@ -167,7 +191,7 @@
 						<div>
               <label for="blockteardowntime" id="block_teardown_time">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.BlockTeardown# #language.days#:<span class="form-text">#error("blockteardowntime")#</span>
+                #language.BlockTeardown# #language.daysLabel#<span class="form-text">#error("blockteardowntime")#</span>
               </label>
             </div>
             <div class="#err_btt#">
@@ -178,7 +202,7 @@
 						<div>
               <label for="tonnage">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.Tonnage#:<span class="form-text">#error("tonnage")#</span>
+                #language.TonnageLabel#<span class="form-text">#error("tonnage")#</span>
               </label>
             </div>
             <div class="#err_ton#">
@@ -187,8 +211,9 @@
 						</div>
             
             <div>
-              <label for="Anonymous">#language.anonymous#<sup id="fnb1-ref">:<a class="footnote-link" href="##fnb1"><span class="wb-invisible">#language.footnote#</span>1</a></sup></label>
+              
               <input type="checkbox" id="Anonymous" name="Anonymous" value="Yes" />
+			  <label for="Anonymous">#language.anonymousLabel#<sup id="fnb1-ref"><a class="footnote-link" href="##fnb1"><span class="wb-invisible">#language.footnote#</span>1</a></sup></label>
             </div>
 
             <div>
@@ -204,7 +229,11 @@
               <dt>#language.footnotehead# 1</dt>
                 <dd id="fnb1">
                   <p>#language.anonymousWarning#</p>
-                  <p class="footnote-return"><a href="##fnb1-ref"><span class="wb-invisible">#language.footnotereturn# </span>1</a></p>
+				  <cfif lang EQ "eng">
+				  <p class="footnote-return"><a href="##fnb1-ref"><span class="wb-invisible">Return to footnote </span>1<span class="wb-invisible"> referrer</span></a></p>
+				  <cfelse>
+				  <p class="footnote-return"><a href="##fnb1-ref"><span class="wb-invisible">Retour &agrave; la r&eacute;f&eacute;rence de la note de bas de page </span>1</a></p>
+				  </cfif>
                 </dd>
             </dl>
           </section>

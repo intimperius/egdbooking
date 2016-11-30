@@ -160,10 +160,10 @@
 					</h2>
           <div class="indent">
 						<CFIF NOT Anonymous OR userVessel.recordCount GT 0 OR IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-							<b>#language.Agent#: </b>#LastName#, #FirstName# <br />
+							<b>#language.Agent# : </b>#LastName#, #FirstName# <br />
 						</cfif>
 
-						<b>#language.Status#: </b>
+						<b>#language.Status# : </b>
 								<CFIF (isDefined("DStatus") AND DStatus eq 'C') OR (isDefined("JStatus") AND JStatus eq 'C')>
 									#language.Confirmed#
 								<CFELSEIF (isDefined("DStatus") AND DStatus eq 't') OR (isDefined("JStatus") AND JStatus eq 't')>
@@ -174,42 +174,42 @@
 						<br />
 
 						<CFIF NOT Anonymous OR userVessel.recordCount GT 0 OR (IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true) OR (not isJetty AND DStatus eq 'c') OR (NOT not isJetty AND JStatus eq 'c')>
-							<b>#language.Company#: </b>#CompanyName#<br />
-							<b>#language.Length#: </b>#Length# m<br />
+							<b>#language.Company# : </b>#CompanyName#<br />
+							<b>#language.Length# : </b>#Length# m<br />
 						</cfif>
 
 						<cfif NOT Anonymous OR userVessel.recordCount GT 0 OR (IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true)>
-							<b>#language.Width#: </b>#Width# m<br />
-              <b>#language.Tonnage#: </b>#Tonnage#<br />
+							<b>#language.Width# : </b>#Width# m<br />
+              <b>#language.Tonnage# : </b>#Tonnage#<br />
 						</cfif>
 							<CFIF not isJetty>
 								<CFIF DStatus eq 'c'>
-									<b>#language.SectionsBooked#: </b>
+									<b>#language.SectionsBooked# : </b>
 									<CFIF Section1>#language.Drydock1#</CFIF><CFIF Section2><CFIF Section1> &amp; </CFIF>#language.Drydock2#</CFIF><CFIF Section3><CFIF Section1 OR Section2> &amp; </CFIF>#language.Drydock3#</CFIF><br />
 								<CFELSEIF DStatus eq 't'>
-									<b>#language.SectionRequested#: </b>#language.Drydock#<br />
+									<b>#language.SectionRequested# : </b>#language.Drydock#<br />
 								<CFELSE>
-									<b>#language.SectionRequested#: </b>#language.Drydock#<br />
+									<b>#language.SectionRequested# : </b>#language.Drydock#<br />
 								</CFIF>
 							<CFELSE>
 								<CFIF JStatus eq 'c'>
-									<b>#language.SectionsBooked#: </b>
+									<b>#language.SectionsBooked# : </b>
 									<CFIF NorthJetty>#language.NorthLandingWharf#</CFIF><CFIF SouthJetty><CFIF NorthJetty>, </CFIF>#language.SouthJetty#</CFIF><br />
 								<CFELSE>
-									<b>#language.SectionRequested#: </b>
+									<b>#language.SectionRequested# : </b>
 									<CFIF NorthJetty> #language.NorthLandingWharf#<CFELSE>#language.SouthJetty#</CFIF><br />
 								</CFIF>
 							</CFIF>
 
-						<b>#language.DockingDates#: </b>
+						<b>#language.DockingDates# : </b>
 						#myDateFormat(StartDate, request.datemask)# #language.to# #myDateFormat(EndDate, request.datemask)#<br />
 
 						<CFIF NOT Anonymous OR userVessel.recordCount GT 0 OR IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
-							<b>#language.Origin#: </b>#City#, #Country#<br />
+							<b>#language.Origin# : </b>#City#, #Country#<br />
 						</cfif>
 
 						<CFIF NOT Anonymous OR userVessel.recordCount GT 0 OR (IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true) OR (not isJetty AND DStatus eq 'c') OR (NOT not isJetty AND JStatus eq 'c')>
-						<b><cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>Time of Booking:<cfelse>#language.bookingDate#:</cfif></b>
+						<b><cfif IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>Time of Booking:<cfelse>#language.bookingDate# :</cfif></b>
 							<CFIF IsDefined('Session.AdminLoggedIn') AND Session.AdminLoggedIn eq true>
 							#myDateFormat(BookingTime, request.datemask)# @ #LSTimeFormat(BookingTime, 'HH:mm')#
 							<cfelse>

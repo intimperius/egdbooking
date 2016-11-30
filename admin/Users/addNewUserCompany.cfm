@@ -172,12 +172,11 @@ function EditSubmit ( selectedform )
 								<form style="display:none;" action="removeNewUserCompany_confirm.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" method="post" id="remCompany#ID#">
 								<input type="hidden" name="CID" value="#ID#" />
 							</form>
-							<cfset left = left &"#detailsID.Name#<br/>"/>
+							<cfset left = left &"#detailsID.Name#<br />"/>
 							<cfset right = right & "<a href=""javascript:EditSubmit('remCompany#ID#');"" class=""textbutton"">Remove</a><br/>" />
 						<cfset counter = counter + 1>
 					</cfloop>
-					<br/>
-
+					<br />
 					<div class="span-2">#left#</div>
 					<div class="span-3">#right#</div>
 
@@ -190,20 +189,20 @@ function EditSubmit ( selectedform )
 					<cfset companies = URLEncodedFormat(ToBase64(cfusion_encrypt(companyList, "shanisnumber1")))>
 				</cfif>
 
-			<cfform action="addNewUserCompany.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" id="addUserCompanyForm" method="post">
+			<form action="addNewUserCompany.cfm?lang=#lang#&companies=#companies#&info=#Variables.info#" id="addUserCompanyForm" method="post">
 				<div class="span-6">
 				<div class="span-1">
 					<label for="companies">Add Company:</label>
 				</div>
 				<div class="span-4">
-					<cfselect name="CID" id="companies" required="yes" message="Please select a company.">
-			            <option value="">(Please select a company)
+					<select name="CID" id="companies" required="yes" message="Please select a company.">
+			            <option value="">(Please select a company)</option>
 			            <cfloop query="getCompanies">
 			              <cfif ListFind(companyList, "#CID#") EQ 0>
-			                <option value="#CID#">#Name#
+			                <option value="#CID#">#Name#</option>
 			              </cfif>
 			            </cfloop>
-			        </cfselect>
+			        </select>
 					<input type="submit" name="submitCompany" value="Add" class="button" />
 				</div>
 				<div class="span-1"></div>
@@ -212,7 +211,7 @@ function EditSubmit ( selectedform )
 				<span class="small">If the desired company is not listed, click <a href="addCompany.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#">here</a> to create one.</a></span>
 				</div>
 			</div>
-				</cfform>
+				</form>
 				</cfoutput>
 
 				<cfif isDefined("URL.UID")>
@@ -220,7 +219,7 @@ function EditSubmit ( selectedform )
 				</cfif>
 
         <cfoutput>
-          <cfform id="newUserForm" action="addUser_action.cfm?lang=#lang#&info=#Variables.info#">
+          <form id="newUserForm" action="addUser_action.cfm?lang=#lang#&info=#Variables.info#">
             <input type="hidden" name="firstname" value="#Variables.firstname#" />
 			<input type="hidden" name="lastname" value="#Variables.lastname#" />
 			<input type="hidden" name="email" value="#Variables.email#" />
@@ -232,7 +231,7 @@ function EditSubmit ( selectedform )
 				<a href="addUser.cfm?lang=#lang#&info=#Variables.info#&companies=#companies#">Edit Profile</a><br />
             	<a href="../menu.cfm?lang=#lang#">Cancel</a>
 			</div>
-          </cfform>
+          </form>
           </cfoutput>
 		
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

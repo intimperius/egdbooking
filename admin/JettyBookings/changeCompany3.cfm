@@ -32,13 +32,13 @@ SELECT LastName + ', ' + FirstName as newFullName
 </h1>
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 <cfoutput>
-<cfform action="changeCompanyAction.cfm" method="post">
-	<cfinput type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value=""name="CompanyURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#newCID#" name="newCID" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#newUserName#" name="newUserName" required="Yes" readonly="yes" />
+<form action="changeCompanyAction.cfm" method="post">
+	<input type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes" />
+	<input type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
+	<input type="hidden" value=""name="CompanyURL" required="Yes" readonly="yes" />
+	<input type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
+	<input type="hidden" value="#newCID#" name="newCID" required="Yes" readonly="yes" />
+	<input type="hidden" value="#newUserName#" name="newUserName" required="Yes" readonly="yes" />
 
 	<div class="module-info modwide">
 		<h2>#vesselNameURL#</h2>
@@ -53,7 +53,7 @@ SELECT LastName + ', ' + FirstName as newFullName
 	<strong>Please finalize changes before submitting.</strong> <br/><br/>
 	<input id="submit" type="submit" value="Submit" class="button button-accent" />
 	 
-</cfform>
+</form>
 </cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

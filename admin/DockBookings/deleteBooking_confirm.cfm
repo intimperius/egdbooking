@@ -71,10 +71,10 @@
 	<cfset variables.dateValue = "">
 </cfif>
 
-<cfform action="deleteBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="delBookingConfirm">
+<cfoutput query="getBooking">
+<form action="deleteBooking_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="delBookingConfirm">
 	Are you sure you want to <b>Delete</b> the following booking?<br/><br/>
 	<input type="hidden" name="BRID" value="<cfoutput>#Variables.BRID#</cfoutput>" />
-	<cfoutput query="getBooking">
 	
 
 	<div class="module-info widemod">
@@ -102,12 +102,12 @@
 <br/>
 	<div>
 		<input type="submit" name="submitForm" class="button button-accent" value="Delete" />
-		<a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue###id#variables.BRID#">Cancel
+		<br />
+		<a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue###id#variables.BRID#">Cancel</a>
 	</div>
 
-	</cfoutput>
-
-</cfform>
+</form>
+</cfoutput>
 
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

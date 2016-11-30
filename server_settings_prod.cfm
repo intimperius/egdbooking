@@ -1,0 +1,16 @@
+<cfset RootDir = "/">
+<cfset DSN = "egdbooking">
+<cfset CLF_URL = "" />
+<cfset CLF_PATH = "/" />
+<cfset EGD_URL = "http://www.tpsgc-pwgsc.gc.ca/biens-property/cse-egd" />
+<cfset dbuser = "egdbooking">
+<cfset dbpassword = "egd1234">
+<cfset mailuser = "egd-cse@cse-egd.tpsgc-pwgsc.gc.ca">
+<cfset mailpassword = "egd1234">
+<cfset Web_URL = "https://cse-egd.tpsgc-pwgsc.gc.ca/">
+<cfset FileDir = "e:\web\public_html\egdbooking\">
+<cfset ServerType = "Production">
+<cfset PacificNow = DateAdd("h", -2, Now()) />
+<cfset slash = "\" />
+<cfset DevEmail = "adam.soltys@pwgsc-tpsgc.gc.ca" />
+<cfset AdministratorEmail = "egd-cse@pwgsc-tpsgc.gc.ca">

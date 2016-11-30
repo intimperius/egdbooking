@@ -204,7 +204,8 @@ function EditSubmit ( selectedform )
 	<p>Please confirm the following maintenance block information.</p>
 </CFIF>
 
-<cfform action="addMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+<cfoutput>
+<form action="addMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
 
 <div class="module-info widemod">
 	<h2>Booking:</h2>
@@ -233,9 +234,11 @@ function EditSubmit ( selectedform )
 </div>
 	<br/>
 	<input type="submit" value="Confirm" class="button button-accent" />
-	<cfoutput><a href="bookingManage.cfm?#urltoken#" />Cancel</a></cfoutput>
-	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton">Back</a></cfoutput>
+	<br />
+	<cfoutput><a href="bookingManage.cfm?#urltoken#" style="padding-right: 10px">Cancel</a></cfoutput>
+	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton" style=>Back</a></cfoutput>
 
-</cfform>
+</form>
+</cfoutput>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

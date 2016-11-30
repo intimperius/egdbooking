@@ -47,7 +47,7 @@
 <cfinclude template="#RootDir#includes/admin_menu.cfm">
 
 Please confirm the following maintenance block information.<br/><br/>
-<cfform action="deleteJettyMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+<form action="deleteJettyMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
 <input type="hidden" name="BRID" value="#Variables.BRID#" />
 
 <div class="module-info widemod">
@@ -71,9 +71,10 @@ Please confirm the following maintenance block information.<br/><br/>
 
 <br />
 	<input type="submit" value="#variables.actionCap# Maintenance" class="button button-accent" />
+	<br />
 	<a href="jettyBookingManage.cfm?#urltoken#">Back</a>
 	
-</cfform>
+</form>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
 </cfoutput>

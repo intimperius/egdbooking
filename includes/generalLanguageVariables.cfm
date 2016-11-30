@@ -23,7 +23,7 @@
   <cfset language.bookingForms = "Booking Forms">
   <cfset language.bookingHome = "Booking Home">
   <cfset language.bookingRequest = "Booking Request">
-  <cfset language.bookingSpace = "Booking Space at the <abbr title=""Esquimalt Graving Dock"">EGD</abbr>">
+  <cfset language.bookingSpace = "Booking Space at the Esquimalt Graving Dock">
   <cfset language.bookings = "Bookings">
   <cfset language.bookingsFor = "Bookings for" />
   <cfset language.bookingsSummary = "Bookings Summary">
@@ -46,12 +46,12 @@
   <cfset language.confirmedInNorthLandingWharf = "Confirmed In North Landing Wharf">
   <cfset language.confirmedInSouthJetty = "Confirmed In South Jetty">
   <cfset language.confirming = "pending confirmation">
-  <cfset language.contact = "Contact">
+  <cfset language.contact = "Contact Esquimalt Graving Dock">
   <cfset language.currentCompany = "You are currently looking at details for: ">
   <cfset language.dateInclusive = "<strong>Note: Booking dates are inclusive</strong>; i.e. a three day booking is denoted as from May 1 to May 3.">
   <cfset language.dateSelect = "Date Selection" />
-  <cfset language.dateform = "(MM/DD/YYYY)">
-  <cfset language.dateformexplanation = "Month, Day, Year">
+  <cfset language.dateform = "(YYYY-MM-DD)">
+  <cfset language.dateformexplanation = "Year, Month, Day">
   <cfset language.days = "(days)">
   <cfset language.dblBookingError = "has already been booked from">
   <cfset language.detailTableSummary = "Booking details" />
@@ -70,7 +70,7 @@
   <cfset language.esqGravingDockCaps = "ESQUIMALT GRAVING DOCK">
   <cfset language.fax = "Fax">
   <cfset language.footnote = "See footnote" />
-  <cfset language.forgot = "Forgot password">
+  <cfset language.forgot = "Forgot your password">
   <cfset language.go = "Go">
   <cfset language.help = "Help">
   <cfset language.jetty = "Jetty">
@@ -99,7 +99,7 @@
   <cfset language.none = "None">
   <cfset language.northLandingWharf = "North Landing Wharf">
   <cfset language.notEditVesselDimensions = "You may not edit the vessel dimensions as this vessel currently has confirmed bookings.  To make dimension changes, please contact EGD Administration.">
-  <cfset language.notices = "Notices" />
+  <cfset language.notices = "Important Notices" />
   <cfset language.or = "or">
   <cfset language.otherCompanies = "Other companies:">
   <cfset language.pacificRegion = "Pacific Region">
@@ -119,6 +119,7 @@
   <cfset language.resources = "<abbr title=""Esquimalt Graving Dock"">#language.egd#</abbr> Resources" />
   <cfset language.returnTo = "Back to Booking Home">
   <cfset language.screenMessage = "Il n'existe aucune activit&eacute; &agrave; afficher.">
+  <cfset language.schedule = "Schedule">
   <cfset language.sec = "Dock Section">
   <cfset language.sec1 = "Confirmed in Section 1 of Drydock">
   <cfset language.sec2 = "Confirmed in Section 2 of Drydock">
@@ -132,6 +133,7 @@
   <cfset language.startDate = "Start Date">
   <cfset language.status = "Status">
   <cfset language.submit = "Submit">
+  <cfset language.tariff = "Tariff of Dock Charges">
   <cfset language.teardownError = "Please enter the block teardown time in days.">
   <cfset language.tentBook = "Tentative Booking">
   <cfset language.tentative = "tentative">
@@ -177,7 +179,7 @@
   <cfset language.bookingForms = "Formulaires de r&eacute;servation">
   <cfset language.bookingHome = "Accueil - R&eacute;servation">
   <cfset language.bookingRequest = "Demande de r&eacute;servation">
-  <cfset language.bookingSpace = "R&##233;servation pour travaux le <abbr title=""Cale s&##232;che d'Esquimalt"">CSE</abbr>">
+  <cfset language.bookingSpace = "R&##233;servation pour travaux le Cale s&##232;che d'Esquimalt">
   <cfset language.bookings = "R&eacute;servations">
   <cfset language.bookingsFor = "R&eacute;servations pour" />
   <cfset language.bookingsSummary = "R&eacute;sum&eacute; des R&eacute;servations">
@@ -201,12 +203,12 @@
   <cfset language.confirmedInNorthLandingWharf = "Quai de d&eacute;barquement nord confirm&eacute;e">
   <cfset language.confirmedInSouthJetty = "Jet&eacute;e sud confirm&eacute;e">
   <cfset language.confirming = "confirmation ">
-  <cfset language.contact = "Contactez" />
+  <cfset language.contact = "Contactez le Cale sèche d'Esquimalt" />
   <cfset language.currentCompany = "Vous regardez les renseignements portant sur :">
   <cfset language.dateInclusive = "Nota : les dates des r&eacute;servations sont inclusives; une r&eacute;servation de trois jours couvrira la p&eacute;riode du 1<sup>er</sup> mai au 3 mai, par exemple.">
   <cfset language.dateSelect = "Choix de la date" />
-  <cfset language.dateform = "(MM/JJ/AAAA)">
-  <cfset language.dateformexplanation = "Mois, Jour, Ann&eacute;e">
+  <cfset language.dateform = "(AAAA-MM-JJ)">
+  <cfset language.dateformexplanation = "Ann&eacute;e, Mois, Jour">
   <cfset language.days = "(jours)">
   <cfset language.dblBookingError = "fait d&eacute;j&agrave; l'objet d'une r&eacute;servation du">
   <cfset language.detailTableSummary = "Renseignements sur le r&##233;servation" />
@@ -255,7 +257,7 @@
   <cfset language.none = "Aucun">
   <cfset language.northLandingWharf = "Quai de d&eacute;barquement nord">
   <cfset language.notEditVesselDimensions = "Vous ne pouvez pas modifier les dimensions du navire, parce que ce dernier fait l'objet de r&eacute;servations confirm&eacute;es. Pour apporter des changements aux dimensions, pri&egrave;re de communiquer avec l'administration de la CSE.">
-  <cfset language.notices = "Avis" />
+  <cfset language.notices = "Avis importants" />
   <cfset language.or = "ou">
   <cfset language.otherCompanies = "Autres entreprises">
   <cfset language.pacificRegion = "R&eacute;gion du Pacifique">
@@ -274,6 +276,7 @@
   <cfset language.requiredFields = "Les champs obligatoires sont signal&eacute;s par un ast&eacute;risque (<abbr class=""required"" title=""#language.required#"">*</abbr>)." />
   <cfset language.resources = "Ressources <abbr title=""Cale s&egrave;che d'Esquimalt"">CSE</abbr>" />
   <cfset language.returnTo = "Retour &agrave; Accueil&nbsp;- R&eacute;servation">
+  <cfset language.schedule = "Annexe">
   <cfset language.screenMessage = "There are no events available for display">
   <cfset language.sec = "Section de la cale s&egrave;che">
   <cfset language.sec1 = "Section 1 de la cale s&egrave;che confirm&eacute;e">
@@ -288,6 +291,7 @@
   <cfset language.startDate = "Date de d&eacute;but">
   <cfset language.status = "&Eacute;tat">
   <cfset language.submit = "Soumettre">
+  <cfset language.tariff = "Tarif des Droits de Cale Seche">
   <cfset language.teardownError = "Veuillez entrer un nombre de jours pour pr&eacute;ciser le temps de retrait des tins.">
   <cfset language.tentBook = "R&eacute;servation provisoire">
   <cfset language.tentative = "provisoire">

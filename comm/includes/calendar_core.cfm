@@ -13,7 +13,7 @@
 
 <div class="selector span-3">
   <!-- Form -->
-  <form id="dateSelect" class="form-horizontal" action="#CGI.script_name#?lang=#lang#" method="post">
+  <form id="dateSelect" class="form-horizontal no-print" action="#CGI.script_name#?lang=#lang#" method="post">
     <fieldset>
       <legend>#language.dateSelect#</legend>
       <div class="span-1 row-start margin-top-medium">
@@ -41,18 +41,20 @@
       <div class="clear"></div>
       <div class="span-1 row-start"></div>
       <div class="span-1 row-end">
-        <input type="submit" value="#language.submit#" class="button button-accent"/>
+        <input type="submit" value="#language.submit#" class="button button-accent no-print"/>
       </div>
     </fieldset>
   </form>
 </div>
 
 <!--Legend thing-a-ma-what.-->
+<div class="no-print">
   <cfif find("jet", cgi.script_name) EQ 0>
     <cfinclude template="#RootDir#comm/includes/dock_key.cfm" />
   <cfelse>
     <cfinclude template="#RootDir#comm/includes/jetty_key.cfm" />
   </cfif>
+</div>
 
 <div class="clear"></div>
 <h2>#myDateFormat(CreateDate(url['a-y'], url['m-m'], 1), 'mmmm')# #url['a-y']#</h2>
@@ -71,20 +73,20 @@
 <cfset LastDay = CreateDate(url['a-y'], url['m-m'], LastDayofMonth)>
 <cfset CurDayofWeek = myDateFormat(FirstDay, "dddd")>
 
-<table class="basic calendar" id="calendar#url['m-m']#">
-	<tr>
+<div class="calendar" id="calendar#url['m-m']#">
+	<div class="week_header">
 		<cfloop index="doh" from="1" to="#ArrayLen(DaysofWeek)#" step="1">
 			<cfset dummydate = CreateDate(2005, 5, doh)>
-			<th scope="col">#myDateFormat(dummydate, 'dddd')#</th>
+			<div class="day_header">#myDateFormat(dummydate, 'dddd')#</div>
 		</cfloop>
-	</tr>
-
+	</div>
+	<br style="clear:both;" />
 	<!--- Output all the weeks in the calendar --->
 	<cfset DateCounter = 0>
 	<cfset WeekCounter = 0>
 	<cfset FirstDay = "No">
 	<cfloop condition="Variables.DateCounter LT ArrayLen(DaysofMonth)">
-	<tr class="week">
+	<div class="week">
 		<cfset WeekCounter = WeekCounter + 1>
 		<cfloop index="kounter" from="1" to="#ArrayLen(DaysofWeek)#" step="1">
 			<cfif WeekCounter EQ 1>
@@ -99,7 +101,7 @@
 			<cfelse>
 				<cfset DateCounter = DateCounter + 1>
 			</cfif>
-			<td>
+			<div class="day">
 				<cfif not (Variables.DateCounter IS 0) AND NOT (Variables.DateCounter GT Variables.LastDayofMonth)>
 					<cfset taday = DateFormat(CreateDate(url['a-y'], url['m-m'], DaysofMonth[DateCounter]), "yyyy-MM-dd")>
           <strong>#DaysofMonth[DateCounter]#</strong>
@@ -129,10 +131,15 @@
             </cfif>
           </cfloop>
         </cfif>
-			</td>
+			</div>
 		</cfloop>
-	</tr>
+	</div>
+	<br style="clear:both;" />
 	</cfloop>
-</table>
+</div>
+
+
+
+
 
 </cfoutput>

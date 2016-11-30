@@ -184,25 +184,26 @@ function EditSubmit ( selectedform )
 <!--- ---------------------------------------------------------------------------------------------------------------- --->
 
 
-<!-- Gets all Bookings that would be affected by the requested booking --->
+<!-- Gets all Bookings that would be affected by the requested booking -->
 <cfset Variables.StartDate = #CreateODBCDate(Variables.StartDate)#>
 <cfset Variables.EndDate = #CreateODBCDate(Variables.EndDate)#>
 
 <p>Please confirm the following maintenance block information.</p>
-<cfform action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
+<cfoutput>
+<form action="addJettyBooking_action.cfm?startdate=#DateFormat(url.startdate, 'mm/dd/yyyy')#&enddate=#DateFormat(url.enddate, 'mm/dd/yyyy')#&show=#url.show#" method="post" id="bookingreq" preservedata="Yes">
 <div style="font-weight:bold;">Booking:</div>
 <table style="width:100%;" align="center">
 	<tr>
 		<td align="left" style="width:20%;">Company:</td>
-		<td><input type="hidden" name="company" value="<cfoutput>#form.CID#</cfoutput>" />
+		<td><input type="hidden" name="company" value="<cfoutput>#form.CID#</cfoutput>" /></td>
 	</tr>
 	<tr>
 		<td align="left">Vessel:</td>
-		<td><input type="hidden" name="vessel" value="<cfoutput>#form.VNID#</cfoutput>" />
+		<td><input type="hidden" name="vessel" value="<cfoutput>#form.VNID#</cfoutput>" /></td>
 	</tr>
 	<tr>
 		<td align="left">Agent:</td>
-		<td><input type="hidden" name="agent" value="<cfoutput>#form.UID#</cfoutput>" />
+		<td><input type="hidden" name="agent" value="<cfoutput>#form.UID#</cfoutput>" /></td>
 	</tr>
 	<tr>
 		<td align="left">Start Date:</td>
@@ -255,7 +256,8 @@ function EditSubmit ( selectedform )
 	</tr>
 </table>
 
-</cfform>
+</form>
+</cfoutput>
 </div>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

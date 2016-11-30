@@ -53,9 +53,9 @@
 				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
 
 				<p>Are you sure you want to deny the confirmation and change this booking's status to tentative?</p>
-				<cfform action="deny_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" id="deny">
+				<cfoutput>
+				<form action="deny_action.cfm?#urltoken#&referrer=#URLEncodedFormat(url.referrer)#" method="post" id="deny">
 
-					<cfoutput>
 					<input type="hidden" name="BRID" value="#Form.BRID#" />
 					<div class="module-info widemod">
           <h2>Booking Details:</h2>
@@ -67,13 +67,15 @@
 						<b>Jetty:</b> <cfoutput>#Variables.Jetty#</cfoutput>
             
           </ul>
-					</div><br /></cfoutput>
+					</div><br />
 
-					<div style="text-align:center;">
+					<div>
 					<input type="submit" value="Submit" class="button button-accent" />
+					<br />
 					<cfoutput><a href="#returnTo#?#urltoken##dateValue#&referrer=#URLEncodedFormat(url.referrer)#&BRID=#getBooking.BRID###id#getBooking.BRID#">Cancel</a></cfoutput>
 					</div>
-				</cfform>
+				</form>
+				</cfoutput>
 
 			</div>
 

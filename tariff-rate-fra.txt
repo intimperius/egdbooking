@@ -1,0 +1,325 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr class="active">
+      <th id="ar1">Article</th>
+      <th colspan="2" id="ac1">Installations et services</th>
+      <th id="ac2"> 1<sup>er</sup>&nbsp;avril&nbsp;2017</th>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar2" headers="ar1">1</th>
+      <td colspan="2" headers="ar1 ar2 ac1">R&eacute;servation</td>
+      <td class="text-right" headers="ar1 ar2 ac2">5&nbsp;427,93&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar3" headers="ar1">2</th>
+      <td colspan="2" headers="ar1 ar3 ac1">Vidage par section</td>
+      <td class="text-right" headers="ar1 ar3 ac2">5&nbsp;427,93&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar4">3</th>
+      <td colspan="2" headers="ar1 ar4 ac1">Quayage, le m&egrave;tre, par jour</td>
+      <td class="text-right" headers="ar1 ar4 ac2">6,34&nbsp;$</td>
+    </tr>
+    <tr>
+      <th rowspan="3" class="text-center" id="ar5" headers="ar1">4</th>
+      <th rowspan="3" class="text-center" id="ar5a" headers="ar1 ar5 ac1" style="vertical-align: top !important;">Grue sur rails, l'heure&nbsp;:</th>
+      <th id="ar5b" headers="ar1 ar5 ar5a ac1">(<i>a</i>) crochet de charge l&eacute;ger</th>
+      <td class="text-right" headers="ar1 ar5 ar5a ar5b ac1 ac2">498,36&nbsp;$</td>
+    </tr>
+    <tr>
+      <th id="ar5c" headers="ar1 ar5 ar5a ac1">(<i>b</i>) crochet de charge principal d'une capacit&eacute; de levage d'eau plus 50 tonnes m&eacute;trique</th>
+      <td class="text-right" headers="ar1 ar5 ar5a ar5c ac1 ac2">719,85&nbsp;$</td>
+    </tr>
+    <tr>
+      <th id="ar5d" headers="ar1 ar5 ar5a ac1">(<i>c</i>) crochet de charge principal d'une capacit&eacute; de levage de plus de 50&nbsp;tonnes m&eacute;triques</th>
+      <td class="text-right" headers="ar1 ar5 ar5a ar5d ac1 ac2">1&nbsp;107,48&nbsp;$</td>
+    </tr>
+    <tr>
+      <th rowspan="5" class="text-center" id="ar6" headers="ar1">5</th>
+      <th rowspan="5" class="text-center" id="ar6a" headers="ar1 ar6 ac1" style="vertical-align: top !important;">Grue sur rails, l'heure&nbsp;:</th>
+      <th id="ar6b" headers="ar1 ar6 ar6a ac1">(<i>a</i>) grue de 9&nbsp;tonnes m&eacute;triques</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6b ac1 ac2">138,44&nbsp;$</td>
+    </tr>
+    <tr>
+      <th id="ar6c" headers="ar1 ar6 ar6a ac1">(<i>b</i>) grue de 20&nbsp;tonnes m&eacute;triques</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6c ac1 ac2">177,20&nbsp;$</td>
+    </tr>
+    <tr>
+      <th id="ar6d" headers="ar1 ar6 ar6a ac1"><i>(c) </i>grue de 30&nbsp;tonnes m&eacute;triques </th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6d ac1 ac2">215,96&nbsp;$</td>
+    </tr>
+    <tr>
+      <th id="ar6e" headers="ar1 ar6 ar6a ac1"><i>(d) </i>chariot &eacute;l&eacute;vateur &agrave; fourches</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6e ac1 ac2">105,21&nbsp;$</td>
+    </tr>
+    <tr>
+      <th id="ar6f" headers="ar1 ar6 ar6a ac1"><i>(e) </i>grue sur tour</th>
+      <td class="text-right" headers="ar1 ar6 ar6a ar6f ac1 ac2">177,20&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar7" headers="ar1">6</th>
+      <td colspan="2" headers="ar1 ar7 ac1">Compresseur d'air (premier), l'heure de distribution</td>
+      <td class="text-right" headers="ar1 ar7 ac2">121,82&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar8" headers="ar1">7</th>
+      <td colspan="2" headers="ar1 ar8 ac1">Compresseur d 'air (deuxi&egrave;me), l'heure de distribution</td>
+      <td class="text-right" headers="ar1 ar8 ac2">116,29&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar9" headers="ar1">8</th>
+      <td colspan="2" headers="ar1 ar9 ac1">Compresseur d'air (sur roues), l'heure de distribution</td>
+      <td class="text-right" headers="ar1 ar9 ac2">60,91&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar10" headers="ar1">9</th>
+      <td colspan="2" headers="ar1 ar10 ac1">Bateau &agrave; moteur, l'heure</td>
+      <td class="text-right" headers="ar1 ar10 ac2">201,35&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar11" headers="ar1">10</th>
+      <td colspan="2" headers="ar1 ar11 ac1">Eau douce, le m&egrave;tre cube</td>
+      <td class="text-right" headers="ar1 ar11 ac2">1,39&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar12" headers="ar1">11</th>
+      <td colspan="2" headers="ar1 ar12 ac1">&eacute;nergie &eacute;lectrique, le kilowatt-heure</td>
+      <td class="text-right" headers="ar1 ar12 ac2">0,17&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar13" headers="ar1">12</th>
+      <td colspan="2" headers="ar1 ar13 ac1">Amarrage ou rel&acirc;chement des amarres</td>
+      <td class="text-right" headers="ar1 ar13 ac2">880,95&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar14" headers="ar1">13</th>
+      <td colspan="2" headers="ar1 ar14 ac1">Heures suppl&eacute;mentaires des employ&eacute;s de la cale s&egrave;che, par employ&eacute;, l'heure</td>
+      <td class="text-right" headers="ar1 ar14 ac2">108,74&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar15" headers="ar1">14</th>
+      <td colspan="2" headers="ar1 ar15 ac1">Service de s&eacute;curit&eacute;, par navire, le jour</td>
+      <td class="text-right" headers="ar1 ar15 ac2">498,36&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar16" headers="ar1">15</th>
+      <td colspan="2" headers="ar1 ar16 ac1">S&eacute;jour de navire en cale s&egrave;che, I section, le jour</td>
+      <td class="text-right" headers="ar1 ar16 ac2">3&nbsp;256,76&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar17" headers="ar1">16</th>
+      <td colspan="2" headers="ar1 ar17 ac1">S&eacute;jour de navire en cale s&egrave;che, 2&nbsp;sections, le jour </td>
+      <td class="text-right" headers="ar1 ar17 ac2">10&nbsp;855,87&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar18" headers="ar1">17</th>
+      <td colspan="2" headers="ar1 ar18 ac1">S&eacute;jour de navire en cale s&egrave;che, 3&nbsp;sections, le jour</td>
+      <td class="text-right" headers="ar1 ar18 ac2">15&nbsp;198,22&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar19" headers="ar1">18</th>
+      <td colspan="2" headers="ar1 ar19 ac1">S&eacute;jour de navire en cale s&egrave;che par tonneau, le jour&nbsp;: mains de 5&nbsp;000 tonneaux de jauge brute</td>
+      <td class="text-right" headers="ar1 ar19 ac2">0,00&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar20" headers="ar1">19</th>
+      <td colspan="2" headers="ar1 ar20 ac1">S&eacute;jour de navire en cale s&egrave;che par tonneau, le jour&nbsp;: de 5&nbsp;000 &agrave; 34 &nbsp;999 tonneaux de jauge brute</td>
+      <td class="text-right" headers="ar1 ar20 ac2">0,13&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar21" headers="ar1">20</th>
+      <td colspan="2" headers="ar1 ar21 ac1">S&eacute;jour de navire en cale s&egrave;che par tonneau, le jour&nbsp;: de 35&nbsp;000 &agrave; 69&nbsp;999 tonneaux de jauge brute</td>
+      <td class="text-right" headers="ar1 ar21 ac2">0,12&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar22" headers="ar1">21</th>
+      <td colspan="2" headers="ar1 ar22 ac1">S&eacute;jour de navire en cale s&egrave;che par tonneau, le jour&nbsp;: de 70&nbsp;000 &agrave; 89&nbsp;999 tonneaux de jauge brute</td>
+      <td class="text-right" headers="ar1 ar22 ac2">0,10&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar23" headers="ar1">22</th>
+      <td colspan="2" headers="ar1 ar23 ac1">S&eacute;jour de navire en cale s&egrave;che par tonneau, le jour&nbsp;: plus de 89&nbsp;999 tonneaux de jauge brute</td>
+      <td class="text-right" headers="ar1 ar23 ac2">0,09&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar24" headers="ar1">23</th>
+      <td colspan="2" headers="ar1 ar24 ac1">&eacute;vacuation d'eaux us&eacute;es, par litre</td>
+      <td class="text-right" headers="ar1 ar24 ac2">0,01&nbsp;$</td>
+    </tr>
+    <tr>
+      <th class="text-center" id="ar25" headers="ar1">24</th>
+      <td colspan="2" headers="ar1 ar25 ac1">Citerne de pompage &agrave; vide</td>
+      <td class="text-right" headers="ar1 ar25 ac2">71,98&nbsp;$</td>
+    </tr>
+  </tbody>
+</table>
+
+<br /><br /><br />
+
+<table>
+	<tr>
+		<th style="text-align: center;">Article</th>
+		<th style="text-align: center;">Installations et Services</th>
+		<th style="text-align: center;">du 1 avril 2016</th>
+	</tr>
+	<tr>
+		<td style="text-align: center;">1</td>
+		<td>Reservation</td>
+		<td style="text-align: right;">5,307.46 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">2</td>
+		<td>Vidage par section</td>
+		<td style="text-align: right;">5,307.46 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">3</td>
+		<td>Quayage, le metre, par jour</td>
+		<td style="text-align: right;">6.20 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">4</td>
+		<td><strong>Grue sur rails, I'heure:</strong></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(a) crochet de charge Ieger</td>
+		<td style="text-align: right;">487.30 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(b) crochet de charge principal d'une capacite de levage d'au plus 50 tonnes metrique</td>
+		<td style="text-align: right;">703.87 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(c) crochet de charge principal d'une capacite de levage de plus de 50 tonnes metriques</td>
+		<td style="text-align: right;">1,082.90 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">5</td>
+		<td><strong>Grue sur rails, I'heure:</strong></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(a) grue de 9 tonnes metriques</td>
+		<td style="text-align: right;">135.36 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(b) grue de 20 tonnes metriques</td>
+		<td style="text-align: right;">173.26 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(c) grue de 30 tonnes metriques</td>
+		<td style="text-align: right;">211.17 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(d) chariot elevateur a fourches</td>
+		<td style="text-align: right;">102.88 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;"></td>
+		<td>(e) grue sur tour</td>
+		<td style="text-align: right;">173.26 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">6</td>
+		<td>Compresseur d'air (premier), l'heure de distribution</td>
+		<td style="text-align: right;">119.12 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">7</td>
+		<td>Compresseur d'air (deuxieme), l'heure de distribution</td>
+		<td style="text-align: right;">113.70 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">8</td>
+		<td>Compresseur d'air (sur roues), l'heure de distribution</td>
+		<td style="text-align: right;">59.56 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">9</td>
+		<td>Bateau a moteur, l'heure</td>
+		<td style="text-align: right;">196.88 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">10</td>
+		<td>Eau douce, le metre cube</td>
+		<td style="text-align: right;">1.36 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">11</td>
+		<td>Energie electrique, le kilowatt-heure</td>
+		<td style="text-align: right;">0.16 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">12</td>
+		<td>Amarrage ou relachement des amarres</td>
+		<td style="text-align: right;">861.39 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">13</td>
+		<td>Heures supplementaires des employes de Ia cale seche, par employe, l'heure</td>
+		<td style="text-align: right;">106.32 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">14</td>
+		<td>Service de securite, par navire, le jour</td>
+		<td style="text-align: right;">487.30 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">15</td>
+		<td>Sejour de navire en cale seche, I  section, le jour</td>
+		<td style="text-align: right;">3,184.47 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">16</td>
+		<td>Sejour de navire en cale seche, 2 sections, le jour</td>
+		<td style="text-align: right;">10,614.91 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">17</td>
+		<td>Sejour de navire en cale seche, 3 sections, le jour</td>
+		<td style="text-align: right;">14,860.87 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">18</td>
+		<td>Sejour de navire en cale seche par tonneau, le jour: mains de 5 000 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.00 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">19</td>
+		<td>Sejour de navire en cale si:che par tonneau, Je jour: de 5 000 a 34 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.12 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">20</td>
+		<td>Sejour de navire en cale si:che par tonneau, le jour: de 35 000 a 69 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.11 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">21</td>
+		<td>Sejour de navire en cale si:che par tonneau, le jour: de 70 000 a 89 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.10 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">22</td>
+		<td>Sejour de navire en cale seche par tonneau, le jour: plus de 89 999 tonneaux de jauge brute</td>
+		<td style="text-align: right;">0.09 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">23</td>
+		<td>Evacuation d'eaux usees, te litre</td>
+		<td style="text-align: right;">0.01 $</td>
+	</tr>
+	<tr>
+		<td style="text-align: center;">24</td>
+		<td>Citeme de pompage a vide</td>
+		<td style="text-align: right;">70.38 $</td>
+	</tr>
+</table>

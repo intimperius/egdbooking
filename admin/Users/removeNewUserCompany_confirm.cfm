@@ -35,7 +35,8 @@
 					<cfinclude template="#RootDir#includes/getStructure.cfm">
 				</cfif>
 
-				<cfform action="removeNewUserCompany_action.cfm?info=#url.info#&companies=#url.companies#" method="post" id="remCompanyConfirmForm" name="remCompanyConfirmForm">
+				<cfoutput>
+				<form action="removeNewUserCompany_action.cfm?info=#url.info#&companies=#url.companies#" method="post" id="remCompanyConfirmForm" name="remCompanyConfirmForm">
 					<div style="text-align:center;">Are you sure you want to remove <cfoutput><strong>#getCompany.Name#</strong></cfoutput>?</div>
 
 					<p><div style="text-align:center;">
@@ -45,7 +46,8 @@
 					<cfif isDefined("URL.UID")>
 					<cfoutput><input type="hidden" name="UID" value="#url.UID#" /></cfoutput>
 					</cfif>
-				</cfform>
+				</form>
+				</cfoutput>
 
 			</div>
 		<!-- CONTENT ENDS | FIN DU CONTENU -->

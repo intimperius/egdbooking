@@ -5,12 +5,16 @@
 	<cfset language.description = "Allows user to create a new company.">
 	<cfset language.subjects = "#language.masterSubjects#">
 	<cfset language.createUser = "Create New User">
+	<cfset language.colon = ":">
+	<cfset language.phoneFormatLabel = "(example:&nbsp;6139999999)">
 <cfelse>
 	<cfset language.createComp = "Cr&eacute;er une nouvelle entreprise">
 	<cfset language.keywords = "#language.masterKeywords#" & ", Ajout d'une entreprise">
 	<cfset language.description = "Permet &agrave; l'utilisateur de cr&eacute;er un nouveau compte pour une entreprise.">
 	<cfset language.subjects = "#language.masterSubjects#">
 	<cfset language.createUser = "Cr&eacute;er un nouvel utilisateur">
+	<cfset language.colon = "&nbsp;:">
+	<cfset language.phoneFormatLabel = "(exemple&nbsp;:&nbsp;6139999999)">
 </cfif>
 
 <cfhtmlhead text="
@@ -21,7 +25,7 @@
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.CreateUser# - #language.esqGravingDock# - #language.PWGSC#</title>">
 	<cfset request.title = language.createComp />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 			<!-- CONTENT BEGINS | DEBUT DU CONTENU -->
       <div class="center">
@@ -93,13 +97,13 @@
 					<form name="addCompanyForm" action="entrpajout-compadd_action.cfm?lang=#lang#&amp;info=#url.info#&amp;companies=#url.companies#" id="addCompanyForm" method="post">
             <fieldset>	
               <div class="#err_compname#">
-                <label for="name"><abbr title="#language.required#" class="required">*</abbr>#language.companyName#:<span class="form-text">#error('name')#</span></label>
+                <label for="name"><abbr title="#language.required#" class="required">*</abbr>#language.companyName##language.colon#<span class="form-text">#error('name')#</span></label>
                 <input name="name" id="name" type="text" size="40" maxlength="75" value="#Variables.name#" />
                 
               </div>
             
               <div class="#err_address1#">
-                <label for="address1"><abbr title="#language.required#" class="required">*</abbr>#language.Address# 1:<span class="form-text">#error('address1')#</span></label>
+                <label for="address1"><abbr title="#language.required#" class="required">*</abbr>#language.Address# 1#language.colon#<span class="form-text">#error('address1')#</span></label>
                 <input name="address1" id="address1" type="text" size="40" maxlength="75" value="#Variables.address1#" />
                 
               </div>
@@ -110,7 +114,7 @@
               </div>
             
               <div class="#err_city#">
-                <label for="city"><abbr title="#language.required#" class="required">*</abbr>#language.City#:<span class="form-text">#error('city')#</span></label>
+                <label for="city"><abbr title="#language.required#" class="required">*</abbr>#language.City##language.colon#<span class="form-text">#error('city')#</span></label>
                 <input name="city" id="city" type="text" size="25" maxlength="40" value="#Variables.city#" />
                 
               </div>
@@ -122,25 +126,25 @@
               </div>
             
               <div class="#err_country#">
-                <label for="country"><abbr title="#language.required#" class="required">*</abbr>#language.Country#:<span class="form-text">#error('country')#</span></label>
+                <label for="country"><abbr title="#language.required#" class="required">*</abbr>#language.Country##language.colon#<span class="form-text">#error('country')#</span></label>
                 <input name="country" id="country" type="text" size="25" maxlength="40" value="#Variables.country#" />
                 
               </div>
             
               <div class="#err_zip#">
-                <label for="zip"><abbr title="#language.required#" class="required">*</abbr>#language.zip#:<span class="form-text">#error('zip')#</span></label>
+                <label for="zip"><abbr title="#language.required#" class="required">*</abbr>#language.zip##language.colon#<span class="form-text">#error('zip')#</span></label>
                 <input name="zip" id="zip" type="text" size="12" maxlength="10" value="#Variables.zip#" />
                 
               </div>
 
               <div class="#err_phone#">
-                <label for="phone"><abbr title="#language.required#" class="required">*</abbr>#language.Phone#:<span class="form-text">#error('phone')#</span></label>
+                <label for="phone"><abbr title="#language.required#" class="required">*</abbr>#language.Phone# #language.phoneFormatLabel##language.colon#<span class="form-text">#error('phone')#</span></label>
                 <input name="phone" id="phone" type="text" size="25" maxlength="32" value="#Variables.phone#" />
                 
               </div>
             
               <div>
-                <label for="fax">#language.Fax# #language.optional#:</label>
+                <label for="fax">#language.Fax# #language.optional##language.colon#</label>
                 <input id="fax" name="fax" type="text" size="10" maxlength="32" />
               </div>
             

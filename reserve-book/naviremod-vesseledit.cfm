@@ -10,6 +10,19 @@
 	<cfset language.reset = "reset">
 	<cfset language.anonymousWarning = "Anonymous vessels are only anonymous to other companies' users.  The Esquimalt Graving Dock administrators have access to all vessel information regardless of anonymity.">
 	<cfset language.notEditVesselDimensions = "You may not edit the vessel dimensions as this vessel currently has confirmed bookings.  To make dimension changes, please contact EGD Administration.">
+	
+	
+	 <cfset language.vesselLabel = "Vessel:" >
+	<cfset language.CompanyNameLabel = "Company Name:" >
+	<cfset language.vesselNameLabel = "Name:" >
+	<cfset language.LengthLabel = "Length (m):" >
+	<cfset language.WidthLabel = "Width (m):" >
+	<cfset language.daysLabel = "days:" >
+	<cfset language.LloydsIDLabel = "<abbr title='International Maritime Organization'>IMO</abbr> Number:" >
+	<cfset language.TonnageLabel = "Tonnage:" >
+	<cfset language.anonymousLabel = "Keep this vessel anonymous:">
+	
+	<cfset language.colon = ":">
 <cfelse>
 	<cfset language.editVessel = "Modifier le navire">
 	<cfset language.keywords = language.masterKeywords & ", Modifier le navire">
@@ -19,7 +32,18 @@
 	<cfset language.reset = "R&eacute;initialiser">
 	<cfset language.anonymousWarning = "Les navires anonymes ne sont anonymes qu'aux utilisateurs d'autres entreprises. Les administrateurs de la cale s&egrave;che d'Esquimalt ont acc&egrave;s &agrave; la totalit&eacute; de l'information concernant les navires, peu importe l'anonymat.">
 	<cfset language.notEditVesselDimensions = "Vous ne pouvez pas modifier les dimensions du navire, parce que ce dernier fait l'objet de r&eacute;servations confirm&eacute;es. Pour apporter des changements aux dimensions, pri&egrave;re de communiquer avec l'administration de la CSE.">
-</cfif>
+
+	<cfset language.vesselLabel = "Navire&nbsp:" >
+	<cfset language.CompanyNameLabel = "Raison sociale&nbsp:" >
+	<cfset language.vesselNameLabel = "Nom&nbsp:" >
+	<cfset language.LengthLabel = "Longueur (m)&nbsp:" >
+	<cfset language.WidthLabel = "Largeur (m)&nbsp:" >
+	<cfset language.daysLabel = "jours&nbsp:" >
+	<cfset language.LloydsIDLabel = "Code d'identification de la Lloyds&nbsp:" >
+	<cfset language.TonnageLabel = "Tonnage&nbsp:" >
+	<cfset language.anonymousLabel = "Garder ce navire anonyme&nbsp:">
+	<cfset language.colon = "&nbsp;:">
+	</cfif>
 
 <cfhtmlhead text="
 	<meta name=""dcterms.title"" content=""#language.editVessel# - #language.esqGravingDock# - #language.PWGSC#"" />
@@ -73,7 +97,7 @@
 				</cfif>
 
 
-				<cfif isDefined("form.Name")>
+				<cfif isDefined("form.lloydsID")>
 					<cfset variables.Name = form.Name>
 					<cfset variables.lloydsID = form.lloydsID>
 					<cfset variables.length = form.length>
@@ -123,14 +147,14 @@
 					<cfif getVesselDockBookings.recordCount GT 0 OR getVesselJettyBookings.recordCount GT 0>
 					<div id="actionErrors">#language.notEditVesselDimensions#</div>
 					</cfif>
-					<fieldset>
+	<fieldset>				
             <legend>#language.vessel#</legend>
             <p>#language.requiredFields#</p>
 
             <div>
               <label for="CID">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.CompanyName#:
+                #language.CompanyNameLabel#
               </label>
               <input type="text" disabled="disabled" readonly="readonly" id="CID" name="CID" value="#getVesselDetail.CompanyName#" style="width: 260px;" />
             </div>
@@ -138,7 +162,7 @@
 			<div>
               <label for="name">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.vesselName#:<span class="form-text">#error("name")#</span>
+                #language.vesselNameLabel#<span class="form-text">#error("name")#</span>
               </label>
             </div>
             <div class="#err_name#">
@@ -147,45 +171,45 @@
             </div>
 
 			<div>
-              <label for="LloydsID">#language.LloydsID#:</label>
+              <label for="LloydsID">#language.LloydsIDLabel#</label>
               <input id="LloydsID" name="LloydsID" type="text" value="#variables.lloydsid#" size="20" maxlength="20" />
 			</div>
 
 		<cfif getVesselDockBookings.recordCount GT 0 OR getVesselJettyBookings.recordCount GT 0>
 			<div>
-                <label for="length">#language.Length#:</label>
+                <label for="length">#language.LengthLabel#</label>
                 <p>#variables.length# m</p>
                 <input type="hidden" id="length" name="length" value="#variables.length#" />
 			</div>
 
 			<div>
-                <label for="width">#language.Width#:</label>
+                <label for="width">#language.WidthLabel#</label>
                 <p>#variables.width# m</p>
                 <input type="hidden" id="width" name="width" value="#variables.width#" />
 			</div>
 		<cfelse>
-			<div>
+			
             <div>
               <label for="length">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.Length#:<span class="form-text">#error("length")#</span>
+                #language.LengthLabel# <span class="color-medium">(#language.Max##language.colon# #Variables.MaxLength#)</span> <span class="form-text">#error("length")#</span>
               </label>
             </div>
             <div class="#err_lgt#">
               <input name="length" id="length" type="text" value="#variables.length#" size="8" maxlength="8"/>
-              <span class="color-medium">(#language.Max#: #Variables.MaxLength#)</span>
+              
               
 			</div>
             
 			<div>
               <label for="width">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.Width#:<span class="form-text">#error("width")#</span>
+                #language.WidthLabel# <span class="color-medium">(#language.Max##language.colon# #Variables.MaxWidth#)</span> <span class="form-text">#error("width")#</span>
               </label>
             </div>
             <div class="#err_wdt#">
               <input name="width" id="width" type="text" value="#variables.width#" size="8" maxlength="8" />
-              <span class="color-medium">(#language.Max#: #Variables.MaxWidth#)</span>
+              
               
 			</div>
 		</cfif>
@@ -193,7 +217,7 @@
 			<div>
               <label for="blocksetuptime" id="block_setup_time">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.BlockSetup# #language.days#:<span class="form-text">#error("blocksetuptime")#</span>
+                #language.BlockSetup# #language.daysLabel#<span class="form-text">#error("blocksetuptime")#</span>
               </label>
             </div>
             <div class="#err_bst#">
@@ -204,7 +228,7 @@
 			<div>
               <label for="blockteardowntime" id="block_teardown_time">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.BlockTeardown# #language.days#:<span class="form-text">#error("blockteardowntime")#</span>
+                #language.BlockTeardown# #language.daysLabel#<span class="form-text">#error("blockteardowntime")#</span>
               </label>
             </div>
             <div class="#err_btt#">
@@ -215,7 +239,7 @@
 			<div>
               <label for="tonnage">
                 <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                #language.Tonnage#:<span class="form-text">#error("tonnage")#</span>
+                #language.TonnageLabel#<span class="form-text">#error("tonnage")#</span>
               </label>
             </div>
             <div class="#err_ton#">
@@ -223,16 +247,17 @@
               
 			</div>
 
-            <div>
-              <label for="Anonymous">#language.anonymous#:<sup id="fnb1-ref"><a class="footnote-link" href="##fnb1"><span class="wb-invisible">#language.footnote#</span>1</a></sup></label>
-              <input id="anonymous" type="checkbox" name="Anonymous" <cfif variables.Anonymous EQ 1>checked="true" </cfif>value="Yes" />
+             <div>
+              
+              <input type="checkbox" id="Anonymous" name="Anonymous" value="Yes" />
+			  <label for="Anonymous">#language.anonymousLabel#<sup id="fnb1-ref"><a class="footnote-link" href="##fnb1"><span class="wb-invisible">#language.footnote#</span>1</a></sup></label>
             </div>
 
             <div>
               <input type="hidden" name="VNID" value="#url.VNID#" />
               <input type="submit" value="#language.Submit#" name="submitForm" class="button button-accent" />
             </div>
-					</fieldset>
+	</fieldset>				
 				</form>
 
        <div class="wet-boew-footnotes" role="note">

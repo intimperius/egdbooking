@@ -28,12 +28,12 @@ SELECT Name as CompanyDetail
 <cfoutput>
 	
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
-<cfform action="changeCompany3.cfm" method="post">
-	<cfinput type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
-	<cfinput type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
-	<cfinput type="hidden" value="#newCID#" name="newCID" required="Yes" readonly="yes" />
+<form action="changeCompany3.cfm" method="post">
+	<input type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
+	<input type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
+	<input type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
+	<input type="hidden" value="#UserNameURL#" name="UserNameURL" required="Yes" readonly="yes" />
+	<input type="hidden" value="#newCID#" name="newCID" required="Yes" readonly="yes" />
 
 
 	<div class="module-info modwide">
@@ -41,17 +41,17 @@ SELECT Name as CompanyDetail
 		<ul>
 			<b>Original Company:</b> #CompanyURL#<br/>
 			<b>Original Agent:</b> #UserNameURL#<br/>
-			<b>Change to Company:</b> <cfloop query="getCompanyDetail">#CompanyDetail#</cfloop><br/>
+			<b>Change to Company:</b> <cfloop query="getCompanyDetail">#CompanyDetail#</cfloop><br />
 		</ul>
 	</div>
-	<br/>
-	Change to Agent: <cfselect name="newUserName" size="1" required="yes">
+	<br />
+	Change to Agent: <select name="newUserName" size="1" required="yes">
 		  <cfloop query="getUserName">
 			<option value="#UID#">#LastName#, #FirstName#</option>
-		  </cfloop> </cfselect>
-	<br/><input id="submit" type="submit" value="Submit" class="button button-accent" />
+		  </cfloop> </select>
+	<br /><input id="submit" type="submit" value="Submit" class="button button-accent" />
 	  
-</cfform>
+</form>
 </cfoutput>
 			
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

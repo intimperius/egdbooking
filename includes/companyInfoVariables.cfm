@@ -31,7 +31,7 @@
 	<cfset language.country = "Pays">
 	<cfset language.phone = "T&eacute;l&eacute;phone">
 	<cfset language.abbreviation = "Abr&eacute;viation">
-	<cfset language.fax = "fax">
+	<cfset language.fax = "Fax">
 	<cfset language.nameError = "Veuillez entrer la raison sociale.">
 	<cfset language.addressError = "Veuillez entrer l'adresse.">
 	<cfset language.cityError = "Veuillez entrer le nom de la ville.">

@@ -25,6 +25,8 @@
 	<cfset language.saveName = "Save Changes">
 	<cfset language.yourCompanies = "Your Companies">
 	<cfset language.yourCompany = "Your Company">
+	
+	<cfset Language.colon = ":">
 <cfelse>
 	<cfset language.editProfile = "Modifier le profil">
 	<cfset language.editNameAndEmail = "Changement de nom ou courriel" />
@@ -52,6 +54,8 @@
   <cfset language.saveName = "Sauvegarde des changements" />
 	<cfset language.yourCompanies = "Vos entreprises">
 	<cfset language.yourCompany = "Votre entreprise">
+	
+	<cfset Language.colon = "&nbsp:">
 </cfif>
 
 <!---clear form structure if clrfs is set--->
@@ -154,7 +158,7 @@ function EditSubmit ( selectedform )
 							<div class="#err_fname#">
                 <label for="firstname">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.FirstName#:<span class="form-text">#error('firstname')#</span>
+                  #language.FirstName##Language.colon#<span class="form-text">#error('firstname')#</span>
                 </label>
                 <input name="firstname" id="firstname" type="text" value="#variables.firstName#" size="25" maxlength="40"  />
                 
@@ -163,7 +167,7 @@ function EditSubmit ( selectedform )
 							<div class="#err_lname#">
                 <label for="lastname">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.LastName#:<span class="form-text">#error('lastname')#</span>
+                  #language.LastName##Language.colon#<span class="form-text">#error('lastname')#</span>
                 </label>
                 <input name="lastname" id="lastname" type="text" value="#variables.lastName#" size="25" maxlength="40"  />
                 
@@ -173,7 +177,7 @@ function EditSubmit ( selectedform )
 							<div class="#err_email#">
                 <label for="email">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.Email#:<span class="form-text">#error('email')#</span>
+                  #language.Email##Language.colon#<span class="form-text">#error('email')#</span>
                 </label>
                 <input name="email" id="email" type="text" value="#variables.email#" size="25" maxlength="40"  />
                
@@ -187,7 +191,7 @@ function EditSubmit ( selectedform )
 				</cfoutput>
 
 				<cfoutput>
-					<form action="#RootDir#reserve-book/passechange.cfm?lang=eng" method="post" id="changePassForm">
+					<form action="#RootDir#reserve-book/passechange.cfm?lang=#lang#" method="post" id="changePassForm">
 						<fieldset>
               <legend style="display: block; text-decoration: none; border: none;">#language.ChangePassword#</legend>
               <p>#language.requiredFields#</p>
@@ -196,7 +200,7 @@ function EditSubmit ( selectedform )
                 <label for="password">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
                   #language.Password# 
-                  <span class="smallFont">(min. 8 #language.characters#)</span>:<span class="form-text">#error('password')#</span>
+                  <span class="smallFont">(min. 8 #language.characters#)</span>#Language.colon#<span class="form-text">#error('password')#</span>
                 </label>
                 <input type="password" id="password" name="password1" />
                 
@@ -205,7 +209,7 @@ function EditSubmit ( selectedform )
 							<div class="#err_pass2#">
                 <label for="password2">
                   <abbr title="#language.required#" class="required">*</abbr>&nbsp;
-                  #language.RepeatPassword#:<span class="form-text">#error('password2')#</span>
+                  #language.RepeatPassword##Language.colon#<span class="form-text">#error('password2')#</span>
                 </label>
                 <input type="password" id="password2" name="password2" />
                 

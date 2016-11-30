@@ -160,7 +160,8 @@
 				<!---------------------------------------------------------------------------------------------------------------------->
 
 				<p>Please confirm the following information.</p>
-				<cfform action="editJettyBooking_action.cfm?#urltoken#&BRID=#form.BRID#&editStart=#form.startDate#&editEnd=#form.endDate#&jetty=#form.jetty#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="bookingreq" preservedata="Yes">
+				<cfoutput>
+				<form action="editJettyBooking_action.cfm?#urltoken#&BRID=#form.BRID#&editStart=#form.startDate#&editEnd=#form.endDate#&jetty=#form.jetty#&referrer=#URLEncodedFormat(url.referrer)##variables.dateValue#" method="post" id="bookingreq" preservedata="Yes">
 				<cfoutput><input type="hidden" name="BRID" value="#Variables.BRID#" /></cfoutput>
 				<div class="module-info widemod">
           <h2>Booking Details</h2>
@@ -192,7 +193,8 @@
 						<cfoutput><input type="button" value="Back" class="textbutton" onclick="self.location.href='editJettyBooking.cfm?#urltoken#&BRID=#form.BRID##variables.dateValue#';" /></cfoutput>
 						<cfoutput><input type="button" value="Cancel" class="textbutton" onclick="self.location.href='#returnTo#?#urltoken#&BRID=#form.BRID##variables.dateValue####form.BRID#';" /></cfoutput>
 				</div>
-				</cfform>
+				</form>
+				</cfoutput>
 
 			</div>
 

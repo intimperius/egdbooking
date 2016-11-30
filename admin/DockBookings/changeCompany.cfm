@@ -28,7 +28,7 @@ SELECT Companies.CID, Companies.Name
 	<br />#CompanyURL# cannot be changed because #vesselNameURL# isn't available in another company.
 <cfelse>
 
-	<cfform action="changeCompany2.cfm" method="post">
+	<form action="changeCompany2.cfm" method="post">
 		<cfinput type="hidden" value="#vesselNameURL#" name="vesselNameURL" required="Yes" readonly="yes">
 		<cfinput type="hidden" value="#BRIDURL#" name="BRIDURL" required="Yes" readonly="yes" />
 		<cfinput type="hidden" value="#CompanyURL#" name="CompanyURL" required="Yes" readonly="yes" />
@@ -41,13 +41,13 @@ SELECT Companies.CID, Companies.Name
 		</ul>
 	</div>
 	<br/>
-		Change to Company: <cfselect name="newCID" size="1" required="yes">
+		Change to Company: <select name="newCID" size="1" required="yes">
 		  <cfloop query="getCompanyList">
 			<option value="#CID#">#Name#</option>
-		  </cfloop> </cfselect></td>
+		  </cfloop> </select></td>
 	  <br/>
 	  <input id="submit" type="submit" value="Submit" class="button button-accent" />	
-	</cfform>
+	</form>
 </cfif>
 </cfoutput>
 			

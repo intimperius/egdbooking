@@ -75,12 +75,20 @@ function EditSubmit ( selectedform )
 <cfinclude template="#RootDir#includes/getStructure.cfm">
 </cfif>
 
-<cfform action="editCompany.cfm?lang=#lang#" method="post" id="chooseCompanyForm">
-<cfselect name="CID" query="getCompanyList" value="CID" display="Name" selected="#form.CID#" />
+<cfoutput>
+<form action="editCompany.cfm?lang=#lang#" method="post" id="chooseCompanyForm">
+<select name="CID" query="getCompanyList" value="CID" display="Name" selected="#form.CID#">
+<cfloop query="getCompanyList">
+	<option value="#getCompanyList.CID#">#getCompanyList.Name#</option>
+</cfloop>
+</select>
 <!---a href="javascript:EditSubmit('chooseCompanyForm');" class="textbutton">View</a--->
+<br />
 <input type="submit" value="View" class="button-accent button" />
+<br />
 <cfoutput><a href="menu.cfm?lang=#lang#" class="textbutton">Cancel</a></cfoutput>
-</cfform>
+</form>
+</cfoutput>
 
 <cfif form.CID NEQ "">
 <cfquery name="getCompany" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
@@ -112,57 +120,59 @@ function EditSubmit ( selectedform )
 </cfif>
 
 <cfoutput>
-<cfform action="editCompany_action.cfm?lang=#lang#" method="post" id="editCompanyForm" onsubmit="if(!checkFilledIn('editCompanyForm')) { return false;
+<form action="editCompany_action.cfm?lang=#lang#" method="post" id="editCompanyForm" onsubmit="if(!checkFilledIn('editCompanyForm')) { return false;
 }">
 
 	<h2>Edit #Variables.name#</h2>
 		<label for="name">Company Name:</label>
-		<cfinput name="name" id="name" type="text" size="40" maxlength="75" required="yes" value="#Variables.name#" message="Please enter the company name." />
+		<input name="name" id="name" type="text" size="40" maxlength="75" required="yes" value="#Variables.name#" message="Please enter the company name." />
 	
 	
 		<label for="abbr">Abbreviation:</label>
-		<cfinput name="abbr" id="abbr" type="text" size="5" maxlength="3" value="#Variables.abbr#" required="yes" message="Please enter the company abbreviation." />
+		<input name="abbr" id="abbr" type="text" size="5" maxlength="3" value="#Variables.abbr#" required="yes" message="Please enter the company abbreviation." />
 	
 	
 		<label for="address1">Address 1:</label>
-		<cfinput name="address1" id="address1" type="text" size="40" maxlength="75" required="yes" value="#Variables.address1#" message="Please enter the address." />
+		<input name="address1" id="address1" type="text" size="40" maxlength="75" required="yes" value="#Variables.address1#" message="Please enter the address." />
 	
 	
 		<label for="address2">Address 2 (optional):</label>
-		<cfinput name="address2" id="address2" type="text" size="40" maxlength="75" value="#Variables.address2#" />
+		<input name="address2" id="address2" type="text" size="40" maxlength="75" value="#Variables.address2#" />
 	
 	
 		<label for="city">City:</label>
-		<cfinput name="city" id="city" type="text" size="25" maxlength="40" required="yes" value="#Variables.city#" message="Please enter the city." />
+		<input name="city" id="city" type="text" size="25" maxlength="40" required="yes" value="#Variables.city#" message="Please enter the city." />
 	
 	
 		<label for="province">Province:</label>
-		<cfinput name="province" id="province" type="text" size="25" maxlength="40" required="no" value="#Variables.province#" message="Please enter the province/state." />
+		<input name="province" id="province" type="text" size="25" maxlength="40" required="no" value="#Variables.province#" message="Please enter the province/state." />
 	
 	
 		<label for="country">Country:</label>
-		<cfinput name="country" id="country" type="text" size="25" maxlength="40" required="yes" value="#Variables.country#" message="Please enter the country." />
+		<input name="country" id="country" type="text" size="25" maxlength="40" required="yes" value="#Variables.country#" message="Please enter the country." />
 	
 	
 		<label for="zip">Postal / Zip Code:</label>
-		<cfinput name="zip" id="zip" type="text" size="12" maxlength="10" required="no" value="#Variables.zip#" message="Please enter the postal code or zip code." />
+		<input name="zip" id="zip" type="text" size="12" maxlength="10" required="no" value="#Variables.zip#" message="Please enter the postal code or zip code." />
 	
 	
 		<label for="phone">Phone:</label>
-		<cfinput name="phone" id="phone" type="text" size="25" maxlength="32" required="yes" value="#Variables.phone#" message="Please check that the phone number is valid." />
+		<input name="phone" id="phone" type="text" size="25" maxlength="32" required="yes" value="#Variables.phone#" message="Please check that the phone number is valid." />
 	
 	
 		<label for="fax">Fax (optional):</label>
-		<cfinput name="fax" id="fax" type="text" size="25" maxlength="32" value="#variables.fax#" />
+		<input name="fax" id="fax" type="text" size="25" maxlength="32" value="#variables.fax#" />
 	
 	<br/><br/>
 		<input type="hidden" name="CID" value="#form.CID#" />
+		<br />
 		<input type="submit" class="button-accent button" value="Submit" />
+		<br />
 		<a href="#RootDir#admin/menu.cfm?lang=#lang#" class="textbutton">Cancel</a>
 		
 
 
-</cfform>
+</form>
 </cfoutput>
 </CFIF>
 

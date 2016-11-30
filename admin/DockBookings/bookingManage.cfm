@@ -123,7 +123,11 @@ function EditSubmit ( selectedform )
 
 <h1 id="wb-cont">Drydock Booking Management</h1>
 
+
+
 <CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+
+<div class="no-print">
 
 <p>Please enter a range of dates for which you would like to see the bookings:</p>
 <form action="bookingManage.cfm?lang=#lang#" method="get">
@@ -147,6 +151,7 @@ function EditSubmit ( selectedform )
 	</div>
 	<input type="submit" class="button button-accent" value="Submit" />	
 </form>
+</div>
 
 <cfif form.startDate NEQ "" and form.endDate NEQ "">
 	<cfif isDate(form.startDate)>
@@ -171,13 +176,13 @@ function EditSubmit ( selectedform )
 	<h2>Drydock <cfif #countPending.numPend# NEQ 0>(#countPending.numPend# #language.pending#)</cfif></h2>
 
 <p>
-<a href="addBooking.cfm?#urltoken#" class="textbutton">Add New Drydock Booking</a>
+<a href="addBooking.cfm?#urltoken#" class="textbutton no-print">Add New Drydock Booking</a>
 </p>
 <p>
 		<cfif form.expandAll NEQ "yes">
-			<a href="javascript:EditSubmit('expandAll');">Expand All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Expand All</a>
 		<cfelse>
-			<a href="javascript:EditSubmit('expandAll');">Collapse All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Collapse All</a>
 		</cfif>
 </p>
 
@@ -298,32 +303,33 @@ function EditSubmit ( selectedform )
 				AND		Docks.BRID = Bookings.BRID
 			</cfquery>
 
-			<tr><td colspan="5">
+			<tr><td colspan="5" class="booking-detail">
 				
-			<div class="module-info widemod">
+			<div class="module-info-widemod">
 				<h2>Booking Details</h2>
 				<div class="indent">
-					<b>Start Date:</b> #dateformat(getData.startDate, "mmm d, yyyy")#<br/>
-					<b>End Date:</b> #dateformat(getData.endDate, "mmm d, yyyy")#<br/>
-					<b>## of Days:</b> #datediff('d', getData.startDate, getData.endDate) + 1#<br/>
-					<b>Vessel:</b> <cfif #EndHighlight# GTE PacificNow>* </cfif>#getData.vesselName#<br/>
-					<b><i>Length:</i></b> <i>#getData.length# m</i><br/>
-					<b><i>Width:</i></b> <i>#getData.width# m</i><br/>
-					<b><i>Tonnage:</i></b> <i>#getData.tonnage#</i><br/>
-					<b>Agent:</b> #getData.UserName#<br/>
-					<b>Company:</b> #getData.companyName# <a class="textbutton" href="changeCompany.cfm?BRIDURL=#BRID#&CompanyURL=#getData.companyName#&vesselNameURL=#getData.vesselName#&amp;UserNameURL=#getData.UserName#">Change</a><br/>
-					<b>Booking Time:</b> #DateFormat(getData.bookingTime,"mmm d, yyyy")# #TimeFormat(getData.bookingTime,"long")#<br/>
-					<b>Last Change:</b> #getData.bookingTimeChangeStatus# #DateFormat(getData.bookingTimeChange,"mmm d, yyyy")# #TimeFormat(getData.bookingTimeChange,"long")#<br/>
-					<b>Section(s):</b> <cfif getData.Section1>Section 1</cfif>
+					<p><b>Start Date:</b> #dateformat(getData.startDate, "mmm d, yyyy")#</p>
+					<p><b>End Date:</b> #dateformat(getData.endDate, "mmm d, yyyy")#</p>
+					<p><b>## of Days:</b> #datediff('d', getData.startDate, getData.endDate) + 1#</p>
+					<p><b>Vessel:</b> <cfif #EndHighlight# GTE PacificNow>* </cfif>#getData.vesselName#</p>
+					<p><b><i>Length:</i></b> <i>#getData.length# m</i></p>
+					<p><b><i>Width:</i></b> <i>#getData.width# m</i></p>
+					<p><b><i>Tonnage:</i></b> <i>#getData.tonnage#</i></p>
+					<p><b>Agent:</b> #getData.UserName#</p>
+					<p><b>Company:</b> #getData.companyName# <a class="textbutton" href="changeCompany.cfm?BRIDURL=#BRID#&CompanyURL=#getData.companyName#&vesselNameURL=#getData.vesselName#&amp;UserNameURL=#getData.UserName#">Change</a></p>
+					<p><b>Booking Time:</b> #DateFormat(getData.bookingTime,"mmm d, yyyy")# #TimeFormat(getData.bookingTime,"long")#</p>
+					<p><b>Last Change:</b> #getData.bookingTimeChangeStatus# #DateFormat(getData.bookingTimeChange,"mmm d, yyyy")# #TimeFormat(getData.bookingTimeChange,"long")#</p>
+					<p><b>Section(s):</b> <cfif getData.Section1>Section 1</cfif>
 						<cfif getData.Section2><cfif getData.Section1> &amp; </cfif>Section 2</cfif>
 						<cfif getData.Section3><cfif getData.Section1 OR getData.Section2> &amp; </cfif>Section 3</cfif>
-						<cfif NOT getData.Section1 AND NOT getData.Section2 AND NOT getData.Section3>Unassigned</cfif>
+						<cfif NOT getData.Section1 AND NOT getData.Section2 AND NOT getData.Section3>Unassigned</cfif></p>
 				</div>
 				<div style="text-align:right"><a href="javascript:EditSubmit('editBooking#ID#');">Edit Details</a></div>
 			</div>
 			<br/>
-			<div style="margin-left:-10px;"><form class="form-inline"><label for="EndHighlight">Highlight for:</label>
-				<cfform action="highlight_action.cfm?BRID=#BRID#" method="post" id="updateHighlight">
+			<div style="margin-left:-10px;"><label for="EndHighlight">Highlight for:</label>
+				<cfoutput>
+				<form action="highlight_action.cfm?BRID=#BRID#" method="post" id="updateHighlight">
 					<cfif EndHighlight NEQ "">
 					<cfset datediffhighlight = DateDiff("d", PacificNow, EndHighlight)>
 					<cfset datediffhighlight = datediffhighlight+"1">
@@ -331,8 +337,9 @@ function EditSubmit ( selectedform )
 					<cfelse>
 					<cfset datediffhighlight = "0">
 					</cfif>
-					<cfinput id="EndHighlight" name="EndHighlight" type="text" value="#datediffhighlight#" size="3" maxlength="3" required="yes" message="Please enter an End Highlight Date." /> Days <input type="submit" name="submitForm" class="button" value="Update" />
-				</cfform></form>
+					<input id="EndHighlight" name="EndHighlight" type="text" value="#datediffhighlight#" size="3" maxlength="3" required="yes" message="Please enter an End Highlight Date." /> Days <input type="submit" name="submitForm" class="button" value="Update" />
+				</form>
+				</cfoutput>
 			</div>
 			
 			<b>Highlight Until:</b> <cfif datediffhighlight NEQ "0">#DateFormat(EndHighlight, "mmm dd, yyyy")#</cfif>
@@ -341,6 +348,7 @@ function EditSubmit ( selectedform )
 				<cfelse>
 					<cfset variables.actionCap = "Delete Booking">
 				</cfif><br/>
+				<br />
 			<b>Status:</b> <cfif getData.Status EQ "C">
 						<strong>Confirmed</strong>
 						<a href="javascript:EditSubmit('chgStatus_2t#ID#');" class="textbutton">Make Tentative</a>
@@ -372,18 +380,18 @@ function EditSubmit ( selectedform )
 		</cfif>
 
 	</table>
-	<div style="float:left;"><a href="addBooking.cfm?#urltoken#" class="textbutton">Add New Drydock Booking</a></div>
+	<div style="float:left;"><a href="addBooking.cfm?#urltoken#" class="textbutton no-print">Add New Drydock Booking</a></div>
 	<div style="text-align:right;">
 		<cfif form.expandAll NEQ "yes">
-			<a href="javascript:EditSubmit('expandAll');">Expand All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Expand All</a>
 		<cfelse>
-			<a href="javascript:EditSubmit('expandAll');">Collapse All</a>
+			<a href="javascript:EditSubmit('expandAll');" class="no-print">Collapse All</a>
 		</cfif>
 	</div>
 
 	<hr />
 	<h2>Maintenance</h2>
-	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton">Add New Maintenance Block</a></cfoutput>
+	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton no-print">Add New Maintenance Block</a></cfoutput>
 
 	<cfquery name="getMaintenance" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 		SELECT  Bookings.*, Docks.Section1, Docks.Section2, Docks.Section3
@@ -426,8 +434,8 @@ function EditSubmit ( selectedform )
 							<cfif getMaintenance.Section3><cfif getMaintenance.Section1 OR getMaintenance.Section2> &amp; </cfif>Section 3</cfif>
 						</cfif>
 					</td>
-					<td><a href="#RootDir#admin/DockBookings/editMaintBlock.cfm?BRID=#getMaintenance.BRID#">Edit</a></td>
-					<td><a href="#RootDir#admin/DockBookings/deleteMaintBlock_confirm.cfm?BRID=#getMaintenance.BRID#">#variables.actionCap#</a></td>
+					<td><a href="#RootDir#admin/DockBookings/editMaintBlock.cfm?BRID=#getMaintenance.BRID#" class="no-print">Edit</a></td>
+					<td><a href="#RootDir#admin/DockBookings/deleteMaintBlock_confirm.cfm?BRID=#getMaintenance.BRID#" class="no-print">#variables.actionCap#</a></td>
 				</tr>
 			</cfoutput>
 		<cfelse>
@@ -439,7 +447,7 @@ function EditSubmit ( selectedform )
 		</cfif>
 	</table>
 
-	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton">Add New Maintenance Block</a></cfoutput>
+	<cfoutput><a href="addMaintBlock.cfm?#urltoken#" class="textbutton no-print">Add New Maintenance Block</a></cfoutput>
 
 </cfif>
 <!-- CONTENT ENDS | FIN DU CONTENU -->

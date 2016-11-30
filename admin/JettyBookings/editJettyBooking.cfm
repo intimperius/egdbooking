@@ -20,9 +20,9 @@
 </cfsavecontent>
 <cfhtmlhead text="#js#">
 <cfset request.title = "Edit Jetty Booking Information">
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm" />
 
-<CFPARAM name="url.referrer" default="Booking Management">
+<CFPARAM name="url.referrer" default="Booking Management" />
 <CFIF url.referrer eq "Booking Details">
 	<CFSET returnTo = "#RootDir#comm/detail-res-book.cfm">
 	<cfset variables.referrer = "Booking Details">
@@ -47,33 +47,33 @@
 					<!-- CONTENT TITLE ENDS | FIN DU TITRE DU CONTENU -->
 					</h1>
 
-				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm">
+				<CFINCLUDE template="#RootDir#includes/admin_menu.cfm" />
 
 				<!--- Initiate Variables --------------------------------------------------------------------------------------------------->
-				<cfparam name="Variables.BRID" default="">
-				<cfparam name="Variables.VesselName" default="">
-				<cfparam name="Variables.VNID" default="">
-				<cfparam name="Variables.UID" default="">
-				<cfparam name="Variables.StartDate" default="">
-				<cfparam name="Variables.EndDate" default="">
-				<cfparam name="Variables.Status" default="">
-				<cfparam name="Variables.NorthJetty" default="0">
-				<cfparam name="Variables.SouthJetty" default="0">
-				<cfparam name="Variables.CompanyName" default="">
-				<cfparam name="Variables.Jetty" default="">
-				<cfparam name="Variables.CID" default="">
+				<cfparam name="Variables.BRID" default="" />
+				<cfparam name="Variables.VesselName" default="" />
+				<cfparam name="Variables.VNID" default="" />
+				<cfparam name="Variables.UID" default="" />
+				<cfparam name="Variables.StartDate" default="" />
+				<cfparam name="Variables.EndDate" default="" />
+				<cfparam name="Variables.Status" default="" />
+				<cfparam name="Variables.NorthJetty" default="0" />
+				<cfparam name="Variables.SouthJetty" default="0" />
+				<cfparam name="Variables.CompanyName" default="" />
+				<cfparam name="Variables.Jetty" default="" />
+				<cfparam name="Variables.CID" default="" />
 
 				<cfif NOT IsDefined("Session.form_Structure")>
-					<cfinclude template="#RootDir#includes/build_form_struct.cfm">
-					<cfinclude template="#RootDir#includes/restore_params.cfm">
+					<cfinclude template="#RootDir#includes/build_form_struct.cfm" />
+					<cfinclude template="#RootDir#includes/restore_params.cfm" />
 				<cfelse>
-					<cfinclude template="#RootDir#includes/restore_params.cfm">
+					<cfinclude template="#RootDir#includes/restore_params.cfm" />
 					<cfif isDefined("form.BRID")>
 						<cfset Variables.BRID = #form.BRID#>
 					</cfif>
 				</cfif>
 				<cfif IsDefined("Session.Return_Structure")>
-					<cfinclude template="#RootDir#includes/getStructure.cfm">
+					<cfinclude template="#RootDir#includes/getStructure.cfm" />
 					<cfquery name="getBooking" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 						SELECT	Companies.CID, Bookings.UID, Status
 						FROM	Vessels, Bookings, Companies, Jetties
@@ -145,7 +145,7 @@
 					<cflocation addtoken="no" url="#returnTo#?lang=#lang#">
 				</cfif>
 				<cfif IsDefined("Session.form_Structure")>
-					<cfinclude template="#RootDir#includes/restore_params.cfm">
+					<cfinclude template="#RootDir#includes/restore_params.cfm" />
 					<cfif isDefined("form.UID")>
 						<cfset Variables.UID = #form.UID#>
 						<cfset Variables.StartDate = #form.startDate#>
@@ -200,8 +200,8 @@
 					</form>
 				</cfoutput>
 
-				<cfform action="editJettyBooking_process.cfm?#urltoken#&referrer=#URLEncodedFormat(variables.referrer)##variables.dateValue#" method="post" id="editBookingForm" preservedata="Yes">
 				<cfoutput>
+				<form action="editJettyBooking_process.cfm?#urltoken#&referrer=#URLEncodedFormat(variables.referrer)##variables.dateValue#" method="post" id="editBookingForm" preservedata="Yes">
 				<table style="width:100%;">
 					<tr>
 						<td id="Vessel">Vessel:</td>
@@ -214,7 +214,7 @@
 					<tr>
 						<td id="Agent">Agent:</td>
 						<cfif getAgents.recordCount GE 1>
-							<td headers="Agent"><cfselect name="UID" query="getAgents" display="UserName" value="UID" selected="#Variables.UID#" /></td>
+							<td headers="Agent"><select name="UID" query="getAgents" display="UserName" value="UID" selected="#Variables.UID#"><cfloop query="getagents"><option value="#getAgents.UID#">#getAgents.UserName#</option></cfloop></select></td>
 						<cfelse>
 							<td headers="Agent">No agents currently registered.</td>
 						</cfif>
@@ -222,27 +222,29 @@
 					<tr>
 						<td id="startdate"><label for="start">Start Date:</label></td>
 						<td headers="startdate">
-							<cfinput type="text" name="startDate" message="Please enter a start date." validate="date" required="yes" class="datepicker startDate" value="#DateFormat(Variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
+						<cfoutput>
+							<input type="text" name="startDate" message="Please enter a start date." validate="date" required="yes" class="datepicker startDate" value="#DateFormat(Variables.startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#</cfoutput>
 						</td>
 					</tr>
 					<tr>
 						<td id="enddate"><label for="end">End Date:</label></td>
 						<td headers="enddate">
-							<cfinput type="text" name="endDate" message="Please enter an end date." validate="date" required="yes" class="datepicker endDate" value="#DateFormat(Variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10"> #language.dateform#
+						<cfoutput>
+							<input type="text" name="endDate" message="Please enter an end date." validate="date" required="yes" class="datepicker endDate" value="#DateFormat(Variables.endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#</cfoutput>
 						</td>
 					</tr>
 					<tr>
 						<td id="bookingDT">Booking Date:</td>
 						<td headers="bookingDT">
 							<cfoutput>
-								<cfinput name="bookingDate" type="text" value="#DateFormat(Variables.TheBookingDate, 'mm/dd/yyyy')#" class="datepicker" size="15" maxlength="10" required="yes" message="Please enter a valid booking date." validate="date" /> #language.dateform#
+								<input name="bookingDate" type="text" value="#DateFormat(Variables.TheBookingDate, 'mm/dd/yyyy')#" class="datepicker" size="15" maxlength="10" required="yes" message="Please enter a valid booking date." validate="date" /> #language.dateform#</cfoutput>
             </td>
           </tr>
           <tr>
             <td>Booking Time:</td>
             <td>
-								<cfinput name="bookingTime" type="text" value="#TimeFormat(Variables.TheBookingTime, 'HH:mm:ss')#" size="5" maxlength="8" required="yes" message="Please enter a valid booking time." validate="time" /> (HH:MM)
-							</cfoutput>
+            <cfoutput>
+								<input name="bookingTime" type="text" value="#TimeFormat(Variables.TheBookingTime, 'HH:mm:ss')#" size="5" maxlength="8" required="yes" message="Please enter a valid booking time." validate="time" /> (HH:MM)</cfoutput>
 						</td>
 					</tr>
 					<tr>
@@ -290,10 +292,10 @@
 						</td>
 					</tr>
 				</table>
+
+
+				</form>
 				</cfoutput>
-
-
-				</cfform>
 
 			</div>
 

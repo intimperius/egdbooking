@@ -165,8 +165,8 @@
 	</form>
 </cfoutput>
 
-<cfform action="editBooking_process.cfm?#urltoken#&referrer=#URLEncodedFormat(variables.referrer)##variables.dateValue#" method="post" id="editBookingForm" preservedata="Yes">
 <cfoutput>
+<form action="editBooking_process.cfm?#urltoken#&referrer=#URLEncodedFormat(variables.referrer)##variables.dateValue#" method="post" id="editBookingForm" preservedata="Yes">
 <input type="hidden" name="BRID" value="#Variables.BRID#" />
 	Vessel: #getBooking.vesselName#<br/>
 	Company: #getBooking.companyName#<br/><br/>
@@ -174,18 +174,19 @@
 	
 		<label for="UID">Agent:</label>
 		<cfif getAgents.recordCount GE 1>
-			<cfselect name="UID" query="getAgents" display="UserName" value="UID" selected="#getBooking.UID#" />
+			<select name="UID" query="getAgents" display="UserName" value="UID" selected="#getBooking.UID#">
+			<cfloop query="getAgents"><option value="#getAgents.UID#">#getAgents.UserName#</option></cfloop></select>
 		<cfelse>
 			No agents currently registered.
 		</cfif>
 		<label for="startDate">Start Date:</label>
-			<cfinput id="startDate" type="text" name="startDate" message="Please enter a start date." validate="date" required="yes" class="datepicker startDate" value="#DateFormat(startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
+			<input id="startDate" type="text" name="startDate" message="Please enter a start date." validate="date" required="yes" class="datepicker startDate" value="#DateFormat(startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#
 		<label for="endDate">End Date:</label>
-			<cfinput id="endDate" type="text" name="endDate" message="Please enter an end date." validate="date" required="yes" class="datepicker endDate" value="#DateFormat(endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#Booking Date:
+			<input id="endDate" type="text" name="endDate" message="Please enter an end date." validate="date" required="yes" class="datepicker endDate" value="#DateFormat(endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" /> #language.dateform#Booking Date:
 		<label for="bookingDate">Booking Date:</label>
-				<cfinput id="bookingDate" name="bookingDate" type="text" class="datepicker" value="#DateFormat(Variables.TheBookingDate, 'mm/dd/yyyy')#" size="15" maxlength="10" required="yes" message="Please enter a valid booking date." validate="date" /> #language.dateform#
+				<input id="bookingDate" name="bookingDate" type="text" class="datepicker" value="#DateFormat(Variables.TheBookingDate, 'mm/dd/yyyy')#" size="15" maxlength="10" required="yes" message="Please enter a valid booking date." validate="date" /> #language.dateform#
 		<label for="bookingTime">Booking Time:</label>
-			<cfinput name="bookingTime" type="text" value="#TimeFormat(Variables.TheBookingTime, 'HH:mm')#" size="5" maxlength="8" required="yes" message="Please enter a valid booking time." validate="time" /> (HH:MM)<br/>
+			<input name="bookingTime" type="text" value="#TimeFormat(Variables.TheBookingTime, 'HH:mm')#" size="5" maxlength="8" required="yes" message="Please enter a valid booking time." validate="time" /> (HH:MM)<br/>
 		Status:
 			<cfif getBooking.Status EQ "C">
 				<strong>Confirmed</strong>
@@ -213,7 +214,7 @@
 		</div><br/>
 		<input type="submit" class="button button-accent" value="Submit" />
 		<a href="#returnTo#?#urltoken#&BRID=#variables.BRID##variables.dateValue#" class="textbutton">Cancel</a>
+</form>
 </cfoutput>
-</cfform>
-				
+
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">

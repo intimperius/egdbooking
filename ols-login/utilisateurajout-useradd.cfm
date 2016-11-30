@@ -1,50 +1,38 @@
 <cfinclude template="#RootDir#includes/companyInfoVariables.cfm">
 <cfif lang EQ "eng">
-	<cfset language.createUser = "Account Registration">
-	<cfset language.keywords = "#language.masterKeywords#" & ", Add New User Account">
-	<cfset language.description = "Allows user to create a new user account.">
-	<cfset language.password = "Password">
-	<cfset language.repeatPassword = "Repeat Password">
-	<cfset language.firstName = "First Name">
-	<cfset language.lastName = "Last Name">
-	<cfset language.email = "Email">
+	<cfset language.createUser = "Register an account">
+	<cfset language.description = "Submit the following information to create an account to be able to book space at the Esquimalt Graving Dock.">
+	<cfset language.passwordLabel = "Password">
+	<cfset language.repeatPasswordLabel = "Confirm password">
+	<cfset language.firstNameLabel = "First Name">
+	<cfset language.lastNameLabel = "Last Name">
+	<cfset language.emailLabel = "Email address (yourname@domain.com)">
 	<cfset language.firstNameError = "Please enter your first name.">
 	<cfset language.lastNameError = "Please enter your last name.">
 	<cfset language.password1Error = "Please enter your password.">
 	<cfset language.password2Error = "Please repeat your password for verification.">
 	<cfset language.emailError = "Please enter your email address.">
 	<cfset language.characters = "characters">
-	<cfset language.continue = "Continue">
+	<cfset language.casesensitive = "This field is case sensitive">
 <cfelse>
 	<cfset language.createUser = "Inscription pour les comptes">
-	<cfset language.keywords = "#language.masterKeywords#" & ", Ajout d'un nouveau compte d'utilisateur">
-	<cfset language.description = "Permet &agrave; l'utilisateur de cr&eacute;er un nouveau compte d'utilisateur.">
-	<cfset language.password = "Mot de passe">
-	<cfset language.repeatPassword = "Retaper le mot de passe">
-	<cfset language.firstName = "Pr&eacute;nom">
-	<cfset language.lastName = "Nom de famille">
-	<cfset language.email = "Courriel">
+	<cfset language.description = "TBD">
+	<cfset language.passwordLabel = "Mot de passe&nbsp;">
+	<cfset language.repeatPasswordLabel = "Retaper le mot de passe&nbsp;">
+	<cfset language.firstNameLabel = "Pr&eacute;nom&nbsp;">
+	<cfset language.lastNameLabel = "Nom de famille&nbsp;">
+	<cfset language.emailLabel = "Adresse de courriel&nbsp;(tonnom@domain.com)">
 	<cfset language.firstNameError = "Veuillez entrer votre pr&eacute;nom.">
 	<cfset language.lastNameError = "Veuillez entrer votre nom de famille.">
 	<cfset language.password1Error = "Veuillez entrer votre mot de passe.">
 	<cfset language.password2Error = "Veuillez entrer de nouveau votre mot de passe aux fins de v&eacute;rification.">
 	<cfset language.emailError = "Veuillez entrer votre adresse de courriel.">
 	<cfset language.characters = "caract&egrave;res">
-	<cfset language.continue = "Continuer">
+	<cfset language.casesensitive = "TBD">
 </cfif>
 
-<cfhtmlhead text="
-	<meta name=""dcterms.title"" content=""#language.CreateUser# - #language.esqGravingDock# - #language.PWGSC#"" />
-	<meta name=""keywords"" content=""#language.keywords#"" />
-	<meta name=""description"" content=""#language.description#"" />
-	<meta name=""dcterms.description"" content=""#language.description#"" />
-	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
-	<title>#language.CreateUser# - #language.esqGravingDock# - #language.PWGSC#</title>">
-	<cfset request.title = language.CreateUser />
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
-
-<cfset Variables.onLoad = "javascript:document.addUserForm.firstname.focus();">
-
+<!--- <cfset Variables.onLoad = "javascript:document.addUserForm.firstname.focus();">
+ --->
 <cfquery name="getCompanies" datasource="#DSN#" username="#dbuser#" password="#dbpassword#">
 SELECT CID, Name FROM Companies WHERE Deleted = 0 ORDER BY CID
 </cfquery>
@@ -91,7 +79,7 @@ function EditSubmit ( selectedform )
 	}
 /* ]]> */
 </script>
-				<h1 id="wb-cont"><cfoutput>#language.CreateUser#</cfoutput></h1>
+				<h2 id="wb-cont"><cfoutput>#language.CreateUser#</cfoutput></h2>
 
 				<cfoutput>
 
@@ -108,11 +96,11 @@ function EditSubmit ( selectedform )
 					<form action="#Variables.action#" id="addUserForm" method="post">
             <fieldset>
               <legend>#language.CreateUser#</legend>
-              <p>#language.requiredFields#</p>
+              <p>#language.description#</p>
 
               <div class="#err_newfname#">
                 <label for="firstname">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.FirstName#:<span class="form-text">#error('firstname')#</span>
+                  <strong><span class="required">*</span>&nbsp;#language.FirstNameLabel#&nbsp;<span class="required">(#language.required#)</span></strong><span class="form-text">#error('firstname')#</span>
                 </label>
                 <input name="firstname" type="text" value="#variables.firstName#" size="23" maxlength="40" id="firstname" />
 
@@ -120,15 +108,16 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newlname#">
                 <label for="lastname">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.LastName#:<span class="form-text">#error('lastname')#</span>
+                  <strong><span class="required">*</span>&nbsp;#language.LastNameLabel#&nbsp;<span class="required">(#language.required#)</span></strong><span class="form-text">#error('lastname')#</span>
                 </label>
                 <input name="lastname" type="text" value="#variables.lastName#" size="23" maxlength="40" id="lastname" />
               </div>
 
               <div class="#err_newpass1#">
                 <label for="password1">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Password#:<br />
-                  <small>(min. 8 #language.characters#)</small><span class="form-text">#error('password1')#</span>
+                  <strong><span class="required">*</span>&nbsp;#language.PasswordLabel#&nbsp;<span class="required">(#language.required#)</span></strong>&nbsp;(8 #language.characters# minimum)<br />
+                  <span>(#language.casesensitive#)</span>
+                  <span class="form-text">#error('password1')#</span>
                 </label>
                 <input type="password" name="password1" id="password1" size="23" />
                 
@@ -136,7 +125,9 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newpass2#">
                 <label for="password2">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.RepeatPassword#:<span class="form-text">#error('password2')#</span>
+                  <strong><span class="required">*</span>&nbsp;#language.RepeatPasswordLabel#&nbsp;<span class="required">(#language.required#)</span></strong><br />
+                  <span>(#language.casesensitive#)</span>
+                  <span class="form-text">#error('password2')#</span>
                 </label>
                 <input type="password" name="password2" id="password2"  size="23" />
                 
@@ -144,16 +135,13 @@ function EditSubmit ( selectedform )
 
               <div class="#err_newemail#">
                 <label for="email">
-                  <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.Email#:<span class="form-text">#error('email')#</span>
+                  <strong><span class="required">*</span>&nbsp;#language.EmailLabel#&nbsp;<span class="required">(#language.required#)</span></strong><span class="form-text">#error('email')#</span>
                 </label>
                 <input name="email" type="text" value="#variables.email#" size="40" maxlength="100" id="email" />
                 
               </div>
 
-              <input type="submit" value="#language.continue#" class="button button-accent" />
+              <input type="submit" value="#language.Submit#" class="button button-accent" />
             </fieldset>
 					</form>
 				</cfoutput>
-			<!-- CONTENT ENDS | FIN DU CONTENU -->
-
-<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">

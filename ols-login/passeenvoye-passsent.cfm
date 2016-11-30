@@ -19,7 +19,7 @@
 	<meta name=""dcterms.description"" content=""#language.description#"" />
 	<meta name=""dcterms.subject"" content=""#language.masterSubjects#"" />
 	<title>#language.title# - #language.esqGravingDock# - #language.PWGSC#</title>">
-<cfinclude template="#RootDir#includes/tete-header-#lang#.cfm">
+<cfinclude template="#RootDir#includes/tete-header-loggedout-#lang#.cfm">
 
 <cfset Variables.onLoad = "javascript:document.forgotForm.email.focus();">
 
@@ -32,7 +32,7 @@
 					
 					<div>#language.sentPassword#</div><br />
 					
-					<div><a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.returnlogin#</a></div>
+					<div><a href="#RootDir#index-#lang#.cfm" class="textbutton">#language.returnlogin#</a></div>
 				</cfoutput>					
 			<!-- CONTENT ENDS | FIN DU CONTENU -->
 		<cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">

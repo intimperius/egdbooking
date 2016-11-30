@@ -69,7 +69,7 @@ function EditSubmit ( selectedform )
 
 
 Please confirm the following maintenance block information.<br/><br/>
-<cfform action="deleteMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
+<form action="deleteMaintBlock_action.cfm?#urltoken#" method="post" id="bookingreq" preservedata="Yes">
 <input type="hidden" name="BRID" value="#Variables.BRID#" />
 
 <div class="module-info widemod">
@@ -106,7 +106,7 @@ Please confirm the following maintenance block information.<br/><br/>
 	<a href="bookingManage.cfm?#urltoken#">Cancel</a>
 </div>
 
-</cfform>
+</form>
 
 <cfinclude template="#RootDir#includes/foot-pied-#lang#.cfm">
 </cfoutput>

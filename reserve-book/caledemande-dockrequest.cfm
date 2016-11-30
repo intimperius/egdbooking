@@ -10,7 +10,13 @@
 	<cfset language.or = "or">
 	<cfset language.numDaysError = "Please enter the desired number of days.">
 	<cfset language.dateRange = "Date Range">
-	<cfset language.requestedStatus = "Requested Status">
+	
+	
+	<cfset language.VesselLabel = "Vessel:">
+	<cfset language.startDateLabel = "Start Date:">
+	<cfset language.endDateLabel = "End Date:">
+	<cfset language.requestedStatusLabel = "Requested Status:">
+	<cfset language.NumDaysLabel = "Number of days:">
 
 <cfelse>
 	<cfset language.drydockRequest = "Pr&eacute;sentation d'une demande de r&eacute;servation de la cale s&egrave;che">
@@ -23,7 +29,13 @@
 	<cfset language.or = "ou">
 	<cfset language.numDaysError = "Veuillez entrer le nombre de jours voulus.">
 	<cfset language.dateRange = "P&eacute;riode&nbsp;">
-	<cfset language.requestedStatus = "&Eacute;tat demand&eacute;">
+	
+	
+	<cfset language.VesselLabel = "Navire&nbsp:">
+	<cfset language.startDateLabel = "Date de d&eacute;but&nbsp;:">
+	<cfset language.endDateLabel = "Date de fin&nbsp:">
+	<cfset language.requestedStatusLabel = "&Eacute;tat demand&eacute;&nbsp:">
+	<cfset language.NumDaysLabel = "Nombre de jours&nbsp:">
 </cfif>
 <cfoutput>
 
@@ -59,6 +71,8 @@
 <cfparam name="Variables.VNID" default="">
 <cfparam name="Variables.startDate" default="#DateAdd('d', 1, PacificNow)#">
 <cfparam name="Variables.endDate" default="#DateAdd('d', 3, PacificNow)#">
+<cfparam name="Variables.startDateA" default="#DateAdd('d', 1, PacificNow)#">
+<cfparam name="Variables.endDateA" default="#DateAdd('d', 3, PacificNow)#">
 <cfparam name="Variables.numDays" default="">
 <cfparam name="Variables.status" default="">
 <cfparam name="err_ddstart" default="">
@@ -84,7 +98,9 @@
 	</cfif>
 	<cfif IsDefined("URL.Date")>
 		<cfset Variables.StartDate = URL.Date>
-		<cfset Variables.EndDate = DateAdd('d', 3, Variables.StartDate)>
+		<cfset Variables.EndDate = DateAdd('d', 3, Variables.StartDateA)>
+		<cfset Variables.StartDateA = URL.Date>
+		<cfset Variables.EndDateA = DateAdd('d', 3, Variables.StartDateA)>
 	</cfif>
 </cflock>
 
@@ -94,18 +110,17 @@
 
 				<cfinclude template="#RootDir#includes/getStructure.cfm">
 				<cfinclude template="#RootDir#includes/restore_params.cfm">
-				<cfif isDefined("session.form_structure")>
-          <cfif isDate(form.startDate) and isDate(form.endDate)>
-            <cfset Variables.startDate = form.startDate>
-            <cfset Variables.endDate = form.endDate>
-          </cfif>
-					<cfset Variables.status = form.status>
-          <cfif structKeyExists(session.form_structure, 'bookingByRange_CID')>
-            <cfset variables.CID = form.bookingByRange_CID />
-            <cfset variables.VNID = form.bookingByRange_VNID />
-          </cfif>
+				<cfif isDefined("session.form_structure") and structKeyExists(session.form_structure, 'bookingByRange_CID')>
+          
+					<cfset Variables.startDate = form.startDate>
+					<cfset Variables.endDate = form.endDate>
+					<cfset Variables.startDateA = form.startDateA>
+					<cfset Variables.endDateA = form.endDateA>
+     				<cfset Variables.status = form.status>
+					<cfset variables.CID = form.bookingByRange_CID />
+					<cfset variables.VNID = form.bookingByRange_VNID />
 				</cfif>
-
+		
         <cfif not #error("startDateA")# EQ "">
               <cfset err_ddstart = "form-alert" />
         </cfif>
@@ -137,7 +152,14 @@
 
             <div class="#err_ddvess#">
               <label for="booking_VNID">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:<span class="form-text">#error('booking_VNIDA')#</span>
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vesselLabel#
+				
+				<!--- condition to check if vessel selected--->
+				<br>
+				<cfif (isdefined('form.booking_VNID')) AND (form.booking_VNID EQ "")>
+				<span class="uglyred">#language.noVesselError#</span>
+				</cfif>
+				
               </label>
               <select id="booking_VNID" name="booking_VNID">
                 <option value="">(#language.chooseVessel#)</option>
@@ -154,25 +176,42 @@
 
 						<div class="#err_ddstart#">
               <label for="startDateA">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.StartDate#:<br />
-                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('StartDateA')#</span>
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.StartDateLabel#<br />
+                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+				
+				<!--- condition to check startdate---> <br>
+				<cfif isdefined('form.startdateA')>  
+				<cfif not isDate(form.startDateA)> 
+				<cfset Variables.startDateA = "#DateAdd('d', 1, PacificNow)#"/> 
+				<span class="uglyred">#language.invalidStartError#</span>
+				</cfif></cfif>
+				
+
+				
               </label>
-              <input id="startDateA" name="startDate" class="datepicker startDate" type="text" size="15" maxlength="10"  />
+			  <input type="date" id="startDateA" name="startDateA" value="#DateFormat(startDateA, 'yyyy-mm-dd')#">
               
 						</div>
 
 						<div class="#err_ddend#">
              <label for="endDateA">
-               <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EndDate#:<br />
-               <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('EndDateA')#</span>
+               <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EndDateLabel#<br />
+               <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+			   
+			   <!--- condition to check enddate ---> <br>
+				<cfif isdefined('form.enddateA')> 
+				<cfif not isDate(form.endDateA)>
+				<cfset Variables.endDateA = "#DateAdd('d', 3, PacificNow)#"/> 
+				<span class="uglyred">#language.invalidEndError#</span>
+				</cfif></cfif>
+			   
              </label>
-              <input id="endDateA" name="endDate" class="datepicker endDate" type="text" size="15" maxlength="10" value="#DateFormat(endDate, 'mm/dd/yyyy')#"  />
-              
-						</div>
+			 <input type="date" id="endDateA" name="endDateA" value="#DateFormat(endDateA, 'yyyy-mm-dd')#">
+             			</div>
 
 						<div>
               <label for="status">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.requestedStatus#:
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.requestedStatusLabel#
               </label>
               <select id="status" name="status" >
                 <option value="tentative" <cfif isDefined("form.status") AND form.status EQ "tentative">selected="selected"</cfif>>#language.tentative#</option>
@@ -185,6 +224,8 @@
             </div>
 					</fieldset>
         </form>
+		
+
 
 				<p style="text-align: center"><strong>#language.or#</strong></p>
 				<p>#language.daysToBook#  #language.dateInclusive#</p>
@@ -196,8 +237,14 @@
 
             <div class="#err_ddvess2#">
               <label for="bookingByRange_VNID">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vessel#:
-                <span class="form-text">#error('bookingByRange_VNIDB')#</span>
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.vesselLabel#
+                
+				<!--- condition to check if vessel selected--->
+				<br>
+				<cfif isdefined('Variables.bookingByRange_VNID')>
+				<cfif #Variables.bookingByRange_VNID# eq 0>
+				<span class="uglyred">#language.noVesselError#</span> 		
+				</cfif></cfif>
               </label>
               <select id="bookingByRange_VNID" name="bookingByRange_VNID">
                 <option value="">(#language.chooseVessel#)</option>
@@ -214,26 +261,42 @@
 
             <div class="#err_ddstart2#">
 							<label for="StartDateB">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.StartDate#:
-                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('StartDateB')#</span>
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.StartDateLabel#
+                <br /><small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+				
+			<!--- condition to check startdate---> <br>
+				
+				<cfif not isDate(startDate)> 
+				<cfset Variables.startDate = "#DateAdd('d', 1, PacificNow)#"/> 
+				<span class="uglyred">#language.invalidStartError#</span>
+				</cfif>				
+			
               </label>
-							<input id="StartDateB" name="startDate" type="text" class="datepicker startDate" value="#DateFormat(startDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
-              
+			  <input type="date" id="StartDateB" name="startDate" value="#DateFormat(startDate, 'yyyy-mm-dd')#">
+             
             </div>
 
             <div class="#err_ddend2#">
               <label for="EndDateB">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EndDate#:
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.EndDateLabel#
                 <br />
-                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small><span class="form-text">#error('EndDateB')#</span>
+                <small><abbr title="#language.dateformexplanation#">#language.dateform#</abbr></small>
+				
+				<!--- condition to check enddate ---> <br>
+			
+				
+				<cfif not isDate(Variables.endDate)>
+				<cfset Variables.endDate = "#DateAdd('d', Variables.numDays, PacificNow)#"/> 
+				<span class="uglyred">#language.invalidEndError#</span>
+				</cfif>
+				
               </label>
-              <input id="EndDateB" name="endDate" type="text" class="datepicker endDate" value="#DateFormat(endDate, 'mm/dd/yyyy')#" size="15" maxlength="10" />
-              
+			  <input type="date" id="EndDateB" name="endDate" value="#DateFormat(endDate, 'yyyy-mm-dd')#">
             </div>
 
             <div class="#err_numdays#">
               <label for="NumDays">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.NumDays#:
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.NumDaysLabel#
                 <span class="form-text">#error('NumDays')#</span>
               </label>
               <input id="NumDays" type="text" name="numDays" value="#Variables.numDays#"  />
@@ -242,7 +305,7 @@
 
 						<div>
               <label for="statusB">
-                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.requestedStatus#:
+                <abbr title="#language.required#" class="required">*</abbr>&nbsp;#language.requestedStatusLabel#
               </label>
               <select id="statusB" name="status" >
                 <option value="tentative" <cfif isDefined("form.status") AND form.status EQ "tentative">selected="selected"</cfif>>#language.tentative#</option>
