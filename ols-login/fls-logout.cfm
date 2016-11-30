@@ -1,4 +1,4 @@
-<cfdump var="#Cookie#">
+<!--- <cfdump var="#Cookie#"> --->
 
 <cfif lang EQ "eng" OR isDefined("session.AdminLoggedIn")>
 	<cfset language.title = "Sign Out">
@@ -43,7 +43,7 @@
 
 <cfoutput>
 <p>#language.thankYou#</p>
-<p><a href="ols-login.cfm?lang=#lang#" class="textbutton">#language.returnlogin#</a></p>
+<p><a href="../index-#lang#.cfm" class="textbutton">#language.returnlogin#</a></p>
 </cfoutput>
 
 <cfinclude template="#RootDir#includes/pied_site-site_footer-#lang#.cfm">
